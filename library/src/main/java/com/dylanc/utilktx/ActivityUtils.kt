@@ -3,21 +3,14 @@ package com.dylanc.utilktx
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.os.Binder
-import android.os.Build
 import android.os.Bundle
-import android.os.Parcelable
-import android.util.Size
-import android.util.SizeF
 import android.util.SparseArray
 import android.view.View
 import androidx.annotation.AnimRes
-import androidx.core.app.BundleCompat.putBinder
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.blankj.utilcode.util.ActivityUtils
-import java.io.Serializable
 
 /**
  * @author Dylan Cai
