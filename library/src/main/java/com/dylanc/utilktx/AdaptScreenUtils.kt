@@ -7,13 +7,13 @@ import com.blankj.utilcode.util.AdaptScreenUtils
  * @author Dylan Cai
  * @since 2020/4/4
  */
-fun adaptScreenWidth(resources: Resources, designWidth: Int) =
+fun adaptScreenWidth(resources: Resources, designWidth: Int):Resources =
   AdaptScreenUtils.adaptWidth(resources, designWidth)
 
-fun adaptScreenHeight(resources: Resources, designWidth: Int, includeNavBar: Boolean = false) =
+fun adaptScreenHeight(resources: Resources, designWidth: Int, includeNavBar: Boolean = false):Resources =
   AdaptScreenUtils.adaptHeight(resources, designWidth, includeNavBar)
 
-fun closeAdapt(resources: Resources) = AdaptScreenUtils.closeAdapt(resources)
+fun closeAdapt(resources: Resources):Resources = AdaptScreenUtils.closeAdapt(resources)
 
 val Float.pt: Int
   get() = AdaptScreenUtils.pt2Px(this)

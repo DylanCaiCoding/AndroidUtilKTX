@@ -8,7 +8,7 @@ import java.io.File
  * @author Dylan Caia
  * @since 2019/11/7
  */
-fun File.toUri() = UriUtils.file2Uri(this)
+fun File.toUri():Uri = UriUtils.file2Uri(this)
 
 fun Uri.toFile(): File? = UriUtils.uri2File(this)
 

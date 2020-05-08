@@ -29,9 +29,9 @@ fun Int.setColorBlueComponent(@FloatRange alpha: Float) = ColorUtils.setBlueComp
 
 fun String.string2Color() = ColorUtils.string2Int(this)
 
-fun Int.color2RgbString() = ColorUtils.int2RgbString(this)
+fun Int.color2RgbString():String = ColorUtils.int2RgbString(this)
 
-fun Int.color2ArgbString() = ColorUtils.int2ArgbString(this)
+fun Int.color2ArgbString():String = ColorUtils.int2ArgbString(this)
 
 val randomColor
   get() = ColorUtils.getRandomColor()

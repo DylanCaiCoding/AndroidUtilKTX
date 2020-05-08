@@ -10,14 +10,14 @@ import com.blankj.utilcode.util.ToastUtils
  */
 fun toast(text: String?) = ToastUtils.showShort(text)
 
-fun toast(view: View) = ToastUtils.showCustomShort(view)
+fun toast(view: View):View = ToastUtils.showCustomShort(view)
 
-fun toast(@LayoutRes layoutId: Int) = ToastUtils.showCustomShort(layoutId)
+fun toast(@LayoutRes layoutId: Int):View = ToastUtils.showCustomShort(layoutId)
 
 fun longToast(text: String) = ToastUtils.showLong(text)
 
-fun longToast(view: View) = ToastUtils.showCustomLong(view)
+fun longToast(view: View):View = ToastUtils.showCustomLong(view)
 
-fun longToast(@LayoutRes layoutId: Int) = ToastUtils.showCustomLong(layoutId)
+fun longToast(@LayoutRes layoutId: Int):View = ToastUtils.showCustomLong(layoutId)
 
 fun cancelToast() = ToastUtils.cancel()

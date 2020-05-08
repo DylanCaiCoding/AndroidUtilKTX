@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.dylanc.utilktx
 
 import com.blankj.utilcode.util.DeviceUtils
@@ -12,22 +14,22 @@ val isDeviceRooted
 val isAdbEnabled
   get() = DeviceUtils.isAdbEnabled()
 
-val sdkVersionName
+val sdkVersionName: String
   get() = DeviceUtils.getSDKVersionName()
 
 val sdkVersionCode
   get() = DeviceUtils.getSDKVersionCode()
 
-val macAddress
+val macAddress: String
   get() = DeviceUtils.getMacAddress()
 
-val manufacturer
+val manufacturer: String
   get() = DeviceUtils.getManufacturer()
 
-val deviceModel
+val deviceModel: String
   get() = DeviceUtils.getModel()
 
-val deviceABIs
+val deviceABIs: Array<String>
   get() = DeviceUtils.getABIs()
 
 val isTablet
@@ -36,7 +38,7 @@ val isTablet
 val isEmulator
   get() = DeviceUtils.isEmulator()
 
-val uniqueDeviceId
+val uniqueDeviceId: String
   get() = DeviceUtils.getUniqueDeviceId()
 
 fun isSameDevice(uniqueDeviceId: String) = DeviceUtils.isSameDevice(uniqueDeviceId)

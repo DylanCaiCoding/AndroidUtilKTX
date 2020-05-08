@@ -11,16 +11,16 @@ import com.blankj.utilcode.util.PhoneUtils
 val isPhone
   get() = PhoneUtils.isPhone()
 
-val deviceId
+val deviceId:String
   get() = PhoneUtils.getDeviceId()
 
-val serialNumber
+val serialNumber:String
   get() = PhoneUtils.getSerial()
 
-val IMEI
+val IMEI:String
   get() = PhoneUtils.getIMEI()
 
-val MEID
+val MEID:String
   get() = PhoneUtils.getMEID()
 
 val phoneType
@@ -29,10 +29,10 @@ val phoneType
 val isSimCardReady
   get() = PhoneUtils.isSimCardReady()
 
-val simOperatorName
+val simOperatorName:String
   get() = PhoneUtils.getSimOperatorName()
 
-val simOperatorByMnc
+val simOperatorByMnc:String
   get() = PhoneUtils.getSimOperatorByMnc()
 
 fun dial(phoneNumber: String) = PhoneUtils.dial(phoneNumber)

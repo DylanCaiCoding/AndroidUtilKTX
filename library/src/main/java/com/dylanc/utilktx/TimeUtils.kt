@@ -25,25 +25,25 @@ fun String.toMillis(format: DateFormat) =
 fun Long.toTimeString(pattern: String = FORMAT_DATE_HOUR_MINUTE_SECOND): String =
   TimeUtils.millis2String(this, pattern)
 
-fun Long.toTimeString(format: DateFormat) =
+fun Long.toTimeString(format: DateFormat):String =
   TimeUtils.millis2String(this, format)
 
-fun String.toDate(pattern: String = FORMAT_DATE_HOUR_MINUTE_SECOND) =
+fun String.toDate(pattern: String = FORMAT_DATE_HOUR_MINUTE_SECOND):Date =
   TimeUtils.string2Date(this, pattern)
 
-fun String.toDate(format: DateFormat) =
+fun String.toDate(format: DateFormat):Date =
   TimeUtils.string2Date(this, format)
 
-fun Date.toTimeString(pattern: String = FORMAT_DATE_HOUR_MINUTE_SECOND) =
+fun Date.toTimeString(pattern: String = FORMAT_DATE_HOUR_MINUTE_SECOND):String =
   TimeUtils.date2String(this, pattern)
 
-fun Date.toTimeString(format: DateFormat) =
+fun Date.toTimeString(format: DateFormat):String =
   TimeUtils.date2String(this, format)
 
 fun Date.toMillis() =
   TimeUtils.date2Millis(this)
 
-fun Long.toDate() =
+fun Long.toDate():Date =
   TimeUtils.millis2Date(this)
 
 fun timeSpanOf(time1: String, time2: String, unit: Int) =
@@ -58,25 +58,25 @@ fun timeSpanOf(date1: Date, date2: Date, unit: Int) =
 fun timeSpanOf(millis1: Long, millis2: Long, unit: Int) =
   TimeUtils.getTimeSpan(millis1, millis2, unit)
 
-fun fitTimeSpanOf(time1: String, time2: String, precision: Int) =
+fun fitTimeSpanOf(time1: String, time2: String, precision: Int):String =
   TimeUtils.getFitTimeSpan(time1, time2, precision)
 
-fun fitTimeSpanOf(time1: String, time2: String, format: DateFormat, precision: Int) =
+fun fitTimeSpanOf(time1: String, time2: String, format: DateFormat, precision: Int):String =
   TimeUtils.getFitTimeSpan(time1, time2, format, precision)
 
-fun fitTimeSpanOf(date1: Date, date2: Date, precision: Int) =
+fun fitTimeSpanOf(date1: Date, date2: Date, precision: Int):String =
   TimeUtils.getFitTimeSpan(date1, date2, precision)
 
-fun fitTimeSpanOf(millis1: Long, millis2: Long, precision: Int) =
+fun fitTimeSpanOf(millis1: Long, millis2: Long, precision: Int):String =
   TimeUtils.getFitTimeSpan(millis1, millis2, precision)
 
 val nowMillis = TimeUtils.getNowMills()
 
-val nowTimeString = TimeUtils.getNowString()
+val nowTimeString:String = TimeUtils.getNowString()
 
-fun nowTimeStringOf(format: DateFormat) = TimeUtils.getNowString(format)
+fun nowTimeStringOf(format: DateFormat):String = TimeUtils.getNowString(format)
 
-val nowDate = TimeUtils.getNowDate()
+val nowDate:Date = TimeUtils.getNowDate()
 
 fun timeSpanByNowOf(time: String, unit: Int) =
   TimeUtils.getTimeSpanByNow(time, unit)
@@ -90,28 +90,28 @@ fun timeSpanByNowOf(date: Date, unit: Int) =
 fun timeSpanByNowOf(millis: Long, unit: Int) =
   TimeUtils.getTimeSpanByNow(millis, unit)
 
-fun fitTimeSpanByNowOf(time: String, precision: Int) =
+fun fitTimeSpanByNowOf(time: String, precision: Int):String =
   TimeUtils.getFitTimeSpanByNow(time, precision)
 
-fun fitTimeSpanByNowOf(time: String, format: DateFormat, precision: Int) =
+fun fitTimeSpanByNowOf(time: String, format: DateFormat, precision: Int):String =
   TimeUtils.getFitTimeSpanByNow(time, format, precision)
 
-fun fitTimeSpanByNowOf(date: Date, precision: Int) =
+fun fitTimeSpanByNowOf(date: Date, precision: Int):String =
   TimeUtils.getFitTimeSpanByNow(date, precision)
 
-fun fitTimeSpanByNowOf(millis: Long, precision: Int) =
+fun fitTimeSpanByNowOf(millis: Long, precision: Int):String =
   TimeUtils.getFitTimeSpanByNow(millis, precision)
 
-fun friendlyTimeSpanByNowOf(time: String) =
+fun friendlyTimeSpanByNowOf(time: String):String =
   TimeUtils.getFriendlyTimeSpanByNow(time)
 
-fun friendlyTimeSpanByNowOf(time: String, format: DateFormat, precision: Int) =
+fun friendlyTimeSpanByNowOf(time: String, format: DateFormat, precision: Int):String =
   TimeUtils.getFitTimeSpanByNow(time, format, precision)
 
-fun friendlyTimeSpanByNowOf(date: Date, precision: Int) =
+fun friendlyTimeSpanByNowOf(date: Date, precision: Int):String =
   TimeUtils.getFitTimeSpanByNow(date, precision)
 
-fun friendlyTimeSpanByNowOf(millis: Long, precision: Int) =
+fun friendlyTimeSpanByNowOf(millis: Long, precision: Int):String =
   TimeUtils.getFitTimeSpanByNow(millis, precision)
 
 fun millisOf(time: String, timeSpan: Long, unit: Int) =
@@ -126,34 +126,34 @@ fun millisOf(date: Date, timeSpan: Long, unit: Int) =
 fun millisOf(millis: Long, timeSpan: Long, unit: Int) =
   TimeUtils.getMillis(millis, timeSpan, unit)
 
-fun timeStringOf(time: String, timeSpan: Long, unit: Int) =
+fun timeStringOf(time: String, timeSpan: Long, unit: Int):String =
   TimeUtils.getString(time, timeSpan, unit)
 
-fun timeStringOf(time: String, format: DateFormat, timeSpan: Long, unit: Int) =
+fun timeStringOf(time: String, format: DateFormat, timeSpan: Long, unit: Int):String =
   TimeUtils.getString(time, format, timeSpan, unit)
 
-fun timeStringOf(date: Date, timeSpan: Long, unit: Int) =
+fun timeStringOf(date: Date, timeSpan: Long, unit: Int):String =
   TimeUtils.getString(date, timeSpan, unit)
 
-fun timeStringOf(date: Date, format: DateFormat, timeSpan: Long, unit: Int) =
+fun timeStringOf(date: Date, format: DateFormat, timeSpan: Long, unit: Int):String =
   TimeUtils.getString(date, format, timeSpan, unit)
 
-fun timeStringOf(millis: Long, timeSpan: Long, unit: Int) =
+fun timeStringOf(millis: Long, timeSpan: Long, unit: Int):String =
   TimeUtils.getString(millis, timeSpan, unit)
 
-fun timeStringOf(millis: Long, format: DateFormat, timeSpan: Long, unit: Int) =
+fun timeStringOf(millis: Long, format: DateFormat, timeSpan: Long, unit: Int):String =
   TimeUtils.getString(millis, format, timeSpan, unit)
 
-fun dateOf(time: String, timeSpan: Long, unit: Int) =
+fun dateOf(time: String, timeSpan: Long, unit: Int):Date =
   TimeUtils.getDate(time, timeSpan, unit)
 
-fun dateOf(time: String, format: DateFormat, timeSpan: Long, unit: Int) =
+fun dateOf(time: String, format: DateFormat, timeSpan: Long, unit: Int):Date =
   TimeUtils.getDate(time, format, timeSpan, unit)
 
-fun dateOf(date: Date, timeSpan: Long, unit: Int) =
+fun dateOf(date: Date, timeSpan: Long, unit: Int):Date =
   TimeUtils.getDate(date, timeSpan, unit)
 
-fun dateOf(millis: Long, timeSpan: Long, unit: Int) =
+fun dateOf(millis: Long, timeSpan: Long, unit: Int):Date =
   TimeUtils.getDate(millis, timeSpan, unit)
 
 

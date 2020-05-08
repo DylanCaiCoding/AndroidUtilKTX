@@ -1,6 +1,7 @@
 package com.dylanc.utilktx
 
 import android.app.Activity
+import android.graphics.Bitmap
 import com.blankj.utilcode.util.ScreenUtils
 
 /**
@@ -47,7 +48,7 @@ val isPortrait
 val Activity.screenRotation
   get() = ScreenUtils.getScreenRotation(this)
 
-fun Activity.screenShot(isDeleteStatusBar: Boolean = false) =
+fun Activity.screenShot(isDeleteStatusBar: Boolean = false):Bitmap =
   ScreenUtils.screenShot(this, isDeleteStatusBar)
 
 val isScreenLock
