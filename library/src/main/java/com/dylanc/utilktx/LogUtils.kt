@@ -8,6 +8,9 @@ import com.blankj.utilcode.util.LogUtils
  * @author Dylan Cai
  * @since 2019/11/7
  */
+val logConfig: LogUtils.Config
+  get() = LogUtils.getConfig()
+
 interface Logger {
   val loggerTag: String
     get() = TAG
@@ -17,6 +20,12 @@ fun Logger(tag: String) = object : Logger {
   override val loggerTag: String
     get() = tag
 }
+
+val Any.TAG: String
+  get() {
+    val tag = javaClass.simpleName
+    return if (tag.length <= 23) tag else tag.substring(0, 23)
+  }
 
 inline fun Logger.verbose(vararg contents: Any) = LogUtils.vTag(loggerTag, *contents)
 
@@ -54,8 +63,3 @@ inline fun logFile(content: Any) = LogUtils.file(content)
 
 inline fun logXml(content: String) = LogUtils.xml(content)
 
-val Any.TAG: String
-  get() {
-    val tag = javaClass.simpleName
-    return if (tag.length <= 23) tag else tag.substring(0, 23)
-  }
