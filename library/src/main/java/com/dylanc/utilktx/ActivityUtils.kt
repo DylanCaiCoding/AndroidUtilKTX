@@ -16,9 +16,6 @@ import com.blankj.utilcode.util.ActivityUtils
  * @author Dylan Cai
  * @since 2019/11/7
  */
-val View.activity: Activity?
-  get() = ActivityUtils.getActivityByView(this)
-
 val Context.activity: Activity?
   get() = ActivityUtils.getActivityByContext(this)
 
@@ -64,7 +61,10 @@ inline fun <reified T : Activity> Activity.startActivity(
 ) =
   ActivityUtils.startActivity(this, intentOf<T>(*extra), options)
 
-inline fun <reified T : Activity> Activity.startActivity(@AnimRes enterAnim: Int, @AnimRes exitAnim: Int) =
+inline fun <reified T : Activity> Activity.startActivity(
+  @AnimRes enterAnim: Int,
+  @AnimRes exitAnim: Int
+) =
   ActivityUtils.startActivity(this, T::class.java, enterAnim, exitAnim)
 
 fun Activity.startActivity(intent: Intent, vararg sharedElements: View) =
@@ -79,7 +79,7 @@ fun <T : Intent> Array<T>.start(activity: Activity, options: Bundle? = null) =
 fun startHomeActivity() =
   ActivityUtils.startHomeActivity()
 
-val activityList
+val activityList: List<Activity>
   get() = ActivityUtils.getActivityList()
 
 val Context.isActivityAlive
