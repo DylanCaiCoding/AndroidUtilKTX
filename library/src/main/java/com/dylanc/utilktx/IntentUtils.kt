@@ -1,20 +1,85 @@
+@file:Suppress("unused")
+
 package com.dylanc.utilktx
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.core.os.bundleOf
+import com.blankj.utilcode.util.IntentUtils
+import java.io.File
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * @author Dylan Cai
  * @since 2020/1/16
  */
-inline fun <reified T : Activity> Context.intentOf(bundle: Bundle) =
+fun Intent.isAvailable(): Boolean =
+  IntentUtils.isIntentAvailable(this)
+
+fun installAppIntentOf(file: File): Intent =
+  IntentUtils.getInstallAppIntent(file)
+
+fun installAppIntentOf(filePath: String): Intent =
+  IntentUtils.getInstallAppIntent(filePath)
+
+fun uninstallAppIntentOf(pkgName: String): Intent =
+  IntentUtils.getUninstallAppIntent(pkgName)
+
+fun launchAppIntentOf(pkgName: String): Intent =
+  IntentUtils.getLaunchAppIntent(pkgName)
+
+fun launchAppDetailsSettingsIntentOf(pkgName: String): Intent =
+  IntentUtils.getLaunchAppDetailsSettingsIntent(pkgName)
+
+fun shareTextIntentOf(content: String): Intent =
+  IntentUtils.getShareTextIntent(content)
+
+fun shareImageIntentOf(content: String, imagePath: String): Intent =
+  IntentUtils.getShareImageIntent(content, imagePath)
+
+fun shareImageIntentOf(content: String, image: File): Intent =
+  IntentUtils.getShareImageIntent(content, image)
+
+fun shareImageIntentOf(content: String, uri: Uri): Intent =
+  IntentUtils.getShareImageIntent(content, uri)
+
+fun shareImageIntentOf(content: String, imagePaths: LinkedList<String>): Intent =
+  IntentUtils.getShareImageIntent(content, imagePaths)
+
+fun shareImageIntentOf(content: String, images: List<File>): Intent =
+  IntentUtils.getShareImageIntent(content, images)
+
+fun shareImageIntentOf(content: String, uris: ArrayList<Uri>): Intent =
+  IntentUtils.getShareImageIntent(content, uris)
+
+fun componentIntentOf(
+  pkgName: String, className: String, bundle: Bundle? = null, isNewTask: Boolean = false
+): Intent =
+  IntentUtils.getComponentIntent(pkgName, className, bundle, isNewTask)
+
+fun shutdownIntentOf(): Intent =
+  IntentUtils.getShutdownIntent()
+
+fun dialIntentOf(phoneNumber: String): Intent =
+  IntentUtils.getDialIntent(phoneNumber)
+
+fun callIntentOf(phoneNumber: String): Intent =
+  IntentUtils.getCallIntent(phoneNumber)
+
+fun sendSmsIntentOf(phoneNumber: String,content: String): Intent =
+  IntentUtils.getSendSmsIntent(phoneNumber,content)
+
+fun captureIntentOf(outUri: Uri): Intent =
+  IntentUtils.getCaptureIntent(outUri)
+
+inline fun <reified T : Any> Context.intentOf(bundle: Bundle) =
   Intent(this, T::class.java).apply { putExtras(bundle) }
 
-inline fun <reified T : Activity> Context.intentOf(vararg pairs: Pair<String, *>) =
+inline fun <reified T : Any> Context.intentOf(vararg pairs: Pair<String, *>) =
   Intent(this, T::class.java).apply { putExtras(bundleOf(*pairs)) }
 
 fun Intent.clearTask(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK) }
