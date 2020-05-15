@@ -5,7 +5,7 @@ import com.blankj.utilcode.util.UriUtils
 import java.io.File
 
 /**
- * @author Dylan Caia
+ * @author Dylan Cai
  * @since 2019/11/7
  */
 fun File.toUri():Uri = UriUtils.file2Uri(this)
