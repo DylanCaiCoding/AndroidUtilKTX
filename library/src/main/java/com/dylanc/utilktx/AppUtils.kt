@@ -79,7 +79,7 @@ val appIcon: Drawable
 fun appIconOf(packageName: String): Drawable =
   AppUtils.getAppIcon(packageName)
 
-val appPackageName: String
+val packageName: String
   get() = AppUtils.getAppPackageName()
 
 val appName: String
