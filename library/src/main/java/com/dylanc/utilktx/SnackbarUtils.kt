@@ -17,58 +17,58 @@ import com.google.android.material.snackbar.Snackbar
  */
 private const val COLOR_DEFAULT: Int = -0x1000001
 
-fun Activity.showSnackbar(block: SnackbarUtilsBuilder.() -> Unit): Snackbar =
+fun Activity.showSnackbar(block: SnackbarBuilder.() -> Unit): Snackbar =
   SnackbarUtils.with(findViewById(android.R.id.content))
-    .apply { SnackbarUtilsBuilder(this).apply(block) }.show()
+    .apply { SnackbarBuilder(this).apply(block) }.show()
 
-fun showSnackbar(view: View, block: SnackbarUtilsBuilder.() -> Unit): Snackbar =
+fun showSnackbar(view: View, block: SnackbarBuilder.() -> Unit): Snackbar =
   SnackbarUtils.with(view)
-    .apply { SnackbarUtilsBuilder(this).apply(block) }.show()
+    .apply { SnackbarBuilder(this).apply(block) }.show()
 
 fun Activity.showSuccessSnackbar(
   isShowTop: Boolean = false,
-  block: SnackbarUtilsBuilder.() -> Unit
+  block: SnackbarBuilder.() -> Unit
 ) =
   SnackbarUtils.with(findViewById(android.R.id.content))
-    .apply { SnackbarUtilsBuilder(this).apply(block) }.showSuccess(isShowTop)
+    .apply { SnackbarBuilder(this).apply(block) }.showSuccess(isShowTop)
 
 fun showSuccessSnackbar(
   view: View,
   isShowTop: Boolean = false,
-  block: SnackbarUtilsBuilder.() -> Unit
+  block: SnackbarBuilder.() -> Unit
 ) =
   SnackbarUtils.with(view)
-    .apply { SnackbarUtilsBuilder(this).apply(block) }.showSuccess(isShowTop)
+    .apply { SnackbarBuilder(this).apply(block) }.showSuccess(isShowTop)
 
 fun Activity.showWarningSnackbar(
   isShowTop: Boolean = false,
-  block: SnackbarUtilsBuilder.() -> Unit
+  block: SnackbarBuilder.() -> Unit
 ) =
   SnackbarUtils.with(findViewById(android.R.id.content))
-    .apply { SnackbarUtilsBuilder(this).apply(block) }.showWarning(isShowTop)
+    .apply { SnackbarBuilder(this).apply(block) }.showWarning(isShowTop)
 
 fun showWarningSnackbar(
   view: View,
   isShowTop: Boolean = false,
-  block: SnackbarUtilsBuilder.() -> Unit
+  block: SnackbarBuilder.() -> Unit
 ) =
   SnackbarUtils.with(view)
-    .apply { SnackbarUtilsBuilder(this).apply(block) }.showWarning(isShowTop)
+    .apply { SnackbarBuilder(this).apply(block) }.showWarning(isShowTop)
 
 fun Activity.showErrorSnackbar(
   isShowTop: Boolean = false,
-  block: SnackbarUtilsBuilder.() -> Unit
+  block: SnackbarBuilder.() -> Unit
 ) =
   SnackbarUtils.with(findViewById(android.R.id.content))
-    .apply { SnackbarUtilsBuilder(this).apply(block) }.showError(isShowTop)
+    .apply { SnackbarBuilder(this).apply(block) }.showError(isShowTop)
 
 fun showErrorSnackbar(
   view: View,
   isShowTop: Boolean = false,
-  block: SnackbarUtilsBuilder.() -> Unit
+  block: SnackbarBuilder.() -> Unit
 ) =
   SnackbarUtils.with(view)
-    .apply { SnackbarUtilsBuilder(this).apply(block) }.showError(isShowTop)
+    .apply { SnackbarBuilder(this).apply(block) }.showError(isShowTop)
 
 fun dismissSnackbar() =
   SnackbarUtils.dismiss()
@@ -82,7 +82,7 @@ fun addSnackbarView(@LayoutRes layoutId: Int, params: ViewGroup.LayoutParams) =
 fun addSnackbarView(child: View, params: ViewGroup.LayoutParams) =
   SnackbarUtils.addView(child, params)
 
-class SnackbarUtilsBuilder(private val snackbarUtils: SnackbarUtils) {
+class SnackbarBuilder(private val snackbarUtils: SnackbarUtils) {
   fun message(msg: CharSequence) {
     snackbarUtils.setMessage(msg)
   }

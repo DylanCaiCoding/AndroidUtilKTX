@@ -64,9 +64,6 @@ fun launchApp(packageName: String) =
 fun relaunchApp(isKillProcess: Boolean = false) =
   AppUtils.relaunchApp(isKillProcess)
 
-fun launchAppDetailsSettings() =
-  AppUtils.launchAppDetailsSettings()
-
 fun launchAppDetailsSettings(packageName: String) =
   AppUtils.launchAppDetailsSettings(packageName)
 

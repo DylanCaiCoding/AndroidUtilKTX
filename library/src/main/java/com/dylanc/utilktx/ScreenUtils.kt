@@ -28,10 +28,10 @@ val screenDensity: Float
 val screenDensityDpi: Int
   get() = ScreenUtils.getScreenDensityDpi()
 
-fun Activity.fullScreen() =
+fun Activity.setFullScreen() =
   ScreenUtils.setFullScreen(this)
 
-fun Activity.cancelFullScreen() =
+fun Activity.setNonFullScreen() =
   ScreenUtils.setNonFullScreen(this)
 
 fun Activity.toggleFullScreen() =

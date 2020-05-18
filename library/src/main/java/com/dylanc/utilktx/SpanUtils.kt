@@ -23,10 +23,10 @@ import com.blankj.utilcode.util.SpanUtils
 
 private val LINE_SEPARATOR: String = System.getProperty("line.separator")!!
 
-fun TextView.setSpannableString(block: SpanUtilsBuilder.() -> Unit): SpannableStringBuilder =
-  SpanUtils.with(this).apply { SpanUtilsBuilder(this).apply(block) }.create()
+fun TextView.setText(block: com.dylanc.utilktx.SpannableStringBuilder.() -> Unit): SpannableStringBuilder =
+  SpanUtils.with(this).apply { SpannableStringBuilder(this).apply(block) }.create()
 
-class SpanUtilsBuilder(private val spanUtils: SpanUtils) {
+class SpannableStringBuilder(private val spanUtils: SpanUtils) {
 
   fun text(text: CharSequence, block: (SpanBuilder.() -> Unit)? = null) {
     spanUtils.append(text)
