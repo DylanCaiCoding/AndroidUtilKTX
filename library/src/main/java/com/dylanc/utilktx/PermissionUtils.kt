@@ -2,6 +2,7 @@
 
 package com.dylanc.utilktx
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.PermissionUtils
@@ -35,10 +36,11 @@ fun requestDrawOverlaysPermission(callback: PermissionUtils.SimpleCallback) =
 fun launchAppDetailsSettings() =
   PermissionUtils.launchAppDetailsSettings()
 
+@SuppressLint("WrongConstant")
 fun requestPermissions(
   @PermissionConstants.Permission vararg permissions: String,
   block: PermissionBuilder.() -> Unit
-) =
+) {
   PermissionUtils.permission(*permissions)
     .apply {
       val builder = PermissionBuilder(this).apply(block)
@@ -56,6 +58,7 @@ fun requestPermissions(
       })
     }
     .request()
+}
 
 class PermissionBuilder(private val permissionUtils: PermissionUtils) {
   internal var onGranted: ((List<String>) -> Unit)? = null

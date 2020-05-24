@@ -4,6 +4,7 @@ package com.dylanc.utilktx
 
 import com.blankj.utilcode.util.GsonUtils
 import com.google.gson.Gson
+import org.json.JSONObject
 import java.io.Reader
 import java.lang.reflect.Type
 
@@ -76,3 +77,11 @@ inline fun <reified K, reified V> mapTypeOf(): Type =
 
 fun typeOf(type: Type, vararg typeArgument: Type): Type =
   GsonUtils.getType(type, *typeArgument)
+
+fun String.isJson(): Boolean =
+  try {
+    JSONObject(this)
+    true
+  } catch (e: Exception) {
+    false
+  }
