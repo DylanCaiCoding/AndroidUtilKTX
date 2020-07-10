@@ -8,6 +8,7 @@ import android.os.Parcelable
 import com.blankj.utilcode.util.CacheDiskStaticUtils
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.Serializable
 
 /**
  * @author Dylan Cai
@@ -26,6 +27,15 @@ fun putCacheDisk(key: String, value: JSONArray) =
   CacheDiskStaticUtils.put(key, value)
 
 fun putCacheDisk(key: String, value: Bitmap) =
+  CacheDiskStaticUtils.put(key, value)
+
+fun putCacheDisk(key: String, value: Drawable) =
+  CacheDiskStaticUtils.put(key, value)
+
+fun putCacheDisk(key: String, value: Parcelable) =
+  CacheDiskStaticUtils.put(key, value)
+
+fun putCacheDisk(key: String, value: Serializable) =
   CacheDiskStaticUtils.put(key, value)
 
 fun cacheDiskBytesOf(key: String, defaultValue: ByteArray? = null): ByteArray? =
