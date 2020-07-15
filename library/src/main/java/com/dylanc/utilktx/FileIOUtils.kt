@@ -76,5 +76,52 @@ fun String.writeFile(
 ): Boolean =
   FileIOUtils.writeFileFromString(file, this, append)
 
-//fun readFile() =
-//  FileIOUtils.readFile2List()
+fun readFile2List(
+  filePath: String,
+  st: Int = 0,
+  end: Int = 0x7FFFFFFF,
+  charsetName: String? = null
+): List<String> =
+  FileIOUtils.readFile2List(filePath, st, end, charsetName)
+
+fun File.readList(
+  st: Int = 0,
+  end: Int = 0x7FFFFFFF,
+  charsetName: String? = null
+): List<String> =
+  FileIOUtils.readFile2List(this, st, end, charsetName)
+
+fun readFile2String(
+  filePath: String,
+  charsetName: String? = null
+): String =
+  FileIOUtils.readFile2String(filePath, charsetName)
+
+fun File.readString(charsetName: String? = null): String =
+  FileIOUtils.readFile2String(this, charsetName)
+
+fun readFile2BytesByStream(
+  filePath: String,
+  listener: ((Double) -> Unit)? = null
+): ByteArray =
+  FileIOUtils.readFile2BytesByStream(filePath, listener)
+
+fun File.readBytesByStream(
+  listener: ((Double) -> Unit)? = null
+): ByteArray =
+  FileIOUtils.readFile2BytesByStream(this, listener)
+
+fun readFile2BytesByChannel(filePath: String): ByteArray =
+  FileIOUtils.readFile2BytesByChannel(filePath)
+
+fun File.readBytesByChannel(): ByteArray =
+  FileIOUtils.readFile2BytesByChannel(this)
+
+fun readFile2BytesByMap(filePath: String): ByteArray =
+  FileIOUtils.readFile2BytesByMap(filePath)
+
+fun File.readBytesByMap(): ByteArray =
+  FileIOUtils.readFile2BytesByMap(this)
+
+fun setFileIOBufferSize(bufferSize: Int) =
+  FileIOUtils.setBufferSize(bufferSize)
