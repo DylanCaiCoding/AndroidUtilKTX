@@ -89,3 +89,115 @@ fun deleteAllFileInDir(srcPath: String): Boolean =
 
 fun File?.deleteAllInDir(): Boolean =
   FileUtils.deleteAllInDir(this)
+
+fun deleteFilesInDir(srcPath: String): Boolean =
+  FileUtils.deleteFilesInDir(srcPath)
+
+fun File?.deleteFilesInDir(): Boolean =
+  FileUtils.deleteFilesInDir(this)
+
+fun deleteFilesInDirWithFilter(srcPath: String, filter: (File) -> Boolean): Boolean =
+  FileUtils.deleteFilesInDirWithFilter(srcPath, filter)
+
+fun File?.deleteFilesInDirWithFilter(filter: (File) -> Boolean): Boolean =
+  FileUtils.deleteFilesInDirWithFilter(this, filter)
+
+fun filesOf(
+  dirPath: String,
+  isRecursive: Boolean,
+  comparator: (File, File) -> Int
+): List<File> =
+  FileUtils.listFilesInDir(dirPath, isRecursive, comparator)
+
+fun File.filesOf(
+  isRecursive: Boolean,
+  comparator: (File, File) -> Int
+): List<File> =
+  FileUtils.listFilesInDir(this, isRecursive, comparator)
+
+fun filesOf(
+  dirPath: String,
+  filter: (File) -> Boolean,
+  isRecursive: Boolean,
+  comparator: (File, File) -> Int
+): List<File> =
+  FileUtils.listFilesInDirWithFilter(dirPath, filter, isRecursive, comparator)
+
+fun File.filesOf(
+  isRecursive: Boolean,
+  filter: (File) -> Boolean,
+  comparator: (File, File) -> Int
+): List<File> =
+  FileUtils.listFilesInDirWithFilter(this, filter, isRecursive, comparator)
+
+fun fileLastModifiedTimestampOf(filePath: String): Long =
+  FileUtils.getFileLastModified(filePath)
+
+val File?.lastModifiedTimestamp: Long
+  get() = FileUtils.getFileLastModified(this)
+
+fun fileCharsetSimpleOf(filePath: String): String =
+  FileUtils.getFileCharsetSimple(filePath)
+
+val File?.charsetSimple: String
+  get() = FileUtils.getFileCharsetSimple(this)
+
+fun fileSizeOf(filePath: String): String =
+  FileUtils.getSize(filePath)
+
+val File?.size: String
+  get() = FileUtils.getSize(this)
+
+fun fileLengthOf(filePath: String): Long =
+  FileUtils.getLength(filePath)
+
+val File?.length: Long
+  get() = FileUtils.getLength(this)
+
+fun fileMD5Of(filePath: String): ByteArray =
+  FileUtils.getFileMD5(filePath)
+
+val File?.MD5: ByteArray
+  get() = FileUtils.getFileMD5(this)
+
+fun fileMD5StringOf(filePath: String): String =
+  FileUtils.getFileMD5ToString(filePath)
+
+val File?.MD5String: String
+  get() = FileUtils.getFileMD5ToString(this)
+
+fun dirNameOf(filePath: String): String =
+  FileUtils.getDirName(filePath)
+
+val File?.dirName: String
+  get() = FileUtils.getDirName(this)
+
+fun fileNameOf(filePath: String): String =
+  FileUtils.getFileName(filePath)
+
+val File?.fileName: String
+  get() = FileUtils.getFileName(this)
+
+fun fileNameNoExtensionOf(filePath: String): String =
+  FileUtils.getFileNameNoExtension(filePath)
+
+val File?.fileNameNoExtension: String
+  get() = FileUtils.getFileNameNoExtension(this)
+
+fun fileExtensionOf(filePath: String): String =
+  FileUtils.getFileExtension(filePath)
+
+val File?.fileExtension: String
+  get() = FileUtils.getFileExtension(this)
+
+fun notifySystemToScanFile(filePath: String) =
+  FileUtils.notifySystemToScan(filePath)
+
+fun File?.notifySystemToScan() =
+  FileUtils.notifySystemToScan(this)
+
+fun fileSystemTotalSizeOf(anyPathInFs: String): Long =
+  FileUtils.getFsTotalSize(anyPathInFs)
+
+fun fileSystemAvailableSizeOf(anyPathInFs: String): Long =
+  FileUtils.getFsAvailableSize(anyPathInFs)
