@@ -4,10 +4,9 @@ package com.dylanc.utilktx
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.view.View
-import androidx.annotation.ColorInt
-import androidx.annotation.DrawableRes
-import androidx.annotation.FloatRange
+import androidx.annotation.*
 import androidx.annotation.IntRange
 import com.blankj.utilcode.util.ImageUtils
 import java.io.File
@@ -18,26 +17,6 @@ import java.io.InputStream
  * @author Dylan Cai
  * @since 2020/5/15
  */
-fun Bitmap.toBytes(): ByteArray =
-  ImageUtils.bitmap2Bytes(this)
-
-fun ByteArray.toBitmap(): Bitmap =
-  ImageUtils.bytes2Bitmap(this)
-
-fun Drawable.toBitmap(): Bitmap =
-  ImageUtils.drawable2Bitmap(this)
-
-fun Bitmap.toDrawable(): Drawable =
-  ImageUtils.bitmap2Drawable(this)
-
-fun Drawable.toBytes(): ByteArray =
-  ImageUtils.drawable2Bytes(this)
-
-fun ByteArray.toDrawable(): Drawable =
-  ImageUtils.bytes2Drawable(this)
-
-fun View.toBitmap(): Bitmap =
-  ImageUtils.view2Bitmap(this)
 
 fun bitmapOf(@DrawableRes resId: Int): Bitmap =
   ImageUtils.getBitmap(resId)
@@ -141,7 +120,7 @@ fun Bitmap.toRoundCorner(
   ImageUtils.toRoundCorner(this, radius, borderSize, borderColor, recycle)
 
 fun Bitmap.addCornerBorder(
-  @IntRange(from = 0) borderSize: Int,
+  @IntRange(from = 1) borderSize: Int,
   @ColorInt borderColor: Int,
   @FloatRange(from = 0.0) cornerRadius: Float,
   recycle: Boolean = false
@@ -149,7 +128,7 @@ fun Bitmap.addCornerBorder(
   ImageUtils.addCornerBorder(this, borderSize, borderColor, cornerRadius, recycle)
 
 fun Bitmap.addCircleBorder(
-  @IntRange(from = 0) borderSize: Int,
+  @IntRange(from = 1) borderSize: Int,
   @ColorInt color: Int,
   recycle: Boolean = false
 ): Bitmap =
@@ -203,7 +182,7 @@ fun Bitmap.setFastBlur(
 ): Bitmap =
   ImageUtils.fastBlur(this, scale, radius, recycle, isReturnScale)
 
-
+@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 fun Bitmap.setRenderScriptBlur(
   @FloatRange(from = 0.0, to = 25.0, fromInclusive = false) radius: Float,
   recycle: Boolean = false
