@@ -1,10 +1,11 @@
+@file:Suppress("unused")
+
 package com.dylanc.utilktx
 
 import android.view.View
 
 /**
  * @author Dylan Cai
- * @since 2019/12/10
  */
 fun View.onClick(listener: (() -> Unit)?) {
   if (listener != null) {
@@ -14,23 +15,20 @@ fun View.onClick(listener: (() -> Unit)?) {
   }
 }
 
-fun View.show() {
-  visibility = View.VISIBLE
-}
-
-fun View.hide() {
-  visibility = View.GONE
-}
-
-fun View.invisiblity() {
-  visibility = View.INVISIBLE
-}
-
-val View.isShow
+var View.isVisible: Boolean
   get() = visibility == View.VISIBLE
+  set(value) {
+    if (value) View.VISIBLE else View.GONE
+  }
 
-val View.isHide
+var View.isGone: Boolean
   get() = visibility == View.GONE
+  set(value) {
+    if (value) View.GONE else View.VISIBLE
+  }
 
-val View.isInvisible
+var View.isInvisible: Boolean
   get() = visibility == View.INVISIBLE
+  set(value) {
+    if (value) View.INVISIBLE else View.VISIBLE
+  }

@@ -2,9 +2,13 @@
 
 package com.dylanc.utilktx
 
+import android.Manifest.permission
 import android.app.Activity
+import android.os.Build
 import android.view.View
 import android.view.Window
+import androidx.annotation.RequiresApi
+import androidx.annotation.RequiresPermission
 import androidx.drawerlayout.widget.DrawerLayout
 import com.blankj.utilcode.util.BarUtils
 
@@ -45,7 +49,7 @@ fun View.subtractMarginTopEqualStatusBarHeight() =
 fun Activity.setStatusBarColor(color: Int): View? =
   BarUtils.setStatusBarColor(this, color)
 
-fun Window.setStatusBarColor(color: Int): View? =
+fun Window.setCompatStatusBarColor(color: Int): View? =
   BarUtils.setStatusBarColor(this, color)
 
 fun DrawerLayout.setStatusBarColor(fakeStatusBar: View, color: Int, isTop: Boolean = false) =
@@ -60,6 +64,7 @@ fun Window.transparentStatusBar() =
 val actionBarHeight: Int
   get() = BarUtils.getActionBarHeight()
 
+@RequiresPermission(permission.EXPAND_STATUS_BAR)
 fun setNotificationBarVisibility(isVisible: Boolean) =
   BarUtils.setNotificationBarVisibility(isVisible)
 
@@ -75,16 +80,20 @@ fun Window.setNavBarVisibility(isLightMode: Boolean) =
 val Activity.isNavBarVisible: Boolean
   get() = BarUtils.isNavBarVisible(this)
 
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun Activity.setNavBarColor(color: Int) =
   BarUtils.setNavBarColor(this, color)
 
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun Window.setNavBarColor(color: Int) =
   BarUtils.setNavBarColor(this, color)
 
 val Activity.vavBarColor: Int
+  @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
   get() = BarUtils.getNavBarColor(this)
 
 val Window.vavBarColor: Int
+  @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
   get() = BarUtils.getNavBarColor(this)
 
 val isSupportNavBar: Boolean

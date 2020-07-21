@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.dylanc.utilktx
 
 import com.blankj.utilcode.util.ZipUtils
@@ -5,7 +7,6 @@ import java.io.File
 
 /**
  * @author Dylan Cai
- * @since 2020/5/15
  */
 fun zipFiles(srcFilesPath: Collection<String>, zipFilePath: String, comment: String? = null) =
   ZipUtils.zipFiles(srcFilesPath, zipFilePath, comment)

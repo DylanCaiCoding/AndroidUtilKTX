@@ -2,28 +2,41 @@
 
 package com.dylanc.utilktx
 
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.OnLifecycleEvent
 import com.blankj.utilcode.util.BusUtils
 
 /**
  * @author Dylan Cai
  * @since 2020/5/9
  */
-fun Any.registerEventBus() =
-  BusUtils.register(this)
+private val NULL: Any = "nULl"
 
-fun Any.unregisterEventBus() =
-  BusUtils.unregister(this)
+fun registerEventBus(bus: Any) =
+  BusUtils.register(bus)
 
-fun postEvent(tag: String) =
-  BusUtils.post(tag)
+fun unregisterEventBus(bus: Any) =
+  BusUtils.unregister(bus)
 
-fun postEvent(tag: String, arg: Any) =
+fun observeEventBus(owner: LifecycleOwner) =
+  owner.lifecycle.addObserver(object : LifecycleObserver {
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onStart() {
+      BusUtils.register(this)
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    fun onStop() {
+      BusUtils.unregister(this)
+    }
+  })
+
+fun postEvent(tag: String, arg: Any = NULL) =
   BusUtils.post(tag, arg)
 
-fun postStickyEvent(tag: String) =
-  BusUtils.postSticky(tag)
-
-fun postStickyEvent(tag: String, arg: Any) =
+fun postStickyEvent(tag: String, arg: Any = NULL) =
   BusUtils.postSticky(tag, arg)
 
 fun removeStickyEvent(tag: String) =

@@ -11,7 +11,6 @@ import java.io.File
 
 /**
  * @author Dylan Cai
- * @since 2020/5/8
  */
 val application: Application
   get() = Utils.getApp()
