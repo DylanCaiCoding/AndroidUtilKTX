@@ -16,7 +16,7 @@ fun <K, V> unmodifiableMapOf(vararg pairs: Pair<K, V>): Map<K, V> {
   return MapUtils.newUnmodifiableMap(*data)
 }
 
-fun <K, V> Map<K, V>.forAllDo(block: (K, V) -> Unit) =
+fun <K, V> Map<K, V>.doForAll(block: (K, V) -> Unit) =
   MapUtils.forAllDo(this, block)
 
 fun <K1, V1, K2, V2> Map<K1, V1>.transform(block: (K1, V1) -> Pair<K2, V2>): Map<K2, V2> =
