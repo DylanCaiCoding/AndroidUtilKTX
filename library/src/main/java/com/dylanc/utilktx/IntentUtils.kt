@@ -2,15 +2,16 @@
 
 package com.dylanc.utilktx
 
+import android.Manifest.permission
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresPermission
 import com.blankj.utilcode.util.IntentUtils
 import java.io.File
 import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * @author Dylan Cai
@@ -66,6 +67,7 @@ fun shutdownIntentOf(): Intent =
 fun dialIntentOf(phoneNumber: String): Intent =
   IntentUtils.getDialIntent(phoneNumber)
 
+@RequiresPermission(permission.CALL_PHONE)
 fun callIntentOf(phoneNumber: String): Intent =
   IntentUtils.getCallIntent(phoneNumber)
 

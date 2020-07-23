@@ -4,6 +4,9 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Parcelable
 import com.blankj.utilcode.util.CacheDoubleStaticUtils
+import com.blankj.utilcode.util.CacheDoubleUtils
+import com.blankj.utilcode.util.CacheMemoryStaticUtils
+import com.blankj.utilcode.util.CacheMemoryUtils
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.Serializable
@@ -12,6 +15,11 @@ import java.io.Serializable
  * @author Dylan Cai
  * @since 2020/5/9
  */
+
+var defaultCacheDoubleUtils: CacheDoubleUtils
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
+  set(value) = CacheDoubleStaticUtils.setDefaultCacheDoubleUtils(value)
 
 fun putDoubleCache(key: String, value: ByteArray) =
   CacheDoubleStaticUtils.put(key, value)

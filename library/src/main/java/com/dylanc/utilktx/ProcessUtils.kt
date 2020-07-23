@@ -2,6 +2,8 @@
 
 package com.dylanc.utilktx
 
+import android.Manifest.permission
+import androidx.annotation.RequiresPermission
 import com.blankj.utilcode.util.ProcessUtils
 
 /**
@@ -11,9 +13,11 @@ import com.blankj.utilcode.util.ProcessUtils
 val foregroundProcessName: String
   get() = ProcessUtils.getForegroundProcessName()
 
+@RequiresPermission(permission.KILL_BACKGROUND_PROCESSES)
 fun killAllBackgroundProcesses(): Set<String> =
   ProcessUtils.killAllBackgroundProcesses()
 
+@RequiresPermission(permission.KILL_BACKGROUND_PROCESSES)
 fun killBackgroundProcesses(packageName: String): Boolean =
   ProcessUtils.killBackgroundProcesses(packageName)
 

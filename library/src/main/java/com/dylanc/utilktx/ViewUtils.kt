@@ -3,11 +3,21 @@
 package com.dylanc.utilktx
 
 import android.view.View
+import com.blankj.utilcode.util.ViewUtils
 
 /**
  * @author Dylan Cai
  */
-fun View.onClick(listener: (() -> Unit)?) {
+fun View.setEnabled(enabled: Boolean, vararg excludes: View) =
+  ViewUtils.setViewEnabled(this, enabled, *excludes)
+
+val isLayoutRtl: Boolean
+  get() = ViewUtils.isLayoutRtl()
+
+fun View.fixScrollViewTopping() =
+  ViewUtils.fixScrollViewTopping(this)
+
+fun View.doOnClick(listener: (() -> Unit)?) {
   if (listener != null) {
     setOnClickListener { listener.invoke() }
   } else {

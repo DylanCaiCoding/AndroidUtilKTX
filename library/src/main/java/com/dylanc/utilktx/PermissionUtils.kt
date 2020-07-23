@@ -4,6 +4,8 @@ package com.dylanc.utilktx
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.UtilsTransActivity
@@ -21,15 +23,19 @@ fun permissionsOf(packageName: String): List<String> =
 fun isGrantedPermissions(vararg permissions: String) =
   PermissionUtils.isGranted(*permissions)
 
+@RequiresApi(api = Build.VERSION_CODES.M)
 fun isGrantedWriteSettingsPermission() =
   PermissionUtils.isGrantedWriteSettings()
 
+@RequiresApi(api = Build.VERSION_CODES.M)
 fun requestWriteSettingsPermission(callback: PermissionUtils.SimpleCallback) =
   PermissionUtils.requestWriteSettings(callback)
 
+@RequiresApi(api = Build.VERSION_CODES.M)
 fun isGrantedDrawOverlaysPermission() =
   PermissionUtils.isGrantedDrawOverlays()
 
+@RequiresApi(api = Build.VERSION_CODES.M)
 fun requestDrawOverlaysPermission(callback: PermissionUtils.SimpleCallback) =
   PermissionUtils.requestDrawOverlays(callback)
 

@@ -13,8 +13,10 @@ val isFlashlightEnable: Boolean
 val isFlashlightOn: Boolean
   get() = FlashlightUtils.isFlashlightOn()
 
-fun setFlashlightStatus(isOn: Boolean) =
-  FlashlightUtils.setFlashlightStatus(isOn)
+var flashlightStatus: Boolean
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
+  set(value) = FlashlightUtils.setFlashlightStatus(value)
 
 fun destroyFlashlight() =
   FlashlightUtils.destroy()

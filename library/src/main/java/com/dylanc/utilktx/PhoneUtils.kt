@@ -1,5 +1,6 @@
 package com.dylanc.utilktx
 
+import android.Manifest.permission
 import android.Manifest.permission.CALL_PHONE
 import androidx.annotation.RequiresPermission
 import com.blankj.utilcode.util.PhoneUtils
@@ -12,15 +13,19 @@ val isPhone
   get() = PhoneUtils.isPhone()
 
 val deviceId:String
+  @RequiresPermission(permission.READ_PHONE_STATE)
   get() = PhoneUtils.getDeviceId()
 
 val serialNumber:String
+  @RequiresPermission(permission.READ_PHONE_STATE)
   get() = PhoneUtils.getSerial()
 
 val IMEI:String
+  @RequiresPermission(permission.READ_PHONE_STATE)
   get() = PhoneUtils.getIMEI()
 
 val MEID:String
+  @RequiresPermission(permission.READ_PHONE_STATE)
   get() = PhoneUtils.getMEID()
 
 val phoneType

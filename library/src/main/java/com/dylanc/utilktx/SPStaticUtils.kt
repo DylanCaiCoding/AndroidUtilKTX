@@ -13,7 +13,8 @@ import com.blankj.utilcode.util.SPUtils
 private var _defaultSpUtils: SPUtils? = null
 
 var defaultSpUtils: SPUtils
-  get() = _defaultSpUtils ?: spUtilsOf()
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
   set(value) {
     _defaultSpUtils = value
     SPStaticUtils.setDefaultSPUtils(value)
@@ -58,8 +59,8 @@ fun spValueOf(key: String, defaultValue: Float = -1f): Float =
 fun containSp(key: String): Boolean =
   SPStaticUtils.contains(key)
 
-fun removeSp(key: String, isCommit: Boolean = false, spUtils: SPUtils = defaultSpUtils) =
-  SPStaticUtils.remove(key, isCommit, spUtils)
+fun removeSp(key: String, isCommit: Boolean = false) =
+  SPStaticUtils.remove(key, isCommit)
 
-fun clearSp(isCommit: Boolean = false, spUtils: SPUtils = defaultSpUtils) =
-  SPStaticUtils.clear(isCommit,spUtils)
+fun clearSp(isCommit: Boolean = false) =
+  SPStaticUtils.clear(isCommit)
