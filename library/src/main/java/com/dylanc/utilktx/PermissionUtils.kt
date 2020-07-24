@@ -2,7 +2,6 @@
 
 package com.dylanc.utilktx
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -42,47 +41,86 @@ fun requestDrawOverlaysPermission(callback: PermissionUtils.SimpleCallback) =
 fun launchAppDetailsSettings() =
   PermissionUtils.launchAppDetailsSettings()
 
-@SuppressLint("WrongConstant")
 fun requestPermissions(
   @PermissionConstants.Permission vararg permissions: String,
-  block: PermissionBuilder.() -> Unit
+  rationale: ((UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit)? = null,
+  theme: ((Activity) -> Unit)? = null,
+  callback: PermissionUtils.SingleCallback
 ) {
   PermissionUtils.permission(*permissions)
-    .apply {
-      val builder = PermissionBuilder(this).apply(block)
-      callback(object : PermissionUtils.FullCallback {
-        override fun onGranted(permissionsGranted: List<String>) {
-          builder.onGranted?.invoke(permissionsGranted)
-        }
-
-        override fun onDenied(
-          permissionsDeniedForever: List<String>,
-          permissionsDenied: List<String>
-        ) {
-          builder.onDenied?.invoke(permissionsDeniedForever, permissionsDenied)
-        }
-      })
-    }
+    .rationale(rationale)
+    .theme(theme)
+    .callback(callback)
     .request()
 }
 
-class PermissionBuilder(private val permissionUtils: PermissionUtils) {
-  internal var onGranted: ((List<String>) -> Unit)? = null
-  internal var onDenied: ((List<String>, List<String>) -> Unit)? = null
-
-  fun onRationale(listener: (UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit) {
-    permissionUtils.rationale(listener)
-  }
-
-  fun onGranted(listener: (permissionsGranted: List<String>) -> Unit) {
-    onGranted = listener
-  }
-
-  fun onDenied(listener: (permissionsDeniedForever: List<String>, permissionsDenied: List<String>) -> Unit) {
-    onDenied = listener
-  }
-
-  fun onTransActivityCreate(callback: (Activity) -> Unit) {
-    permissionUtils.theme(callback)
-  }
+fun requestPermissions(
+  @PermissionConstants.Permission vararg permissions: String,
+  rationale: ((UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit)? = null,
+  theme: ((Activity) -> Unit)? = null,
+  callback: PermissionUtils.SimpleCallback
+) {
+  PermissionUtils.permission(*permissions)
+    .rationale(rationale)
+    .theme(theme)
+    .callback(callback)
+    .request()
 }
+
+fun requestPermissions(
+  @PermissionConstants.Permission vararg permissions: String,
+  rationale: ((UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit)? = null,
+  theme: ((Activity) -> Unit)? = null,
+  callback: PermissionUtils.FullCallback
+) {
+  PermissionUtils.permission(*permissions)
+    .rationale(rationale)
+    .theme(theme)
+    .callback(callback)
+    .request()
+}
+
+//@SuppressLint("WrongConstant")
+//fun requestPermissions(
+//  @PermissionConstants.Permission vararg permissions: String,
+//  block: PermissionBuilder.() -> Unit
+//) {
+//  PermissionUtils.permission(*permissions)
+//    .apply {
+//      val builder = PermissionBuilder(this).apply(block)
+//      callback(object : PermissionUtils.FullCallback {
+//        override fun onGranted(permissionsGranted: List<String>) {
+//          builder.onGranted?.invoke(permissionsGranted)
+//        }
+//
+//        override fun onDenied(
+//          permissionsDeniedForever: List<String>,
+//          permissionsDenied: List<String>
+//        ) {
+//          builder.onDenied?.invoke(permissionsDeniedForever, permissionsDenied)
+//        }
+//      })
+//    }
+//    .request()
+//}
+//
+//class PermissionBuilder(private val permissionUtils: PermissionUtils) {
+//  internal var onGranted: ((List<String>) -> Unit)? = null
+//  internal var onDenied: ((List<String>, List<String>) -> Unit)? = null
+//
+//  fun onRationale(listener: (UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit) {
+//    permissionUtils.rationale(listener)
+//  }
+//
+//  fun onGranted(listener: (permissionsGranted: List<String>) -> Unit) {
+//    onGranted = listener
+//  }
+//
+//  fun onDenied(listener: (permissionsDeniedForever: List<String>, permissionsDenied: List<String>) -> Unit) {
+//    onDenied = listener
+//  }
+//
+//  fun onTransActivityCreate(callback: (Activity) -> Unit) {
+//    permissionUtils.theme(callback)
+//  }
+//}

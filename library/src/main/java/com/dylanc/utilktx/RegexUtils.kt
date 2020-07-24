@@ -4,42 +4,55 @@ import com.blankj.utilcode.util.RegexUtils
 
 /**
  * @author Dylan Cai
- * @since 2019/11/7
  */
-fun CharSequence.isMobileSimple() = RegexUtils.isMobileSimple(this)
 
-fun CharSequence.isMobileExact() = RegexUtils.isMobileExact(this)
+fun CharSequence.isMobileSimple(): Boolean =
+  RegexUtils.isMobileSimple(this)
 
-fun CharSequence.isTel() = RegexUtils.isTel(this)
+fun CharSequence.isMobileExact(): Boolean =
+  RegexUtils.isMobileExact(this)
 
-fun CharSequence.isIDCard15() = RegexUtils.isIDCard15(this)
+fun CharSequence.isTelephone(): Boolean =
+  RegexUtils.isTel(this)
 
-fun CharSequence.isIDCard18() = RegexUtils.isIDCard18(this)
+fun CharSequence.isIDCard15(): Boolean =
+  RegexUtils.isIDCard15(this)
 
-fun CharSequence.isIDCard18Exact() = RegexUtils.isIDCard18Exact(this)
+fun CharSequence.isIDCard18(): Boolean =
+  RegexUtils.isIDCard18(this)
 
-fun CharSequence.isEmail() = RegexUtils.isEmail(this)
+fun CharSequence.isIDCard18Exact(): Boolean =
+  RegexUtils.isIDCard18Exact(this)
 
-fun CharSequence.isURL() = RegexUtils.isURL(this)
+fun CharSequence.isEmail(): Boolean =
+  RegexUtils.isEmail(this)
 
-fun CharSequence.isZh() = RegexUtils.isZh(this)
+fun CharSequence.isURL(): Boolean =
+  RegexUtils.isURL(this)
 
-fun CharSequence.isUsername() = RegexUtils.isUsername(this)
+fun CharSequence.isZh(): Boolean =
+  RegexUtils.isZh(this)
 
-fun CharSequence.isDate() = RegexUtils.isDate(this)
+fun CharSequence.isUsername(): Boolean =
+  RegexUtils.isUsername(this)
 
-fun CharSequence.isIP() = RegexUtils.isIP(this)
+fun CharSequence.isDate(): Boolean =
+  RegexUtils.isDate(this)
 
-fun CharSequence.isMatchRegex(regex: String) = RegexUtils.isMatch(regex, this)
+fun CharSequence.isIP(): Boolean =
+  RegexUtils.isIP(this)
 
-fun CharSequence.getRegexMatches(regex: String): List<String> = RegexUtils.getMatches(regex, this)
+fun CharSequence.isMatchRegex(regex: String): Boolean =
+  RegexUtils.isMatch(regex, this)
 
-fun String.getRegexSplits(regex: String): Array<String> = RegexUtils.getSplits(regex, this)
+fun CharSequence.matchRegex(regex: String): List<String> =
+  RegexUtils.getMatches(regex, this)
+
+fun String.splitRegex(regex: String): Array<String> =
+  RegexUtils.getSplits(regex, this)
 
 fun String.replaceFirstRegex(regex: String, replacement: String): String =
   RegexUtils.getReplaceFirst(this, regex, replacement)
 
 fun String.replaceAllRegex(regex: String, replacement: String): String =
   RegexUtils.getReplaceAll(this, regex, replacement)
-
-//todo
