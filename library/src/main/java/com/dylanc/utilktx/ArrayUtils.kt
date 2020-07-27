@@ -6,7 +6,6 @@ import com.blankj.utilcode.util.ArrayUtils
 
 /**
  * @author Dylan Cai
- * @since 2020/5/9
  */
 
 inline fun Array<*>.lengthEquals(array: Array<*>) =
@@ -24,10 +23,27 @@ inline fun <T> Array<T>.subArray(startIndexInclusive: Int, endIndexExclusive: In
 inline fun <T> Array<T>.add(element: T): Array<T> =
   ArrayUtils.add(this, element)
 
-// TODO: 2020/7/24
+inline fun Array<out Any>.remove(element: Any): Array<out Any> =
+  ArrayUtils.removeElement(this, element)
 
-//inline fun <T : Any> Array<out T>.remove(index: Int): Array<out T> =
-//  ArrayUtils.remove(this, index)
-//
-//inline fun <T : Any> Array<out T>.remove(element: T): Array<out T> =
-//  ArrayUtils.removeElement(this, element)
+inline fun Array<out Any>.remove(index: Int): Array<out Any> =
+  ArrayUtils.remove(this, index)
+
+inline fun <T> Array<T>.indexOf(element: T): Int =
+  ArrayUtils.indexOf(this, element)
+
+inline fun <T> Array<T>.lastIndexOf(element: T): Int =
+  ArrayUtils.lastIndexOf(this, element)
+
+inline fun <T> Array<T>.contains(element: T): Boolean =
+  ArrayUtils.contains(this, element)
+
+inline fun <T> Array<T>.sort(noinline comparator: (T, T) -> Int) =
+  ArrayUtils.sort(this, comparator)
+
+inline fun <T> Array<T>.forAllDo(noinline closure: (Int, T) -> Unit) =
+  ArrayUtils.forAllDo(this, closure)
+
+inline fun <T> Array<T>?.toString(): String =
+  ArrayUtils.toString(this)
+
