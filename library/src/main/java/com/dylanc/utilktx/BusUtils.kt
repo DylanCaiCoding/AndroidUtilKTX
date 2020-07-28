@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package com.dylanc.utilktx
 
@@ -10,17 +10,15 @@ import com.blankj.utilcode.util.BusUtils
 
 /**
  * @author Dylan Cai
- * @since 2020/5/9
  */
-private val NULL: Any = "nULl"
 
-fun registerEventBus(bus: Any) =
+inline fun registerEventBus(bus: Any) =
   BusUtils.register(bus)
 
-fun unregisterEventBus(bus: Any) =
+inline fun unregisterEventBus(bus: Any) =
   BusUtils.unregister(bus)
 
-fun observeEventBus(owner: LifecycleOwner) =
+inline fun observeEventBus(owner: LifecycleOwner) =
   owner.lifecycle.addObserver(object : LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStart() {
@@ -33,14 +31,20 @@ fun observeEventBus(owner: LifecycleOwner) =
     }
   })
 
-fun postEvent(tag: String, arg: Any = NULL) =
+inline fun postEvent(tag: String) =
+  BusUtils.post(tag)
+
+inline fun postStickyEvent(tag: String) =
+  BusUtils.postSticky(tag)
+
+inline fun postEvent(tag: String, arg: Any) =
   BusUtils.post(tag, arg)
 
-fun postStickyEvent(tag: String, arg: Any = NULL) =
+inline fun postStickyEvent(tag: String, arg: Any) =
   BusUtils.postSticky(tag, arg)
 
-fun removeStickyEvent(tag: String) =
+inline fun removeStickyEvent(tag: String) =
   BusUtils.removeSticky(tag)
 
-val eventBusInfo: String
+inline val eventBusInfo: String
   get() = BusUtils.toString_()

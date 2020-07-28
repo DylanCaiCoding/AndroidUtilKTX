@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package com.dylanc.utilktx
 
@@ -14,99 +14,97 @@ import com.blankj.utilcode.util.BarUtils
 
 /**
  * @author Dylan Cai
- * @since 2020/4/25
  */
-val statusBarHeight: Int
+
+inline val statusBarHeight: Int
   get() = BarUtils.getStatusBarHeight()
 
-fun Activity.setStatusBarVisibility(isLightMode: Boolean) =
-  BarUtils.setStatusBarVisibility(this, isLightMode)
-
-fun Window.setStatusBarVisibility(isLightMode: Boolean) =
-  BarUtils.setStatusBarVisibility(this, isLightMode)
-
-val Activity.isStatusBarVisible: Boolean
+inline var Activity.isStatusBarVisible: Boolean
   get() = BarUtils.isStatusBarVisible(this)
+  set(value) = BarUtils.setStatusBarVisibility(this, value)
 
-fun Activity.setStatusBarLightMode(isLightMode: Boolean) =
-  BarUtils.setStatusBarLightMode(this, isLightMode)
+inline var Window.isStatusBarVisible: Boolean
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
+  set(value) = BarUtils.setStatusBarVisibility(this, value)
 
-fun Window.setStatusBarLightMode(isLightMode: Boolean) =
-  BarUtils.setStatusBarLightMode(this, isLightMode)
-
-val Activity.isStatusBarLightMode: Boolean
+inline var Activity.isStatusBarLightMode: Boolean
   get() = BarUtils.isStatusBarLightMode(this)
+  set(value) = BarUtils.setStatusBarLightMode(this, value)
 
-val Window.isStatusBarLightMode: Boolean
+inline var Window.isStatusBarLightMode: Boolean
   get() = BarUtils.isStatusBarLightMode(this)
+  set(value) = BarUtils.setStatusBarLightMode(this, value)
 
-fun View.addMarginTopEqualStatusBarHeight() =
+inline fun View.addMarginTopEqualStatusBarHeight() =
   BarUtils.addMarginTopEqualStatusBarHeight(this)
 
-fun View.subtractMarginTopEqualStatusBarHeight() =
+inline fun View.subtractMarginTopEqualStatusBarHeight() =
   BarUtils.subtractMarginTopEqualStatusBarHeight(this)
 
-fun Activity.setStatusBarColor(color: Int): View? =
+var Activity.statusBarColor: Int
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
+  set(value) {
+    BarUtils.setStatusBarColor(this, value)
+  }
+
+inline fun Activity.setStatusBarColor(color: Int): View? =
   BarUtils.setStatusBarColor(this, color)
 
-fun Window.setCompatStatusBarColor(color: Int): View? =
+@Suppress("EXTENSION_SHADOWED_BY_MEMBER")
+inline fun Window.setStatusBarColor(color: Int): View? =
   BarUtils.setStatusBarColor(this, color)
 
-fun DrawerLayout.setStatusBarColor(fakeStatusBar: View, color: Int, isTop: Boolean = false) =
+inline fun DrawerLayout.setStatusBarColor(fakeStatusBar: View, color: Int, isTop: Boolean = false) =
   BarUtils.setStatusBarColor4Drawer(this, fakeStatusBar, color, isTop)
 
-fun Activity.transparentStatusBar() =
+inline fun Activity.transparentStatusBar() =
   BarUtils.transparentStatusBar(this)
 
-fun Window.transparentStatusBar() =
+inline fun Window.transparentStatusBar() =
   BarUtils.transparentStatusBar(this)
 
-val actionBarHeight: Int
+inline val actionBarHeight: Int
   get() = BarUtils.getActionBarHeight()
 
-@RequiresPermission(permission.EXPAND_STATUS_BAR)
-fun setNotificationBarVisibility(isVisible: Boolean) =
-  BarUtils.setNotificationBarVisibility(isVisible)
+inline var isNotificationBarVisible: Boolean
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
+  @RequiresPermission(permission.EXPAND_STATUS_BAR)
+  set(value) = BarUtils.setNotificationBarVisibility(value)
 
-val navBarHeight: Int
+inline val navBarHeight: Int
   get() = BarUtils.getNavBarHeight()
 
-fun Activity.setNavBarVisibility(isLightMode: Boolean) =
-  BarUtils.setNavBarVisibility(this, isLightMode)
-
-fun Window.setNavBarVisibility(isLightMode: Boolean) =
-  BarUtils.setNavBarVisibility(this, isLightMode)
-
-val Activity.isNavBarVisible: Boolean
+inline var Activity.isNavBarVisible: Boolean
   get() = BarUtils.isNavBarVisible(this)
+  set(value) = BarUtils.setNavBarVisibility(this, value)
 
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-fun Activity.setNavBarColor(color: Int) =
-  BarUtils.setNavBarColor(this, color)
+inline var Window.isNavBarVisible: Boolean
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
+  set(value) = BarUtils.setNavBarVisibility(this, value)
 
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-fun Window.setNavBarColor(color: Int) =
-  BarUtils.setNavBarColor(this, color)
-
-val Activity.vavBarColor: Int
+inline var Activity.navBarColor: Int
   @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
   get() = BarUtils.getNavBarColor(this)
+  @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+  set(value) = BarUtils.setNavBarColor(this, value)
 
-val Window.vavBarColor: Int
+inline var Window.navBarColor: Int
   @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
   get() = BarUtils.getNavBarColor(this)
+  @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+  set(value) = BarUtils.setNavBarColor(this, value)
 
-val isSupportNavBar: Boolean
+inline val isSupportNavBar: Boolean
   get() = BarUtils.isSupportNavBar()
 
-fun Activity.setNavBarLightMode(isLightMode: Boolean) =
-  BarUtils.setNavBarLightMode(this, isLightMode)
-
-fun Window.setNavBarLightMode(isLightMode: Boolean) =
-  BarUtils.setNavBarLightMode(this, isLightMode)
-
-val Activity.isNavBarLightMode: Boolean
+inline var Activity.isNavBarLightMode: Boolean
   get() = BarUtils.isNavBarLightMode(this)
+  set(value) = BarUtils.setNavBarLightMode(this, value)
 
-val Window.isNavBarLightMode: Boolean
+inline var Window.isNavBarLightMode: Boolean
   get() = BarUtils.isNavBarLightMode(this)
+  set(value) = BarUtils.setNavBarLightMode(this, value)

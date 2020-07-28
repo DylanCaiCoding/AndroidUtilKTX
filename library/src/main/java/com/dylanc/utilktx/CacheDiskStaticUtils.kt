@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package com.dylanc.utilktx
 
@@ -15,54 +15,53 @@ import java.io.Serializable
 
 /**
  * @author Dylan Cai
- * @since 2020/5/9
  */
 
-var defaultCacheDiskUtils: CacheDiskUtils
+inline var defaultCacheDiskUtils: CacheDiskUtils
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
   get() = throw NotImplementedError()
   set(value) = CacheDiskStaticUtils.setDefaultCacheDiskUtils(value)
 
-fun putCacheDisk(key: String, value: ByteArray) =
-  CacheDiskStaticUtils.put(key, value)
+inline fun putDiskCache(key: String, value: ByteArray, saveTime: Int = -1) =
+  CacheDiskStaticUtils.put(key, value, saveTime)
 
-fun putCacheDisk(key: String, value: String) =
-  CacheDiskStaticUtils.put(key, value)
+inline fun putDiskCache(key: String, value: String, saveTime: Int = -1) =
+  CacheDiskStaticUtils.put(key, value, saveTime)
 
-fun putCacheDisk(key: String, value: JSONObject) =
-  CacheDiskStaticUtils.put(key, value)
+inline fun putDiskCache(key: String, value: JSONObject, saveTime: Int = -1) =
+  CacheDiskStaticUtils.put(key, value, saveTime)
 
-fun putCacheDisk(key: String, value: JSONArray) =
-  CacheDiskStaticUtils.put(key, value)
+inline fun putDiskCache(key: String, value: JSONArray, saveTime: Int = -1) =
+  CacheDiskStaticUtils.put(key, value, saveTime)
 
-fun putCacheDisk(key: String, value: Bitmap) =
-  CacheDiskStaticUtils.put(key, value)
+inline fun putDiskCache(key: String, value: Bitmap, saveTime: Int = -1) =
+  CacheDiskStaticUtils.put(key, value, saveTime)
 
-fun putCacheDisk(key: String, value: Drawable) =
-  CacheDiskStaticUtils.put(key, value)
+inline fun putDiskCache(key: String, value: Drawable, saveTime: Int = -1) =
+  CacheDiskStaticUtils.put(key, value, saveTime)
 
-fun putCacheDisk(key: String, value: Parcelable) =
-  CacheDiskStaticUtils.put(key, value)
+inline fun putDiskCache(key: String, value: Parcelable, saveTime: Int = -1) =
+  CacheDiskStaticUtils.put(key, value, saveTime)
 
-fun putCacheDisk(key: String, value: Serializable) =
-  CacheDiskStaticUtils.put(key, value)
+inline fun putDiskCache(key: String, value: Serializable, saveTime: Int = -1) =
+  CacheDiskStaticUtils.put(key, value, saveTime)
 
-fun cacheDiskBytesOf(key: String, defaultValue: ByteArray? = null): ByteArray? =
+inline fun diskCacheBytesOf(key: String, defaultValue: ByteArray? = null): ByteArray? =
   CacheDiskStaticUtils.getBytes(key, defaultValue)
 
-fun cacheDiskStringOf(key: String, defaultValue: String? = null): String? =
+inline fun diskCacheStringOf(key: String, defaultValue: String? = null): String? =
   CacheDiskStaticUtils.getString(key, defaultValue)
 
-fun cacheDiskJSONObjectOf(key: String, defaultValue: JSONObject? = null): JSONObject? =
+inline fun diskCacheJSONObjectOf(key: String, defaultValue: JSONObject? = null): JSONObject? =
   CacheDiskStaticUtils.getJSONObject(key, defaultValue)
 
-fun cacheDiskBitmapOf(key: String, defaultValue: Bitmap? = null): Bitmap? =
+inline fun diskCacheBitmapOf(key: String, defaultValue: Bitmap? = null): Bitmap? =
   CacheDiskStaticUtils.getBitmap(key, defaultValue)
 
-fun cacheDiskDrawableOf(key: String, defaultValue: Drawable? = null): Drawable? =
+inline fun diskCacheDrawableOf(key: String, defaultValue: Drawable? = null): Drawable? =
   CacheDiskStaticUtils.getDrawable(key, defaultValue)
 
-fun <T> cacheDiskParcelableOf(
+inline fun <T> diskCacheParcelableOf(
   key: String,
   creator: Parcelable.Creator<T>,
   defaultValue: T? = null
@@ -70,20 +69,20 @@ fun <T> cacheDiskParcelableOf(
   CacheDiskStaticUtils.getParcelable(key, creator, defaultValue)
 
 @Suppress("UNCHECKED_CAST")
-fun <T> cacheDiskSerializableOf(
+inline fun <T> diskCacheSerializableOf(
   key: String,
   defaultValue: T? = null
 ): T =
   CacheDiskStaticUtils.getSerializable(key, defaultValue) as T
 
-val cacheDiskSize: Long
+inline val diskCacheSize: Long
   get() = CacheDiskStaticUtils.getCacheSize()
 
-val cacheDiskCount: Int
+inline val diskCacheCount: Int
   get() = CacheDiskStaticUtils.getCacheCount()
 
-fun removeCacheDisk(key: String) =
+inline fun removeDiskCache(key: String) =
   CacheDiskStaticUtils.remove(key)
 
-fun clearCacheDisk() =
+inline fun clearDiskCache() =
   CacheDiskStaticUtils.clear()

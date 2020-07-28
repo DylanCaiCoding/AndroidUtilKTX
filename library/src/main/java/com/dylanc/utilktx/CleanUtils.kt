@@ -1,28 +1,30 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import com.blankj.utilcode.util.CleanUtils
 
 /**
  * @author Dylan Cai
- * @since 2020/5/9
  */
-fun cleanInternalCache() =
+
+inline fun cleanInternalCache(): Boolean =
   CleanUtils.cleanInternalCache()
 
-fun cleanInternalFiles() =
+inline fun cleanInternalFiles(): Boolean =
   CleanUtils.cleanInternalFiles()
 
-fun cleanInternalDbs() =
+inline fun cleanInternalDbs(): Boolean =
   CleanUtils.cleanInternalDbs()
 
-fun cleanInternalDbByName(dbName: String) =
+inline fun cleanInternalDb(dbName: String): Boolean =
   CleanUtils.cleanInternalDbByName(dbName)
 
-fun cleanInternalSp() =
+inline fun cleanInternalSp(): Boolean =
   CleanUtils.cleanInternalSp()
 
-fun cleanExternalCache() =
+inline fun cleanExternalCache(): Boolean =
   CleanUtils.cleanExternalCache()
 
-fun cleanCustomDir(dirPath: String) =
+inline fun cleanCustomDir(dirPath: String): Boolean =
   CleanUtils.cleanCustomDir(dirPath)

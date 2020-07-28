@@ -43,7 +43,3 @@ inline fun <T> Array<T>.sort(noinline comparator: (T, T) -> Int) =
 
 inline fun <T> Array<T>.forAllDo(noinline closure: (Int, T) -> Unit) =
   ArrayUtils.forAllDo(this, closure)
-
-inline fun <T> Array<T>?.toString(): String =
-  ArrayUtils.toString(this)
-

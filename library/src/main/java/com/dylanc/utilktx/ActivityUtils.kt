@@ -1,3 +1,5 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import android.app.Activity
@@ -19,13 +21,13 @@ import java.io.Serializable
 
 /**
  * @author Dylan Cai
- * @since 2019/11/7
  */
-val Context.activity: Activity?
+
+inline val Context.activity: Activity?
   get() = ActivityUtils.getActivityByContext(this)
 
-val Activity.isActivityExists
-  get() = ActivityUtils.isActivityExistsInStack(this)
+inline fun Activity.isExistsInStack(): Boolean =
+  ActivityUtils.isActivityExistsInStack(this)
 
 inline fun <reified T : Activity> startActivity() =
   ActivityUtils.startActivity(T::class.java)
@@ -72,57 +74,72 @@ inline fun <reified T : Activity> Activity.startActivity(
 ) =
   ActivityUtils.startActivity(this, T::class.java, enterAnim, exitAnim)
 
-fun Activity.startActivity(intent: Intent, vararg sharedElements: View) =
+inline fun Activity.startActivity(intent: Intent, vararg sharedElements: View) =
   ActivityUtils.startActivity(this, intent, *sharedElements)
 
-fun <T : Intent> Array<T>.start(options: Bundle? = null) =
+inline fun <T : Intent> Array<T>.start(options: Bundle? = null) =
   ActivityUtils.startActivities(this, options)
 
-fun <T : Intent> Array<T>.start(activity: Activity, options: Bundle? = null) =
+inline fun <T : Intent> Array<T>.start(activity: Activity, options: Bundle? = null) =
   ActivityUtils.startActivities(activity, this, options)
 
-fun startHomeActivity() =
+inline fun startHomeActivity() =
   ActivityUtils.startHomeActivity()
 
 val activityList: List<Activity>
   get() = ActivityUtils.getActivityList()
 
-val Context.isActivityAlive
-  get() = ActivityUtils.isActivityAlive(this)
+inline fun Context.isActivityAlive(): Boolean =
+  ActivityUtils.isActivityAlive(this)
 
-val Activity.isActivityAlive
-  get() = ActivityUtils.isActivityAlive(this)
+inline fun Activity.isAlive(): Boolean =
+  ActivityUtils.isActivityAlive(this)
 
 val topActivity: Activity
   get() = ActivityUtils.getTopActivity()
 
-val launchActivityName: String
+inline val launchActivityName: String
   get() = ActivityUtils.getLauncherActivity()
 
-fun launchActivityNameOf(pkg: String): String = ActivityUtils.getLauncherActivity(pkg)
+inline fun launchActivityNameOf(pkg: String): String = ActivityUtils.getLauncherActivity(pkg)
 
 inline fun <reified T : Activity> finishOtherActivities(isLoadAnim: Boolean = false) =
   ActivityUtils.finishOtherActivities(T::class.java, isLoadAnim)
 
-fun finishAllActivities(isLoadAnim: Boolean = false) =
+inline fun <reified T : Activity> finishOtherActivities(
+  @AnimRes enterAnim: Int,
+  @AnimRes exitAnim: Int
+) =
+  ActivityUtils.finishOtherActivities(T::class.java, enterAnim, exitAnim)
+
+inline fun finishAllActivities(isLoadAnim: Boolean = false) =
   ActivityUtils.finishAllActivities(isLoadAnim)
 
-fun finishAllActivitiesExceptNewest(isLoadAnim: Boolean = false) =
+inline fun finishAllActivities(@AnimRes enterAnim: Int, @AnimRes exitAnim: Int) =
+  ActivityUtils.finishAllActivities(enterAnim, exitAnim)
+
+inline fun finishAllActivitiesExceptNewest(isLoadAnim: Boolean = false) =
   ActivityUtils.finishAllActivitiesExceptNewest(isLoadAnim)
+
+inline fun finishAllActivitiesExceptNewest(@AnimRes enterAnim: Int, @AnimRes exitAnim: Int) =
+  ActivityUtils.finishAllActivitiesExceptNewest(enterAnim, exitAnim)
 
 inline fun <reified T : Activity> FragmentActivity.startActivityForResult(
   requestCode: Int,
   vararg extra: Pair<String, *>,
   noinline callback: (resultCode: Int, data: Intent?) -> Unit
-) = startActivityForResult(intentOf<T>(*extra), requestCode, callback)
+) =
+  startActivityForResult(intentOf<T>(*extra), requestCode, callback)
 
-fun FragmentActivity.startActivityForResult(
+inline fun FragmentActivity.startActivityForResult(
   intent: Intent,
   requestCode: Int,
-  callback: (resultCode: Int, data: Intent?) -> Unit
-) = dispatchResultFragment.startForResult(intent, requestCode, callback)
+  noinline callback: (resultCode: Int, data: Intent?) -> Unit
+) =
+  dispatchResultFragment.startForResult(intent, requestCode, callback)
 
-private val FragmentActivity.dispatchResultFragment: DispatchResultFragment
+//
+val FragmentActivity.dispatchResultFragment: DispatchResultFragment
   get() = run {
     val fragmentManager = this.supportFragmentManager
     var fragment: DispatchResultFragment? =
@@ -138,10 +155,10 @@ private val FragmentActivity.dispatchResultFragment: DispatchResultFragment
     fragment
   }
 
-internal class DispatchResultFragment : Fragment() {
+class DispatchResultFragment : Fragment() {
 
   companion object {
-    internal const val TAG = "dispatch_result"
+    const val TAG = "dispatch_result"
   }
 
   private val callbacks = SparseArray<(resultCode: Int, data: Intent?) -> Unit>()
@@ -220,7 +237,8 @@ fun bundleOf(vararg pairs: Pair<String, Any?>) = Bundle(pairs.size).apply {
           else -> {
             val valueType = componentType.canonicalName
             throw IllegalArgumentException(
-              "Illegal value array type $valueType for key \"$key\"")
+              "Illegal value array type $valueType for key \"$key\""
+            )
           }
         }
       }

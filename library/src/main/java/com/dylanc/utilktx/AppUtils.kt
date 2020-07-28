@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package com.dylanc.utilktx
 
@@ -12,131 +12,131 @@ import java.io.File
 /**
  * @author Dylan Cai
  */
-val application: Application
+inline val application: Application
   get() = Utils.getApp()
 
-fun registerAppStatusChangedListener(listener: Utils.OnAppStatusChangedListener) =
+inline fun registerAppStatusChangedListener(listener: Utils.OnAppStatusChangedListener) =
   AppUtils.registerAppStatusChangedListener(listener)
 
-fun unregisterAppStatusChangedListener(listener: Utils.OnAppStatusChangedListener) =
+inline fun unregisterAppStatusChangedListener(listener: Utils.OnAppStatusChangedListener) =
   AppUtils.unregisterAppStatusChangedListener(listener)
 
-fun installApp(file: File) =
+inline fun installApp(file: File) =
   AppUtils.installApp(file)
 
-fun installApp(filePath: String) =
+inline fun installApp(filePath: String) =
   AppUtils.installApp(filePath)
 
-fun uninstallApp(packageName: String) =
+inline fun uninstallApp(packageName: String) =
   AppUtils.uninstallApp(packageName)
 
-fun isAppInstalled(packageName: String): Boolean =
+inline fun isAppInstalled(packageName: String): Boolean =
   AppUtils.isAppInstalled(packageName)
 
-val isAppRoot: Boolean
-  get() = AppUtils.isAppRoot()
+inline fun isAppRoot(): Boolean =
+  AppUtils.isAppRoot()
 
-val isAppDebug: Boolean
-  get() = AppUtils.isAppDebug()
+inline fun isAppDebug(): Boolean =
+  AppUtils.isAppDebug()
 
-fun isAppDebug(packageName: String): Boolean =
+inline fun isAppDebug(packageName: String): Boolean =
   AppUtils.isAppDebug(packageName)
 
-val isAppSystem: Boolean
-  get() = AppUtils.isAppSystem()
+inline fun isAppSystem(): Boolean =
+  AppUtils.isAppSystem()
 
-fun isAppSystem(packageName: String): Boolean =
+inline fun isAppSystem(packageName: String): Boolean =
   AppUtils.isAppSystem(packageName)
 
-val isAppForeground: Boolean
-  get() = AppUtils.isAppForeground()
+inline fun isAppForeground(): Boolean =
+  AppUtils.isAppForeground()
 
-fun isAppForeground(packageName: String): Boolean =
+inline fun isAppForeground(packageName: String): Boolean =
   AppUtils.isAppForeground(packageName)
 
-fun isAppRunning(packageName: String): Boolean =
+inline fun isAppRunning(packageName: String): Boolean =
   AppUtils.isAppRunning(packageName)
 
-fun launchApp(packageName: String) =
+inline fun launchApp(packageName: String) =
   AppUtils.launchApp(packageName)
 
-fun relaunchApp(isKillProcess: Boolean = false) =
+inline fun relaunchApp(isKillProcess: Boolean = false) =
   AppUtils.relaunchApp(isKillProcess)
 
-fun launchAppDetailsSettings(packageName: String) =
+inline fun launchAppDetailsSettings(packageName: String) =
   AppUtils.launchAppDetailsSettings(packageName)
 
-fun exitApp() =
+inline fun exitApp() =
   AppUtils.exitApp()
 
-val appIcon: Drawable
+inline val appIcon: Drawable
   get() = AppUtils.getAppIcon()
 
-fun appIconOf(packageName: String): Drawable =
+inline fun appIconOf(packageName: String): Drawable =
   AppUtils.getAppIcon(packageName)
 
-val packageName: String
+inline val packageName: String
   get() = AppUtils.getAppPackageName()
 
-val appName: String
+inline val appName: String
   get() = AppUtils.getAppName()
 
-fun appNameOf(packageName: String): String =
+inline fun appNameOf(packageName: String): String =
   AppUtils.getAppName(packageName)
 
-val appPath: String
+inline val appPath: String
   get() = AppUtils.getAppPath()
 
-fun appPathOf(packageName: String): String =
+inline fun appPathOf(packageName: String): String =
   AppUtils.getAppPath(packageName)
 
-val appVersionName: String
+inline val appVersionName: String
   get() = AppUtils.getAppVersionName()
 
-fun appVersionNameOf(packageName: String): String =
+inline fun appVersionNameOf(packageName: String): String =
   AppUtils.getAppVersionName(packageName)
 
-val appVersionCode: Int
+inline val appVersionCode: Int
   get() = AppUtils.getAppVersionCode()
 
-fun appVersionCodeOf(packageName: String): Int =
+inline fun appVersionCodeOf(packageName: String): Int =
   AppUtils.getAppVersionCode(packageName)
 
-val appSignature: Array<Signature>
+inline val appSignature: Array<Signature>
   get() = AppUtils.getAppSignature()
 
-fun appSignatureOf(packageName: String): Array<Signature> =
+inline fun appSignatureOf(packageName: String): Array<Signature> =
   AppUtils.getAppSignature(packageName)
 
-val appSignatureSHA1: String
+inline val appSignatureSHA1: String
   get() = AppUtils.getAppSignatureSHA1()
 
-fun appSignatureSHA1Of(packageName: String): String =
+inline fun appSignatureSHA1Of(packageName: String): String =
   AppUtils.getAppSignatureSHA1(packageName)
 
-val appSignatureSHA256: String
+inline val appSignatureSHA256: String
   get() = AppUtils.getAppSignatureSHA256()
 
-fun appSignatureSHA256Of(packageName: String): String =
+inline fun appSignatureSHA256Of(packageName: String): String =
   AppUtils.getAppSignatureSHA256(packageName)
 
-val appSignatureMD5: String
+inline val appSignatureMD5: String
   get() = AppUtils.getAppSignatureMD5()
 
-fun appSignatureMD5Of(packageName: String): String =
+inline fun appSignatureMD5Of(packageName: String): String =
   AppUtils.getAppSignatureMD5(packageName)
 
-val appInfo: AppUtils.AppInfo
+inline val appInfo: AppUtils.AppInfo
   get() = AppUtils.getAppInfo()
 
-fun appInfoOf(packageName: String): AppUtils.AppInfo =
+inline fun appInfoOf(packageName: String): AppUtils.AppInfo =
   AppUtils.getAppInfo(packageName)
 
-val appsInfo: List<AppUtils.AppInfo>
+inline val appsInfo: List<AppUtils.AppInfo>
   get() = AppUtils.getAppsInfo()
 
-val File.apkInfo: AppUtils.AppInfo
+inline val File.apkInfo: AppUtils.AppInfo
   get() = AppUtils.getApkInfo(this)
 
-val String.apkInfo: AppUtils.AppInfo
+inline val String.apkInfo: AppUtils.AppInfo
   get() = AppUtils.getApkInfo(this)

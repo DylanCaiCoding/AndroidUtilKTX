@@ -48,16 +48,16 @@ var View.pressedBgDarkAlpha: Float
 fun View.applyPressedBgDark() =
   ClickUtils.applyPressedBgDark(this)
 
-fun View.doOnSingleDebouncingClick(listener: (View) -> Unit) =
+fun View.doOnSingleClick(listener: (View) -> Unit) =
   ClickUtils.applySingleDebouncing(this, listener)
 
-fun View.doOnSingleDebouncingClick(@IntRange(from = 0) duration: Long, listener: (View) -> Unit) =
+fun View.doOnSingleClick(@IntRange(from = 0) duration: Long, listener: (View) -> Unit) =
   ClickUtils.applySingleDebouncing(this, duration, listener)
 
-fun Array<View>.doOnSingleDebouncingClick(listener: (View) -> Unit) =
+fun Array<View>.doOnSingleClick(listener: (View) -> Unit) =
   ClickUtils.applySingleDebouncing(this, listener)
 
-fun Array<View>.doOnSingleDebouncingClick(@IntRange(from = 0) duration: Long, listener: (View) -> Unit) =
+fun Array<View>.doOnSingleClick(@IntRange(from = 0) duration: Long, listener: (View) -> Unit) =
   ClickUtils.applySingleDebouncing(this, duration, listener)
 
 fun View.doOnGlobalDebouncingClick(listener: (View) -> Unit) =
@@ -83,10 +83,10 @@ fun View.expandClickArea(
 ) =
   ClickUtils.expandClickArea(this, expandSizeTop, expandSizeLeft, expandSizeRight, expandSizeBottom)
 
-fun back2HomeFriendly(tip: CharSequence) =
+fun back2HomeActivityFriendly(tip: CharSequence) =
   ClickUtils.back2HomeFriendly(tip)
 
-fun back2HomeFriendly(
+fun back2HomeActivityFriendly(
   tip: CharSequence,
   duration: Long,
   listener: ClickUtils.Back2HomeFriendlyListener

@@ -1,3 +1,5 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import android.graphics.Bitmap
@@ -13,54 +15,53 @@ import java.io.Serializable
 
 /**
  * @author Dylan Cai
- * @since 2020/5/9
  */
 
-var defaultCacheDoubleUtils: CacheDoubleUtils
+inline var defaultCacheDoubleUtils: CacheDoubleUtils
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
   get() = throw NotImplementedError()
   set(value) = CacheDoubleStaticUtils.setDefaultCacheDoubleUtils(value)
 
-fun putDoubleCache(key: String, value: ByteArray) =
-  CacheDoubleStaticUtils.put(key, value)
+inline fun putDoubleCache(key: String, value: ByteArray, saveTime: Int = -1) =
+  CacheDoubleStaticUtils.put(key, value, saveTime)
 
-fun putDoubleCache(key: String, value: String) =
-  CacheDoubleStaticUtils.put(key, value)
+inline fun putDoubleCache(key: String, value: String, saveTime: Int = -1) =
+  CacheDoubleStaticUtils.put(key, value, saveTime)
 
-fun putDoubleCache(key: String, value: JSONObject) =
-  CacheDoubleStaticUtils.put(key, value)
+inline fun putDoubleCache(key: String, value: JSONObject, saveTime: Int = -1) =
+  CacheDoubleStaticUtils.put(key, value, saveTime)
 
-fun putDoubleCache(key: String, value: JSONArray) =
-  CacheDoubleStaticUtils.put(key, value)
+inline fun putDoubleCache(key: String, value: JSONArray, saveTime: Int = -1) =
+  CacheDoubleStaticUtils.put(key, value, saveTime)
 
-fun putDoubleCache(key: String, value: Bitmap) =
-  CacheDoubleStaticUtils.put(key, value)
+inline fun putDoubleCache(key: String, value: Bitmap, saveTime: Int = -1) =
+  CacheDoubleStaticUtils.put(key, value, saveTime)
 
-fun putDoubleCache(key: String, value: Drawable) =
-  CacheDoubleStaticUtils.put(key, value)
+inline fun putDoubleCache(key: String, value: Drawable, saveTime: Int = -1) =
+  CacheDoubleStaticUtils.put(key, value, saveTime)
 
-fun putDoubleCache(key: String, value: Parcelable) =
-  CacheDoubleStaticUtils.put(key, value)
+inline fun putDoubleCache(key: String, value: Parcelable, saveTime: Int = -1) =
+  CacheDoubleStaticUtils.put(key, value, saveTime)
 
-fun putDoubleCache(key: String, value: Serializable) =
-  CacheDoubleStaticUtils.put(key, value)
+inline fun putDoubleCache(key: String, value: Serializable, saveTime: Int = -1) =
+  CacheDoubleStaticUtils.put(key, value, saveTime)
 
-fun doubleCacheBytesOf(key: String, defaultValue: ByteArray? = null): ByteArray? =
+inline fun doubleCacheBytesOf(key: String, defaultValue: ByteArray? = null): ByteArray? =
   CacheDoubleStaticUtils.getBytes(key, defaultValue)
 
-fun doubleCacheStringOf(key: String, defaultValue: String? = null): String? =
+inline fun doubleCacheStringOf(key: String, defaultValue: String? = null): String? =
   CacheDoubleStaticUtils.getString(key, defaultValue)
 
-fun doubleCacheJSONObjectOf(key: String, defaultValue: JSONObject? = null): JSONObject? =
+inline fun doubleCacheJSONObjectOf(key: String, defaultValue: JSONObject? = null): JSONObject? =
   CacheDoubleStaticUtils.getJSONObject(key, defaultValue)
 
-fun doubleCacheBitmapOf(key: String, defaultValue: Bitmap? = null): Bitmap? =
+inline fun doubleCacheBitmapOf(key: String, defaultValue: Bitmap? = null): Bitmap? =
   CacheDoubleStaticUtils.getBitmap(key, defaultValue)
 
-fun doubleCacheDrawableOf(key: String, defaultValue: Drawable? = null): Drawable? =
+inline fun doubleCacheDrawableOf(key: String, defaultValue: Drawable? = null): Drawable? =
   CacheDoubleStaticUtils.getDrawable(key, defaultValue)
 
-fun <T> doubleCacheParcelableOf(
+inline fun <T> doubleCacheParcelableOf(
   key: String,
   creator: Parcelable.Creator<T>,
   defaultValue: T? = null
@@ -68,20 +69,20 @@ fun <T> doubleCacheParcelableOf(
   CacheDoubleStaticUtils.getParcelable(key, creator, defaultValue)
 
 @Suppress("UNCHECKED_CAST")
-fun <T> doubleCacheSerializableOf(
+inline fun <T> doubleCacheSerializableOf(
   key: String,
   defaultValue: T? = null
 ): T =
   CacheDoubleStaticUtils.getSerializable(key, defaultValue) as T
 
-val doubleDoubleCacheSize: Long
+inline val doubleDoubleCacheSize: Long
   get() = CacheDoubleStaticUtils.getCacheDiskSize()
 
-val doubleDoubleCacheCount: Int
+inline val doubleDoubleCacheCount: Int
   get() = CacheDoubleStaticUtils.getCacheDiskCount()
 
-fun removeDoubleCache(key: String) =
+inline fun removeDoubleCache(key: String) =
   CacheDoubleStaticUtils.remove(key)
 
-fun clearDoubleCache() =
+inline fun clearDoubleCache() =
   CacheDoubleStaticUtils.clear()

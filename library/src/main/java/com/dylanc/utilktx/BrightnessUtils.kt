@@ -2,31 +2,39 @@
 
 package com.dylanc.utilktx
 
+import android.Manifest
 import android.view.Window
+import androidx.annotation.IntRange
+import androidx.annotation.RequiresPermission
 import com.blankj.utilcode.util.BrightnessUtils
 
 /**
  * @author Dylan Cai
- * @since 2020/5/9
  */
-var isAutoBrightnessEnabled: Boolean
+
+inline var isAutoBrightnessEnabled: Boolean
   get() = BrightnessUtils.isAutoBrightnessEnabled()
+  @RequiresPermission(Manifest.permission.WRITE_SETTINGS)
   set(value) {
     BrightnessUtils.setAutoBrightnessEnabled(value)
   }
 
-fun setAutoBrightnessEnabled(enabled: Boolean): Boolean =
-  BrightnessUtils.setAutoBrightnessEnabled(enabled)
-
-var screenBrightness: Int
+@setparam:IntRange(from = 0, to = 255)
+inline var brightness: Int
   get() = BrightnessUtils.getBrightness()
+  @RequiresPermission(Manifest.permission.WRITE_SETTINGS)
   set(value) {
     BrightnessUtils.setBrightness(value)
   }
 
-fun setScreenBrightness(brightness: Int): Boolean =
-  BrightnessUtils.setBrightness(brightness)
+//@RequiresPermission(Manifest.permission.WRITE_SETTINGS)
+//fun setAutoBrightnessEnabled(enabled: Boolean): Boolean =
+//  BrightnessUtils.setAutoBrightnessEnabled(enabled)
+//
+//@RequiresPermission(Manifest.permission.WRITE_SETTINGS)
+//fun setBrightness(@IntRange(from = 0, to = 255) brightness: Int): Boolean =
+//  BrightnessUtils.setBrightness(brightness)
 
-var Window.windowBrightness: Int
+inline var Window.brightness: Int
   get() = BrightnessUtils.getWindowBrightness(this)
   set(value) = BrightnessUtils.setWindowBrightness(this, value)

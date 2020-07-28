@@ -1,3 +1,5 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import android.graphics.Bitmap
@@ -11,45 +13,45 @@ import java.io.Serializable
 
 /**
  * @author Dylan Cai
- * @since 2020/5/9
  */
-var defaultCacheMemoryUtils: CacheMemoryUtils
+
+inline var defaultCacheMemoryUtils: CacheMemoryUtils
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
   get() = throw NotImplementedError()
   set(value) = CacheMemoryStaticUtils.setDefaultCacheMemoryUtils(value)
 
-fun putMemoryCache(key: String, value: ByteArray) =
-  CacheMemoryStaticUtils.put(key, value)
+inline fun putMemoryCache(key: String, value: ByteArray, saveTime: Int = -1) =
+  CacheMemoryStaticUtils.put(key, value, saveTime)
 
-fun putMemoryCache(key: String, value: String) =
-  CacheMemoryStaticUtils.put(key, value)
+inline fun putMemoryCache(key: String, value: String, saveTime: Int = -1) =
+  CacheMemoryStaticUtils.put(key, value, saveTime)
 
-fun putMemoryCache(key: String, value: JSONObject) =
-  CacheMemoryStaticUtils.put(key, value)
+inline fun putMemoryCache(key: String, value: JSONObject, saveTime: Int = -1) =
+  CacheMemoryStaticUtils.put(key, value, saveTime)
 
-fun putMemoryCache(key: String, value: JSONArray) =
-  CacheMemoryStaticUtils.put(key, value)
+inline fun putMemoryCache(key: String, value: JSONArray, saveTime: Int = -1) =
+  CacheMemoryStaticUtils.put(key, value, saveTime)
 
-fun putMemoryCache(key: String, value: Bitmap) =
-  CacheMemoryStaticUtils.put(key, value)
+inline fun putMemoryCache(key: String, value: Bitmap, saveTime: Int = -1) =
+  CacheMemoryStaticUtils.put(key, value, saveTime)
 
-fun putMemoryCache(key: String, value: Drawable) =
-  CacheMemoryStaticUtils.put(key, value)
+inline fun putMemoryCache(key: String, value: Drawable, saveTime: Int = -1) =
+  CacheMemoryStaticUtils.put(key, value, saveTime)
 
-fun putMemoryCache(key: String, value: Parcelable) =
-  CacheMemoryStaticUtils.put(key, value)
+inline fun putMemoryCache(key: String, value: Parcelable, saveTime: Int = -1) =
+  CacheMemoryStaticUtils.put(key, value, saveTime)
 
-fun putMemoryCache(key: String, value: Serializable) =
-  CacheMemoryStaticUtils.put(key, value)
+inline fun putMemoryCache(key: String, value: Serializable, saveTime: Int = -1) =
+  CacheMemoryStaticUtils.put(key, value, saveTime)
 
-fun <T> memoryCacheOf(key: String, defaultValue: T? = null): T? =
+inline fun <T> memoryCacheOf(key: String, defaultValue: T? = null): T? =
   CacheMemoryStaticUtils.get(key, defaultValue)
 
-val memoryCacheCount: Int
+inline val memoryCacheCount: Int
   get() = CacheMemoryStaticUtils.getCacheCount()
 
-fun removeMemoryCache(key: String): Any =
+inline fun removeMemoryCache(key: String): Any =
   CacheMemoryStaticUtils.remove(key)
 
-fun clearMemoryCache() =
+inline fun clearMemoryCache() =
   CacheMemoryStaticUtils.clear()

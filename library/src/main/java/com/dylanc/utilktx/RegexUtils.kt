@@ -1,3 +1,5 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import com.blankj.utilcode.util.RegexUtils
@@ -6,53 +8,53 @@ import com.blankj.utilcode.util.RegexUtils
  * @author Dylan Cai
  */
 
-fun CharSequence.isMobileSimple(): Boolean =
+inline fun CharSequence.isMobileSimple(): Boolean =
   RegexUtils.isMobileSimple(this)
 
-fun CharSequence.isMobileExact(): Boolean =
+inline fun CharSequence.isMobileExact(): Boolean =
   RegexUtils.isMobileExact(this)
 
-fun CharSequence.isTelephone(): Boolean =
+inline fun CharSequence.isTelephone(): Boolean =
   RegexUtils.isTel(this)
 
-fun CharSequence.isIDCard15(): Boolean =
+inline fun CharSequence.isIDCard15(): Boolean =
   RegexUtils.isIDCard15(this)
 
-fun CharSequence.isIDCard18(): Boolean =
+inline fun CharSequence.isIDCard18(): Boolean =
   RegexUtils.isIDCard18(this)
 
-fun CharSequence.isIDCard18Exact(): Boolean =
+inline fun CharSequence.isIDCard18Exact(): Boolean =
   RegexUtils.isIDCard18Exact(this)
 
-fun CharSequence.isEmail(): Boolean =
+inline fun CharSequence.isEmail(): Boolean =
   RegexUtils.isEmail(this)
 
-fun CharSequence.isURL(): Boolean =
+inline fun CharSequence.isURL(): Boolean =
   RegexUtils.isURL(this)
 
-fun CharSequence.isZh(): Boolean =
+inline fun CharSequence.isZh(): Boolean =
   RegexUtils.isZh(this)
 
-fun CharSequence.isUsername(): Boolean =
+inline fun CharSequence.isUsername(): Boolean =
   RegexUtils.isUsername(this)
 
-fun CharSequence.isDate(): Boolean =
+inline fun CharSequence.isDate(): Boolean =
   RegexUtils.isDate(this)
 
-fun CharSequence.isIP(): Boolean =
+inline fun CharSequence.isIP(): Boolean =
   RegexUtils.isIP(this)
 
-fun CharSequence.isMatchRegex(regex: String): Boolean =
+inline fun CharSequence.isMatches(regex: String): Boolean =
   RegexUtils.isMatch(regex, this)
 
-fun CharSequence.matchRegex(regex: String): List<String> =
+inline fun CharSequence.matches(regex: String): List<String> =
   RegexUtils.getMatches(regex, this)
 
-fun String.splitRegex(regex: String): Array<String> =
+inline fun String.split(regex: String): Array<String> =
   RegexUtils.getSplits(regex, this)
 
-fun String.replaceFirstRegex(regex: String, replacement: String): String =
+inline fun String.replaceFirst(regex: String, replacement: String): String =
   RegexUtils.getReplaceFirst(this, regex, replacement)
 
-fun String.replaceAllRegex(regex: String, replacement: String): String =
+inline fun String.replaceAll(regex: String, replacement: String): String =
   RegexUtils.getReplaceAll(this, regex, replacement)
