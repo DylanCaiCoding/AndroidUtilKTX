@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package com.dylanc.utilktx
 
@@ -10,75 +10,73 @@ import java.lang.reflect.Type
 
 /**
  * @author Dylan Cai
- * @since 2019/12/5
  */
-fun setGsonDelegate(gson: Gson) =
-  GsonUtils.setGsonDelegate(gson)
 
-fun putGson(key: String, gson: Gson) =
+inline var gsonDelegate: Gson
+  get() = GsonUtils.getGson()
+  set(value) = GsonUtils.setGsonDelegate(value)
+
+inline fun putGson(key: String, gson: Gson) =
   GsonUtils.setGson(key, gson)
 
-fun gsonOf(key: String): Gson? =
+inline fun gsonOf(key: String): Gson? =
   GsonUtils.getGson(key)
 
-val gson: Gson
-  get() = GsonUtils.getGson()
-
-fun Any.toJson(): String =
+inline fun Any.toJson(): String =
   GsonUtils.toJson(this)
 
-inline fun <reified T> String.toInstance(gson: Gson = com.dylanc.utilktx.gson): T =
+inline fun <reified T> String.toInstance(gson: Gson = gsonDelegate): T =
   GsonUtils.fromJson(gson, this, T::class.java)
 
-fun <T> String.toInstance(type: Type, gson: Gson = com.dylanc.utilktx.gson): T =
+inline fun <T> String.toInstance(type: Type, gson: Gson = gsonDelegate): T =
   GsonUtils.fromJson(gson, this, type)
 
-inline fun <reified T> Reader.toInstance(gson: Gson = com.dylanc.utilktx.gson): T =
+inline fun <reified T> Reader.toInstance(gson: Gson = gsonDelegate): T =
   GsonUtils.fromJson(gson, this, T::class.java)
 
-fun <T> Reader.toInstance(type: Type, gson: Gson = com.dylanc.utilktx.gson): T =
+inline fun <T> Reader.toInstance(type: Type, gson: Gson = gsonDelegate): T =
   GsonUtils.fromJson(gson, this, type)
 
-fun listTypeOf(type: Type): Type =
+inline fun listTypeOf(type: Type): Type =
   GsonUtils.getListType(type)
 
-inline fun <reified T> String.toListInstance(): List<T> =
+inline fun <reified T> String.toList(): List<T> =
   toInstance(listTypeOf<T>())
 
-inline fun <reified T> String.toArrayInstance(): Array<T> =
+inline fun <reified T> String.toArray(): Array<T> =
   toInstance(arrayTypeOf<T>())
 
-inline fun <reified T> String.toSetInstance(): Set<T> =
+inline fun <reified T> String.toSet(): Set<T> =
   toInstance(setTypeOf<T>())
 
-inline fun <reified K, reified V> String.toMapInstance(): Map<K, V> =
+inline fun <reified K, reified V> String.toMap(): Map<K, V> =
   toInstance(mapTypeOf<K, V>())
 
 inline fun <reified T> listTypeOf(): Type =
   GsonUtils.getListType(T::class.java)
 
-fun arrayTypeOf(type: Type): Type =
+inline fun arrayTypeOf(type: Type): Type =
   GsonUtils.getArrayType(type)
 
 inline fun <reified T> arrayTypeOf(): Type =
   GsonUtils.getArrayType(T::class.java)
 
-fun setTypeOf(type: Type): Type =
+inline fun setTypeOf(type: Type): Type =
   GsonUtils.getSetType(type)
 
 inline fun <reified T> setTypeOf(): Type =
   GsonUtils.getSetType(T::class.java)
 
-fun mapTypeOf(keyType: Type, valueType: Type): Type =
+inline fun mapTypeOf(keyType: Type, valueType: Type): Type =
   GsonUtils.getMapType(keyType, valueType)
 
 inline fun <reified K, reified V> mapTypeOf(): Type =
   GsonUtils.getMapType(K::class.java, V::class.java)
 
-fun typeOf(type: Type, vararg typeArgument: Type): Type =
+inline fun typeOf(type: Type, vararg typeArgument: Type): Type =
   GsonUtils.getType(type, *typeArgument)
 
-fun String.isJson(): Boolean =
+inline fun String.isJson(): Boolean =
   try {
     JSONObject(this)
     true

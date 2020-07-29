@@ -1,3 +1,5 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import com.blankj.utilcode.util.NumberUtils
@@ -15,7 +17,7 @@ import com.blankj.utilcode.util.NumberUtils
  * @param isHalfUp         True to rounded towards the nearest neighbor.
  * @return the format value
  */
-fun Float.format(
+inline fun Float.format(
   fractionDigits: Int,
   isGrouping: Boolean = false,
   minIntegerDigits: Int = 1,
@@ -32,7 +34,7 @@ fun Float.format(
  * @param isHalfUp         True to rounded towards the nearest neighbor.
  * @return the format value
  */
-fun Double.format(
+inline fun Double.format(
   fractionDigits: Int,
   isGrouping: Boolean = false,
   minIntegerDigits: Int = 1,
@@ -40,13 +42,13 @@ fun Double.format(
 ): String =
   NumberUtils.format(this, isGrouping, minIntegerDigits, fractionDigits, isHalfUp)
 
-fun Float.toPrice(
+inline fun Float.toPrice(
   isInteger: Boolean = false,
   isGrouping: Boolean = false
 ) =
   format(if (isInteger) 0 else 2, isGrouping = isGrouping)
 
-fun Double.toPrice(
+inline fun Double.toPrice(
   isInteger: Boolean = false,
   isGrouping: Boolean = false
 ) =

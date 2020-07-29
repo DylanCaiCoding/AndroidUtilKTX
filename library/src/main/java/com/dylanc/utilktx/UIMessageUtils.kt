@@ -1,3 +1,5 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import androidx.lifecycle.Lifecycle
@@ -8,30 +10,30 @@ import com.blankj.utilcode.util.UiMessageUtils
 
 /**
  * @author Dylan Cai
- * @since 2020/5/15
  */
-fun sendUIMessage(id: Int) =
+
+inline fun sendUIMessage(id: Int) =
   UiMessageUtils.getInstance().send(id)
 
-fun sendUIMessage(id: Int, obj: Any) =
+inline fun sendUIMessage(id: Int, obj: Any) =
   UiMessageUtils.getInstance().send(id, obj)
 
-fun addUIMessageListener(listener: (UiMessageUtils.UiMessage) -> Unit) =
+inline fun addUIMessageListener(noinline listener: (UiMessageUtils.UiMessage) -> Unit) =
   UiMessageUtils.getInstance().addListener(listener)
 
-fun addUIMessageListener(id: Int, listener: (UiMessageUtils.UiMessage) -> Unit) =
+inline fun addUIMessageListener(id: Int, noinline listener: (UiMessageUtils.UiMessage) -> Unit) =
   UiMessageUtils.getInstance().addListener(id, listener)
 
-fun removeUIMessageListener(listener: (UiMessageUtils.UiMessage) -> Unit) =
+inline fun removeUIMessageListener(noinline listener: (UiMessageUtils.UiMessage) -> Unit) =
   UiMessageUtils.getInstance().removeListener(listener)
 
-fun removeUIMessageListener(id: Int, listener: (UiMessageUtils.UiMessage) -> Unit) =
+inline fun removeUIMessageListener(id: Int, noinline listener: (UiMessageUtils.UiMessage) -> Unit) =
   UiMessageUtils.getInstance().removeListener(id, listener)
 
-fun removeUIMessageListeners(id: Int) =
+inline fun removeUIMessageListeners(id: Int) =
   UiMessageUtils.getInstance().removeListeners(id)
 
-fun observeUIMessage(owner: LifecycleOwner, listener: (UiMessageUtils.UiMessage) -> Unit) {
+inline fun observeUIMessage(owner: LifecycleOwner, noinline listener: (UiMessageUtils.UiMessage) -> Unit) {
   owner.lifecycle.addObserver(object : LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {
@@ -45,7 +47,7 @@ fun observeUIMessage(owner: LifecycleOwner, listener: (UiMessageUtils.UiMessage)
   })
 }
 
-fun observeUIMessage(id: Int, owner: LifecycleOwner, listener: (UiMessageUtils.UiMessage) -> Unit) {
+inline fun observeUIMessage(id: Int, owner: LifecycleOwner, noinline listener: (UiMessageUtils.UiMessage) -> Unit) {
   owner.lifecycle.addObserver(object : LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {

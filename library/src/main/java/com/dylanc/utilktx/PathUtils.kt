@@ -1,125 +1,126 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import com.blankj.utilcode.util.PathUtils
 
 /**
  * @author Dylan Cai
- * @since 2020/5/15
  */
 
-fun joinPath(parent: String, child: String): String =
+inline fun pathOf(parent: String, child: String): String =
   PathUtils.join(parent, child)
 
-val rootPath: String
+inline val rootPath: String
   get() = PathUtils.getRootPath()
 
-val dataPath: String
+inline val dataPath: String
   get() = PathUtils.getDataPath()
 
-val downloadCachePath: String
+inline val downloadCachePath: String
   get() = PathUtils.getDownloadCachePath()
 
-val internalAppDataPath: String
+inline val internalAppDataPath: String
   get() = PathUtils.getInternalAppDataPath()
 
-val internalAppCodeCacheDir: String
+inline val internalAppCodeCacheDir: String
   get() = PathUtils.getInternalAppCodeCacheDir()
 
-val internalAppCachePath: String
+inline val internalAppCachePath: String
   get() = PathUtils.getInternalAppCachePath()
 
-val internalAppDbsPath: String
+inline val internalAppDbsPath: String
   get() = PathUtils.getInternalAppDbsPath()
 
-fun internalAppDbPathOf(name:String): String =
+inline fun internalAppDbPathOf(name:String): String =
   PathUtils.getInternalAppDbPath(name)
 
-val internalAppFilesPath: String
+inline val internalAppFilesPath: String
   get() = PathUtils.getInternalAppFilesPath()
 
-val internalAppSpPath: String
+inline val internalAppSpPath: String
   get() = PathUtils.getInternalAppSpPath()
 
-val internalAppNoBackupFilesPath: String
+inline val internalAppNoBackupFilesPath: String
   get() = PathUtils.getInternalAppNoBackupFilesPath()
 
-val externalStoragePath: String
+inline val externalStoragePath: String
   get() = PathUtils.getExternalStoragePath()
 
-val externalMusicPath: String
+inline val externalMusicPath: String
   get() = PathUtils.getExternalMusicPath()
 
-val externalPodcastsPath: String
+inline val externalPodcastsPath: String
   get() = PathUtils.getExternalPodcastsPath()
 
-val externalRingtonesPath: String
+inline val externalRingtonesPath: String
   get() = PathUtils.getExternalRingtonesPath()
 
-val externalAlarmsPath: String
+inline val externalAlarmsPath: String
   get() = PathUtils.getExternalAlarmsPath()
 
-val externalNotificationsPath: String
+inline val externalNotificationsPath: String
   get() = PathUtils.getExternalNotificationsPath()
 
-val externalPicturesPath: String
+inline val externalPicturesPath: String
   get() = PathUtils.getExternalPicturesPath()
 
-val externalMoviesPath: String
+inline val externalMoviesPath: String
   get() = PathUtils.getExternalMoviesPath()
 
-val externalDownloadsPath: String
+inline val externalDownloadsPath: String
   get() = PathUtils.getExternalDownloadsPath()
 
-val externalDcimPath: String
+inline val externalDcimPath: String
   get() = PathUtils.getExternalDcimPath()
 
-val externalAppDataPath: String
+inline val externalAppDataPath: String
   get() = PathUtils.getExternalAppDataPath()
 
-val externalAppCachePath: String
+inline val externalAppCachePath: String
   get() = PathUtils.getExternalAppCachePath()
 
-val externalAppFilesPath: String
+inline val externalAppFilesPath: String
   get() = PathUtils.getExternalAppFilesPath()
 
-val externalAppMusicPath: String
+inline val externalAppMusicPath: String
   get() = PathUtils.getExternalAppMusicPath()
 
-val externalAppPodcastsPath: String
+inline val externalAppPodcastsPath: String
   get() = PathUtils.getExternalAppPodcastsPath()
 
-val externalAppRingtonesPath: String
+inline val externalAppRingtonesPath: String
   get() = PathUtils.getExternalAppRingtonesPath()
 
-val externalAppAlarmsPath: String
+inline val externalAppAlarmsPath: String
   get() = PathUtils.getExternalAppAlarmsPath()
 
-val externalAppNotificationsPath: String
+inline val externalAppNotificationsPath: String
   get() = PathUtils.getExternalAppNotificationsPath()
 
-val externalAppPicturesPath: String
+inline val externalAppPicturesPath: String
   get() = PathUtils.getExternalAppPicturesPath()
 
-val externalAppMoviesPath: String
+inline val externalAppMoviesPath: String
   get() = PathUtils.getExternalAppMoviesPath()
 
-val externalAppDownloadPath: String
+inline val externalAppDownloadPath: String
   get() = PathUtils.getExternalAppDownloadPath()
 
-val externalAppDcimPath: String
+inline val externalAppDcimPath: String
   get() = PathUtils.getExternalAppDcimPath()
 
-val externalAppObbPath: String
+inline val externalAppObbPath: String
   get() = PathUtils.getExternalAppObbPath()
 
-val rootPathExternalFirst: String
+inline val rootPathExternalFirst: String
   get() = PathUtils.getRootPathExternalFirst()
 
-val appDataPathExternalFirst: String
+inline val appDataPathExternalFirst: String
   get() = PathUtils.getAppDataPathExternalFirst()
 
-val filesPathExternalFirst: String
+inline val filesPathExternalFirst: String
   get() = PathUtils.getFilesPathExternalFirst()
 
-val cachePathExternalFirst: String
+inline val cachePathExternalFirst: String
   get() = PathUtils.getCachePathExternalFirst()

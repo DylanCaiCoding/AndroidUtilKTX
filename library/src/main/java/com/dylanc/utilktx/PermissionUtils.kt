@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package com.dylanc.utilktx
 
@@ -11,40 +11,40 @@ import com.blankj.utilcode.util.UtilsTransActivity
 
 /**
  * @author Dylan Cai
- * @since 2020/5/15
  */
-val permissions: List<String>
+
+inline val permissions: List<String>
   get() = PermissionUtils.getPermissions()
 
-fun permissionsOf(packageName: String): List<String> =
+inline fun permissionsOf(packageName: String): List<String> =
   PermissionUtils.getPermissions(packageName)
 
-fun isGrantedPermissions(vararg permissions: String) =
+inline fun isGrantedPermissions(vararg permissions: String) =
   PermissionUtils.isGranted(*permissions)
 
 @RequiresApi(api = Build.VERSION_CODES.M)
-fun isGrantedWriteSettingsPermission() =
+inline fun isGrantedWriteSettingsPermission() =
   PermissionUtils.isGrantedWriteSettings()
 
 @RequiresApi(api = Build.VERSION_CODES.M)
-fun requestWriteSettingsPermission(callback: PermissionUtils.SimpleCallback) =
+inline fun requestWriteSettingsPermission(callback: PermissionUtils.SimpleCallback) =
   PermissionUtils.requestWriteSettings(callback)
 
 @RequiresApi(api = Build.VERSION_CODES.M)
-fun isGrantedDrawOverlaysPermission() =
+inline fun isGrantedDrawOverlaysPermission() =
   PermissionUtils.isGrantedDrawOverlays()
 
 @RequiresApi(api = Build.VERSION_CODES.M)
-fun requestDrawOverlaysPermission(callback: PermissionUtils.SimpleCallback) =
+inline fun requestDrawOverlaysPermission(callback: PermissionUtils.SimpleCallback) =
   PermissionUtils.requestDrawOverlays(callback)
 
-fun launchAppDetailsSettings() =
+inline fun launchAppDetailsSettings() =
   PermissionUtils.launchAppDetailsSettings()
 
-fun requestPermissions(
+inline fun requestPermissions(
   @PermissionConstants.Permission vararg permissions: String,
-  rationale: ((UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit)? = null,
-  theme: ((Activity) -> Unit)? = null,
+  noinline rationale: ((UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit)? = null,
+  noinline theme: ((Activity) -> Unit)? = null,
   callback: PermissionUtils.SingleCallback
 ) {
   PermissionUtils.permission(*permissions)

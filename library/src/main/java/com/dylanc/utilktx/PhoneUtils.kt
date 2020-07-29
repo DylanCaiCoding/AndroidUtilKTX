@@ -1,3 +1,5 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import android.Manifest.permission
@@ -7,42 +9,42 @@ import com.blankj.utilcode.util.PhoneUtils
 
 /**
  * @author Dylan Cai
- * @since 2019/11/7
  */
-val isPhone
+
+inline val isPhone
   get() = PhoneUtils.isPhone()
 
-val deviceId:String
+inline val deviceId: String
   @RequiresPermission(permission.READ_PHONE_STATE)
   get() = PhoneUtils.getDeviceId()
 
-val serialNumber:String
+inline val serialNumber: String
   @RequiresPermission(permission.READ_PHONE_STATE)
   get() = PhoneUtils.getSerial()
 
-val IMEI:String
+inline val phoneIMEI: String
   @RequiresPermission(permission.READ_PHONE_STATE)
   get() = PhoneUtils.getIMEI()
 
-val MEID:String
+inline val phoneMEID: String
   @RequiresPermission(permission.READ_PHONE_STATE)
   get() = PhoneUtils.getMEID()
 
-val phoneType
+inline val phoneType
   get() = PhoneUtils.getPhoneType()
 
-val isSimCardReady
+inline val isSimCardReady
   get() = PhoneUtils.isSimCardReady()
 
-val simOperatorName:String
+inline val simOperatorName: String
   get() = PhoneUtils.getSimOperatorName()
 
-val simOperatorByMnc:String
+inline val simOperatorByMnc: String
   get() = PhoneUtils.getSimOperatorByMnc()
 
-fun dial(phoneNumber: String) = PhoneUtils.dial(phoneNumber)
+inline fun dial(phoneNumber: String) = PhoneUtils.dial(phoneNumber)
 
 @RequiresPermission(CALL_PHONE)
-fun call(phoneNumber: String) = PhoneUtils.call(phoneNumber)
+inline fun call(phoneNumber: String) = PhoneUtils.call(phoneNumber)
 
-fun sendSms(phoneNumber: String, content: String) = PhoneUtils.sendSms(phoneNumber, content)
+inline fun sendSms(phoneNumber: String, content: String) = PhoneUtils.sendSms(phoneNumber, content)

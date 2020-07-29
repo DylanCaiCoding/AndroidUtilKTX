@@ -26,8 +26,8 @@ import java.io.Serializable
 inline val Context.activity: Activity?
   get() = ActivityUtils.getActivityByContext(this)
 
-inline fun Activity.isExistsInStack(): Boolean =
-  ActivityUtils.isActivityExistsInStack(this)
+inline val Activity.isExistsInStack: Boolean
+  get() = ActivityUtils.isActivityExistsInStack(this)
 
 inline fun <reified T : Activity> startActivity() =
   ActivityUtils.startActivity(T::class.java)
@@ -89,11 +89,11 @@ inline fun startHomeActivity() =
 val activityList: List<Activity>
   get() = ActivityUtils.getActivityList()
 
-inline fun Context.isActivityAlive(): Boolean =
-  ActivityUtils.isActivityAlive(this)
+inline val Context.isActivityAlive: Boolean
+  get() = ActivityUtils.isActivityAlive(this)
 
-inline fun Activity.isAlive(): Boolean =
-  ActivityUtils.isActivityAlive(this)
+inline val Activity.isAlive: Boolean
+  get() = ActivityUtils.isActivityAlive(this)
 
 val topActivity: Activity
   get() = ActivityUtils.getTopActivity()
@@ -136,29 +136,29 @@ inline fun FragmentActivity.startActivityForResult(
   requestCode: Int,
   noinline callback: (resultCode: Int, data: Intent?) -> Unit
 ) =
-  dispatchResultFragment.startForResult(intent, requestCode, callback)
+  DispatchResultFragment.newInstance(this).startForResult(intent, requestCode, callback)
 
-//
-val FragmentActivity.dispatchResultFragment: DispatchResultFragment
-  get() = run {
-    val fragmentManager = this.supportFragmentManager
-    var fragment: DispatchResultFragment? =
-      fragmentManager.findFragmentByTag(DispatchResultFragment.TAG) as DispatchResultFragment?
-    if (fragment == null) {
-      fragment = DispatchResultFragment()
-      fragmentManager
-        .beginTransaction()
-        .add(fragment, DispatchResultFragment.TAG)
-        .commitAllowingStateLoss()
-      fragmentManager.executePendingTransactions()
-    }
-    fragment
-  }
 
 class DispatchResultFragment : Fragment() {
 
   companion object {
-    const val TAG = "dispatch_result"
+    private const val TAG = "dispatch_result"
+
+    fun newInstance(activity: FragmentActivity): DispatchResultFragment =
+      activity.run {
+        val fragmentManager = this.supportFragmentManager
+        var fragment: DispatchResultFragment? =
+          fragmentManager.findFragmentByTag(DispatchResultFragment.TAG) as DispatchResultFragment?
+        if (fragment == null) {
+          fragment = DispatchResultFragment()
+          fragmentManager
+            .beginTransaction()
+            .add(fragment, DispatchResultFragment.TAG)
+            .commitAllowingStateLoss()
+          fragmentManager.executePendingTransactions()
+        }
+        fragment
+      }
   }
 
   private val callbacks = SparseArray<(resultCode: Int, data: Intent?) -> Unit>()

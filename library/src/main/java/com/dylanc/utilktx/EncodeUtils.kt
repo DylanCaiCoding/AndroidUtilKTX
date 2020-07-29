@@ -1,40 +1,42 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import com.blankj.utilcode.util.EncodeUtils
 
 /**
  * @author Dylan Cai
- * @since 2020/5/15
  */
-fun String.urlEncode(charsetName: String = "UTF-8"): String =
+
+inline fun String.urlEncode(charsetName: String = "UTF-8"): String =
   EncodeUtils.urlEncode(this, charsetName)
 
-fun String.urlDecode(charsetName: String = "UTF-8"): String =
+inline fun String.urlDecode(charsetName: String = "UTF-8"): String =
   EncodeUtils.urlDecode(this, charsetName)
 
-fun String.base64Encode(): ByteArray =
+inline fun String.base64Encode(): ByteArray =
   EncodeUtils.base64Encode(this)
 
-fun ByteArray.base64Encode(): ByteArray =
+inline fun ByteArray.base64Encode(): ByteArray =
   EncodeUtils.base64Encode(this)
 
-fun String.base64Decode(): ByteArray =
+inline fun String.base64Decode(): ByteArray =
   EncodeUtils.base64Decode(this)
 
-fun ByteArray.base64Decode(): ByteArray =
+inline fun ByteArray.base64Decode(): ByteArray =
   EncodeUtils.base64Decode(this)
 
-fun ByteArray.base64Encode2String(): String =
+inline fun ByteArray.base64Encode2String(): String =
   EncodeUtils.base64Encode2String(this)
 
-fun CharSequence.htmlEncode(): String =
+inline fun CharSequence.htmlEncode(): String =
   EncodeUtils.htmlEncode(this)
 
-fun String.htmlDecode(): CharSequence =
+inline fun String.htmlDecode(): CharSequence =
   EncodeUtils.htmlDecode(this)
 
-fun String.binaryEncode(): String =
+inline fun String.binaryEncode(): String =
   EncodeUtils.binaryEncode(this)
 
-fun String.binaryDecode(): String =
+inline fun String.binaryDecode(): String =
   EncodeUtils.binaryDecode(this)

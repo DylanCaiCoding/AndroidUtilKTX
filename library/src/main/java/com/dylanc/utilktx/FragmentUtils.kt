@@ -49,8 +49,8 @@ inline fun FragmentManager.hide() =
 inline fun Fragment.hide() =
   FragmentUtils.hide(this)
 
-inline fun showFragment(showIndex: Int, fragments: List<Fragment>) =
-  FragmentUtils.showHide(showIndex, fragments)
+inline fun List<Fragment>.showFragment(showIndex: Int) =
+  FragmentUtils.showHide(showIndex, this)
 
 inline fun showFragment(showIndex: Int, vararg fragments: Fragment) =
   FragmentUtils.showHide(showIndex, *fragments)
@@ -99,7 +99,6 @@ inline fun FragmentManager.popAll(isImmediate: Boolean = true) =
 inline fun Fragment.remove() =
   FragmentUtils.remove(this)
 
-//
 inline fun Fragment.removeTo(isIncludeSelf: Boolean) =
   FragmentUtils.removeTo(this, isIncludeSelf)
 
@@ -115,8 +114,8 @@ inline val FragmentManager.topFragmentInStack: Fragment
 inline val FragmentManager.topShowFragment: Fragment
   get() = FragmentUtils.getTopShow(this)
 
-//inline val FragmentManager.fragments: List<Fragment>
-//  get() = FragmentUtils.getFragments(this)
+inline val FragmentManager.notNullFragments: List<Fragment>
+  get() = FragmentUtils.getFragments(this)
 
 inline val FragmentManager.fragmentsInStack: List<Fragment>
   get() = FragmentUtils.getFragmentsInStack(this)

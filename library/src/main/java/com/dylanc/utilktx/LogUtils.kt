@@ -6,9 +6,11 @@ import com.blankj.utilcode.util.LogUtils
 
 /**
  * @author Dylan Cai
- * @since 2019/11/7
  */
-val logConfig: LogUtils.Config
+
+// TODO: 2020/7/29 Fix the wrong number of rows displayed.
+
+inline val logConfig: LogUtils.Config
   get() = LogUtils.getConfig()
 
 interface Logger {
@@ -16,12 +18,12 @@ interface Logger {
     get() = TAG
 }
 
-fun Logger(tag: String) = object : Logger {
+inline fun Logger(tag: String) = object : Logger {
   override val loggerTag: String
     get() = tag
 }
 
-val Any.TAG: String
+inline val Any.TAG: String
   get() {
     val tag = javaClass.simpleName
     return if (tag.length <= 23) tag else tag.substring(0, 23)

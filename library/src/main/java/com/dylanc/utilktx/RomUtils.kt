@@ -1,70 +1,72 @@
+@file:Suppress("unused")
+
 package com.dylanc.utilktx
 
 import com.blankj.utilcode.util.RomUtils
 
 /**
  * @author Dylan Cai
- * @since 2019/11/7
  */
-val isHuaweiRom
+
+inline val isHuaweiRom
   get() = RomUtils.isHuawei()
 
-val isVivoRom
+inline val isVivoRom
   get() = RomUtils.isVivo()
 
-val isXiaomiRom
+inline val isXiaomiRom
   get() = RomUtils.isXiaomi()
 
-val isOppoRom
+inline val isOppoRom
   get() = RomUtils.isOppo()
 
-val isLeecoRom
+inline val isLeecoRom
   get() = RomUtils.isLeeco()
 
-val is360Rom
+inline val is360Rom
   get() = RomUtils.is360()
 
-val isZteRom
+inline val isZteRom
   get() = RomUtils.isZte()
 
-val isOneplusRom
+inline val isOneplusRom
   get() = RomUtils.isOneplus()
 
-val isNubiaRom
+inline val isNubiaRom
   get() = RomUtils.isNubia()
 
-val isCoolpadRom
+inline val isCoolpadRom
   get() = RomUtils.isCoolpad()
 
-val isLgRom
+inline val isLgRom
   get() = RomUtils.isLg()
 
-val isGoogleRom
+inline val isGoogleRom
   get() = RomUtils.isGoogle()
 
-val isSamsungRom
+inline val isSamsungRom
   get() = RomUtils.isSamsung()
 
-val isMeizuRom
+inline val isMeizuRom
   get() = RomUtils.isMeizu()
 
-val isLenovoRom
+inline val isLenovoRom
   get() = RomUtils.isLenovo()
 
-val isSmartisanRom
+inline val isSmartisanRom
   get() = RomUtils.isSmartisan()
 
-val isHtcRom
+inline val isHtcRom
   get() = RomUtils.isHtc()
 
-val isSonyRom
+inline val isSonyRom
   get() = RomUtils.isSony()
 
-val isGioneeRom
+inline val isGioneeRom
   get() = RomUtils.isGionee()
 
-val isMotorolaRom
+inline val isMotorolaRom
   get() = RomUtils.isMotorola()
 
-val romInfo
+inline val romInfo
   get() = RomUtils.getRomInfo()

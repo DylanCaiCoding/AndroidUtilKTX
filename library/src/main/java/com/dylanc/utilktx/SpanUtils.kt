@@ -18,12 +18,11 @@ import com.blankj.utilcode.util.SpanUtils
 
 /**
  * @author Dylan Cai
- * @since 2020/5/15
  */
 
 private val LINE_SEPARATOR: String = System.getProperty("line.separator")!!
 
-fun TextView.setText(block: com.dylanc.utilktx.SpannableStringBuilder.() -> Unit): SpannableStringBuilder =
+inline fun TextView.setText(block: com.dylanc.utilktx.SpannableStringBuilder.() -> Unit): SpannableStringBuilder =
   SpanUtils.with(this).apply { SpannableStringBuilder(this).apply(block) }.create()
 
 class SpannableStringBuilder(private val spanUtils: SpanUtils) {

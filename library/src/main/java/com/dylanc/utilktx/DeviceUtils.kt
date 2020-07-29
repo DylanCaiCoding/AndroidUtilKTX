@@ -1,44 +1,50 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package com.dylanc.utilktx
 
+import android.Manifest.permission
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.annotation.RequiresPermission
 import com.blankj.utilcode.util.DeviceUtils
 
 /**
  * @author Dylan Cai
- * @since 2019/12/12
  */
-val isDeviceRooted
-  get() = DeviceUtils.isDeviceRooted()
 
-val isAdbEnabled
-  get() = DeviceUtils.isAdbEnabled()
+inline fun isDeviceRooted(): Boolean =
+  DeviceUtils.isDeviceRooted()
 
-val sdkVersionName: String
+@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+inline fun isAdbEnabled(): Boolean = DeviceUtils.isAdbEnabled()
+
+inline val sdkVersionName: String
   get() = DeviceUtils.getSDKVersionName()
 
-val sdkVersionCode
+inline val sdkVersionCode
   get() = DeviceUtils.getSDKVersionCode()
 
-val macAddress: String
+@get:RequiresPermission(allOf = [permission.ACCESS_WIFI_STATE, permission.INTERNET, permission.CHANGE_WIFI_STATE])
+inline val macAddress: String
   get() = DeviceUtils.getMacAddress()
 
-val manufacturer: String
+inline val manufacturer: String
   get() = DeviceUtils.getManufacturer()
 
-val deviceModel: String
+inline val deviceModel: String
   get() = DeviceUtils.getModel()
 
-val deviceABIs: Array<String>
+inline val deviceABIs: Array<String>
   get() = DeviceUtils.getABIs()
 
-val isTablet
-  get() = DeviceUtils.isTablet()
+inline fun isTablet(): Boolean =
+  DeviceUtils.isTablet()
 
-val isEmulator
-  get() = DeviceUtils.isEmulator()
+inline fun isEmulator(): Boolean =
+  DeviceUtils.isEmulator()
 
-val uniqueDeviceId: String
+inline val uniqueDeviceId: String
   get() = DeviceUtils.getUniqueDeviceId()
 
-fun isSameDevice(uniqueDeviceId: String) = DeviceUtils.isSameDevice(uniqueDeviceId)
+inline fun isSameDevice(uniqueDeviceId: String): Boolean =
+  DeviceUtils.isSameDevice(uniqueDeviceId)

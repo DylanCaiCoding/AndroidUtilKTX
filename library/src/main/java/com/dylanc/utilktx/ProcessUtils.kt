@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package com.dylanc.utilktx
 
@@ -8,21 +8,21 @@ import com.blankj.utilcode.util.ProcessUtils
 
 /**
  * @author Dylan Cai
- * @since 2020/5/15
  */
-val foregroundProcessName: String
+
+inline val foregroundProcessName: String
   get() = ProcessUtils.getForegroundProcessName()
 
 @RequiresPermission(permission.KILL_BACKGROUND_PROCESSES)
-fun killAllBackgroundProcesses(): Set<String> =
+inline fun killAllBackgroundProcesses(): Set<String> =
   ProcessUtils.killAllBackgroundProcesses()
 
 @RequiresPermission(permission.KILL_BACKGROUND_PROCESSES)
-fun killBackgroundProcesses(packageName: String): Boolean =
+inline fun killBackgroundProcesses(packageName: String): Boolean =
   ProcessUtils.killBackgroundProcesses(packageName)
 
-fun isMainProcess(): Boolean =
-  ProcessUtils.isMainProcess()
+inline val isMainProcess: Boolean
+  get() = ProcessUtils.isMainProcess()
 
-val currentProcessName: String
+inline val currentProcessName: String
   get() = ProcessUtils.getCurrentProcessName()

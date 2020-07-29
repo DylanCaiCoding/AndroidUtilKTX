@@ -1,3 +1,5 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import android.net.Uri
@@ -6,10 +8,10 @@ import java.io.File
 
 /**
  * @author Dylan Cai
- * @since 2019/11/7
  */
-fun File.toUri():Uri = UriUtils.file2Uri(this)
 
-fun Uri.toFile(): File? = UriUtils.uri2File(this)
+inline fun File.toUri():Uri = UriUtils.file2Uri(this)
 
-fun Uri.toPath(): String? = toFile()?.path
+inline fun Uri.toFile(): File? = UriUtils.uri2File(this)
+
+inline fun Uri.toPath(): String? = toFile()?.path

@@ -1,3 +1,5 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
 import android.Manifest.permission
@@ -6,16 +8,16 @@ import com.blankj.utilcode.util.VibrateUtils
 
 /**
  * @author Dylan Cai
- * @since 2020/5/15
  */
+
 @RequiresPermission(permission.VIBRATE)
-fun vibrate(milliseconds: Long) =
+inline fun vibrate(milliseconds: Long) =
   VibrateUtils.vibrate(milliseconds)
 
 @RequiresPermission(permission.VIBRATE)
-fun vibrate(pattern: LongArray, repeat: Int) =
+inline fun vibrate(pattern: LongArray, repeat: Int) =
   VibrateUtils.vibrate(pattern, repeat)
 
 @RequiresPermission(permission.VIBRATE)
-fun cancelVibrate() =
+inline fun cancelVibrate() =
   VibrateUtils.cancel()

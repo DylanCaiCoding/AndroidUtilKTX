@@ -1,67 +1,78 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package com.dylanc.utilktx
 
+import android.Manifest.permission
 import android.app.Activity
 import android.graphics.Bitmap
+import androidx.annotation.RequiresPermission
 import com.blankj.utilcode.util.ScreenUtils
 
 /**
  * @author Dylan Cai
- * @since 2019/11/7
  */
-val screenWidth: Int
+
+inline val screenWidth: Int
   get() = ScreenUtils.getScreenWidth()
 
-val screenHeight: Int
+inline val screenHeight: Int
   get() = ScreenUtils.getScreenHeight()
 
-val appScreenWidth: Int
+inline val appScreenWidth: Int
   get() = ScreenUtils.getAppScreenWidth()
 
-val appScreenHeight: Int
+inline val appScreenHeight: Int
   get() = ScreenUtils.getAppScreenHeight()
 
-val screenDensity: Float
+inline val screenDensity: Float
   get() = ScreenUtils.getScreenDensity()
 
-val screenDensityDpi: Int
+inline val screenDensityDpi: Int
   get() = ScreenUtils.getScreenDensityDpi()
 
-fun Activity.setFullScreen() =
+//
+inline fun Activity.setFullScreen() =
   ScreenUtils.setFullScreen(this)
 
-fun Activity.setNonFullScreen() =
+inline fun Activity.setNonFullScreen() =
   ScreenUtils.setNonFullScreen(this)
 
-fun Activity.toggleFullScreen() =
+inline fun Activity.toggleFullScreen() =
   ScreenUtils.toggleFullScreen(this)
 
-val Activity.isFullScreen: Boolean
+inline var Activity.isFullScreen: Boolean
   get() = ScreenUtils.isFullScreen(this)
+  set(value) {
+    if (value) {
+      ScreenUtils.setFullScreen(this)
+    } else {
+      ScreenUtils.setNonFullScreen(this)
+    }
+  }
 
-fun Activity.setLandscape() =
+inline fun Activity.setLandscape() =
   ScreenUtils.setLandscape(this)
 
-fun Activity.setPortrait() =
+inline fun Activity.setPortrait() =
   ScreenUtils.setPortrait(this)
 
-fun isLandscape(): Boolean =
-  ScreenUtils.isLandscape()
+inline val isLandscape: Boolean
+  get() = ScreenUtils.isLandscape()
 
-fun isPortrait(): Boolean =
-  ScreenUtils.isPortrait()
+inline val isPortrait: Boolean
+  get() = ScreenUtils.isPortrait()
 
-val Activity.screenRotation: Int
+inline val Activity.screenRotation: Int
   get() = ScreenUtils.getScreenRotation(this)
 
-fun Activity.screenShot(isDeleteStatusBar: Boolean = false): Bitmap =
+inline fun Activity.screenShot(isDeleteStatusBar: Boolean = false): Bitmap =
   ScreenUtils.screenShot(this, isDeleteStatusBar)
 
-fun isScreenLock(): Boolean =
-  ScreenUtils.isScreenLock()
+inline val isScreenLock: Boolean
+  get() = ScreenUtils.isScreenLock()
 
-var sleepDuration: Int
-  set(value) = ScreenUtils.setSleepDuration(value)
+inline var sleepDuration: Int
   get() = ScreenUtils.getSleepDuration()
+  @RequiresPermission(permission.WRITE_SETTINGS)
+  set(value) = ScreenUtils.setSleepDuration(value)
 

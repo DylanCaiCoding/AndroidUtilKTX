@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package com.dylanc.utilktx
 
@@ -9,34 +9,34 @@ import kotlin.reflect.KClass
 
 /**
  * @author Dylan Cai
- * @since 2020/5/9
  */
-fun applySystemLanguage() =
+
+inline fun applyAppSystemLanguage() =
   LanguageUtils.applySystemLanguage()
 
-fun applySystemLanguage(activityClz: KClass<out Activity>) =
-  LanguageUtils.applySystemLanguage(activityClz.java)
+inline fun <reified T : Activity> applySystemLanguageTo() =
+  LanguageUtils.applySystemLanguage(T::class.java)
 
-fun applySystemLanguage(activityClassName: String) =
+inline fun applySystemLanguageTo(activityClassName: String) =
   LanguageUtils.applySystemLanguage(activityClassName)
 
-fun applyLanguage(locale: Locale) =
+inline fun applyLanguage(locale: Locale) =
   LanguageUtils.applyLanguage(locale)
 
-fun applyLanguage(locale: Locale, activityClz: KClass<out Activity>) =
-  LanguageUtils.applyLanguage(locale, activityClz.java)
+inline fun <reified T : Activity> applyLanguageTo(locale: Locale) =
+  LanguageUtils.applyLanguage(locale, T::class.java)
 
-fun applyLanguage(locale: Locale, activityClassName: String) =
+inline fun applyLanguageTo(locale: Locale, activityClassName: String) =
   LanguageUtils.applyLanguage(locale, activityClassName)
 
-fun isAppliedSystemLanguage(): Boolean =
-  LanguageUtils.isAppliedSystemLanguage()
+inline val isAppliedSystemLanguage: Boolean
+  get() = LanguageUtils.isAppliedSystemLanguage()
 
-val isAppliedLanguage: Boolean =
-  LanguageUtils.isAppliedLanguage()
+inline val isAppliedLanguage: Boolean
+  get() = LanguageUtils.isAppliedLanguage()
 
-fun isAppliedLanguage(locale: Locale): Boolean =
+inline fun isAppliedLanguage(locale: Locale): Boolean =
   LanguageUtils.isAppliedLanguage(locale)
 
-val currentLocale: Locale =
-  LanguageUtils.getCurrentLocale()
+inline val currentLocale: Locale
+  get() = LanguageUtils.getCurrentLocale()

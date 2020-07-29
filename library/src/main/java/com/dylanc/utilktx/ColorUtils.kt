@@ -1,5 +1,8 @@
+@file:Suppress("unused", "NOTHING_TO_INLINE")
+
 package com.dylanc.utilktx
 
+import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.FloatRange
 import androidx.annotation.IntRange
@@ -7,46 +10,59 @@ import com.blankj.utilcode.util.ColorUtils
 
 /**
  * @author Dylan Cai
- * @since 2019/12/12
  */
-fun colorOf(@ColorRes id: Int) =
+
+inline fun colorOf(@ColorRes id: Int): Int =
   ColorUtils.getColor(id)
 
-fun Int.setColorAlpha(@IntRange(from = 0x0, to = 0xFF) alpha: Int) =
+inline fun @receiver:ColorInt Int.convertAlpha(
+  @IntRange(from = 0x0, to = 0xFF) alpha: Int
+) =
   ColorUtils.setAlphaComponent(this, alpha)
 
-fun Int.setColorAlpha(@FloatRange(from = 0.0, to = 1.0) alpha: Float) =
+inline fun @receiver:ColorInt Int.convertAlpha(
+  @FloatRange(from = 0.0, to = 1.0) alpha: Float
+) =
   ColorUtils.setAlphaComponent(this, alpha)
 
-fun Int.setColorRedComponent(@IntRange(from = 0x0, to = 0xFF) alpha: Int) =
+inline fun @receiver:ColorInt Int.convertRed(
+  @IntRange(from = 0x0, to = 0xFF) alpha: Int
+) =
   ColorUtils.setRedComponent(this, alpha)
 
-fun Int.setColorRedComponent(@FloatRange(from = 0.0, to = 1.0) alpha: Float) =
+inline fun @receiver:ColorInt Int.convertRed(
+  @FloatRange(from = 0.0, to = 1.0) alpha: Float
+) =
   ColorUtils.setRedComponent(this, alpha)
 
-fun Int.setColorGreenComponent(@IntRange(from = 0x0, to = 0xFF) alpha: Int) =
+inline fun @receiver:ColorInt Int.convertGreen(
+  @IntRange(from = 0x0, to = 0xFF) alpha: Int
+) =
   ColorUtils.setGreenComponent(this, alpha)
 
-fun Int.setColorGreenComponent(@FloatRange(from = 0.0, to = 1.0) alpha: Float) =
+inline fun @receiver:ColorInt Int.convertGreen(
+  @FloatRange(from = 0.0, to = 1.0) alpha: Float
+) =
   ColorUtils.setGreenComponent(this, alpha)
 
-fun Int.setColorBlueComponent(@IntRange(from = 0x0, to = 0xFF) alpha: Int) =
+inline fun @receiver:ColorInt Int.convertBlue(
+  @IntRange(from = 0x0, to = 0xFF) alpha: Int
+) =
   ColorUtils.setBlueComponent(this, alpha)
 
-fun Int.setColorBlueComponent(@FloatRange(from = 0.0, to = 1.0) alpha: Float) =
+inline fun @receiver:ColorInt Int.convertBlue(
+  @FloatRange(from = 0.0, to = 1.0) alpha: Float
+) =
   ColorUtils.setBlueComponent(this, alpha)
 
-fun String.string2Color() =
-  ColorUtils.string2Int(this)
-
-fun Int.color2RgbString(): String =
+inline fun @receiver:ColorInt Int.toRgbColorString(): String =
   ColorUtils.int2RgbString(this)
 
-fun Int.color2ArgbString(): String =
+inline fun @receiver:ColorInt Int.toArgbColorString(): String =
   ColorUtils.int2ArgbString(this)
 
-val randomColor
+inline val randomColor: Int
   get() = ColorUtils.getRandomColor()
 
-fun randomColorOf(supportAlpha: Boolean) =
+inline fun randomColorOf(supportAlpha: Boolean): Int =
   ColorUtils.getRandomColor(supportAlpha)

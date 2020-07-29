@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package com.dylanc.utilktx
 
@@ -10,40 +10,40 @@ import com.blankj.utilcode.util.ToastUtils
 
 /**
  * @author Dylan Cai
- * @since 2019/11/7
  */
-fun setToastGravity(gravity: Int, xOffset: Int, yOffset: Int) =
+
+inline fun setToastGravity(gravity: Int, xOffset: Int, yOffset: Int) =
   ToastUtils.setGravity(gravity, xOffset, yOffset)
 
-fun setToastBgColor(@ColorInt bgColor: Int) =
+inline fun setToastBgColor(@ColorInt bgColor: Int) =
   ToastUtils.setBgColor(bgColor)
 
-fun setToastBgResource(@DrawableRes bgResource: Int) =
+inline fun setToastBgResource(@DrawableRes bgResource: Int) =
   ToastUtils.setBgResource(bgResource)
 
-fun setToastMsgColor(@ColorInt bgColor: Int) =
+inline fun setToastMsgColor(@ColorInt bgColor: Int) =
   ToastUtils.setMsgColor(bgColor)
 
-fun setToastMsgTextSize(textSize: Int) =
+inline fun setToastMsgTextSize(textSize: Int) =
   ToastUtils.setMsgTextSize(textSize)
 
-fun toast(text: String?) =
+inline fun toast(text: String?) =
   ToastUtils.showShort(text)
 
-fun toast(view: View): View =
+inline fun toast(view: View): View =
   ToastUtils.showCustomShort(view)
 
-fun toast(@LayoutRes layoutId: Int): View =
+inline fun toast(@LayoutRes layoutId: Int): View =
   ToastUtils.showCustomShort(layoutId)
 
-fun longToast(text: String) =
+inline fun longToast(text: String) =
   ToastUtils.showLong(text)
 
-fun longToast(view: View): View =
+inline fun longToast(view: View): View =
   ToastUtils.showCustomLong(view)
 
-fun longToast(@LayoutRes layoutId: Int): View =
+inline fun longToast(@LayoutRes layoutId: Int): View =
   ToastUtils.showCustomLong(layoutId)
 
-fun cancelToast() =
+inline fun cancelToast() =
   ToastUtils.cancel()
