@@ -15,17 +15,25 @@ import com.blankj.utilcode.util.ToastUtils
 inline fun setToastGravity(gravity: Int, xOffset: Int, yOffset: Int) =
   ToastUtils.setGravity(gravity, xOffset, yOffset)
 
-inline fun setToastBgColor(@ColorInt bgColor: Int) =
-  ToastUtils.setBgColor(bgColor)
+inline var toastBgColor: Int
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
+  set(@ColorInt value) = ToastUtils.setBgColor(value)
 
-inline fun setToastBgResource(@DrawableRes bgResource: Int) =
-  ToastUtils.setBgResource(bgResource)
+inline var toastMsgResource: Int
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
+  set(@DrawableRes value) = ToastUtils.setBgResource(value)
 
-inline fun setToastMsgColor(@ColorInt bgColor: Int) =
-  ToastUtils.setMsgColor(bgColor)
+inline var toastMsgColor: Int
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
+  set(@ColorInt value) = ToastUtils.setMsgColor(value)
 
-inline fun setToastMsgTextSize(textSize: Int) =
-  ToastUtils.setMsgTextSize(textSize)
+inline var toastMsgTextSize: Int
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
+  set(value) = ToastUtils.setMsgTextSize(value)
 
 inline fun toast(text: String?) =
   ToastUtils.showShort(text)

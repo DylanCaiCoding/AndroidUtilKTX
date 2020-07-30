@@ -33,7 +33,7 @@ inline val Long.sp: Int
 inline val Double.sp: Int
   get() = SizeUtils.sp2px(this.toFloat())
 
-//
+// TODO: 2020/7/30 Rename?
 inline fun Float.dp2px(): Int =
   SizeUtils.dp2px(this)
 

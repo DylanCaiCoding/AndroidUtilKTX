@@ -52,9 +52,10 @@ var Activity.statusBarColor: Int
 inline fun Activity.setStatusBarColor(color: Int): View? =
   BarUtils.setStatusBarColor(this, color)
 
-@Suppress("EXTENSION_SHADOWED_BY_MEMBER")
-inline fun Window.setStatusBarColor(color: Int): View? =
-  BarUtils.setStatusBarColor(this, color)
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+inline fun Window.setStatusBarColor(color: Int, transparentStatusBar: Boolean = true) {
+  if (transparentStatusBar) BarUtils.setStatusBarColor(this, color) else statusBarColor = color
+}
 
 inline fun DrawerLayout.setStatusBarColor(fakeStatusBar: View, color: Int, isTop: Boolean = false) =
   BarUtils.setStatusBarColor4Drawer(this, fakeStatusBar, color, isTop)

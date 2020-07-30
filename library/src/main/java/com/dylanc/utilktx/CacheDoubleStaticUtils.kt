@@ -5,10 +5,7 @@ package com.dylanc.utilktx
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Parcelable
-import com.blankj.utilcode.util.CacheDoubleStaticUtils
-import com.blankj.utilcode.util.CacheDoubleUtils
-import com.blankj.utilcode.util.CacheMemoryStaticUtils
-import com.blankj.utilcode.util.CacheMemoryUtils
+import com.blankj.utilcode.util.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.Serializable
@@ -16,6 +13,13 @@ import java.io.Serializable
 /**
  * @author Dylan Cai
  */
+
+inline fun cacheDoubleUtilsOf(
+  cacheName: String = "",
+  maxSize: Long = Long.MAX_VALUE,
+  maxCount: Int = Int.MAX_VALUE
+): CacheDiskUtils =
+  CacheDiskUtils.getInstance(cacheName, maxSize, maxCount)
 
 inline var defaultCacheDoubleUtils: CacheDoubleUtils
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)

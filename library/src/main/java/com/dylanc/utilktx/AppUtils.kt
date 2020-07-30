@@ -12,6 +12,7 @@ import java.io.File
 /**
  * @author Dylan Cai
  */
+
 inline val application: Application
   get() = Utils.getApp()
 
@@ -33,23 +34,23 @@ inline fun uninstallApp(packageName: String) =
 inline fun isAppInstalled(packageName: String): Boolean =
   AppUtils.isAppInstalled(packageName)
 
-inline fun isAppRoot(): Boolean =
-  AppUtils.isAppRoot()
+inline val isAppRoot: Boolean
+  get() = AppUtils.isAppRoot()
 
-inline fun isAppDebug(): Boolean =
-  AppUtils.isAppDebug()
+inline val isAppDebug: Boolean
+  get() = AppUtils.isAppDebug()
 
 inline fun isAppDebug(packageName: String): Boolean =
   AppUtils.isAppDebug(packageName)
 
-inline fun isAppSystem(): Boolean =
-  AppUtils.isAppSystem()
+inline val isAppSystem: Boolean
+  get() = AppUtils.isAppSystem()
 
 inline fun isAppSystem(packageName: String): Boolean =
   AppUtils.isAppSystem(packageName)
 
-inline fun isAppForeground(): Boolean =
-  AppUtils.isAppForeground()
+inline val isAppForeground: Boolean
+  get() = AppUtils.isAppForeground()
 
 inline fun isAppForeground(packageName: String): Boolean =
   AppUtils.isAppForeground(packageName)

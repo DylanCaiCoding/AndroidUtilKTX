@@ -108,12 +108,3 @@ inline fun back2HomeActivityFriendly(
   listener: ClickUtils.Back2HomeFriendlyListener
 ) =
   ClickUtils.back2HomeFriendly(tip, duration, listener)
-
-//
-fun View.doOnClick(listener: (() -> Unit)?) {
-  if (listener != null) {
-    setOnClickListener { listener.invoke() }
-  } else {
-    setOnClickListener(null)
-  }
-}

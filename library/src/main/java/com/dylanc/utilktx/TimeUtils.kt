@@ -11,7 +11,6 @@ import java.util.*
  * @author Dylan Cai
  */
 
-//
 const val PATTERN_DATE_HOUR_MINUTE_SECOND = "yyyy-MM-dd HH:mm:ss"
 const val PATTERN_DATE_HOUR_MINUTE = "yyyy-MM-dd HH:mm"
 const val PATTERN_MONTH_DAY_HOUR_MINUTE = "MM-dd HH:mm"

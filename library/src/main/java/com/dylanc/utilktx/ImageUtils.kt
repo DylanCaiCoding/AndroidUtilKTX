@@ -3,9 +3,7 @@
 package com.dylanc.utilktx
 
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.os.Build
-import android.view.View
 import androidx.annotation.*
 import androidx.annotation.IntRange
 import com.blankj.utilcode.util.ImageUtils
@@ -17,7 +15,6 @@ import java.io.InputStream
  * @author Dylan Cai
  */
 
-// rename toBitmap?
 inline fun bitmapOf(@DrawableRes resId: Int): Bitmap =
   ImageUtils.getBitmap(resId)
 

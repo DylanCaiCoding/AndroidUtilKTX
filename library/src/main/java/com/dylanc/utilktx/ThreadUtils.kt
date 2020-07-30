@@ -327,8 +327,9 @@ inline fun <T> executeByCustomThreadAtFixRate(
   unit: TimeUnit,
   task: ThreadUtils.Task<T>
 ) =
-  ThreadUtils.executeByCustomAtFixRate(pool, task, initialDelay, period, unit)
+ThreadUtils.executeByCustomAtFixRate(pool, task, initialDelay, period, unit)
 
+// TODO: 2020/7/30 Optimize usage
 inline fun cancelThread(tasks: ThreadUtils.Task<*>) =
   ThreadUtils.cancel(tasks)
 

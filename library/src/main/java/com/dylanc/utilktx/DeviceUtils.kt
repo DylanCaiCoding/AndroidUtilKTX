@@ -12,8 +12,8 @@ import com.blankj.utilcode.util.DeviceUtils
  * @author Dylan Cai
  */
 
-inline fun isDeviceRooted(): Boolean =
-  DeviceUtils.isDeviceRooted()
+inline val isDeviceRooted: Boolean
+  get() = DeviceUtils.isDeviceRooted()
 
 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
 inline fun isAdbEnabled(): Boolean = DeviceUtils.isAdbEnabled()
@@ -37,11 +37,11 @@ inline val deviceModel: String
 inline val deviceABIs: Array<String>
   get() = DeviceUtils.getABIs()
 
-inline fun isTablet(): Boolean =
-  DeviceUtils.isTablet()
+inline val isTablet: Boolean
+  get() = DeviceUtils.isTablet()
 
-inline fun isEmulator(): Boolean =
-  DeviceUtils.isEmulator()
+inline val isEmulator: Boolean
+  get() = DeviceUtils.isEmulator()
 
 inline val uniqueDeviceId: String
   get() = DeviceUtils.getUniqueDeviceId()

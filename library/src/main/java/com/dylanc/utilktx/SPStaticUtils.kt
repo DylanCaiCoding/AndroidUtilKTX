@@ -10,15 +10,15 @@ import com.blankj.utilcode.util.SPUtils
  * @author Dylan Cai
  */
 
+inline fun spUtilsOf(spName: String = "", mode: Int = Context.MODE_PRIVATE): SPUtils =
+  SPUtils.getInstance(spName, mode)
+
 inline var defaultSpUtils: SPUtils
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
   get() = throw NotImplementedError()
   set(value) {
     SPStaticUtils.setDefaultSPUtils(value)
   }
-
-inline fun spUtilsOf(spName: String = "", mode: Int = Context.MODE_PRIVATE): SPUtils =
-  SPUtils.getInstance(spName, mode)
 
 inline val allSP: Map<String, *>
   get() = SPStaticUtils.getAll()

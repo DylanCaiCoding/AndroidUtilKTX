@@ -30,7 +30,6 @@ inline val screenDensity: Float
 inline val screenDensityDpi: Int
   get() = ScreenUtils.getScreenDensityDpi()
 
-//
 inline fun Activity.setFullScreen() =
   ScreenUtils.setFullScreen(this)
 

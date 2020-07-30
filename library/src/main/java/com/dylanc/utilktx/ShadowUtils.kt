@@ -14,7 +14,6 @@ inline fun View.setShadow(noinline block: (ShadowBuilder.() -> Unit)? = null) =
     block?.let { ShadowBuilder(this).apply(block) }
   })
 
-// usage?
 class ShadowBuilder(private val config: ShadowUtils.Config) {
 
   fun radius(radius: Float) {

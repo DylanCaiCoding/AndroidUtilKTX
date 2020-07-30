@@ -27,14 +27,6 @@ inline var brightness: Int
     BrightnessUtils.setBrightness(value)
   }
 
-//@RequiresPermission(Manifest.permission.WRITE_SETTINGS)
-//fun setAutoBrightnessEnabled(enabled: Boolean): Boolean =
-//  BrightnessUtils.setAutoBrightnessEnabled(enabled)
-//
-//@RequiresPermission(Manifest.permission.WRITE_SETTINGS)
-//fun setBrightness(@IntRange(from = 0, to = 255) brightness: Int): Boolean =
-//  BrightnessUtils.setBrightness(brightness)
-
 inline var Window.brightness: Int
   get() = BrightnessUtils.getWindowBrightness(this)
   set(value) = BrightnessUtils.setWindowBrightness(this, value)

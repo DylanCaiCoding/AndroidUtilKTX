@@ -40,6 +40,3 @@ inline fun <T> Array<T>.contains(element: T): Boolean =
 
 inline fun <T> Array<T>.sort(noinline comparator: (T, T) -> Int) =
   ArrayUtils.sort(this, comparator)
-
-inline fun <T> Array<T>.forAllDo(noinline closure: (Int, T) -> Unit) =
-  ArrayUtils.forAllDo(this, closure)
