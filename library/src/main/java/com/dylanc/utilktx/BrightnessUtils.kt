@@ -19,11 +19,10 @@ inline var isAutoBrightnessEnabled: Boolean
     BrightnessUtils.setAutoBrightnessEnabled(value)
   }
 
-@setparam:IntRange(from = 0, to = 255)
 inline var brightness: Int
   get() = BrightnessUtils.getBrightness()
   @RequiresPermission(Manifest.permission.WRITE_SETTINGS)
-  set(value) {
+  set(@IntRange(from = 0, to = 255) value) {
     BrightnessUtils.setBrightness(value)
   }
 

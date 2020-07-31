@@ -15,11 +15,10 @@ import java.io.Serializable
  */
 
 inline fun cacheDoubleUtilsOf(
-  cacheName: String = "",
-  maxSize: Long = Long.MAX_VALUE,
-  maxCount: Int = Int.MAX_VALUE
-): CacheDiskUtils =
-  CacheDiskUtils.getInstance(cacheName, maxSize, maxCount)
+  cacheMemoryUtils: CacheMemoryUtils = cacheMemoryUtilsOf(),
+  cacheDiskUtils: CacheDiskUtils = cacheDiskUtilsOf()
+): CacheDoubleUtils =
+  CacheDoubleUtils.getInstance(cacheMemoryUtils, cacheDiskUtils)
 
 inline var defaultCacheDoubleUtils: CacheDoubleUtils
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)

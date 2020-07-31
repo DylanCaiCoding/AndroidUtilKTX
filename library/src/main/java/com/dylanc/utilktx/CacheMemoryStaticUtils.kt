@@ -5,7 +5,6 @@ package com.dylanc.utilktx
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Parcelable
-import com.blankj.utilcode.util.CacheDiskUtils
 import com.blankj.utilcode.util.CacheMemoryStaticUtils
 import com.blankj.utilcode.util.CacheMemoryUtils
 import org.json.JSONArray
@@ -17,11 +16,10 @@ import java.io.Serializable
  */
 
 inline fun cacheMemoryUtilsOf(
-  cacheName: String = "",
-  maxSize: Long = Long.MAX_VALUE,
-  maxCount: Int = Int.MAX_VALUE
-): CacheDiskUtils =
-  CacheDiskUtils.getInstance(cacheName, maxSize, maxCount)
+  maxCount: Int = 256,
+  cacheKey: String = maxCount.toString()
+): CacheMemoryUtils =
+  CacheMemoryUtils.getInstance(cacheKey, maxCount)
 
 inline var defaultCacheMemoryUtils: CacheMemoryUtils
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)

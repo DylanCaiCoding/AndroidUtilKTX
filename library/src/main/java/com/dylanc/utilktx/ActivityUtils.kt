@@ -5,138 +5,298 @@ package com.dylanc.utilktx
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.os.Binder
-import android.os.Build
 import android.os.Bundle
-import android.os.Parcelable
-import android.util.Size
-import android.util.SizeF
 import android.util.SparseArray
 import android.view.View
 import androidx.annotation.AnimRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.blankj.utilcode.util.ActivityUtils
-import java.io.Serializable
 
 /**
  * @author Dylan Cai
  */
 
-inline val Context.activity: Activity?
-  get() = ActivityUtils.getActivityByContext(this)
+/**
+ * Return the activity by context. This is equivalent to calling:
+ * ```
+ * ActivityUtils.getActivityByContext(context)
+ * ```
+*/
+inline val Context.activity: Activity? get() = ActivityUtils.getActivityByContext(this)
 
-inline val Activity.isExistsInStack: Boolean
-  get() = ActivityUtils.isActivityExistsInStack(this)
+/**
+ * Return whether the activity exists in activity's stack. This is equivalent to calling:
+ * ```
+ * ActivityUtils.isActivityExistsInStack(activity)
+ * ```
+*/
+inline val Activity.isExistsInStack: Boolean get() = ActivityUtils.isActivityExistsInStack(this)
 
-inline fun <reified T : Activity> startActivity() =
-  ActivityUtils.startActivity(T::class.java)
-
-inline fun <reified T : Activity> startActivity(extra: Bundle) =
-  ActivityUtils.startActivity(extra, T::class.java)
-
-inline fun <reified T : Activity> startActivity(extra: Bundle, options: Bundle) =
-  ActivityUtils.startActivity(extra, T::class.java, options)
-
-inline fun <reified T : Activity> startActivity(vararg extra: Pair<String, *>) =
-  ActivityUtils.startActivity(bundleOf(*extra), T::class.java)
-
+/**
+ * Launch a new Activity with extras or options. This is equivalent to calling:
+ * ```
+ * ActivityUtils.startActivity(clz, intent, options)
+ * ```
+ *
+ * @param extras  The Bundle of extras to add to this intent.
+ * @param options Additional options for how the Activity should be started.
+ */
 inline fun <reified T : Activity> startActivity(
-  vararg extra: Pair<String, *>,
-  options: Bundle
-) =
-  ActivityUtils.startActivity(bundleOf(*extra), T::class.java, options)
+  vararg extras: Pair<String, *>, options: Bundle? = null
+) = ActivityUtils.startActivity(bundleOf(*extras), T::class.java, options)
 
+/**
+ * Launch a new Activity with extras or options. This is equivalent to calling:
+ * ```
+ * ActivityUtils.startActivity(clz, extras, options)
+ * ```
+ *
+ * @param extras  The Bundle of extras to add to this intent.
+ * @param options Additional options for how the Activity should be started.
+ */
+inline fun <reified T : Activity> startActivity(extras: Bundle? = null, options: Bundle? = null) =
+  if (extras == null) {
+    ActivityUtils.startActivity(T::class.java, options)
+  } else {
+    ActivityUtils.startActivity(extras, T::class.java, options)
+  }
+
+/**
+ * Launch a new Activity with an explicit transition animation. This is equivalent to calling:
+ * ```
+ * ActivityUtils.startActivity(clz, enterAnim, exitAnim)
+ * ```
+ */
 inline fun <reified T : Activity> startActivity(@AnimRes enterAnim: Int, @AnimRes exitAnim: Int) =
   ActivityUtils.startActivity(T::class.java, enterAnim, exitAnim)
 
-inline fun <reified T : Activity> Activity.startActivity() =
-  ActivityUtils.startActivity(this, T::class.java)
-
-inline fun <reified T : Activity> Activity.startActivity(extra: Bundle) =
-  ActivityUtils.startActivity(this, intentOf<T>(extra))
-
-inline fun <reified T : Activity> Activity.startActivity(extra: Bundle, options: Bundle) =
-  ActivityUtils.startActivity(this, intentOf<T>(extra), options)
-
-inline fun <reified T : Activity> Activity.startActivity(vararg extra: Pair<String, *>) =
-  ActivityUtils.startActivity(this, intentOf<T>(*extra))
-
+/**
+ * Launch a new Activity with extras or options. This is equivalent to calling:
+ * ```
+ * ActivityUtils.startActivity(activity, clz, extras, options)
+ * ```
+ *
+ * @param extras  The Bundle of extras to add to this intent.
+ * @param options Additional options for how the Activity should be started.
+ */
 inline fun <reified T : Activity> Activity.startActivity(
-  vararg extra: Pair<String, *>,
-  options: Bundle
-) =
-  ActivityUtils.startActivity(this, intentOf<T>(*extra), options)
+  extras: Bundle? = null, options: Bundle? = null
+) = if (extras == null) {
+  ActivityUtils.startActivity(this, T::class.java, options)
+} else {
+  ActivityUtils.startActivity(this, intentOf<T>(extras), options)
+}
 
+/**
+ * Launch a new Activity with extras or options. This is equivalent to calling:
+ * ```
+ * ActivityUtils.startActivity(clz, intent, options)
+ * ```
+ *
+ * @param extras  The Bundle of extras to add to this intent.
+ * @param options Additional options for how the Activity should be started.
+ */
 inline fun <reified T : Activity> Activity.startActivity(
-  @AnimRes enterAnim: Int,
-  @AnimRes exitAnim: Int
-) =
-  ActivityUtils.startActivity(this, T::class.java, enterAnim, exitAnim)
+  vararg extras: Pair<String, *>, options: Bundle? = null
+) = ActivityUtils.startActivity(this, intentOf<T>(*extras), options)
 
+/**
+ * Launch a new Activity with an explicit transition animation. This is equivalent to calling:
+ * ```
+ * ActivityUtils.startActivity(activity, clz, enterAnim, exitAnim)
+ * ```
+ */
+inline fun <reified T : Activity> Activity.startActivity(
+  @AnimRes enterAnim: Int, @AnimRes exitAnim: Int
+) = ActivityUtils.startActivity(this, T::class.java, enterAnim, exitAnim)
+
+/**
+ * Launch a new Activity with shared elements. This is equivalent to calling:
+ * ```
+ * ActivityUtils.startActivity(activity, intent, sharedElements)
+ * ```
+ */
 inline fun Activity.startActivity(intent: Intent, vararg sharedElements: View) =
   ActivityUtils.startActivity(this, intent, *sharedElements)
 
-inline fun <T : Intent> Array<T>.start(options: Bundle? = null) =
-  ActivityUtils.startActivities(this, options)
+/**
+ * Launch activities. This is equivalent to calling:
+ * ```
+ * ActivityUtils.startActivities(intents, options)
+ * ```
+ */
+inline fun startActivities(intents: Array<Intent>, options: Bundle? = null) =
+  ActivityUtils.startActivities(intents, options)
 
-inline fun <T : Intent> Array<T>.start(activity: Activity, options: Bundle? = null) =
-  ActivityUtils.startActivities(activity, this, options)
+/**
+ * Launch activities. This is equivalent to calling:
+ * ```
+ * ActivityUtils.startActivities(activity, intents, options)
+ * ```
+ */
+inline fun Activity.startActivities(
+  intents: Array<Intent>, options: Bundle? = null, newTask: Boolean = true
+) = if (newTask) {
+  ActivityUtils.startActivities(this, intents, options)
+} else {
+  startActivities(intents, options)
+}
 
-inline fun startHomeActivity() =
-  ActivityUtils.startHomeActivity()
+/**
+ * Launch activities with an explicit transition animation. This is equivalent to calling:
+ * ```
+ * ActivityUtils.startActivities(activity, intents, enterAnim, exitAnim)
+ * ```
+ */
+inline fun Activity.startActivities(
+  intents: Array<Intent>, @AnimRes enterAnim: Int, @AnimRes exitAnim: Int
+) = ActivityUtils.startActivities(this, intents, enterAnim, exitAnim)
 
-val activityList: List<Activity>
-  get() = ActivityUtils.getActivityList()
+/**
+ * Launch a new Activity of home. This is equivalent to calling:
+ * ```
+ * ActivityUtils.startHomeActivity()
+ * ```
+ */
+inline fun startHomeActivity() = ActivityUtils.startHomeActivity()
 
-inline val Context.isActivityAlive: Boolean
-  get() = ActivityUtils.isActivityAlive(this)
+/**
+ * Return the list of activity. This is equivalent to calling:
+ * ```
+ * ActivityUtils.getActivityList()
+ * ```
+ */
+val activityList: List<Activity> get() = ActivityUtils.getActivityList()
 
-inline val Activity.isAlive: Boolean
-  get() = ActivityUtils.isActivityAlive(this)
+/**
+ * Return whether the activity is alive. This is equivalent to calling:
+ * ```
+ * ActivityUtils.isActivityAlive(context)
+ * ```
+ */
+inline val Context.isActivityAlive: Boolean get() = ActivityUtils.isActivityAlive(this)
 
-val topActivity: Activity
-  get() = ActivityUtils.getTopActivity()
+/**
+ * Return whether the activity is alive. This is equivalent to calling:
+ * ```
+ * ActivityUtils.isActivityAlive(activity)
+ * ```
+ */
+inline val Activity.isAlive: Boolean get() = ActivityUtils.isActivityAlive(this)
 
-inline val launchActivityName: String
-  get() = ActivityUtils.getLauncherActivity()
+/**
+ * Return the top activity in activity's stack. This is equivalent to calling:
+ * ```
+ * ActivityUtils.getTopActivity()
+ * ```
+ */
+val topActivity: Activity get() = ActivityUtils.getTopActivity()
 
+/**
+ * Return the name of launcher activity. This is equivalent to calling:
+ * ```
+ * ActivityUtils.getLauncherActivity()
+ * ```
+ */
+inline val launchActivityName: String get() = ActivityUtils.getLauncherActivity()
+
+/**
+ * Return the name of launcher activity. This is equivalent to calling:
+ * ```
+ * ActivityUtils.getLauncherActivity(pkg)
+ * ```
+ */
 inline fun launchActivityNameOf(pkg: String): String = ActivityUtils.getLauncherActivity(pkg)
 
+/**
+ * Finish the activities whose type not equals the activity class. This is equivalent to calling:
+ * ```
+ * ActivityUtils.finishOtherActivities(clz, isLoadAnim)
+ * ```
+ *
+ * @param isLoadAnim True to use animation for the outgoing activity, false otherwise.
+ */
 inline fun <reified T : Activity> finishOtherActivities(isLoadAnim: Boolean = false) =
   ActivityUtils.finishOtherActivities(T::class.java, isLoadAnim)
 
+/**
+ * Finish the activities whose type not equals the activity class with an explicit transition
+ * animation. This is equivalent to calling:
+ * ```
+ * ActivityUtils.finishOtherActivities(clz, enterAnim, exitAnim)
+ * ```
+ */
 inline fun <reified T : Activity> finishOtherActivities(
-  @AnimRes enterAnim: Int,
-  @AnimRes exitAnim: Int
-) =
-  ActivityUtils.finishOtherActivities(T::class.java, enterAnim, exitAnim)
+  @AnimRes enterAnim: Int, @AnimRes exitAnim: Int
+) = ActivityUtils.finishOtherActivities(T::class.java, enterAnim, exitAnim)
 
+/**
+ * Finish all of activities. This is equivalent to calling:
+ * ```
+ * ActivityUtils.finishAllActivities(isLoadAnim)
+ * ```
+ *
+ * @param isLoadAnim True to use animation for the outgoing activity, false otherwise.
+ */
 inline fun finishAllActivities(isLoadAnim: Boolean = false) =
   ActivityUtils.finishAllActivities(isLoadAnim)
 
+/**
+ * Finish all of activities with an explicit transition animation. This is equivalent to calling:
+ * ```
+ * ActivityUtils.finishAllActivities(enterAnim, exitAnim)
+ * ```
+ */
 inline fun finishAllActivities(@AnimRes enterAnim: Int, @AnimRes exitAnim: Int) =
   ActivityUtils.finishAllActivities(enterAnim, exitAnim)
 
+/**
+ * Finish all of activities except the newest activity. This is equivalent to calling:
+ * ```
+ * ActivityUtils.finishAllActivitiesExceptNewest(isLoadAnim)
+ * ```
+ *
+ * @param isLoadAnim True to use animation for the outgoing activity, false otherwise.
+ */
 inline fun finishAllActivitiesExceptNewest(isLoadAnim: Boolean = false) =
   ActivityUtils.finishAllActivitiesExceptNewest(isLoadAnim)
 
+/**
+ * Finish all of activities except the newest activity with an explicit transition animation.
+ * This is equivalent to calling:
+ * ```
+ * ActivityUtils.finishAllActivitiesExceptNewest(isLoadAnim)
+ * ```
+ */
 inline fun finishAllActivitiesExceptNewest(@AnimRes enterAnim: Int, @AnimRes exitAnim: Int) =
   ActivityUtils.finishAllActivitiesExceptNewest(enterAnim, exitAnim)
 
+/**
+ * Modifies the standard behavior to allow results to be delivered to fragments.
+ * This imposes a restriction that requestCode be <= 0xffff. This is equivalent to calling:
+ * ```
+ * DispatchResultFragment.newInstance(fragmentActivity).startForResult(intent, requestCode, callback)
+ * ```
+ *
+ * @param extras  The Bundle of extras to add to this intent.
+ */
 inline fun <reified T : Activity> FragmentActivity.startActivityForResult(
   requestCode: Int,
-  vararg extra: Pair<String, *>,
+  vararg extras: Pair<String, *>,
   noinline callback: (resultCode: Int, data: Intent?) -> Unit
-) =
-  startActivityForResult(intentOf<T>(*extra), requestCode, callback)
+) = startActivityForResult(intentOf<T>(*extras), requestCode, callback)
 
+/**
+ * Modifies the standard behavior to allow results to be delivered to fragments.
+ * This imposes a restriction that requestCode be <= 0xffff. This is equivalent to calling:
+ * ```
+ * DispatchResultFragment.newInstance(fragmentActivity).startForResult(intent, requestCode, callback)
+ * ```
+ */
 inline fun FragmentActivity.startActivityForResult(
-  intent: Intent,
-  requestCode: Int,
-  noinline callback: (resultCode: Int, data: Intent?) -> Unit
-) =
-  DispatchResultFragment.newInstance(this).startForResult(intent, requestCode, callback)
+  intent: Intent, requestCode: Int, noinline callback: (resultCode: Int, data: Intent?) -> Unit
+) = DispatchResultFragment.newInstance(this).startForResult(intent, requestCode, callback)
 
 
 class DispatchResultFragment : Fragment() {
@@ -187,76 +347,3 @@ class DispatchResultFragment : Fragment() {
   }
 }
 
-fun bundleOf(vararg pairs: Pair<String, Any?>) = Bundle(pairs.size).apply {
-  for ((key, value) in pairs) {
-    when (value) {
-      null -> putString(key, null)
-
-      // Scalars
-      is Boolean -> putBoolean(key, value)
-      is Byte -> putByte(key, value)
-      is Char -> putChar(key, value)
-      is Double -> putDouble(key, value)
-      is Float -> putFloat(key, value)
-      is Int -> putInt(key, value)
-      is Long -> putLong(key, value)
-      is Short -> putShort(key, value)
-
-      // References
-      is Bundle -> putBundle(key, value)
-      is CharSequence -> putCharSequence(key, value)
-      is Parcelable -> putParcelable(key, value)
-
-      // Scalar arrays
-      is BooleanArray -> putBooleanArray(key, value)
-      is ByteArray -> putByteArray(key, value)
-      is CharArray -> putCharArray(key, value)
-      is DoubleArray -> putDoubleArray(key, value)
-      is FloatArray -> putFloatArray(key, value)
-      is IntArray -> putIntArray(key, value)
-      is LongArray -> putLongArray(key, value)
-      is ShortArray -> putShortArray(key, value)
-
-      // Reference arrays
-      is Array<*> -> {
-        val componentType = value::class.java.componentType!!
-        @Suppress("UNCHECKED_CAST") // Checked by reflection.
-        when {
-          Parcelable::class.java.isAssignableFrom(componentType) -> {
-            putParcelableArray(key, value as Array<Parcelable>)
-          }
-          String::class.java.isAssignableFrom(componentType) -> {
-            putStringArray(key, value as Array<String>)
-          }
-          CharSequence::class.java.isAssignableFrom(componentType) -> {
-            putCharSequenceArray(key, value as Array<CharSequence>)
-          }
-          Serializable::class.java.isAssignableFrom(componentType) -> {
-            putSerializable(key, value)
-          }
-          else -> {
-            val valueType = componentType.canonicalName
-            throw IllegalArgumentException(
-              "Illegal value array type $valueType for key \"$key\""
-            )
-          }
-        }
-      }
-
-      is Serializable -> putSerializable(key, value)
-
-      else -> {
-        if (Build.VERSION.SDK_INT >= 18 && value is Binder) {
-          putBinder(key, value)
-        } else if (Build.VERSION.SDK_INT >= 21 && value is Size) {
-          putSize(key, value)
-        } else if (Build.VERSION.SDK_INT >= 21 && value is SizeF) {
-          putSizeF(key, value)
-        } else {
-          val valueType = value.javaClass.canonicalName
-          throw IllegalArgumentException("Illegal value type $valueType for key \"$key\"")
-        }
-      }
-    }
-  }
-}

@@ -12,7 +12,7 @@ import com.blankj.utilcode.util.ServiceUtils
 inline val allRunningServiceNames: Set<String>
   get() = mutableSetOf<String>().apply {
     for (serviceName in ServiceUtils.getAllRunningServices()) {
-      add(serviceName as String)
+      if (serviceName is String) add(serviceName)
     }
   }
 
