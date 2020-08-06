@@ -8,23 +8,83 @@ import com.blankj.utilcode.util.CleanUtils
  * @author Dylan Cai
  */
 
-inline fun cleanInternalCache(): Boolean =
-  CleanUtils.cleanInternalCache()
+/**
+ * Clean the internal cache.
+ *
+ * directory: /data/data/package/cache
+ *
+ * This is equivalent to calling:
+ * ```
+ * CleanUtils.cleanInternalCache()
+ * ```
+ */
+inline fun cleanInternalCache(): Boolean = CleanUtils.cleanInternalCache()
 
-inline fun cleanInternalFiles(): Boolean =
-  CleanUtils.cleanInternalFiles()
+/**
+ * Clean the internal files.
+ *
+ * directory: /data/data/package/files
+ *
+ * This is equivalent to calling:
+ * ```
+ * CleanUtils.cleanInternalFiles()
+ * ```
+ */
+inline fun cleanInternalFiles(): Boolean = CleanUtils.cleanInternalFiles()
 
-inline fun cleanInternalDbs(): Boolean =
-  CleanUtils.cleanInternalDbs()
+/**
+ * Clean the internal databases.
+ *
+ * directory: /data/data/package/databases
+ *
+ * This is equivalent to calling:
+ * ```
+ * CleanUtils.cleanInternalDbs()
+ * ```
+ */
+inline fun cleanInternalDbs(): Boolean = CleanUtils.cleanInternalDbs()
 
-inline fun cleanInternalDb(dbName: String): Boolean =
-  CleanUtils.cleanInternalDbByName(dbName)
+/**
+ * Clean the internal database by name.
+ *
+ * directory: /data/data/package/databases/dbName
+ *
+ * This is equivalent to calling:
+ * ```
+ * CleanUtils.cleanInternalDb(dbName)
+ * ```
+ */
+inline fun cleanInternalDb(dbName: String): Boolean = CleanUtils.cleanInternalDbByName(dbName)
 
-inline fun cleanInternalSp(): Boolean =
-  CleanUtils.cleanInternalSp()
+/**
+ * Clean the internal shared preferences.
+ *
+ * directory: /data/data/package/shared_prefs
+ *
+ * This is equivalent to calling:
+ * ```
+ * CleanUtils.cleanInternalSp()
+ * ```
+ */
+inline fun cleanInternalSp(): Boolean = CleanUtils.cleanInternalSp()
 
-inline fun cleanExternalCache(): Boolean =
-  CleanUtils.cleanExternalCache()
+/**
+ * Clean the external cache.
+ *
+ * directory: /storage/emulated/0/android/data/package/cache
+ *
+ * This is equivalent to calling:
+ * ```
+ * CleanUtils.cleanExternalCache()
+ * ```
+ */
+inline fun cleanExternalCache(): Boolean = CleanUtils.cleanExternalCache()
 
-inline fun cleanCustomDir(dirPath: String): Boolean =
-  CleanUtils.cleanCustomDir(dirPath)
+
+/**
+ * Clean the directory. This is equivalent to calling:
+ * ```
+ * CleanUtils.cleanCustomDir(dirPath)
+ * ```
+ */
+inline fun cleanDir(dirPath: String): Boolean = CleanUtils.cleanCustomDir(dirPath)

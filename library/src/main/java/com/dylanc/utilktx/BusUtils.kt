@@ -12,11 +12,9 @@ import com.blankj.utilcode.util.BusUtils
  * @author Dylan Cai
  */
 
-inline fun registerEventBus(bus: Any) =
-  BusUtils.register(bus)
+inline fun registerEventBus(bus: Any) = BusUtils.register(bus)
 
-inline fun unregisterEventBus(bus: Any) =
-  BusUtils.unregister(bus)
+inline fun unregisterEventBus(bus: Any) = BusUtils.unregister(bus)
 
 inline fun observeEventBus(owner: LifecycleOwner) =
   owner.lifecycle.addObserver(object : LifecycleObserver {
@@ -31,20 +29,14 @@ inline fun observeEventBus(owner: LifecycleOwner) =
     }
   })
 
-inline fun postEvent(tag: String) =
-  BusUtils.post(tag)
+inline fun postEvent(tag: String) = BusUtils.post(tag)
 
-inline fun postStickyEvent(tag: String) =
-  BusUtils.postSticky(tag)
+inline fun postStickyEvent(tag: String) = BusUtils.postSticky(tag)
 
-inline fun postEvent(tag: String, arg: Any) =
-  BusUtils.post(tag, arg)
+inline fun postEvent(tag: String, arg: Any) = BusUtils.post(tag, arg)
 
-inline fun postStickyEvent(tag: String, arg: Any) =
-  BusUtils.postSticky(tag, arg)
+inline fun postStickyEvent(tag: String, arg: Any) = BusUtils.postSticky(tag, arg)
 
-inline fun removeStickyEvent(tag: String) =
-  BusUtils.removeSticky(tag)
+inline fun removeStickyEvent(tag: String) = BusUtils.removeSticky(tag)
 
-inline val eventBusInfo: String
-  get() = BusUtils.toString_()
+inline val eventBusInfo: String get() = BusUtils.toString_()

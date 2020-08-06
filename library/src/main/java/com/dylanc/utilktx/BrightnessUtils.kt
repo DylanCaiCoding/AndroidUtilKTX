@@ -12,6 +12,17 @@ import com.blankj.utilcode.util.BrightnessUtils
  * @author Dylan Cai
  */
 
+/**
+ * Returns whether automatic brightness mode is on or turns automatic brightness on or off.
+ * This is equivalent to calling:
+ * ```
+ * BrightnessUtils.isAutoBrightnessEnabled()
+ * ```
+ * or
+ * ```
+ * BrightnessUtils.setAutoBrightnessEnabled(value)
+ * ```
+ */
 inline var isAutoBrightnessEnabled: Boolean
   get() = BrightnessUtils.isAutoBrightnessEnabled()
   @RequiresPermission(Manifest.permission.WRITE_SETTINGS)
@@ -19,6 +30,16 @@ inline var isAutoBrightnessEnabled: Boolean
     BrightnessUtils.setAutoBrightnessEnabled(value)
   }
 
+/**
+ * Returns the brightness of the screen or sets the brightness of the screen. This is equivalent to calling:
+ * ```
+ * BrightnessUtils.getBrightness()
+ * ```
+ * or
+ * ```
+ * BrightnessUtils.setBrightness(brightness)
+ * ```
+ */
 inline var brightness: Int
   get() = BrightnessUtils.getBrightness()
   @RequiresPermission(Manifest.permission.WRITE_SETTINGS)
@@ -26,6 +47,16 @@ inline var brightness: Int
     BrightnessUtils.setBrightness(value)
   }
 
+/**
+ * Returns the brightness of the window or sets the brightness of the window. This is equivalent to calling:
+ * ```
+ * BrightnessUtils.getBrightness(window)
+ * ```
+ * or
+ * ```
+ * BrightnessUtils.setBrightness(window, brightness)
+ * ```
+ */
 inline var Window.brightness: Int
   get() = BrightnessUtils.getWindowBrightness(this)
-  set(value) = BrightnessUtils.setWindowBrightness(this, value)
+  set(@IntRange(from = 0, to = 255) value) = BrightnessUtils.setWindowBrightness(this, value)

@@ -9,8 +9,18 @@ import java.lang.reflect.Type
  * @author Dylan Cai
  */
 
-inline fun <reified T> T.deepClone(): T =
-  CloneUtils.deepClone(this, typeOf(T::class.java))
+/**
+ * Returns a deeply cloned object. This is equivalent to calling:
+ * ```
+ * CloneUtils.deepClone(data, type)
+ * ```
+ */
+inline fun <reified T> T.deepClone(): T = CloneUtils.deepClone(this, typeOf(T::class.java))
 
-inline fun <T> T.deepClone(type: Type): T =
-  CloneUtils.deepClone(this, type)
+/**
+ * Returns a deeply cloned object. This is equivalent to calling:
+ * ```
+ * CloneUtils.deepClone(data, type)
+ * ```
+ */
+inline fun <T> T.deepClone(type: Type): T = CloneUtils.deepClone(this, type)

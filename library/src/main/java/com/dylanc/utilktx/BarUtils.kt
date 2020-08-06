@@ -17,7 +17,7 @@ import com.blankj.utilcode.util.BarUtils
  */
 
 /**
- * Returns the height of status bar. This is equivalent to calling:
+ * Returns the height of the status bar. This is equivalent to calling:
  * ```
  * BarUtils.getStatusBarHeight()
  * ```
@@ -81,7 +81,7 @@ inline var Window.isStatusBarLightMode: Boolean
   set(value) = BarUtils.setStatusBarLightMode(this, value)
 
 /**
- * Add the top margin size equals the height of status for view. This is equivalent to calling:
+ * Add the top margin size equals the height of the status bar for view. This is equivalent to calling:
  * ```
  * BarUtils.addMarginTopEqualStatusBarHeight(view)
  * ```
@@ -90,7 +90,7 @@ inline fun View.addMarginTopEqualStatusBarHeight() =
   BarUtils.addMarginTopEqualStatusBarHeight(this)
 
 /**
- * Subtract the top margin size equals the height of status for view. This is equivalent to calling:
+ * Subtract the top margin size equals the height of the status bar for view. This is equivalent to calling:
  * ```
  * BarUtils.subtractMarginTopEqualStatusBarHeight(view)
  * ```
@@ -99,7 +99,7 @@ inline fun View.subtractMarginTopEqualStatusBarHeight() =
   BarUtils.subtractMarginTopEqualStatusBarHeight(this)
 
 /**
- * Sets the color of status bar. This is equivalent to calling:
+ * Sets the color of the status bar. This is equivalent to calling:
  * ```
  * BarUtils.setStatusBarColor(activity, color)
  * ```
@@ -112,7 +112,7 @@ var Activity.statusBarColor: Int
   }
 
 /**
- * Sets the color of status bar. This is equivalent to calling:
+ * Sets the color of the status bar. This is equivalent to calling:
  * ```
  * BarUtils.setStatusBarColor(window, color)
  * ```
@@ -123,7 +123,7 @@ inline fun Window.setStatusBarColor(color: Int, transparentStatusBar: Boolean = 
 }
 
 /**
- * Sets the color of status bar for drawer layout. This is equivalent to calling:
+ * Sets the color of the status bar for drawer layout. This is equivalent to calling:
  * ```
  * BarUtils.setStatusBarColor4Drawer(drawerLayout, fakeStatusBar, color, isTop)
  * ```
@@ -168,7 +168,7 @@ inline var isNotificationBarVisible: Boolean
   set(value) = BarUtils.setNotificationBarVisibility(value)
 
 /**
- * Returns the height of navigation bar. This is equivalent to calling:
+ * Returns the height of the navigation bar. This is equivalent to calling:
  * ```
  * BarUtils.getNavBarHeight()
  * ```
@@ -202,7 +202,7 @@ inline var Window.isNavBarVisible: Boolean
   set(value) = BarUtils.setNavBarVisibility(this, value)
 
 /**
- * Returns the color of navigation bar or sets the color of navigation bar.
+ * Returns the color of the navigation bar or sets the color of the navigation bar.
  * This is equivalent to calling:
  * ```
  * BarUtils.getNavBarColor(activity)
@@ -219,7 +219,7 @@ inline var Activity.navBarColor: Int
   set(value) = BarUtils.setNavBarColor(this, value)
 
 /**
- * Returns the color of navigation bar or sets the color of navigation bar.
+ * Returns the color of the navigation bar or sets the color of the navigation bar.
  * This is equivalent to calling:
  * ```
  * BarUtils.getNavBarColor(window)

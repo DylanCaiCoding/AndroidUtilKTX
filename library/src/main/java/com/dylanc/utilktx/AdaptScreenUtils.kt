@@ -10,38 +10,37 @@ import com.blankj.utilcode.util.AdaptScreenUtils
  */
 
 /**
- * Adapt for the horizontal screen, and call it in [android.app.Activity.getResources].
+ * Adapts for the horizontal screen, and call it in [android.app.Activity.getResources].
  * This is equivalent to calling:
  * ```
  * AdaptScreenUtils.adaptWidth(resources, designWidth)
  * ```
  */
-inline fun adaptScreenWidth(resources: Resources, designWidth: Int): Resources =
-  AdaptScreenUtils.adaptWidth(resources, designWidth)
+inline fun Resources.adaptScreenWidth(designWidth: Int): Resources =
+  AdaptScreenUtils.adaptWidth(this, designWidth)
 
 /**
- * Adapt for the vertical screen, and call it in [android.app.Activity.getResources].
+ * Adapts for the vertical screen, and call it in [android.app.Activity.getResources].
  * This is equivalent to calling:
  * ```
  * AdaptScreenUtils.adaptHeight(resources, designWidth, includeNavBar)
  * ```
  */
-inline fun adaptScreenHeight(
-  resources: Resources, designWidth: Int, includeNavBar: Boolean = false
-): Resources = AdaptScreenUtils.adaptHeight(resources, designWidth, includeNavBar)
+inline fun Resources.adaptScreenHeight(
+  designWidth: Int, includeNavBar: Boolean = false
+): Resources = AdaptScreenUtils.adaptHeight(this, designWidth, includeNavBar)
 
 /**
- * Cancel adapting for the screen, and call it in [android.app.Activity.getResources].
+ * Cancels adapting for the screen, and call it in [android.app.Activity.getResources].
  * This is equivalent to calling:
  * ```
  * AdaptScreenUtils.closeAdapt(resources)
  * ```
  */
-inline fun closeAdaptScreen(resources: Resources): Resources =
-  AdaptScreenUtils.closeAdapt(resources)
+inline fun Resources.closeAdaptScreen(): Resources = AdaptScreenUtils.closeAdapt(this)
 
 /**
- * Return the value converted from pt to px. This is equivalent to calling:
+ * Returns the value converted from pt to px. This is equivalent to calling:
  * ```
  * AdaptScreenUtils.pt2Px(float)
  * ```
@@ -49,7 +48,7 @@ inline fun closeAdaptScreen(resources: Resources): Resources =
 inline val Float.pt: Int get() = AdaptScreenUtils.pt2Px(this)
 
 /**
- * Return the value converted from px to pt. This is equivalent to calling:
+ * Returns the value converted from px to pt. This is equivalent to calling:
  * ```
  * AdaptScreenUtils.pt2Px(float)
  * ```
