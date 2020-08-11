@@ -22,9 +22,8 @@ import java.io.Serializable
  * CacheMemoryUtils.getInstance(cacheKey, maxCount)
  * ```
  */
-inline fun cacheMemoryUtilsOf(
-  maxCount: Int = 256, cacheKey: String = maxCount.toString()
-): CacheMemoryUtils = CacheMemoryUtils.getInstance(cacheKey, maxCount)
+inline fun cacheMemoryUtilsOf(maxCount: Int = 256, cacheKey: String = maxCount.toString()): CacheMemoryUtils =
+  CacheMemoryUtils.getInstance(cacheKey, maxCount)
 
 /**
  * Sets the default instance of [CacheMemoryUtils]. This is equivalent to calling:
@@ -56,7 +55,7 @@ inline fun putMemoryCache(key: String, value: String, saveTime: Int = -1) =
   CacheMemoryStaticUtils.put(key, value, saveTime)
 
 /**
- * Puts the JSONObject in the memory cache. This is equivalent to calling:
+ * Puts the [JSONObject] in the memory cache. This is equivalent to calling:
  * ```
  * CacheMemoryStaticUtils.put(key, value, saveTime)
  * ```
@@ -65,7 +64,7 @@ inline fun putMemoryCache(key: String, value: JSONObject, saveTime: Int = -1) =
   CacheMemoryStaticUtils.put(key, value, saveTime)
 
 /**
- * Puts the JSONArray in the memory cache. This is equivalent to calling:
+ * Puts the [JSONArray] in the memory cache. This is equivalent to calling:
  * ```
  * CacheMemoryStaticUtils.put(key, value, saveTime)
  * ```

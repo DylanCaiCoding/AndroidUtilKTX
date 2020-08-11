@@ -26,9 +26,8 @@ inline fun colorOf(@ColorRes id: Int): Int = ColorUtils.getColor(id)
  * ColorUtils.setAlphaComponent(color, alpha)
  * ```
  */
-inline fun @receiver:ColorInt Int.convertAlpha(
-  @IntRange(from = 0x0, to = 0xFF) alpha: Int
-): Int = ColorUtils.setAlphaComponent(this, alpha)
+inline fun @receiver:ColorInt Int.convertAlpha(@IntRange(from = 0x0, to = 0xFF) alpha: Int): Int =
+  ColorUtils.setAlphaComponent(this, alpha)
 
 /**
  * Sets the alpha component of the color. This is equivalent to calling:
@@ -36,9 +35,8 @@ inline fun @receiver:ColorInt Int.convertAlpha(
  * ColorUtils.setAlphaComponent(color, alpha)
  * ```
  */
-inline fun @receiver:ColorInt Int.convertAlpha(
-  @FloatRange(from = 0.0, to = 1.0) alpha: Float
-): Int = ColorUtils.setAlphaComponent(this, alpha)
+inline fun @receiver:ColorInt Int.convertAlpha(@FloatRange(from = 0.0, to = 1.0) alpha: Float): Int =
+  ColorUtils.setAlphaComponent(this, alpha)
 
 /**
  * Sets the red component of the color. This is equivalent to calling:
@@ -46,9 +44,8 @@ inline fun @receiver:ColorInt Int.convertAlpha(
  * ColorUtils.setRedComponent(color, red)
  * ```
  */
-inline fun @receiver:ColorInt Int.convertRed(
-  @IntRange(from = 0x0, to = 0xFF) red: Int
-): Int = ColorUtils.setRedComponent(this, red)
+inline fun @receiver:ColorInt Int.convertRed(@IntRange(from = 0x0, to = 0xFF) red: Int): Int =
+  ColorUtils.setRedComponent(this, red)
 
 /**
  * Sets the red component of the color. This is equivalent to calling:
@@ -56,9 +53,8 @@ inline fun @receiver:ColorInt Int.convertRed(
  * ColorUtils.setRedComponent(color, red)
  * ```
  */
-inline fun @receiver:ColorInt Int.convertRed(
-  @FloatRange(from = 0.0, to = 1.0) red: Float
-): Int = ColorUtils.setRedComponent(this, red)
+inline fun @receiver:ColorInt Int.convertRed(@FloatRange(from = 0.0, to = 1.0) red: Float): Int =
+  ColorUtils.setRedComponent(this, red)
 
 /**
  * Sets the green component of the color. This is equivalent to calling:
@@ -66,9 +62,8 @@ inline fun @receiver:ColorInt Int.convertRed(
  * ColorUtils.setGreenComponent(color, green)
  * ```
  */
-inline fun @receiver:ColorInt Int.convertGreen(
-  @IntRange(from = 0x0, to = 0xFF) green: Int
-) = ColorUtils.setGreenComponent(this, green)
+inline fun @receiver:ColorInt Int.convertGreen(@IntRange(from = 0x0, to = 0xFF) green: Int): Int =
+  ColorUtils.setGreenComponent(this, green)
 
 /**
  * Sets the green component of the color. This is equivalent to calling:
@@ -76,9 +71,8 @@ inline fun @receiver:ColorInt Int.convertGreen(
  * ColorUtils.setGreenComponent(color, green)
  * ```
  */
-inline fun @receiver:ColorInt Int.convertGreen(
-  @FloatRange(from = 0.0, to = 1.0) green: Float
-) = ColorUtils.setGreenComponent(this, green)
+inline fun @receiver:ColorInt Int.convertGreen(@FloatRange(from = 0.0, to = 1.0) green: Float): Int =
+  ColorUtils.setGreenComponent(this, green)
 
 /**
  * Sets the blue component of the color. This is equivalent to calling:
@@ -86,9 +80,8 @@ inline fun @receiver:ColorInt Int.convertGreen(
  * ColorUtils.setBlueComponent(color, blue)
  * ```
  */
-inline fun @receiver:ColorInt Int.convertBlue(
-  @IntRange(from = 0x0, to = 0xFF) blue: Int
-) = ColorUtils.setBlueComponent(this, blue)
+inline fun @receiver:ColorInt Int.convertBlue(@IntRange(from = 0x0, to = 0xFF) blue: Int): Int =
+  ColorUtils.setBlueComponent(this, blue)
 
 /**
  * Sets the blue component of the color. This is equivalent to calling:
@@ -96,12 +89,23 @@ inline fun @receiver:ColorInt Int.convertBlue(
  * ColorUtils.setBlueComponent(color, blue)
  * ```
  */
-inline fun @receiver:ColorInt Int.convertBlue(
-  @FloatRange(from = 0.0, to = 1.0) blue: Float
-) = ColorUtils.setBlueComponent(this, blue)
+inline fun @receiver:ColorInt Int.convertBlue(@FloatRange(from = 0.0, to = 1.0) blue: Float): Int =
+  ColorUtils.setBlueComponent(this, blue)
 
+/**
+ * Converts the color int to the RGB string. This is equivalent to calling:
+ * ```
+ * ColorUtils.int2RgbString(colorInt)
+ * ```
+ */
 inline fun @receiver:ColorInt Int.toRgbColorString(): String = ColorUtils.int2RgbString(this)
 
+/**
+ * Converts the color int to the ARGB string. This is equivalent to calling:
+ * ```
+ * ColorUtils.int2RgbString(colorInt)
+ * ```
+ */
 inline fun @receiver:ColorInt Int.toArgbColorString(): String = ColorUtils.int2ArgbString(this)
 
 /**

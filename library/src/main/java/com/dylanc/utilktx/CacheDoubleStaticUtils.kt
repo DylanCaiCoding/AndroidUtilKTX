@@ -55,7 +55,7 @@ inline fun putDoubleCache(key: String, value: String, saveTime: Int = -1) =
   CacheDoubleStaticUtils.put(key, value, saveTime)
 
 /**
- * Puts the JSONObject in the double cache. This is equivalent to calling:
+ * Puts the [JSONObject] in the double cache. This is equivalent to calling:
  * ```
  * CacheDoubleStaticUtils.put(key, value, saveTime)
  * ```
@@ -64,7 +64,7 @@ inline fun putDoubleCache(key: String, value: JSONObject, saveTime: Int = -1) =
   CacheDoubleStaticUtils.put(key, value, saveTime)
 
 /**
- * Puts the JSONArray in the double cache. This is equivalent to calling:
+ * Puts the [JSONArray] in the double cache. This is equivalent to calling:
  * ```
  * CacheDoubleStaticUtils.put(key, value, saveTime)
  * ```
@@ -127,7 +127,7 @@ inline fun doubleCacheStringOf(key: String, defaultValue: String? = null): Strin
   CacheDoubleStaticUtils.getString(key, defaultValue)
 
 /**
- * Returns the JSONObject in the double cache. This is equivalent to calling:
+ * Returns the [JSONObject] in the double cache. This is equivalent to calling:
  * ```
  * CacheDoubleStaticUtils.getJSONObject(key, defaultValue)
  * ```
@@ -159,9 +159,8 @@ inline fun doubleCacheDrawableOf(key: String, defaultValue: Drawable? = null): D
  * CacheDoubleStaticUtils.getParcelable(key, defaultValue)
  * ```
  */
-inline fun <T> doubleCacheParcelableOf(
-  key: String, creator: Parcelable.Creator<T>, defaultValue: T? = null
-): T = CacheDoubleStaticUtils.getParcelable(key, creator, defaultValue)
+inline fun <T> doubleCacheParcelableOf(key: String, creator: Parcelable.Creator<T>, defaultValue: T? = null): T =
+  CacheDoubleStaticUtils.getParcelable(key, creator, defaultValue)
 
 /**
  * Returns the serializable in the double cache. This is equivalent to calling:
@@ -170,9 +169,8 @@ inline fun <T> doubleCacheParcelableOf(
  * ```
  */
 @Suppress("UNCHECKED_CAST")
-inline fun <T> doubleCacheSerializableOf(
-  key: String, defaultValue: T? = null
-): T = CacheDoubleStaticUtils.getSerializable(key, defaultValue) as T
+inline fun <T> doubleCacheSerializableOf(key: String, defaultValue: T? = null): T =
+  CacheDoubleStaticUtils.getSerializable(key, defaultValue) as T
 
 /**
  * Returns the size of the double cache, in bytes. This is equivalent to calling:

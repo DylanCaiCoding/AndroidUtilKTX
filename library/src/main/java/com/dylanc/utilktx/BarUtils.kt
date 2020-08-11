@@ -86,8 +86,7 @@ inline var Window.isStatusBarLightMode: Boolean
  * BarUtils.addMarginTopEqualStatusBarHeight(view)
  * ```
  */
-inline fun View.addMarginTopEqualStatusBarHeight() =
-  BarUtils.addMarginTopEqualStatusBarHeight(this)
+inline fun View.addMarginTopEqualStatusBarHeight() = BarUtils.addMarginTopEqualStatusBarHeight(this)
 
 /**
  * Subtract the top margin size equals the height of the status bar for view. This is equivalent to calling:
@@ -95,8 +94,7 @@ inline fun View.addMarginTopEqualStatusBarHeight() =
  * BarUtils.subtractMarginTopEqualStatusBarHeight(view)
  * ```
  */
-inline fun View.subtractMarginTopEqualStatusBarHeight() =
-  BarUtils.subtractMarginTopEqualStatusBarHeight(this)
+inline fun View.subtractMarginTopEqualStatusBarHeight() = BarUtils.subtractMarginTopEqualStatusBarHeight(this)
 
 /**
  * Sets the color of the status bar. This is equivalent to calling:

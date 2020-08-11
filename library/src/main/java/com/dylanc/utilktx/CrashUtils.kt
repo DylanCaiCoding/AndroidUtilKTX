@@ -9,10 +9,20 @@ import java.io.File
  * @author Dylan Cai
  */
 
-inline fun initCrashDir(
-  crashDirPath: String = "", noinline listener: ((String, Throwable) -> Unit)? = null
-) = CrashUtils.init(crashDirPath, listener)
+/**
+ * Initializes [CrashUtils]. This is equivalent to calling:
+ * ```
+ * CrashUtils.init(crashDirPath, listener)
+ * ```
+ */
+inline fun initCrashDir(crashDirPath: String = "", noinline listener: ((String, Throwable) -> Unit)? = null) =
+  CrashUtils.init(crashDirPath, listener)
 
-inline fun initCrashDir(
-  crashDir: File, noinline listener: ((String, Throwable) -> Unit)? = null
-) = CrashUtils.init(crashDir, listener)
+/**
+ * Initializes [CrashUtils]. This is equivalent to calling:
+ * ```
+ * CrashUtils.init(crashDir, listener)
+ * ```
+ */
+inline fun initCrashDir(crashDir: File, noinline listener: ((String, Throwable) -> Unit)? = null) =
+  CrashUtils.init(crashDir, listener)

@@ -26,9 +26,8 @@ inline fun Resources.adaptScreenWidth(designWidth: Int): Resources =
  * AdaptScreenUtils.adaptHeight(resources, designWidth, includeNavBar)
  * ```
  */
-inline fun Resources.adaptScreenHeight(
-  designWidth: Int, includeNavBar: Boolean = false
-): Resources = AdaptScreenUtils.adaptHeight(this, designWidth, includeNavBar)
+inline fun Resources.adaptScreenHeight(designWidth: Int, includeNavBar: Boolean = false): Resources =
+  AdaptScreenUtils.adaptHeight(this, designWidth, includeNavBar)
 
 /**
  * Cancels adapting for the screen, and call it in [android.app.Activity.getResources].

@@ -21,9 +21,8 @@ import java.io.Serializable
  * CacheDiskUtils.getInstance(cacheName, maxSize, maxCount)
  * ```
  */
-inline fun cacheDiskUtilsOf(
-  cacheName: String = "", maxSize: Long = Long.MAX_VALUE, maxCount: Int = Int.MAX_VALUE
-): CacheDiskUtils = CacheDiskUtils.getInstance(cacheName, maxSize, maxCount)
+inline fun cacheDiskUtilsOf(cacheName: String = "", maxSize: Long = Long.MAX_VALUE, maxCount: Int = Int.MAX_VALUE): CacheDiskUtils =
+  CacheDiskUtils.getInstance(cacheName, maxSize, maxCount)
 
 /**
  * Sets the default instance of [CacheDiskUtils]. This is equivalent to calling:
@@ -55,7 +54,7 @@ inline fun putDiskCache(key: String, value: String, saveTime: Int = -1) =
   CacheDiskStaticUtils.put(key, value, saveTime)
 
 /**
- * Puts the JSONObject in the disk cache. This is equivalent to calling:
+ * Puts the [JSONObject] in the disk cache. This is equivalent to calling:
  * ```
  * CacheDiskStaticUtils.put(key, value, saveTime)
  * ```
@@ -64,7 +63,7 @@ inline fun putDiskCache(key: String, value: JSONObject, saveTime: Int = -1) =
   CacheDiskStaticUtils.put(key, value, saveTime)
 
 /**
- * Puts the JSONArray in the disk cache. This is equivalent to calling:
+ * Puts the [JSONArray] in the disk cache. This is equivalent to calling:
  * ```
  * CacheDiskStaticUtils.put(key, value, saveTime)
  * ```
@@ -127,7 +126,7 @@ inline fun diskCacheStringOf(key: String, defaultValue: String? = null): String?
   CacheDiskStaticUtils.getString(key, defaultValue)
 
 /**
- * Returns the JSONObject in the disk cache. This is equivalent to calling:
+ * Returns the [JSONObject] in the disk cache. This is equivalent to calling:
  * ```
  * CacheDiskStaticUtils.getJSONObject(key, defaultValue)
  * ```
@@ -159,9 +158,8 @@ inline fun diskCacheDrawableOf(key: String, defaultValue: Drawable? = null): Dra
  * CacheDiskStaticUtils.getParcelable(key, defaultValue)
  * ```
  */
-inline fun <T> diskCacheParcelableOf(
-  key: String, creator: Parcelable.Creator<T>, defaultValue: T? = null
-): T = CacheDiskStaticUtils.getParcelable(key, creator, defaultValue)
+inline fun <T> diskCacheParcelableOf(key: String, creator: Parcelable.Creator<T>, defaultValue: T? = null): T
+    = CacheDiskStaticUtils.getParcelable(key, creator, defaultValue)
 
 /**
  * Returns the serializable in the disk cache. This is equivalent to calling:
@@ -170,9 +168,8 @@ inline fun <T> diskCacheParcelableOf(
  * ```
  */
 @Suppress("UNCHECKED_CAST")
-inline fun <T> diskCacheSerializableOf(
-  key: String, defaultValue: T? = null
-): T = CacheDiskStaticUtils.getSerializable(key, defaultValue) as T
+inline fun <T> diskCacheSerializableOf(key: String, defaultValue: T? = null): T =
+  CacheDiskStaticUtils.getSerializable(key, defaultValue) as T
 
 /**
  * Returns the size of the disk cache, in bytes. This is equivalent to calling:

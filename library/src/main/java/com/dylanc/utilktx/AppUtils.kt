@@ -282,8 +282,7 @@ inline val appSignature: Array<Signature> get() = AppUtils.getAppSignature()
  * AppUtils.getAppSignature(packageName)
  * ```
  */
-inline fun appSignatureOf(packageName: String): Array<Signature> =
-  AppUtils.getAppSignature(packageName)
+inline fun appSignatureOf(packageName: String): Array<Signature> = AppUtils.getAppSignature(packageName)
 
 /**
  * Return the signature of application for SHA1 value. This is equivalent to calling:
@@ -299,8 +298,7 @@ inline val appSignatureSHA1: String get() = AppUtils.getAppSignatureSHA1()
  * AppUtils.getAppSignatureSHA1(packageName)
  * ```
  */
-inline fun appSignatureSHA1Of(packageName: String): String =
-  AppUtils.getAppSignatureSHA1(packageName)
+inline fun appSignatureSHA1Of(packageName: String): String = AppUtils.getAppSignatureSHA1(packageName)
 
 /**
  * Return the signature of application for SHA256 value. This is equivalent to calling:
@@ -316,8 +314,7 @@ inline val appSignatureSHA256: String get() = AppUtils.getAppSignatureSHA256()
  * AppUtils.getAppSignatureSHA256(packageName)
  * ```
  */
-inline fun appSignatureSHA256Of(packageName: String): String =
-  AppUtils.getAppSignatureSHA256(packageName)
+inline fun appSignatureSHA256Of(packageName: String): String = AppUtils.getAppSignatureSHA256(packageName)
 
 /**
  * Return the signature of application for MD5 value. This is equivalent to calling:

@@ -22,7 +22,7 @@ import com.blankj.utilcode.util.ActivityUtils
  * ```
  * ActivityUtils.getActivityByContext(context)
  * ```
-*/
+ */
 inline val Context.activity: Activity? get() = ActivityUtils.getActivityByContext(this)
 
 /**
@@ -30,7 +30,7 @@ inline val Context.activity: Activity? get() = ActivityUtils.getActivityByContex
  * ```
  * ActivityUtils.isActivityExistsInStack(activity)
  * ```
-*/
+ */
 inline val Activity.isExistsInStack: Boolean get() = ActivityUtils.isActivityExistsInStack(this)
 
 /**
@@ -42,9 +42,8 @@ inline val Activity.isExistsInStack: Boolean get() = ActivityUtils.isActivityExi
  * @param extras  The Bundle of extras to add to this intent.
  * @param options Additional options for how the Activity should be started.
  */
-inline fun <reified T : Activity> startActivity(
-  vararg extras: Pair<String, *>, options: Bundle? = null
-) = ActivityUtils.startActivity(bundleOf(*extras), T::class.java, options)
+inline fun <reified T : Activity> startActivity(vararg extras: Pair<String, *>, options: Bundle? = null) =
+  ActivityUtils.startActivity(bundleOf(*extras), T::class.java, options)
 
 /**
  * Launch a new Activity with extras or options. This is equivalent to calling:
@@ -80,13 +79,12 @@ inline fun <reified T : Activity> startActivity(@AnimRes enterAnim: Int, @AnimRe
  * @param extras  The Bundle of extras to add to this intent.
  * @param options Additional options for how the Activity should be started.
  */
-inline fun <reified T : Activity> Activity.startActivity(
-  extras: Bundle? = null, options: Bundle? = null
-) = if (extras == null) {
-  ActivityUtils.startActivity(this, T::class.java, options)
-} else {
-  ActivityUtils.startActivity(this, intentOf<T>(extras), options)
-}
+inline fun <reified T : Activity> Activity.startActivity(extras: Bundle? = null, options: Bundle? = null) =
+  if (extras == null) {
+    ActivityUtils.startActivity(this, T::class.java, options)
+  } else {
+    ActivityUtils.startActivity(this, intentOf<T>(extras), options)
+  }
 
 /**
  * Launch a new Activity with extras or options. This is equivalent to calling:
@@ -97,9 +95,8 @@ inline fun <reified T : Activity> Activity.startActivity(
  * @param extras  The Bundle of extras to add to this intent.
  * @param options Additional options for how the Activity should be started.
  */
-inline fun <reified T : Activity> Activity.startActivity(
-  vararg extras: Pair<String, *>, options: Bundle? = null
-) = ActivityUtils.startActivity(this, intentOf<T>(*extras), options)
+inline fun <reified T : Activity> Activity.startActivity(vararg extras: Pair<String, *>, options: Bundle? = null) =
+  ActivityUtils.startActivity(this, intentOf<T>(*extras), options)
 
 /**
  * Launch a new Activity with an explicit transition animation. This is equivalent to calling:
@@ -107,9 +104,8 @@ inline fun <reified T : Activity> Activity.startActivity(
  * ActivityUtils.startActivity(activity, clz, enterAnim, exitAnim)
  * ```
  */
-inline fun <reified T : Activity> Activity.startActivity(
-  @AnimRes enterAnim: Int, @AnimRes exitAnim: Int
-) = ActivityUtils.startActivity(this, T::class.java, enterAnim, exitAnim)
+inline fun <reified T : Activity> Activity.startActivity(@AnimRes enterAnim: Int, @AnimRes exitAnim: Int) =
+  ActivityUtils.startActivity(this, T::class.java, enterAnim, exitAnim)
 
 /**
  * Launch a new Activity with shared elements. This is equivalent to calling:
@@ -135,13 +131,12 @@ inline fun startActivities(intents: Array<Intent>, options: Bundle? = null) =
  * ActivityUtils.startActivities(activity, intents, options)
  * ```
  */
-inline fun Activity.startActivities(
-  intents: Array<Intent>, options: Bundle? = null, newTask: Boolean = true
-) = if (newTask) {
-  ActivityUtils.startActivities(this, intents, options)
-} else {
-  startActivities(intents, options)
-}
+inline fun Activity.startActivities(intents: Array<Intent>, options: Bundle? = null, newTask: Boolean = true) =
+  if (newTask) {
+    ActivityUtils.startActivities(this, intents, options)
+  } else {
+    startActivities(intents, options)
+  }
 
 /**
  * Launch activities with an explicit transition animation. This is equivalent to calling:
@@ -149,9 +144,8 @@ inline fun Activity.startActivities(
  * ActivityUtils.startActivities(activity, intents, enterAnim, exitAnim)
  * ```
  */
-inline fun Activity.startActivities(
-  intents: Array<Intent>, @AnimRes enterAnim: Int, @AnimRes exitAnim: Int
-) = ActivityUtils.startActivities(this, intents, enterAnim, exitAnim)
+inline fun Activity.startActivities(intents: Array<Intent>, @AnimRes enterAnim: Int, @AnimRes exitAnim: Int) =
+  ActivityUtils.startActivities(this, intents, enterAnim, exitAnim)
 
 /**
  * Launch a new Activity of home. This is equivalent to calling:
@@ -227,9 +221,8 @@ inline fun <reified T : Activity> finishOtherActivities(isLoadAnim: Boolean = fa
  * ActivityUtils.finishOtherActivities(clz, enterAnim, exitAnim)
  * ```
  */
-inline fun <reified T : Activity> finishOtherActivities(
-  @AnimRes enterAnim: Int, @AnimRes exitAnim: Int
-) = ActivityUtils.finishOtherActivities(T::class.java, enterAnim, exitAnim)
+inline fun <reified T : Activity> finishOtherActivities(@AnimRes enterAnim: Int, @AnimRes exitAnim: Int) =
+  ActivityUtils.finishOtherActivities(T::class.java, enterAnim, exitAnim)
 
 /**
  * Finish all of activities. This is equivalent to calling:
@@ -294,9 +287,8 @@ inline fun <reified T : Activity> FragmentActivity.startActivityForResult(
  * DispatchResultFragment.newInstance(fragmentActivity).startForResult(intent, requestCode, callback)
  * ```
  */
-inline fun FragmentActivity.startActivityForResult(
-  intent: Intent, requestCode: Int, noinline callback: (resultCode: Int, data: Intent?) -> Unit
-) = DispatchResultFragment.newInstance(this).startForResult(intent, requestCode, callback)
+inline fun FragmentActivity.startActivityForResult(intent: Intent, requestCode: Int, noinline callback: (resultCode: Int, data: Intent?) -> Unit) =
+  DispatchResultFragment.newInstance(this).startForResult(intent, requestCode, callback)
 
 
 class DispatchResultFragment : Fragment() {
