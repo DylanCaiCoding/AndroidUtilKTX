@@ -8,8 +8,7 @@ import com.blankj.utilcode.util.ReflectUtils
  * @author Dylan Cai
  */
 
-inline fun <reified T> reflect(): ReflectUtils =
-  ReflectUtils.reflect(T::class.java)
+inline fun <reified T> reflect(): ReflectUtils = ReflectUtils.reflect(T::class.java)
 
 inline fun reflect(className: String, classLoader: ClassLoader? = null): ReflectUtils =
   if (classLoader == null) {
@@ -18,5 +17,4 @@ inline fun reflect(className: String, classLoader: ClassLoader? = null): Reflect
     ReflectUtils.reflect(className, classLoader)
   }
 
-inline fun reflect(any: Any): ReflectUtils =
-  ReflectUtils.reflect(any)
+inline fun reflect(any: Any): ReflectUtils = ReflectUtils.reflect(any)

@@ -82,6 +82,8 @@ inline fun sendSmsIntentOf(phoneNumber: String, content: String): Intent =
 inline fun captureIntentOf(outUri: Uri): Intent =
   IntentUtils.getCaptureIntent(outUri)
 
+
+
 inline fun <reified T : Any> Context.intentOf(bundle: Bundle) =
   Intent(this, T::class.java).apply { putExtras(bundle) }
 

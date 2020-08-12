@@ -12,65 +12,150 @@ import com.blankj.utilcode.util.ScreenUtils
  * @author Dylan Cai
  */
 
-inline val screenWidth: Int
-  get() = ScreenUtils.getScreenWidth()
+/**
+ * Returns the width of screen, in pixel. This is equivalent to calling:
+ * ```
+ * ScreenUtils.getScreenWidth()
+ * ```
+ */
+inline val screenWidth: Int get() = ScreenUtils.getScreenWidth()
 
-inline val screenHeight: Int
-  get() = ScreenUtils.getScreenHeight()
+/**
+ * Returns the height of screen, in pixel. This is equivalent to calling:
+ * ```
+ * ScreenUtils.getScreenHeight()
+ * ```
+ */
+inline val screenHeight: Int get() = ScreenUtils.getScreenHeight()
 
-inline val appScreenWidth: Int
-  get() = ScreenUtils.getAppScreenWidth()
+/**
+ * Returns the application's width of screen, in pixel. This is equivalent to calling:
+ * ```
+ * ScreenUtils.getAppScreenWidth()
+ * ```
+ */
+inline val appScreenWidth: Int get() = ScreenUtils.getAppScreenWidth()
 
-inline val appScreenHeight: Int
-  get() = ScreenUtils.getAppScreenHeight()
+/**
+ * Returns the application's height of screen, in pixel. This is equivalent to calling:
+ * ```
+ * ScreenUtils.getAppScreenHeight()
+ * ```
+ */
+inline val appScreenHeight: Int get() = ScreenUtils.getAppScreenHeight()
 
-inline val screenDensity: Float
-  get() = ScreenUtils.getScreenDensity()
+/**
+ * Returns the density of screen. This is equivalent to calling:
+ * ```
+ * ScreenUtils.getScreenDensity()
+ * ```
+ */
+inline val screenDensity: Float get() = ScreenUtils.getScreenDensity()
 
-inline val screenDensityDpi: Int
-  get() = ScreenUtils.getScreenDensityDpi()
+/**
+ * Returns the screen density expressed as dots-per-inch. This is equivalent to calling:
+ * ```
+ * ScreenUtils.getScreenDensityDpi()
+ * ```
+ */
+inline val screenDensityDpi: Int get() = ScreenUtils.getScreenDensityDpi()
 
-inline fun Activity.setFullScreen() =
-  ScreenUtils.setFullScreen(this)
+/**
+ * Sets full screen. This is equivalent to calling:
+ * ```
+ * ScreenUtils.setFullScreen(activity)
+ * ```
+ */
+inline fun Activity.setFullScreen() = ScreenUtils.setFullScreen(this)
 
-inline fun Activity.setNonFullScreen() =
-  ScreenUtils.setNonFullScreen(this)
+/**
+ * Sets non full screen. This is equivalent to calling:
+ * ```
+ * ScreenUtils.setNonFullScreen(activity)
+ * ```
+ */
+inline fun Activity.setNonFullScreen() = ScreenUtils.setNonFullScreen(this)
 
-inline fun Activity.toggleFullScreen() =
-  ScreenUtils.toggleFullScreen(this)
+/**
+ * Toggle full screen. This is equivalent to calling:
+ * ```
+ * ScreenUtils.toggleFullScreen(activity)
+ * ```
+ */
+inline fun Activity.toggleFullScreen() = ScreenUtils.toggleFullScreen(this)
 
 inline var Activity.isFullScreen: Boolean
   get() = ScreenUtils.isFullScreen(this)
-  set(value) {
-    if (value) {
-      ScreenUtils.setFullScreen(this)
-    } else {
-      ScreenUtils.setNonFullScreen(this)
-    }
-  }
+  set(value) = if (value) ScreenUtils.setFullScreen(this) else ScreenUtils.setNonFullScreen(this)
 
-inline fun Activity.setLandscape() =
-  ScreenUtils.setLandscape(this)
+/**
+ * Sets the screen to landscape. This is equivalent to calling:
+ * ```
+ * ScreenUtils.setLandscape(activity)
+ * ```
+ */
+inline fun Activity.setLandscape() = ScreenUtils.setLandscape(this)
 
-inline fun Activity.setPortrait() =
-  ScreenUtils.setPortrait(this)
+/**
+ * Sets the screen to portrait. This is equivalent to calling:
+ * ```
+ * ScreenUtils.setPortrait(activity)
+ * ```
+ */
+inline fun Activity.setPortrait() = ScreenUtils.setPortrait(this)
 
-inline val isLandscape: Boolean
-  get() = ScreenUtils.isLandscape()
+/**
+ * Returns whether screen is landscape. This is equivalent to calling:
+ * ```
+ * ScreenUtils.isLandscape()
+ * ```
+ */
+inline val isLandscape: Boolean get() = ScreenUtils.isLandscape()
 
-inline val isPortrait: Boolean
-  get() = ScreenUtils.isPortrait()
+/**
+ * Returns whether screen is portrait. This is equivalent to calling:
+ * ```
+ * ScreenUtils.isPortrait()
+ * ```
+ */
+inline val isPortrait: Boolean get() = ScreenUtils.isPortrait()
 
-inline val Activity.screenRotation: Int
-  get() = ScreenUtils.getScreenRotation(this)
+/**
+ * Returns the rotation of screen. This is equivalent to calling:
+ * ```
+ * ScreenUtils.getScreenRotation(activity)
+ * ```
+ */
+inline val Activity.screenRotation: Int get() = ScreenUtils.getScreenRotation(this)
 
+/**
+ * Returns the bitmap of screenshot. This is equivalent to calling:
+ * ```
+ * ScreenUtils.screenShot(activity, isDeleteStatusBar)
+ * ```
+ */
 inline fun Activity.screenShot(isDeleteStatusBar: Boolean = false): Bitmap =
   ScreenUtils.screenShot(this, isDeleteStatusBar)
 
-inline val isScreenLock: Boolean
-  get() = ScreenUtils.isScreenLock()
+/**
+ * Returns whether screen is locked. This is equivalent to calling:
+ * ```
+ * ScreenUtils.isScreenLock()
+ * ```
+ */
+inline val isScreenLock: Boolean get() = ScreenUtils.isScreenLock()
 
-inline var sleepDuration: Int
+/**
+ * Returns the sleep duration of screen or sets the sleep duration of screen. This is equivalent to calling:
+ * ```
+ * ScreenUtils.getSleepDuration()
+ * ```
+ * or
+ * ```
+ * ScreenUtils.setSleepDuration(value)
+ * ```
+ */
+inline var screenSleepDuration: Int
   get() = ScreenUtils.getSleepDuration()
   @RequiresPermission(permission.WRITE_SETTINGS)
   set(value) = ScreenUtils.setSleepDuration(value)

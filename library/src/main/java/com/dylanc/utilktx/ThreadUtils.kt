@@ -13,11 +13,9 @@ import java.util.concurrent.TimeUnit
  * @author Dylan Cai
  */
 
-inline val isMainThread:Boolean
-  get() = ThreadUtils.isMainThread()
+inline val isMainThread: Boolean get() = ThreadUtils.isMainThread()
 
-inline val mainHandler: Handler
-  get() = ThreadUtils.getMainHandler()
+inline val mainHandler: Handler get() = ThreadUtils.getMainHandler()
 
 inline fun runOnUiThread(noinline runnable: () -> Unit) =
   ThreadUtils.runOnUiThread(runnable)
@@ -25,60 +23,36 @@ inline fun runOnUiThread(noinline runnable: () -> Unit) =
 inline fun runOnUiThreadDelayed(delayMillis: Long, noinline runnable: () -> Unit) =
   ThreadUtils.runOnUiThreadDelayed(runnable, delayMillis)
 
-inline fun fixedThreadPoolOf(
-  @IntRange(from = 1) size: Int
-): ExecutorService =
+inline fun fixedThreadPoolOf(@IntRange(from = 1) size: Int): ExecutorService =
   ThreadUtils.getFixedPool(size)
 
-inline fun fixedThreadPoolOf(
-  @IntRange(from = 1) size: Int,
-  @IntRange(from = 1, to = 10) priority: Int
-): ExecutorService =
+inline fun fixedThreadPoolOf(@IntRange(from = 1) size: Int, @IntRange(from = 1, to = 10) priority: Int): ExecutorService =
   ThreadUtils.getFixedPool(size, priority)
 
-inline fun singleThreadPoolOf(): ExecutorService =
-  ThreadUtils.getSinglePool()
+inline fun singleThreadPoolOf(): ExecutorService = ThreadUtils.getSinglePool()
 
-inline fun singleThreadPoolOf(
-  @IntRange(from = 1, to = 10) priority: Int
-): ExecutorService =
+inline fun singleThreadPoolOf(@IntRange(from = 1, to = 10) priority: Int): ExecutorService =
   ThreadUtils.getSinglePool(priority)
 
-inline fun cacheThreadPoolOf(): ExecutorService =
-  ThreadUtils.getCachedPool()
+inline fun cacheThreadPoolOf(): ExecutorService = ThreadUtils.getCachedPool()
 
-inline fun cacheThreadPoolOf(
-  @IntRange(from = 1, to = 10) priority: Int
-): ExecutorService =
+inline fun cacheThreadPoolOf(@IntRange(from = 1, to = 10) priority: Int): ExecutorService =
   ThreadUtils.getCachedPool(priority)
 
-inline fun ioThreadPoolOf(): ExecutorService =
-  ThreadUtils.getIoPool()
+inline fun ioThreadPoolOf(): ExecutorService = ThreadUtils.getIoPool()
 
-inline fun ioThreadPoolOf(
-  @IntRange(from = 1, to = 10) priority: Int
-): ExecutorService =
+inline fun ioThreadPoolOf(@IntRange(from = 1, to = 10) priority: Int): ExecutorService =
   ThreadUtils.getIoPool(priority)
 
-inline fun cpuThreadPoolOf(): ExecutorService =
-  ThreadUtils.getCpuPool()
+inline fun cpuThreadPoolOf(): ExecutorService = ThreadUtils.getCpuPool()
 
-inline fun cpuThreadPoolOf(
-  @IntRange(from = 1, to = 10) priority: Int
-): ExecutorService =
+inline fun cpuThreadPoolOf(@IntRange(from = 1, to = 10) priority: Int): ExecutorService =
   ThreadUtils.getCpuPool(priority)
 
-inline fun <T> executeByFixedThread(
-  @IntRange(from = 1) size: Int,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeByFixedThread(@IntRange(from = 1) size: Int, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByFixed(size, task)
 
-inline fun <T> executeByFixedThread(
-  @IntRange(from = 1) size: Int,
-  @IntRange(from = 1, to = 10) priority: Int,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeByFixedThread(@IntRange(from = 1) size: Int, @IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByFixed(size, task, priority)
 
 inline fun <T> executeByFixedThreadWithDelay(
@@ -98,22 +72,12 @@ inline fun <T> executeByFixedThreadWithDelay(
 ) =
   ThreadUtils.executeByFixedWithDelay(size, task, delay, unit, priority)
 
-inline fun <T> executeBySingleThread(
-  task: ThreadUtils.Task<T>
-) =
-  ThreadUtils.executeBySingle(task)
+inline fun <T> executeBySingleThread(task: ThreadUtils.Task<T>) = ThreadUtils.executeBySingle(task)
 
-inline fun <T> executeBySingleThread(
-  @IntRange(from = 1, to = 10) priority: Int,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeBySingleThread(@IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeBySingle(task, priority)
 
-inline fun <T> executeBySingleThreadWithDelay(
-  delay: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeBySingleThreadWithDelay(delay: Long, unit: TimeUnit, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeBySingleWithDelay(task, delay, unit)
 
 inline fun <T> executeBySingleThreadWithDelay(
@@ -124,61 +88,35 @@ inline fun <T> executeBySingleThreadWithDelay(
 ) =
   ThreadUtils.executeBySingleWithDelay(task, delay, unit, priority)
 
-inline fun <T> executeBySingleThreadAtFixRate(
-  task: ThreadUtils.Task<T>,
-  period: Long,
-  unit: TimeUnit
-) =
+inline fun <T> executeBySingleThreadAtFixRate(task: ThreadUtils.Task<T>, period: Long, unit: TimeUnit) =
   ThreadUtils.executeBySingleAtFixRate(task, period, unit)
 
 inline fun <T> executeBySingleThreadAtFixRate(
-  @IntRange(from = 1, to = 10) priority: Int,
-  period: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
+  @IntRange(from = 1, to = 10) priority: Int, period: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeBySingleAtFixRate(task, period, unit, priority)
 
 inline fun <T> executeBySingleThreadAtFixRate(
-  @IntRange(from = 1, to = 10) priority: Int,
-  initialDelay: Long,
-  period: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
+  @IntRange(from = 1, to = 10) priority: Int, initialDelay: Long, period: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeBySingleAtFixRate(task, initialDelay, period, unit, priority)
 
-inline fun <T> executeByCachedThread(
-  task: ThreadUtils.Task<T>
-) =
-  ThreadUtils.executeByCached(task)
+inline fun <T> executeByCachedThread(task: ThreadUtils.Task<T>) = ThreadUtils.executeByCached(task)
 
-inline fun <T> executeByCachedThread(
-  @IntRange(from = 1, to = 10) priority: Int,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeByCachedThread(@IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByCached(task, priority)
 
 inline fun <T> executeByCachedThreadWithDelay(
-  delay: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
+  delay: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByCachedWithDelay(task, delay, unit)
 
 inline fun <T> executeByCachedThreadWithDelay(
-  delay: Long,
-  unit: TimeUnit,
-  @IntRange(from = 1, to = 10) priority: Int,
-  task: ThreadUtils.Task<T>
+  delay: Long, unit: TimeUnit, @IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByCachedWithDelay(task, delay, unit, priority)
 
-inline fun <T> executeByCachedThreadAtFixRate(
-  task: ThreadUtils.Task<T>,
-  period: Long,
-  unit: TimeUnit
-) =
+inline fun <T> executeByCachedThreadAtFixRate(task: ThreadUtils.Task<T>, period: Long, unit: TimeUnit) =
   ThreadUtils.executeByCachedAtFixRate(task, period, unit)
 
 inline fun <T> executeByCachedThreadAtFixRate(
@@ -198,15 +136,9 @@ inline fun <T> executeByCachedThreadAtFixRate(
 ) =
   ThreadUtils.executeByCachedAtFixRate(task, initialDelay, period, unit, priority)
 
-inline fun <T> executeByIoThread(
-  task: ThreadUtils.Task<T>
-) =
-  ThreadUtils.executeByIo(task)
+inline fun <T> executeByIoThread(task: ThreadUtils.Task<T>) = ThreadUtils.executeByIo(task)
 
-inline fun <T> executeByIoThread(
-  @IntRange(from = 1, to = 10) priority: Int,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeByIoThread(@IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByIo(task, priority)
 
 inline fun <T> executeByIoThreadWithDelay(
@@ -327,7 +259,7 @@ inline fun <T> executeByCustomThreadAtFixRate(
   unit: TimeUnit,
   task: ThreadUtils.Task<T>
 ) =
-ThreadUtils.executeByCustomAtFixRate(pool, task, initialDelay, period, unit)
+  ThreadUtils.executeByCustomAtFixRate(pool, task, initialDelay, period, unit)
 
 // TODO: 2020/7/30 Optimize usage
 inline fun cancelThread(tasks: ThreadUtils.Task<*>) =

@@ -8,26 +8,66 @@ import com.blankj.utilcode.util.SDCardUtils
  * @author Dylan Cai
  */
 
-inline val isSDCardEnable: Boolean
-  get() = SDCardUtils.isSDCardEnableByEnvironment()
+/**
+ * Returns whether sdcard is enabled by environment. This is equivalent to calling:
+ * ```
+ * SDCardUtils.isSDCardEnableByEnvironment()
+ * ```
+ */
+inline val isSDCardEnable: Boolean get() = SDCardUtils.isSDCardEnableByEnvironment()
 
-inline val sdCardPath: String
-  get() = SDCardUtils.getSDCardPathByEnvironment()
+/**
+ * Returns the path of sdcard by environment. This is equivalent to calling:
+ * ```
+ * SDCardUtils.getSDCardPathByEnvironment()
+ * ```
+ */
+inline val sdCardPath: String get() = SDCardUtils.getSDCardPathByEnvironment()
 
-inline val sdCardInfo: List<SDCardUtils.SDCardInfo>
-  get() = SDCardUtils.getSDCardInfo()
+/**
+ * Returns the information of sdcard. This is equivalent to calling:
+ * ```
+ * SDCardUtils.getSDCardInfo()
+ * ```
+ */
+inline val sdCardInfo: List<SDCardUtils.SDCardInfo> get() = SDCardUtils.getSDCardInfo()
 
-inline val mountedSDCardPath: List<String>
-  get() = SDCardUtils.getMountedSDCardPath()
+/**
+ * Returns the ptah of mounted sdcard. This is equivalent to calling:
+ * ```
+ * SDCardUtils.getMountedSDCardPath()
+ * ```
+ */
+inline val mountedSDCardPath: List<String> get() = SDCardUtils.getMountedSDCardPath()
 
-inline val externalTotalSize: Long
-  get() = SDCardUtils.getExternalTotalSize()
+/**
+ * Returns the total size of external storage. This is equivalent to calling:
+ * ```
+ * SDCardUtils.getExternalTotalSize()
+ * ```
+ */
+inline val externalTotalSize: Long get() = SDCardUtils.getExternalTotalSize()
 
-inline val externalAvailableSize: Long
-  get() = SDCardUtils.getExternalAvailableSize()
+/**
+ * Returns the available size of external storage. This is equivalent to calling:
+ * ```
+ * SDCardUtils.getExternalAvailableSize()
+ * ```
+ */
+inline val externalAvailableSize: Long get() = SDCardUtils.getExternalAvailableSize()
 
-inline val internalTotalSize: Long
-  get() = SDCardUtils.getInternalTotalSize()
+/**
+ * Returns the total size of internal storage. This is equivalent to calling:
+ * ```
+ * SDCardUtils.getInternalTotalSize()
+ * ```
+ */
+inline val internalTotalSize: Long get() = SDCardUtils.getInternalTotalSize()
 
-inline val internalAvailableSize: Long
-  get() = SDCardUtils.getInternalAvailableSize()
+/**
+ * Returns the available size of internal storage. This is equivalent to calling:
+ * ```
+ * DCardUtils.getInternalAvailableSize()
+ * ```
+ */
+inline val internalAvailableSize: Long get() = SDCardUtils.getInternalAvailableSize()

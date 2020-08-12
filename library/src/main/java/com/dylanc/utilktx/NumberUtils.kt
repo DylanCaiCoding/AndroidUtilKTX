@@ -17,12 +17,7 @@ import com.blankj.utilcode.util.NumberUtils
  * @param isHalfUp         True to rounded towards the nearest neighbor.
  * @return the format value
  */
-inline fun Float.format(
-  fractionDigits: Int,
-  isGrouping: Boolean = false,
-  minIntegerDigits: Int = 1,
-  isHalfUp: Boolean = true
-): String =
+inline fun Float.format(fractionDigits: Int, isGrouping: Boolean = false, minIntegerDigits: Int = 1, isHalfUp: Boolean = true): String =
   NumberUtils.format(this, isGrouping, minIntegerDigits, fractionDigits, isHalfUp)
 
 /**
@@ -34,22 +29,11 @@ inline fun Float.format(
  * @param isHalfUp         True to rounded towards the nearest neighbor.
  * @return the format value
  */
-inline fun Double.format(
-  fractionDigits: Int,
-  isGrouping: Boolean = false,
-  minIntegerDigits: Int = 1,
-  isHalfUp: Boolean = true
-): String =
+inline fun Double.format(fractionDigits: Int, isGrouping: Boolean = false, minIntegerDigits: Int = 1, isHalfUp: Boolean = true): String =
   NumberUtils.format(this, isGrouping, minIntegerDigits, fractionDigits, isHalfUp)
 
-inline fun Float.toPrice(
-  isInteger: Boolean = false,
-  isGrouping: Boolean = false
-) =
+inline fun Float.toPrice(isInteger: Boolean = false, isGrouping: Boolean = false) =
   format(if (isInteger) 0 else 2, isGrouping = isGrouping)
 
-inline fun Double.toPrice(
-  isInteger: Boolean = false,
-  isGrouping: Boolean = false
-) =
+inline fun Double.toPrice(isInteger: Boolean = false, isGrouping: Boolean = false) =
   format(if (isInteger) 0 else 2, isGrouping = isGrouping)

@@ -14,7 +14,7 @@ import com.blankj.utilcode.util.FlashlightUtils
  * FlashlightUtils.isFlashlightEnable()
  * ```
  */
-inline val isFlashlightEnable: Boolean get() = FlashlightUtils.isFlashlightEnable()
+inline val isSupportFlashlight: Boolean get() = FlashlightUtils.isFlashlightEnable()
 
 /**
  * Returns whether the flashlight is working or turns on/off the flashlight. This is equivalent to calling:

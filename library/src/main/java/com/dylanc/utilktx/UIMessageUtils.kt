@@ -47,7 +47,7 @@ inline fun observeUIMessage(owner: LifecycleOwner, noinline listener: (UiMessage
   })
 }
 
-inline fun observeUIMessage(id: Int, owner: LifecycleOwner, noinline listener: (UiMessageUtils.UiMessage) -> Unit) {
+inline fun observeUIMessage(owner: LifecycleOwner, id: Int, noinline listener: (UiMessageUtils.UiMessage) -> Unit) {
   owner.lifecycle.addObserver(object : LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {

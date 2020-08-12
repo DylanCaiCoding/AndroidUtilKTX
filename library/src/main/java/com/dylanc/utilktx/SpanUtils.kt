@@ -29,54 +29,39 @@ class SpannableStringBuilder(private val spanUtils: SpanUtils) {
 
   fun text(text: CharSequence, block: (SpanBuilder.() -> Unit)? = null) {
     spanUtils.append(text)
-    block?.let { SpanBuilder(spanUtils).apply(it)}
+    block?.let { SpanBuilder(spanUtils).apply(it) }
   }
 
-  fun lineText(text: CharSequence , block:(SpanBuilder.() -> Unit)? = null) {
+  fun lineText(text: CharSequence, block: (SpanBuilder.() -> Unit)? = null) {
     spanUtils.appendLine(text)
-    block?.let { SpanBuilder(spanUtils).apply(it)}
+    block?.let { SpanBuilder(spanUtils).apply(it) }
   }
 
   fun lineFeed() {
     spanUtils.appendLine()
   }
 
-  fun image(
-    bitmap: Bitmap,
-    align: Int = SpanUtils.ALIGN_BOTTOM,
-    block:(SpanBuilder.() -> Unit)? = null
-  ) {
+  fun image(bitmap: Bitmap, align: Int = SpanUtils.ALIGN_BOTTOM, block: (SpanBuilder.() -> Unit)? = null) {
     spanUtils.appendImage(bitmap, align)
-    block?.let { SpanBuilder(spanUtils).apply(it)}
+    block?.let { SpanBuilder(spanUtils).apply(it) }
   }
 
-  fun image(
-    drawable: Drawable,
-    align: Int = SpanUtils.ALIGN_BOTTOM,
-    block:(SpanBuilder.() -> Unit)? = null
-  ) {
+  fun image(drawable: Drawable, align: Int = SpanUtils.ALIGN_BOTTOM, block: (SpanBuilder.() -> Unit)? = null) {
     spanUtils.appendImage(drawable, align)
-    block?.let { SpanBuilder(spanUtils).apply(it)}
+    block?.let { SpanBuilder(spanUtils).apply(it) }
   }
 
-  fun image(uri: Uri, align: Int = SpanUtils.ALIGN_BOTTOM, block:(SpanBuilder.() -> Unit)? = null) {
+  fun image(uri: Uri, align: Int = SpanUtils.ALIGN_BOTTOM, block: (SpanBuilder.() -> Unit)? = null) {
     spanUtils.appendImage(uri, align)
-    block?.let { SpanBuilder(spanUtils).apply(it)}
+    block?.let { SpanBuilder(spanUtils).apply(it) }
   }
 
-  fun image(
-    @DrawableRes resourceId: Int,
-    align: Int = SpanUtils.ALIGN_BOTTOM,
-    block:(SpanBuilder.() -> Unit)? = null
-  ) {
+  fun image(@DrawableRes resourceId: Int, align: Int = SpanUtils.ALIGN_BOTTOM, block: (SpanBuilder.() -> Unit)? = null) {
     spanUtils.appendImage(resourceId, align)
-    block?.let { SpanBuilder(spanUtils).apply(it)}
+    block?.let { SpanBuilder(spanUtils).apply(it) }
   }
 
-  fun space(
-    @IntRange(from = 0) size: Int,
-    @ColorInt color: Int = Color.TRANSPARENT
-  ) {
+  fun space(@IntRange(from = 0) size: Int, @ColorInt color: Int = Color.TRANSPARENT) {
     spanUtils.appendSpace(size, color)
   }
 
@@ -111,11 +96,7 @@ class SpanBuilder(private val spanUtils: SpanUtils) {
     spanUtils.setBullet(gapWidth)
   }
 
-  fun bullet(
-    @ColorInt color: Int,
-    @IntRange(from = 0) radius: Int,
-    @IntRange(from = 0) gapWidth: Int
-  ) {
+  fun bullet(@ColorInt color: Int, @IntRange(from = 0) radius: Int, @IntRange(from = 0) gapWidth: Int) {
     spanUtils.setBullet(color, radius, gapWidth)
   }
 
@@ -187,10 +168,7 @@ class SpanBuilder(private val spanUtils: SpanUtils) {
     spanUtils.setUrl(url)
   }
 
-  fun blur(
-    @FloatRange(from = 0.0, fromInclusive = false) radius: Float,
-    style: BlurMaskFilter.Blur
-  ) {
+  fun blur(@FloatRange(from = 0.0, fromInclusive = false) radius: Float, style: BlurMaskFilter.Blur) {
     spanUtils.setBlur(radius, style)
   }
 
@@ -198,12 +176,7 @@ class SpanBuilder(private val spanUtils: SpanUtils) {
     spanUtils.setShader(shader)
   }
 
-  fun shadow(
-    @FloatRange(from = 0.0, fromInclusive = false) radius: Float,
-    dx: Float,
-    dy: Float,
-    shadowColor: Int
-  ) {
+  fun shadow(@FloatRange(from = 0.0, fromInclusive = false) radius: Float, dx: Float, dy: Float, shadowColor: Int) {
     spanUtils.setShadow(radius, dx, dy, shadowColor)
   }
 

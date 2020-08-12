@@ -9,5 +9,11 @@ import com.blankj.utilcode.util.TouchUtils
  * @author Dylan Cai
  */
 
+/**
+ * Sets the [TouchUtils.OnTouchUtilsListener]. This is equivalent to calling:
+ * ```
+ * TouchUtils.setOnTouchListener(view, listener)
+ * ```
+ */
 inline fun View.doOnTouch(listener: TouchUtils.OnTouchUtilsListener) =
   TouchUtils.setOnTouchListener(this, listener)
