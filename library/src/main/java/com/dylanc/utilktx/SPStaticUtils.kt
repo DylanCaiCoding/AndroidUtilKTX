@@ -16,26 +16,24 @@ inline fun spUtilsOf(spName: String = "", mode: Int = Context.MODE_PRIVATE): SPU
 inline var defaultSpUtils: SPUtils
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
   get() = throw NotImplementedError()
-  set(value) {
-    SPStaticUtils.setDefaultSPUtils(value)
-  }
+  set(value)  = SPStaticUtils.setDefaultSPUtils(value)
 
-inline val allSP: Map<String, *>
+inline val allSpValue: Map<String, *>
   get() = SPStaticUtils.getAll()
 
-inline fun putSP(key: String, value: String, isCommit: Boolean = false) =
+inline fun putSpValue(key: String, value: String, isCommit: Boolean = false) =
   SPStaticUtils.put(key, value, isCommit)
 
-inline fun putSP(key: String, value: Int, isCommit: Boolean = false) =
+inline fun putSpValue(key: String, value: Int, isCommit: Boolean = false) =
   SPStaticUtils.put(key, value, isCommit)
 
-inline fun putSP(key: String, value: Boolean, isCommit: Boolean = false) =
+inline fun putSpValue(key: String, value: Boolean, isCommit: Boolean = false) =
   SPStaticUtils.put(key, value, isCommit)
 
-inline fun putSP(key: String, value: Long, isCommit: Boolean = false) =
+inline fun putSpValue(key: String, value: Long, isCommit: Boolean = false) =
   SPStaticUtils.put(key, value, isCommit)
 
-inline fun putSP(key: String, value: Float, isCommit: Boolean = false) =
+inline fun putSpValue(key: String, value: Float, isCommit: Boolean = false) =
   SPStaticUtils.put(key, value, isCommit)
 
 inline fun spValueOf(key: String, defaultValue: Boolean = false): Boolean =
@@ -53,10 +51,10 @@ inline fun spValueOf(key: String, defaultValue: Long = -1L): Long =
 inline fun spValueOf(key: String, defaultValue: Float = -1f): Float =
   SPStaticUtils.getFloat(key, defaultValue)
 
-inline fun containSp(key: String): Boolean =
+inline fun containSpValue(key: String): Boolean =
   SPStaticUtils.contains(key)
 
-inline fun removeSp(key: String, isCommit: Boolean = false) =
+inline fun removeSpValue(key: String, isCommit: Boolean = false) =
   SPStaticUtils.remove(key, isCommit)
 
 inline fun clearSp(isCommit: Boolean = false) =

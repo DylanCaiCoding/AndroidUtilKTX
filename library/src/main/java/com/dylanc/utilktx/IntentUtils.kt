@@ -3,6 +3,7 @@
 package com.dylanc.utilktx
 
 import android.Manifest.permission
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -22,35 +23,25 @@ import java.util.*
  * @author Dylan Cai
  */
 
-inline val Intent.isAvailable: Boolean
-  get() = IntentUtils.isIntentAvailable(this)
+inline val Intent.isAvailable: Boolean get() = IntentUtils.isIntentAvailable(this)
 
-inline fun installAppIntentOf(file: File): Intent =
-  IntentUtils.getInstallAppIntent(file)
+inline fun installAppIntentOf(file: File): Intent = IntentUtils.getInstallAppIntent(file)
 
-inline fun installAppIntentOf(filePath: String): Intent =
-  IntentUtils.getInstallAppIntent(filePath)
+inline fun installAppIntentOf(filePath: String): Intent = IntentUtils.getInstallAppIntent(filePath)
 
-inline fun uninstallAppIntentOf(pkgName: String): Intent =
-  IntentUtils.getUninstallAppIntent(pkgName)
+inline fun uninstallAppIntentOf(pkgName: String): Intent = IntentUtils.getUninstallAppIntent(pkgName)
 
-inline fun launchAppIntentOf(pkgName: String): Intent =
-  IntentUtils.getLaunchAppIntent(pkgName)
+inline fun launchAppIntentOf(pkgName: String): Intent = IntentUtils.getLaunchAppIntent(pkgName)
 
-inline fun launchAppDetailsSettingsIntentOf(pkgName: String): Intent =
-  IntentUtils.getLaunchAppDetailsSettingsIntent(pkgName)
+inline fun launchAppDetailsSettingsIntentOf(pkgName: String): Intent = IntentUtils.getLaunchAppDetailsSettingsIntent(pkgName)
 
-inline fun shareTextIntentOf(content: String): Intent =
-  IntentUtils.getShareTextIntent(content)
+inline fun shareTextIntentOf(content: String): Intent = IntentUtils.getShareTextIntent(content)
 
-inline fun shareImageIntentOf(content: String, imagePath: String): Intent =
-  IntentUtils.getShareImageIntent(content, imagePath)
+inline fun shareImageIntentOf(content: String, imagePath: String): Intent = IntentUtils.getShareImageIntent(content, imagePath)
 
-inline fun shareImageIntentOf(content: String, image: File): Intent =
-  IntentUtils.getShareImageIntent(content, image)
+inline fun shareImageIntentOf(content: String, image: File): Intent = IntentUtils.getShareImageIntent(content, image)
 
-inline fun shareImageIntentOf(content: String, uri: Uri): Intent =
-  IntentUtils.getShareImageIntent(content, uri)
+inline fun shareImageIntentOf(content: String, uri: Uri): Intent = IntentUtils.getShareImageIntent(content, uri)
 
 inline fun shareImageIntentOf(content: String, imagePaths: LinkedList<String>): Intent =
   IntentUtils.getShareImageIntent(content, imagePaths)
@@ -61,28 +52,19 @@ inline fun shareImageIntentOf(content: String, images: List<File>): Intent =
 inline fun shareImageIntentOf(content: String, uris: ArrayList<Uri>): Intent =
   IntentUtils.getShareImageIntent(content, uris)
 
-inline fun componentIntentOf(
-  pkgName: String, className: String, bundle: Bundle? = null, isNewTask: Boolean = false
-): Intent =
+inline fun componentIntentOf(pkgName: String, className: String, bundle: Bundle? = null, isNewTask: Boolean = false): Intent =
   IntentUtils.getComponentIntent(pkgName, className, bundle, isNewTask)
 
-inline fun shutdownIntentOf(): Intent =
-  IntentUtils.getShutdownIntent()
+inline fun shutdownIntentOf(): Intent = IntentUtils.getShutdownIntent()
 
-inline fun dialIntentOf(phoneNumber: String): Intent =
-  IntentUtils.getDialIntent(phoneNumber)
+inline fun dialIntentOf(phoneNumber: String): Intent = IntentUtils.getDialIntent(phoneNumber)
 
 @RequiresPermission(permission.CALL_PHONE)
-inline fun callIntentOf(phoneNumber: String): Intent =
-  IntentUtils.getCallIntent(phoneNumber)
+inline fun callIntentOf(phoneNumber: String): Intent = IntentUtils.getCallIntent(phoneNumber)
 
-inline fun sendSmsIntentOf(phoneNumber: String, content: String): Intent =
-  IntentUtils.getSendSmsIntent(phoneNumber, content)
+inline fun sendSmsIntentOf(phoneNumber: String, content: String): Intent = IntentUtils.getSendSmsIntent(phoneNumber, content)
 
-inline fun captureIntentOf(outUri: Uri): Intent =
-  IntentUtils.getCaptureIntent(outUri)
-
-
+inline fun captureIntentOf(outUri: Uri): Intent = IntentUtils.getCaptureIntent(outUri)
 
 inline fun <reified T : Any> Context.intentOf(bundle: Bundle) =
   Intent(this, T::class.java).apply { putExtras(bundle) }
@@ -190,3 +172,45 @@ fun bundleOf(vararg pairs: Pair<String, Any?>) = Bundle(pairs.size).apply {
     }
   }
 }
+
+inline fun Activity.intentBooleanExtra(name: String, defaultValue: Boolean) = lazy { intent.getBooleanExtra(name, defaultValue) }
+inline fun Activity.intentByteExtra(name: String, defaultValue: Byte) = lazy { intent.getByteExtra(name, defaultValue) }
+inline fun Activity.intentCharExtra(name: String, defaultValue: Char) = lazy { intent.getCharExtra(name, defaultValue) }
+inline fun Activity.intentDoubleExtra(name: String, defaultValue: Double) = lazy { intent.getDoubleExtra(name, defaultValue) }
+inline fun Activity.intentFloatExtra(name: String, defaultValue: Float) = lazy { intent.getFloatExtra(name, defaultValue) }
+inline fun Activity.intentIntExtra(name: String, defaultValue: Int) = lazy { intent.getIntExtra(name, defaultValue) }
+inline fun Activity.intentLongExtra(name: String, defaultValue: Long) = lazy { intent.getLongExtra(name, defaultValue) }
+inline fun Activity.intentShortExtra(name: String, defaultValue: Short) = lazy { intent.getShortExtra(name, defaultValue) }
+
+inline fun Activity.intentBundleExtra(name: String) = lazy { intent.getBundleExtra(name) }
+inline fun Activity.intentCharSequenceExtra(name: String) = lazy { intent.getCharSequenceExtra(name) }
+inline fun <T : Parcelable> Activity.intentParcelableExtra(name: String) = lazy { intent.getParcelableExtra<T>(name) }
+
+inline fun Activity.intentBooleanArrayExtra(name: String) = lazy { intent.getBooleanArrayExtra(name) }
+inline fun Activity.intentByteArrayExtra(name: String) = lazy { intent.getByteArrayExtra(name) }
+inline fun Activity.intentCharArrayExtra(name: String) = lazy { intent.getCharArrayExtra(name) }
+inline fun Activity.intentDoubleArrayExtra(name: String) = lazy { intent.getDoubleArrayExtra(name) }
+inline fun Activity.intentFloatArrayExtra(name: String) = lazy { intent.getFloatArrayExtra(name) }
+inline fun Activity.intentIntArrayExtra(name: String) = lazy { intent.getIntArrayExtra(name) }
+inline fun Activity.intentLongArrayExtra(name: String) = lazy { intent.getLongArrayExtra(name) }
+inline fun Activity.intentShortArrayExtra(name: String) = lazy { intent.getShortArrayExtra(name) }
+
+inline fun Activity.intentParcelableArrayExtra(name: String) = lazy { intent.getParcelableArrayExtra(name) }
+inline fun Activity.intentStringArrayExtra(name: String) = lazy { intent.getStringArrayExtra(name) }
+inline fun Activity.intentCharSequenceArrayExtra(name: String) = lazy { intent.getCharSequenceArrayExtra(name) }
+
+@Suppress("UNCHECKED_CAST")
+inline fun <T : Serializable> Activity.intentSerializableExtra(name: String) = lazy { intent.getSerializableExtra(name) as T }
+
+//inline fun <reified T> Activity.intentValue(name: String, defaultValue: T) =
+//  lazy { intentValueOf(name, T::class.java, defaultValue) }
+//
+//fun <T> Activity.intentValueOf(name: String, componentType: Class<T>, defaultValue: T? = null): T {
+//  @Suppress("UNCHECKED_CAST") // Checked by reflection.
+//  return when {
+//    Boolean::class.java.isAssignableFrom(componentType) -> {
+//      intent.getBooleanExtra(name, defaultValue as? Boolean ?: false)
+//    }
+//    else -> throw IllegalArgumentException()
+//  } as T
+//}

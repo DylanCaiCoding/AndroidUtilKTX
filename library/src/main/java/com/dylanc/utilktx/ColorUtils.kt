@@ -21,7 +21,7 @@ import com.blankj.utilcode.util.ColorUtils
 inline fun colorOf(@ColorRes id: Int): Int = ColorUtils.getColor(id)
 
 /**
- * Sets the alpha component of the color. This is equivalent to calling:
+ * Sets the alpha component of color. This is equivalent to calling:
  * ```
  * ColorUtils.setAlphaComponent(color, alpha)
  * ```
@@ -30,7 +30,7 @@ inline fun @receiver:ColorInt Int.convertAlpha(@IntRange(from = 0x0, to = 0xFF) 
   ColorUtils.setAlphaComponent(this, alpha)
 
 /**
- * Sets the alpha component of the color. This is equivalent to calling:
+ * Sets the alpha component of color. This is equivalent to calling:
  * ```
  * ColorUtils.setAlphaComponent(color, alpha)
  * ```
@@ -39,7 +39,7 @@ inline fun @receiver:ColorInt Int.convertAlpha(@FloatRange(from = 0.0, to = 1.0)
   ColorUtils.setAlphaComponent(this, alpha)
 
 /**
- * Sets the red component of the color. This is equivalent to calling:
+ * Sets the red component of color. This is equivalent to calling:
  * ```
  * ColorUtils.setRedComponent(color, red)
  * ```
@@ -48,7 +48,7 @@ inline fun @receiver:ColorInt Int.convertRed(@IntRange(from = 0x0, to = 0xFF) re
   ColorUtils.setRedComponent(this, red)
 
 /**
- * Sets the red component of the color. This is equivalent to calling:
+ * Sets the red component of color. This is equivalent to calling:
  * ```
  * ColorUtils.setRedComponent(color, red)
  * ```
@@ -57,7 +57,7 @@ inline fun @receiver:ColorInt Int.convertRed(@FloatRange(from = 0.0, to = 1.0) r
   ColorUtils.setRedComponent(this, red)
 
 /**
- * Sets the green component of the color. This is equivalent to calling:
+ * Sets the green component of color. This is equivalent to calling:
  * ```
  * ColorUtils.setGreenComponent(color, green)
  * ```
@@ -66,7 +66,7 @@ inline fun @receiver:ColorInt Int.convertGreen(@IntRange(from = 0x0, to = 0xFF) 
   ColorUtils.setGreenComponent(this, green)
 
 /**
- * Sets the green component of the color. This is equivalent to calling:
+ * Sets the green component of color. This is equivalent to calling:
  * ```
  * ColorUtils.setGreenComponent(color, green)
  * ```
@@ -75,7 +75,7 @@ inline fun @receiver:ColorInt Int.convertGreen(@FloatRange(from = 0.0, to = 1.0)
   ColorUtils.setGreenComponent(this, green)
 
 /**
- * Sets the blue component of the color. This is equivalent to calling:
+ * Sets the blue component of color. This is equivalent to calling:
  * ```
  * ColorUtils.setBlueComponent(color, blue)
  * ```
@@ -84,7 +84,7 @@ inline fun @receiver:ColorInt Int.convertBlue(@IntRange(from = 0x0, to = 0xFF) b
   ColorUtils.setBlueComponent(this, blue)
 
 /**
- * Sets the blue component of the color. This is equivalent to calling:
+ * Sets the blue component of color. This is equivalent to calling:
  * ```
  * ColorUtils.setBlueComponent(color, blue)
  * ```

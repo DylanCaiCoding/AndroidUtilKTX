@@ -55,20 +55,11 @@ inline fun <T> executeByFixedThread(@IntRange(from = 1) size: Int, task: ThreadU
 inline fun <T> executeByFixedThread(@IntRange(from = 1) size: Int, @IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByFixed(size, task, priority)
 
-inline fun <T> executeByFixedThreadWithDelay(
-  @IntRange(from = 1) size: Int,
-  delay: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeByFixedThreadWithDelay(@IntRange(from = 1) size: Int, delay: Long, unit: TimeUnit, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByFixedWithDelay(size, task, delay, unit)
 
 inline fun <T> executeByFixedThreadWithDelay(
-  @IntRange(from = 1) size: Int,
-  delay: Long,
-  unit: TimeUnit,
-  @IntRange(from = 1, to = 10) priority: Int,
-  task: ThreadUtils.Task<T>
+  @IntRange(from = 1) size: Int, delay: Long, unit: TimeUnit, @IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByFixedWithDelay(size, task, delay, unit, priority)
 
@@ -81,10 +72,7 @@ inline fun <T> executeBySingleThreadWithDelay(delay: Long, unit: TimeUnit, task:
   ThreadUtils.executeBySingleWithDelay(task, delay, unit)
 
 inline fun <T> executeBySingleThreadWithDelay(
-  delay: Long,
-  unit: TimeUnit,
-  @IntRange(from = 1, to = 10) priority: Int,
-  task: ThreadUtils.Task<T>
+  delay: Long, unit: TimeUnit, @IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeBySingleWithDelay(task, delay, unit, priority)
 
@@ -106,9 +94,7 @@ inline fun <T> executeByCachedThread(task: ThreadUtils.Task<T>) = ThreadUtils.ex
 inline fun <T> executeByCachedThread(@IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByCached(task, priority)
 
-inline fun <T> executeByCachedThreadWithDelay(
-  delay: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeByCachedThreadWithDelay(delay: Long, unit: TimeUnit, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByCachedWithDelay(task, delay, unit)
 
 inline fun <T> executeByCachedThreadWithDelay(
@@ -120,19 +106,12 @@ inline fun <T> executeByCachedThreadAtFixRate(task: ThreadUtils.Task<T>, period:
   ThreadUtils.executeByCachedAtFixRate(task, period, unit)
 
 inline fun <T> executeByCachedThreadAtFixRate(
-  @IntRange(from = 1, to = 10) priority: Int,
-  period: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
+  @IntRange(from = 1, to = 10) priority: Int, period: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByCachedAtFixRate(task, period, unit, priority)
 
 inline fun <T> executeByCachedThreadAtFixRate(
-  @IntRange(from = 1, to = 10) priority: Int,
-  initialDelay: Long,
-  period: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
+  @IntRange(from = 1, to = 10) priority: Int, initialDelay: Long, period: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByCachedAtFixRate(task, initialDelay, period, unit, priority)
 
@@ -141,123 +120,64 @@ inline fun <T> executeByIoThread(task: ThreadUtils.Task<T>) = ThreadUtils.execut
 inline fun <T> executeByIoThread(@IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByIo(task, priority)
 
-inline fun <T> executeByIoThreadWithDelay(
-  delay: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeByIoThreadWithDelay(delay: Long, unit: TimeUnit, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByIoWithDelay(task, delay, unit)
 
 inline fun <T> executeByIoThreadWithDelay(
-  delay: Long,
-  unit: TimeUnit,
-  @IntRange(from = 1, to = 10) priority: Int,
-  task: ThreadUtils.Task<T>
+  delay: Long, unit: TimeUnit, @IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByIoWithDelay(task, delay, unit, priority)
 
-inline fun <T> executeByIoThreadAtFixRate(
-  task: ThreadUtils.Task<T>,
-  period: Long,
-  unit: TimeUnit
-) =
+inline fun <T> executeByIoThreadAtFixRate(task: ThreadUtils.Task<T>, period: Long, unit: TimeUnit) =
   ThreadUtils.executeByIoAtFixRate(task, period, unit)
 
 inline fun <T> executeByIoThreadAtFixRate(
-  @IntRange(from = 1, to = 10) priority: Int,
-  period: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
+  @IntRange(from = 1, to = 10) priority: Int, period: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByIoAtFixRate(task, period, unit, priority)
 
 inline fun <T> executeByIoThreadAtFixRate(
-  @IntRange(from = 1, to = 10) priority: Int,
-  initialDelay: Long,
-  period: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
+  @IntRange(from = 1, to = 10) priority: Int, initialDelay: Long, period: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByIoAtFixRate(task, initialDelay, period, unit, priority)
 
-inline fun <T> executeByCpuThread(
-  task: ThreadUtils.Task<T>
-) =
-  ThreadUtils.executeByCpu(task)
+inline fun <T> executeByCpuThread(task: ThreadUtils.Task<T>) = ThreadUtils.executeByCpu(task)
 
-inline fun <T> executeByCpuThread(
-  @IntRange(from = 1, to = 10) priority: Int,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeByCpuThread(@IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByCpu(task, priority)
 
-inline fun <T> executeByCpuThreadWithDelay(
-  delay: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeByCpuThreadWithDelay(delay: Long, unit: TimeUnit, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByCpuWithDelay(task, delay, unit)
 
 inline fun <T> executeByCpuThreadWithDelay(
-  delay: Long,
-  unit: TimeUnit,
-  @IntRange(from = 1, to = 10) priority: Int,
-  task: ThreadUtils.Task<T>
+  delay: Long, unit: TimeUnit, @IntRange(from = 1, to = 10) priority: Int, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByCpuWithDelay(task, delay, unit, priority)
 
-inline fun <T> executeByCpuThreadAtFixRate(
-  task: ThreadUtils.Task<T>,
-  period: Long,
-  unit: TimeUnit
-) =
+inline fun <T> executeByCpuThreadAtFixRate(task: ThreadUtils.Task<T>, period: Long, unit: TimeUnit) =
   ThreadUtils.executeByCpuAtFixRate(task, period, unit)
 
 inline fun <T> executeByCpuThreadAtFixRate(
-  @IntRange(from = 1, to = 10) priority: Int,
-  period: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
+  @IntRange(from = 1, to = 10) priority: Int, period: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByCpuAtFixRate(task, period, unit, priority)
 
 inline fun <T> executeByCpuThreadAtFixRate(
-  @IntRange(from = 1, to = 10) priority: Int,
-  initialDelay: Long,
-  period: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
+  @IntRange(from = 1, to = 10) priority: Int, initialDelay: Long, period: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByCpuAtFixRate(task, initialDelay, period, unit, priority)
 
-inline fun <T> executeByCustomThread(
-  pool: ExecutorService,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeByCustomThread(pool: ExecutorService, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByCustom(pool, task)
 
-inline fun <T> executeByCustomThreadWithDelay(
-  pool: ExecutorService,
-  delay: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
-) =
+inline fun <T> executeByCustomThreadWithDelay(pool: ExecutorService, delay: Long, unit: TimeUnit, task: ThreadUtils.Task<T>) =
   ThreadUtils.executeByCustomWithDelay(pool, task, delay, unit)
 
-inline fun <T> executeByCustomThreadAtFixRate(
-  pool: ExecutorService,
-  task: ThreadUtils.Task<T>,
-  period: Long,
-  unit: TimeUnit
-) =
+inline fun <T> executeByCustomThreadAtFixRate(pool: ExecutorService, task: ThreadUtils.Task<T>, period: Long, unit: TimeUnit) =
   ThreadUtils.executeByCustomAtFixRate(pool, task, period, unit)
 
 inline fun <T> executeByCustomThreadAtFixRate(
-  pool: ExecutorService,
-  initialDelay: Long,
-  period: Long,
-  unit: TimeUnit,
-  task: ThreadUtils.Task<T>
+  pool: ExecutorService, initialDelay: Long, period: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
 ) =
   ThreadUtils.executeByCustomAtFixRate(pool, task, initialDelay, period, unit)
 

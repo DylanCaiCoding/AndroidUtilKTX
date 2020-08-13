@@ -9,6 +9,12 @@ import com.blankj.utilcode.util.ShadowUtils
  * @author Dylan Cai
  */
 
+/**
+ * Sets the shadow for the view. This is equivalent to calling:
+ * ```
+ * ShadowUtils.apply(view, ShadowUtils.Config())
+ * ```
+ */
 inline fun View.setShadow(noinline block: (ShadowBuilder.() -> Unit)? = null) =
   ShadowUtils.apply(this, ShadowUtils.Config().apply {
     block?.let { ShadowBuilder(this).apply(block) }
