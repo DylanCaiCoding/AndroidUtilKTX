@@ -15,8 +15,7 @@ import com.blankj.utilcode.util.Utils
  * @author Dylan Cai
  */
 
-inline fun openWirelessSettings() =
-  NetworkUtils.openWirelessSettings()
+inline fun openWirelessSettings() = NetworkUtils.openWirelessSettings()
 
 inline val isNetworkConnected: Boolean
   @RequiresPermission(ACCESS_NETWORK_STATE)
@@ -35,10 +34,7 @@ inline val isNetworkAvailableByPing: Boolean
   get() = NetworkUtils.isAvailableByPing()
 
 @RequiresPermission(INTERNET)
-inline fun isNetworkAvailableByPing(
-  ip: String = "",
-  noinline callback: (Boolean) -> Unit
-): Utils.Task<Boolean> =
+inline fun isNetworkAvailableByPing(ip: String = "", noinline callback: (Boolean) -> Unit): Utils.Task<Boolean> =
   NetworkUtils.isAvailableByPingAsync(ip, callback)
 
 @RequiresPermission(INTERNET)
@@ -46,10 +42,7 @@ inline fun isNetworkAvailableByDns(domain: String = ""): Boolean =
   NetworkUtils.isAvailableByDns(domain)
 
 @RequiresPermission(INTERNET)
-inline fun isNetworkAvailableByDns(
-  domain: String = "",
-  noinline callback: (Boolean) -> Unit
-): Utils.Task<Any> =
+inline fun isNetworkAvailableByDns(domain: String = "", noinline callback: (Boolean) -> Unit): Utils.Task<Any> =
   NetworkUtils.isAvailableByDnsAsync(domain, callback)
 
 inline val isMobileDataEnabled: Boolean
@@ -77,30 +70,24 @@ inline val isWifiAvailable: Boolean
 inline fun isWifiAvailable(noinline callback: (Boolean) -> Unit): Utils.Task<Boolean> =
   NetworkUtils.isWifiAvailableAsync(callback)
 
-inline val networkOperatorName: String
-  get() = NetworkUtils.getNetworkOperatorName()
+inline val networkOperatorName: String get() = NetworkUtils.getNetworkOperatorName()
 
 inline val networkType: NetworkUtils.NetworkType
   @RequiresPermission(ACCESS_NETWORK_STATE)
   get() = NetworkUtils.getNetworkType()
 
 @RequiresPermission(INTERNET)
-inline fun ipAddressOf(useIPv4: Boolean): String =
-  NetworkUtils.getIPAddress(useIPv4)
+inline fun ipAddressOf(useIPv4: Boolean): String = NetworkUtils.getIPAddress(useIPv4)
 
 @RequiresPermission(INTERNET)
 inline fun ipAddressOf(useIPv4: Boolean, noinline callback: (String) -> Unit): Utils.Task<String> =
   NetworkUtils.getIPAddressAsync(useIPv4, callback)
 
 @RequiresPermission(INTERNET)
-inline fun domainAddressOf(domain: String): String =
-  NetworkUtils.getDomainAddress(domain)
+inline fun domainAddressOf(domain: String): String = NetworkUtils.getDomainAddress(domain)
 
 @RequiresPermission(INTERNET)
-inline fun domainAddressOf(
-  domain: String,
-  noinline callback: (String) -> Unit
-): Utils.Task<String> =
+inline fun domainAddressOf(domain: String, noinline callback: (String) -> Unit): Utils.Task<String> =
   NetworkUtils.getDomainAddressAsync(domain, callback)
 
 inline val ipAddressByWifi: String
@@ -125,10 +112,7 @@ inline fun registerNetworkStatusChangedListener(listener: NetworkUtils.OnNetwork
 inline fun unregisterNetworkStatusChangedListener(listener: NetworkUtils.OnNetworkStatusChangedListener) =
   NetworkUtils.unregisterNetworkStatusChangedListener(listener)
 
-inline fun observeNetworkStatusChanged(
-  owner: LifecycleOwner,
-  listener: NetworkUtils.OnNetworkStatusChangedListener
-) {
+inline fun observeNetworkStatusChanged(owner: LifecycleOwner, listener: NetworkUtils.OnNetworkStatusChangedListener) {
   owner.lifecycle.addObserver(object : LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {

@@ -13,7 +13,7 @@ import com.blankj.utilcode.util.ToastUtils
  */
 
 /**
- * Sets the gravity of toast. This is equivalent to calling:
+ * Sets the gravity of the toast. This is equivalent to calling:
  * ```
  * ToastUtils.setGravity(gravity, xOffset, yOffset)
  * ```
@@ -74,7 +74,7 @@ inline var toastMsgTextSize: Int
 inline fun toast(text: String?) = ToastUtils.showShort(text)
 
 /**
- * Shows custom toast for a short period of time. This is equivalent to calling:
+ * Shows the custom toast for a short period of time. This is equivalent to calling:
  * ```
  * ToastUtils.showCustomShort(view)
  * ```
@@ -98,7 +98,7 @@ inline fun toast(@LayoutRes layoutId: Int): View = ToastUtils.showCustomShort(la
 inline fun longToast(text: String) = ToastUtils.showLong(text)
 
 /**
- * Shows custom toast for a long period of time. This is equivalent to calling:
+ * Shows the custom toast for a long period of time. This is equivalent to calling:
  * ```
  * ToastUtils.showCustomLong(view)
  * ```

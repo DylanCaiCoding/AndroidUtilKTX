@@ -78,18 +78,11 @@ inline fun File.filesOf(isRecursive: Boolean, noinline comparator: (File, File) 
   FileUtils.listFilesInDir(this, isRecursive, comparator)
 
 inline fun filesOf(
-  dirPath: String,
-  noinline filter: (File) -> Boolean,
-  isRecursive: Boolean,
-  noinline comparator: (File, File) -> Int
+  dirPath: String, noinline filter: (File) -> Boolean, isRecursive: Boolean, noinline comparator: (File, File) -> Int
 ): List<File> =
   FileUtils.listFilesInDirWithFilter(dirPath, filter, isRecursive, comparator)
 
-inline fun File.filesOf(
-  isRecursive: Boolean,
-  noinline filter: (File) -> Boolean,
-  noinline comparator: (File, File) -> Int
-): List<File> =
+inline fun File.filesOf(isRecursive: Boolean, noinline filter: (File) -> Boolean, noinline comparator: (File, File) -> Int): List<File> =
   FileUtils.listFilesInDirWithFilter(this, filter, isRecursive, comparator)
 
 inline fun fileLastModifiedTimestampOf(filePath: String): Long = FileUtils.getFileLastModified(filePath)

@@ -12,6 +12,12 @@ import com.blankj.utilcode.util.BusUtils
  * @author Dylan Cai
  */
 
+/**
+ * . This is equivalent to calling:
+ * ```
+ * 
+ * ```
+ */
 inline fun registerEventBus(bus: Any) = BusUtils.register(bus)
 
 inline fun unregisterEventBus(bus: Any) = BusUtils.unregister(bus)

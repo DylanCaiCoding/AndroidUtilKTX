@@ -23,7 +23,8 @@ import java.io.Serializable
 inline fun cacheDoubleUtilsOf(
   cacheMemoryUtils: CacheMemoryUtils = cacheMemoryUtilsOf(),
   cacheDiskUtils: CacheDiskUtils = cacheDiskUtilsOf()
-): CacheDoubleUtils = CacheDoubleUtils.getInstance(cacheMemoryUtils, cacheDiskUtils)
+): CacheDoubleUtils =
+  CacheDoubleUtils.getInstance(cacheMemoryUtils, cacheDiskUtils)
 
 /**
  * Sets the default instance of [CacheDoubleUtils]. This is equivalent to calling:

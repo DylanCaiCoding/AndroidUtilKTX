@@ -48,7 +48,7 @@ inline fun Activity.hideKeyboard() = KeyboardUtils.hideSoftInput(this)
 inline fun View.hideKeyboard() = KeyboardUtils.hideSoftInput(this)
 
 /**
- * Toggle the soft input display or not. This is equivalent to calling:
+ * Toggles the soft input display or not. This is equivalent to calling:
  * ```
  * KeyboardUtils.toggleSoftInput()
  * ```
@@ -90,7 +90,7 @@ inline fun Window.registerKeyboardChangedListener(noinline listener: (height: In
 inline fun Window.unregisterKeyboardChangedListener() = KeyboardUtils.unregisterSoftInputChangedListener(this)
 
 /**
- * Fix the bug of 5497 in Android. Don't set adjustResize. This is equivalent to calling:
+ * Fixes the bug of 5497 in Android. Don't set adjustResize. This is equivalent to calling:
  * ```
  * KeyboardUtils.fixAndroidBug5497(activity)
  * ```
@@ -98,7 +98,7 @@ inline fun Window.unregisterKeyboardChangedListener() = KeyboardUtils.unregister
 inline fun Activity.fixAndroidBug5497() = KeyboardUtils.fixAndroidBug5497(this)
 
 /**
- * Fix the bug of 5497 in Android. Don't set adjustResize. This is equivalent to calling:
+ * Fixes the bug of 5497 in Android. Don't set adjustResize. This is equivalent to calling:
  * ```
  * KeyboardUtils.fixAndroidBug5497(window)
  * ```

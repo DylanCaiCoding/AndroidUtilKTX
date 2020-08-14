@@ -12,20 +12,8 @@ import java.util.*
 inline fun <T> synchronizedCollectionOf(elements: Collection<T>): Collection<T> =
   Collections.synchronizedCollection(elements)
 
-inline fun <T> unmodifiableCollectionOf(elements: Collection<T>): Collection<T> =
-  Collections.unmodifiableCollection(elements)
-
-inline fun Collection<*>.union(elements: Collection<*>): Collection<*> =
-  CollectionUtils.union(this, elements)
-
-inline fun Collection<*>.intersect(elements: Collection<*>): Collection<*> =
-  CollectionUtils.intersection(this, elements)
-
 inline fun Collection<*>.disjunction(elements: Collection<*>): Collection<*> =
   CollectionUtils.disjunction(this, elements)
-
-inline fun Collection<*>.subtract(elements: Collection<*>): Collection<*> =
-  CollectionUtils.subtract(this, elements)
 
 inline val Collection<*>.cardinalityMap: MutableMap<Any, Int>
   get() = CollectionUtils.getCardinalityMap(this)
@@ -36,7 +24,7 @@ inline fun Collection<*>.isSubCollection(elements: Collection<*>): Boolean =
 inline fun Collection<*>.isProperSubCollection(elements: Collection<*>): Boolean =
   CollectionUtils.isProperSubCollection(this, elements)
 
-inline fun Collection<*>.isEqualCollection(elements: Collection<*>): Boolean =
+inline fun <E> Collection<E>.equalCollection(elements: Collection<E>): Boolean =
   CollectionUtils.isEqualCollection(this, elements)
 
 inline fun Collection<*>.cardinality(element: Any): Int =
@@ -60,7 +48,7 @@ inline fun <E> Collection<E>.matchesCount(noinline predicate: (E) -> Boolean): I
 inline fun <E> Collection<E>.exists(noinline predicate: (E) -> Boolean): Boolean =
   CollectionUtils.exists(this, predicate)
 
-inline fun <E> Collection<E>.addNotNull(element: E): Boolean =
+inline fun <E> Collection<E>.addIgnoreNull(element: E?): Boolean =
   CollectionUtils.addIgnoreNull(this, element)
 
 inline fun <E> Collection<E>.addAll(enumeration: Enumeration<E>) =

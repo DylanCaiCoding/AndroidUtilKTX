@@ -8,8 +8,10 @@ import com.blankj.utilcode.util.ObjectUtils
  * @author Dylan Cai
  */
 
-inline fun requireNonNulls(vararg any: Any) =
-  ObjectUtils.requireNonNulls(*any)
-
-inline fun <T> T?.requireNonNull(defaultValue: T): T =
-  ObjectUtils.getOrDefault(this, defaultValue)!!
+/**
+ * Returns the non-null object or the default object. This is equivalent to calling:
+ * ```
+ * ObjectUtils.getOrDefault(object, defaultValue)!!
+ * ```
+ */
+inline fun <T> T?.toNonNull(defaultValue: T): T = ObjectUtils.getOrDefault(this, defaultValue)!!

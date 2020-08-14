@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 /**
  * @author Dylan Cai
  */
+
 private const val COLOR_DEFAULT: Int = -0x1000001
 
 /**

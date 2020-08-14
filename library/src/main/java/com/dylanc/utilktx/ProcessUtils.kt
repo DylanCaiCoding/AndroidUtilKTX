@@ -2,7 +2,10 @@
 
 package com.dylanc.utilktx
 
-import android.Manifest.permission
+import android.Manifest.permission.KILL_BACKGROUND_PROCESSES
+import android.Manifest.permission.PACKAGE_USAGE_STATS
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresPermission
 import com.blankj.utilcode.util.ProcessUtils
 
@@ -10,19 +13,46 @@ import com.blankj.utilcode.util.ProcessUtils
  * @author Dylan Cai
  */
 
-inline val foregroundProcessName: String
-  get() = ProcessUtils.getForegroundProcessName()
+/**
+ * Returns the foreground process name. This is equivalent to calling:
+ * ```
+ * ProcessUtils.getForegroundProcessName()
+ * ```
+ */
+@get:RequiresApi(Build.VERSION_CODES.M)
+@get:RequiresPermission(PACKAGE_USAGE_STATS)
+inline val foregroundProcessName: String get() = ProcessUtils.getForegroundProcessName()
 
-@RequiresPermission(permission.KILL_BACKGROUND_PROCESSES)
-inline fun killAllBackgroundProcesses(): Set<String> =
-  ProcessUtils.killAllBackgroundProcesses()
+/**
+ * Kills all background processes. This is equivalent to calling:
+ * ```
+ * ProcessUtils.killAllBackgroundProcesses()
+ * ```
+ */
+@RequiresPermission(KILL_BACKGROUND_PROCESSES)
+inline fun killAllBackgroundProcesses(): Set<String> = ProcessUtils.killAllBackgroundProcesses()
 
-@RequiresPermission(permission.KILL_BACKGROUND_PROCESSES)
-inline fun killBackgroundProcesses(packageName: String): Boolean =
-  ProcessUtils.killBackgroundProcesses(packageName)
+/**
+ * Kills background processes. This is equivalent to calling:
+ * ```
+ * ProcessUtils.killBackgroundProcesses(packageName)
+ * ```
+ */
+@RequiresPermission(KILL_BACKGROUND_PROCESSES)
+inline fun killBackgroundProcesses(packageName: String): Boolean = ProcessUtils.killBackgroundProcesses(packageName)
 
-inline val isMainProcess: Boolean
-  get() = ProcessUtils.isMainProcess()
+/**
+ * Returns whether app running in the main process. This is equivalent to calling:
+ * ```
+ * ProcessUtils.isMainProcess()
+ * ```
+ */
+inline val isMainProcess: Boolean get() = ProcessUtils.isMainProcess()
 
-inline val currentProcessName: String
-  get() = ProcessUtils.getCurrentProcessName()
+/**
+ * Returns the name of current process. This is equivalent to calling:
+ * ```
+ * ProcessUtils.getCurrentProcessName()
+ * ```
+ */
+inline val currentProcessName: String get() = ProcessUtils.getCurrentProcessName()

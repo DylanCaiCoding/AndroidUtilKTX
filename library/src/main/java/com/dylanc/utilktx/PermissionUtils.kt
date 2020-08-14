@@ -13,34 +13,86 @@ import com.blankj.utilcode.util.UtilsTransActivity
  * @author Dylan Cai
  */
 
-inline val permissions: List<String>
-  get() = PermissionUtils.getPermissions()
+/**
+ * Returns the permissions used in application. This is equivalent to calling:
+ * ```
+ * PermissionUtils.getPermissions()
+ * ```
+ */
+inline val permissions: List<String> get() = PermissionUtils.getPermissions()
 
-inline fun permissionsOf(packageName: String): List<String> =
-  PermissionUtils.getPermissions(packageName)
+/**
+ * Returns the permissions used in application. This is equivalent to calling:
+ * ```
+ * PermissionUtils.getPermissions(packageName)
+ * ```
+ */
+inline fun permissionsOf(packageName: String): List<String> = PermissionUtils.getPermissions(packageName)
 
-inline fun isGrantedPermissions(vararg permissions: String) =
-  PermissionUtils.isGranted(*permissions)
+/**
+ * Returns whether you have been granted the permissions. This is equivalent to calling:
+ * ```
+ * PermissionUtils.isGranted(permissions)
+ * ```
+ */
+inline fun isGrantedPermissions(vararg permissions: String): Boolean = PermissionUtils.isGranted(*permissions)
 
+/**
+ * Returns whether the app can modify system settings. This is equivalent to calling:
+ * ```
+ * PermissionUtils.isGrantedWriteSettings()
+ * ```
+ */
 @RequiresApi(api = Build.VERSION_CODES.M)
-inline fun isGrantedWriteSettingsPermission() =
-  PermissionUtils.isGrantedWriteSettings()
+inline fun isGrantedWriteSettingsPermission() = PermissionUtils.isGrantedWriteSettings()
 
+/**
+ * Returns whether the app can modify system settings. This is equivalent to calling:
+ * ```
+ * PermissionUtils.isGrantedWriteSettings(callback)
+ * ```
+ */
 @RequiresApi(api = Build.VERSION_CODES.M)
 inline fun requestWriteSettingsPermission(callback: PermissionUtils.SimpleCallback) =
   PermissionUtils.requestWriteSettings(callback)
 
+/**
+ * Returns whether the app can draw on top of other apps. This is equivalent to calling:
+ * ```
+ * PermissionUtils.isGrantedDrawOverlays()
+ * ```
+ */
 @RequiresApi(api = Build.VERSION_CODES.M)
-inline fun isGrantedDrawOverlaysPermission() =
-  PermissionUtils.isGrantedDrawOverlays()
+inline fun isGrantedDrawOverlaysPermission() = PermissionUtils.isGrantedDrawOverlays()
 
+/**
+ * Requests the permission of draw overlays. This is equivalent to calling:
+ * ```
+ * PermissionUtils.requestDrawOverlays(callback)
+ * ```
+ */
 @RequiresApi(api = Build.VERSION_CODES.M)
 inline fun requestDrawOverlaysPermission(callback: PermissionUtils.SimpleCallback) =
   PermissionUtils.requestDrawOverlays(callback)
 
-inline fun launchAppDetailsSettings() =
-  PermissionUtils.launchAppDetailsSettings()
+/**
+ * Launched the application's details settings. This is equivalent to calling:
+ * ```
+ * PermissionUtils.launchAppDetailsSettings()
+ * ```
+ */
+inline fun launchAppDetailsSettings() = PermissionUtils.launchAppDetailsSettings()
 
+/**
+ * Requests permissions. This is equivalent to calling:
+ * ```
+ * PermissionUtils.permission(*permissions)
+ *   .rationale(rationale)
+ *   .theme(theme)
+ *   .callback(callback)
+ *   .request()
+ * ```
+ */
 inline fun requestPermissions(
   @PermissionConstants.Permission vararg permissions: String,
   noinline rationale: ((UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit)? = null,
@@ -54,6 +106,16 @@ inline fun requestPermissions(
     .request()
 }
 
+/**
+ * Requests permissions. This is equivalent to calling:
+ * ```
+ * PermissionUtils.permission(*permissions)
+ *   .rationale(rationale)
+ *   .theme(theme)
+ *   .callback(callback)
+ *   .request()
+ * ```
+ */
 fun requestPermissions(
   @PermissionConstants.Permission vararg permissions: String,
   rationale: ((UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit)? = null,
@@ -67,6 +129,16 @@ fun requestPermissions(
     .request()
 }
 
+/**
+ * Requests permissions. This is equivalent to calling:
+ * ```
+ * PermissionUtils.permission(*permissions)
+ *   .rationale(rationale)
+ *   .theme(theme)
+ *   .callback(callback)
+ *   .request()
+ * ```
+ */
 fun requestPermissions(
   @PermissionConstants.Permission vararg permissions: String,
   rationale: ((UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit)? = null,

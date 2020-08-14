@@ -3,6 +3,8 @@
 package com.dylanc.utilktx
 
 import android.Manifest.permission
+import android.Manifest.permission.REQUEST_DELETE_PACKAGES
+import android.Manifest.permission.REQUEST_INSTALL_PACKAGES
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -13,8 +15,10 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.util.Size
 import android.util.SizeF
+import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresPermission
 import com.blankj.utilcode.util.IntentUtils
+import com.blankj.utilcode.util.PermissionUtils.permission
 import java.io.File
 import java.io.Serializable
 import java.util.*
@@ -23,47 +27,169 @@ import java.util.*
  * @author Dylan Cai
  */
 
+/**
+ * Returns whether the intent is available. This is equivalent to calling:
+ * ```
+ * IntentUtils.isIntentAvailable(this)
+ * ```
+ */
 inline val Intent.isAvailable: Boolean get() = IntentUtils.isIntentAvailable(this)
 
+/**
+ * Returns the intent of install app. This is equivalent to calling:
+ * ```
+ * IntentUtils.getInstallAppIntent(file)
+ * ```
+ */
+@RequiresApi(Build.VERSION_CODES.M)
+@RequiresPermission(REQUEST_INSTALL_PACKAGES)
 inline fun installAppIntentOf(file: File): Intent = IntentUtils.getInstallAppIntent(file)
 
+/**
+ * Returns the intent of install app. This is equivalent to calling:
+ * ```
+ * IntentUtils.getInstallAppIntent(filePath)
+ * ```
+ */
+@RequiresApi(Build.VERSION_CODES.M)
+@RequiresPermission(REQUEST_INSTALL_PACKAGES)
 inline fun installAppIntentOf(filePath: String): Intent = IntentUtils.getInstallAppIntent(filePath)
 
+/**
+ * Returns the intent of uninstall app. This is equivalent to calling:
+ * ```
+ * IntentUtils.getUninstallAppIntent(pkgName)
+ * ```
+ */
+@RequiresApi(Build.VERSION_CODES.O)
+@RequiresPermission(REQUEST_DELETE_PACKAGES)
 inline fun uninstallAppIntentOf(pkgName: String): Intent = IntentUtils.getUninstallAppIntent(pkgName)
 
+/**
+ * Returns the intent of launch app. This is equivalent to calling:
+ * ```
+ * IntentUtils.getLaunchAppIntent(pkgName)
+ * ```
+ */
 inline fun launchAppIntentOf(pkgName: String): Intent = IntentUtils.getLaunchAppIntent(pkgName)
 
+/**
+ * Returns the intent of launch app details settings. This is equivalent to calling:
+ * ```
+ * IntentUtils.getLaunchAppDetailsSettingsIntent(pkgName)
+ * ```
+ */
 inline fun launchAppDetailsSettingsIntentOf(pkgName: String): Intent = IntentUtils.getLaunchAppDetailsSettingsIntent(pkgName)
 
+/**
+ * Returns the intent of share text. This is equivalent to calling:
+ * ```
+ * IntentUtils.getShareTextIntent(content)
+ * ```
+ */
 inline fun shareTextIntentOf(content: String): Intent = IntentUtils.getShareTextIntent(content)
 
-inline fun shareImageIntentOf(content: String, imagePath: String): Intent = IntentUtils.getShareImageIntent(content, imagePath)
-
+/**
+ * Returns the intent of share image. This is equivalent to calling:
+ * ```
+ * IntentUtils.getShareImageIntent(content, image)
+ * ```
+ */
 inline fun shareImageIntentOf(content: String, image: File): Intent = IntentUtils.getShareImageIntent(content, image)
 
+/**
+ * Returns the intent of share image. This is equivalent to calling:
+ * ```
+ * IntentUtils.getShareImageIntent(content, imagePath)
+ * ```
+ */
+inline fun shareImageIntentOf(content: String, imagePath: String): Intent = IntentUtils.getShareImageIntent(content, imagePath)
+
+/**
+ * Returns the intent of share image. This is equivalent to calling:
+ * ```
+ * IntentUtils.getShareImageIntent(content, uri)
+ * ```
+ */
 inline fun shareImageIntentOf(content: String, uri: Uri): Intent = IntentUtils.getShareImageIntent(content, uri)
 
+/**
+ * Returns the intent of share image. This is equivalent to calling:
+ * ```
+ * IntentUtils.getShareImageIntent(content, imagePaths)
+ * ```
+ */
 inline fun shareImageIntentOf(content: String, imagePaths: LinkedList<String>): Intent =
   IntentUtils.getShareImageIntent(content, imagePaths)
 
+/**
+ * Returns the intent of share image. This is equivalent to calling:
+ * ```
+ * IntentUtils.getShareImageIntent(content, images)
+ * ```
+ */
 inline fun shareImageIntentOf(content: String, images: List<File>): Intent =
   IntentUtils.getShareImageIntent(content, images)
 
+/**
+ * Returns the intent of share image. This is equivalent to calling:
+ * ```
+ * IntentUtils.getShareImageIntent(content, uris)
+ * ```
+ */
 inline fun shareImageIntentOf(content: String, uris: ArrayList<Uri>): Intent =
   IntentUtils.getShareImageIntent(content, uris)
 
+/**
+ * Returns the intent of component. This is equivalent to calling:
+ * ```
+ * IntentUtils.getComponentIntent(pkgName, className, bundle, isNewTask)
+ * ```
+ */
 inline fun componentIntentOf(pkgName: String, className: String, bundle: Bundle? = null, isNewTask: Boolean = false): Intent =
   IntentUtils.getComponentIntent(pkgName, className, bundle, isNewTask)
 
+/**
+ * Returns the intent of shutdown. Requires root permission or hold android:sharedUserId="android.uid.system",
+ * <uses-permission android:name="android.permission.SHUTDOWN" /> in manifest
+ * This is equivalent to calling:
+ * ```
+ * IntentUtils.getShutdownIntent()
+ * ```
+ */
 inline fun shutdownIntentOf(): Intent = IntentUtils.getShutdownIntent()
 
+/**
+ * Returns the intent of dial. This is equivalent to calling:
+ * ```
+ * IntentUtils.getDialIntent(phoneNumber)
+ * ```
+ */
 inline fun dialIntentOf(phoneNumber: String): Intent = IntentUtils.getDialIntent(phoneNumber)
 
+/**
+ * Returns the intent of call. This is equivalent to calling:
+ * ```
+ * IntentUtils.getCallIntent(phoneNumber)
+ * ```
+ */
 @RequiresPermission(permission.CALL_PHONE)
 inline fun callIntentOf(phoneNumber: String): Intent = IntentUtils.getCallIntent(phoneNumber)
 
+/**
+ * Returns the intent of send SMS. This is equivalent to calling:
+ * ```
+ * IntentUtils.getSendSmsIntent(phoneNumber, content)
+ * ```
+ */
 inline fun sendSmsIntentOf(phoneNumber: String, content: String): Intent = IntentUtils.getSendSmsIntent(phoneNumber, content)
 
+/**
+ * Returns the intent of capture. This is equivalent to calling:
+ * ```
+ * IntentUtils.getCaptureIntent(outUri)
+ * ```
+ */
 inline fun captureIntentOf(outUri: Uri): Intent = IntentUtils.getCaptureIntent(outUri)
 
 inline fun <reified T : Any> Context.intentOf(bundle: Bundle) =
@@ -185,6 +311,8 @@ inline fun Activity.intentShortExtra(name: String, defaultValue: Short) = lazy {
 inline fun Activity.intentBundleExtra(name: String) = lazy { intent.getBundleExtra(name) }
 inline fun Activity.intentCharSequenceExtra(name: String) = lazy { intent.getCharSequenceExtra(name) }
 inline fun <T : Parcelable> Activity.intentParcelableExtra(name: String) = lazy { intent.getParcelableExtra<T>(name) }
+@Suppress("UNCHECKED_CAST")
+inline fun <T : Serializable> Activity.intentSerializableExtra(name: String) = lazy { intent.getSerializableExtra(name) as T }
 
 inline fun Activity.intentBooleanArrayExtra(name: String) = lazy { intent.getBooleanArrayExtra(name) }
 inline fun Activity.intentByteArrayExtra(name: String) = lazy { intent.getByteArrayExtra(name) }
@@ -194,13 +322,10 @@ inline fun Activity.intentFloatArrayExtra(name: String) = lazy { intent.getFloat
 inline fun Activity.intentIntArrayExtra(name: String) = lazy { intent.getIntArrayExtra(name) }
 inline fun Activity.intentLongArrayExtra(name: String) = lazy { intent.getLongArrayExtra(name) }
 inline fun Activity.intentShortArrayExtra(name: String) = lazy { intent.getShortArrayExtra(name) }
-
 inline fun Activity.intentParcelableArrayExtra(name: String) = lazy { intent.getParcelableArrayExtra(name) }
 inline fun Activity.intentStringArrayExtra(name: String) = lazy { intent.getStringArrayExtra(name) }
 inline fun Activity.intentCharSequenceArrayExtra(name: String) = lazy { intent.getCharSequenceArrayExtra(name) }
 
-@Suppress("UNCHECKED_CAST")
-inline fun <T : Serializable> Activity.intentSerializableExtra(name: String) = lazy { intent.getSerializableExtra(name) as T }
 
 //inline fun <reified T> Activity.intentValue(name: String, defaultValue: T) =
 //  lazy { intentValueOf(name, T::class.java, defaultValue) }
