@@ -9,7 +9,7 @@ import com.blankj.utilcode.util.CleanUtils
  */
 
 /**
- * Clean the internal cache.
+ * Cleans the internal cache.
  *
  * directory: /data/data/package/cache
  *
@@ -21,7 +21,7 @@ import com.blankj.utilcode.util.CleanUtils
 inline fun cleanInternalCache(): Boolean = CleanUtils.cleanInternalCache()
 
 /**
- * Clean the internal files.
+ * Cleans the internal files.
  *
  * directory: /data/data/package/files
  *
@@ -33,7 +33,7 @@ inline fun cleanInternalCache(): Boolean = CleanUtils.cleanInternalCache()
 inline fun cleanInternalFiles(): Boolean = CleanUtils.cleanInternalFiles()
 
 /**
- * Clean the internal databases.
+ * Cleans the internal databases.
  *
  * directory: /data/data/package/databases
  *
@@ -45,7 +45,7 @@ inline fun cleanInternalFiles(): Boolean = CleanUtils.cleanInternalFiles()
 inline fun cleanInternalDbs(): Boolean = CleanUtils.cleanInternalDbs()
 
 /**
- * Clean the internal database by name.
+ * Cleans the internal database by name.
  *
  * directory: /data/data/package/databases/dbName
  *
@@ -57,7 +57,7 @@ inline fun cleanInternalDbs(): Boolean = CleanUtils.cleanInternalDbs()
 inline fun cleanInternalDb(dbName: String): Boolean = CleanUtils.cleanInternalDbByName(dbName)
 
 /**
- * Clean the internal shared preferences.
+ * Cleans the internal shared preferences.
  *
  * directory: /data/data/package/shared_prefs
  *
@@ -69,7 +69,7 @@ inline fun cleanInternalDb(dbName: String): Boolean = CleanUtils.cleanInternalDb
 inline fun cleanInternalSp(): Boolean = CleanUtils.cleanInternalSp()
 
 /**
- * Clean the external cache.
+ * Cleans the external cache.
  *
  * directory: /storage/emulated/0/android/data/package/cache
  *
@@ -82,7 +82,7 @@ inline fun cleanExternalCache(): Boolean = CleanUtils.cleanExternalCache()
 
 
 /**
- * Clean the directory. This is equivalent to calling:
+ * Cleans the directory. This is equivalent to calling:
  * ```
  * CleanUtils.cleanCustomDir(dirPath)
  * ```

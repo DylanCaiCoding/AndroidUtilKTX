@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit
 /**
  * @author Dylan Cai
  */
+// TODO: 2020/8/19
 
 inline val isMainThread: Boolean get() = ThreadUtils.isMainThread()
 

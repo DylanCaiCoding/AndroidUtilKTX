@@ -8,6 +8,12 @@ import com.blankj.utilcode.util.PathUtils
  * @author Dylan Cai
  */
 
+/**
+ * Returns the path of file. This is equivalent to calling:
+ * ```
+ * PathUtils.join(parent, child)
+ * ```
+ */
 inline fun pathOf(parent: String, child: String): String = PathUtils.join(parent, child)
 
 /**
@@ -282,11 +288,37 @@ inline val externalAppDcimPath: String get() = PathUtils.getExternalAppDcimPath(
  */
 inline val externalAppObbPath: String get() = PathUtils.getExternalAppObbPath()
 
-// TODO: 2020/8/14
-inline val rootPathExternalFirst: String get() = PathUtils.getRootPathExternalFirst()
+/**
+ * Returns the path of /storage/emulated/0 first. If null, returns the path of /system. This is equivalent to calling:
+ * ```
+ * PathUtils.getRootPathExternalFirst()
+ * ```
+ */
+inline val rootPathForExternalFirst: String get() = PathUtils.getRootPathExternalFirst()
 
-inline val appDataPathExternalFirst: String get() = PathUtils.getAppDataPathExternalFirst()
+/**
+ * Returns the path of /storage/emulated/0/Android/data/package first. If null, returns the path of /data/data/package.
+ * This is equivalent to calling:
+ * ```
+ * PathUtils.getAppDataPathExternalFirst()
+ * ```
+ */
+inline val appDataPathForExternalFirst: String get() = PathUtils.getAppDataPathExternalFirst()
 
-inline val filesPathExternalFirst: String get() = PathUtils.getFilesPathExternalFirst()
+/**
+ * Returns the path of /storage/emulated/0/Android/data/package/files first. If null, returns the path of /data/data/package/files.
+ * This is equivalent to calling:
+ * ```
+ * PathUtils.getFilesPathExternalFirst()
+ * ```
+ */
+inline val filesPathForExternalFirst: String get() = PathUtils.getFilesPathExternalFirst()
 
-inline val cachePathExternalFirst: String get() = PathUtils.getCachePathExternalFirst()
+/**
+ * Returns the path of /storage/emulated/0/Android/data/package/cache first. If null, returns the path of /data/data/package/cache.
+ * This is equivalent to calling:
+ * ```
+ * PathUtils.getCachePathExternalFirst()
+ * ```
+ */
+inline val cachePathForExternalFirst: String get() = PathUtils.getCachePathExternalFirst()

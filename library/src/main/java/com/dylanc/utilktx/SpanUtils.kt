@@ -22,6 +22,12 @@ import com.blankj.utilcode.util.SpanUtils
 
 private val LINE_SEPARATOR: String = System.getProperty("line.separator")!!
 
+/**
+ * Sets the spannable string to the text view. This is equivalent to calling:
+ * ```
+ * SpanUtils.with(textView)...create()
+ * ```
+ */
 inline fun TextView.setText(block: com.dylanc.utilktx.SpannableStringBuilder.() -> Unit): SpannableStringBuilder =
   SpanUtils.with(this).apply { SpannableStringBuilder(this).apply(block) }.create()
 

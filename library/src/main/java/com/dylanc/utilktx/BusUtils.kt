@@ -13,14 +13,68 @@ import com.blankj.utilcode.util.BusUtils
  */
 
 /**
- * . This is equivalent to calling:
+ * Registers the event bus by [BusUtils]. This is equivalent to calling:
  * ```
- * 
+ * BusUtils.register(bus)
  * ```
  */
 inline fun registerEventBus(bus: Any) = BusUtils.register(bus)
 
+/**
+ * Unregisters the event bus by [BusUtils]. This is equivalent to calling:
+ * ```
+ * BusUtils.unregister(bus)
+ * ```
+ */
 inline fun unregisterEventBus(bus: Any) = BusUtils.unregister(bus)
+
+/**
+ * Posts the event of tag. This is equivalent to calling:
+ * ```
+ * BusUtils.post(tag)
+ * ```
+ */
+inline fun postEvent(tag: String) = BusUtils.post(tag)
+
+/**
+ * Posts the event of tag. This is equivalent to calling:
+ * ```
+ * BusUtils.post(tag, arg)
+ * ```
+ */
+inline fun postEvent(tag: String, arg: Any) = BusUtils.post(tag, arg)
+
+/**
+ * Posts the sticky event of tag. This is equivalent to calling:
+ * ```
+ * BusUtils.postSticky(tag)
+ * ```
+ */
+inline fun postStickyEvent(tag: String) = BusUtils.postSticky(tag)
+
+/**
+ * Posts the sticky event of tag. This is equivalent to calling:
+ * ```
+ * BusUtils.postSticky(tag, arg)
+ * ```
+ */
+inline fun postStickyEvent(tag: String, arg: Any) = BusUtils.postSticky(tag, arg)
+
+/**
+ * Removes the sticky event of tag. This is equivalent to calling:
+ * ```
+ * BusUtils.postSticky(tag, arg)
+ * ```
+ */
+inline fun removeStickyEvent(tag: String) = BusUtils.removeSticky(tag)
+
+/**
+ * Returns the string of [BusUtils]. This is equivalent to calling:
+ * ```
+ * BusUtils.toString_()
+ * ```
+ */
+inline val eventBusInfo: String get() = BusUtils.toString_()
 
 inline fun observeEventBus(owner: LifecycleOwner) =
   owner.lifecycle.addObserver(object : LifecycleObserver {
@@ -34,15 +88,3 @@ inline fun observeEventBus(owner: LifecycleOwner) =
       BusUtils.unregister(this)
     }
   })
-
-inline fun postEvent(tag: String) = BusUtils.post(tag)
-
-inline fun postStickyEvent(tag: String) = BusUtils.postSticky(tag)
-
-inline fun postEvent(tag: String, arg: Any) = BusUtils.post(tag, arg)
-
-inline fun postStickyEvent(tag: String, arg: Any) = BusUtils.postSticky(tag, arg)
-
-inline fun removeStickyEvent(tag: String) = BusUtils.removeSticky(tag)
-
-inline val eventBusInfo: String get() = BusUtils.toString_()

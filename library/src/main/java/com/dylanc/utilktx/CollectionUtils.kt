@@ -9,6 +9,7 @@ import java.util.*
  * @author Dylan Cai
  */
 
+// TODO: 2020/8/19
 inline fun <T> synchronizedCollectionOf(elements: Collection<T>): Collection<T> =
   Collections.synchronizedCollection(elements)
 

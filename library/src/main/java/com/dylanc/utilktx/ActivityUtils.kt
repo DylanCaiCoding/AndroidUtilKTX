@@ -18,7 +18,7 @@ import com.blankj.utilcode.util.ActivityUtils
  */
 
 /**
- * Return the activity by context. This is equivalent to calling:
+ * Returns the activity by context. This is equivalent to calling:
  * ```
  * ActivityUtils.getActivityByContext(context)
  * ```
@@ -26,7 +26,7 @@ import com.blankj.utilcode.util.ActivityUtils
 inline val Context.activity: Activity? get() = ActivityUtils.getActivityByContext(this)
 
 /**
- * Return whether the activity exists in activity's stack. This is equivalent to calling:
+ * Returns whether the activity exists in activity's stack. This is equivalent to calling:
  * ```
  * ActivityUtils.isActivityExistsInStack(activity)
  * ```
@@ -34,7 +34,7 @@ inline val Context.activity: Activity? get() = ActivityUtils.getActivityByContex
 inline val Activity.isExistsInStack: Boolean get() = ActivityUtils.isActivityExistsInStack(this)
 
 /**
- * Launch a new Activity with extras or options. This is equivalent to calling:
+ * Launches a new Activity with extras or options. This is equivalent to calling:
  * ```
  * ActivityUtils.startActivity(clz, intent, options)
  * ```
@@ -46,7 +46,7 @@ inline fun <reified T : Activity> startActivity(vararg extras: Pair<String, *>, 
   ActivityUtils.startActivity(bundleOf(*extras), T::class.java, options)
 
 /**
- * Launch a new Activity with extras or options. This is equivalent to calling:
+ * Launches a new Activity with extras or options. This is equivalent to calling:
  * ```
  * ActivityUtils.startActivity(clz, extras, options)
  * ```
@@ -62,7 +62,7 @@ inline fun <reified T : Activity> startActivity(extras: Bundle? = null, options:
   }
 
 /**
- * Launch a new Activity with an explicit transition animation. This is equivalent to calling:
+ * Launches a new Activity with an explicit transition animation. This is equivalent to calling:
  * ```
  * ActivityUtils.startActivity(clz, enterAnim, exitAnim)
  * ```
@@ -71,7 +71,7 @@ inline fun <reified T : Activity> startActivity(@AnimRes enterAnim: Int, @AnimRe
   ActivityUtils.startActivity(T::class.java, enterAnim, exitAnim)
 
 /**
- * Launch a new Activity with extras or options. This is equivalent to calling:
+ * Launches a new Activity with extras or options. This is equivalent to calling:
  * ```
  * ActivityUtils.startActivity(activity, clz, extras, options)
  * ```
@@ -87,7 +87,7 @@ inline fun <reified T : Activity> Activity.startActivity(extras: Bundle? = null,
   }
 
 /**
- * Launch a new Activity with extras or options. This is equivalent to calling:
+ * Launches a new Activity with extras or options. This is equivalent to calling:
  * ```
  * ActivityUtils.startActivity(clz, intent, options)
  * ```
@@ -99,7 +99,7 @@ inline fun <reified T : Activity> Activity.startActivity(vararg extras: Pair<Str
   ActivityUtils.startActivity(this, intentOf<T>(*extras), options)
 
 /**
- * Launch a new Activity with an explicit transition animation. This is equivalent to calling:
+ * Launches a new Activity with an explicit transition animation. This is equivalent to calling:
  * ```
  * ActivityUtils.startActivity(activity, clz, enterAnim, exitAnim)
  * ```
@@ -108,7 +108,7 @@ inline fun <reified T : Activity> Activity.startActivity(@AnimRes enterAnim: Int
   ActivityUtils.startActivity(this, T::class.java, enterAnim, exitAnim)
 
 /**
- * Launch a new Activity with shared elements. This is equivalent to calling:
+ * Launches a new Activity with shared elements. This is equivalent to calling:
  * ```
  * ActivityUtils.startActivity(activity, intent, sharedElements)
  * ```
@@ -117,7 +117,7 @@ inline fun Activity.startActivity(intent: Intent, vararg sharedElements: View) =
   ActivityUtils.startActivity(this, intent, *sharedElements)
 
 /**
- * Launch activities. This is equivalent to calling:
+ * Launches activities. This is equivalent to calling:
  * ```
  * ActivityUtils.startActivities(intents, options)
  * ```
@@ -126,7 +126,7 @@ inline fun startActivities(intents: Array<Intent>, options: Bundle? = null) =
   ActivityUtils.startActivities(intents, options)
 
 /**
- * Launch activities. This is equivalent to calling:
+ * Launches activities. This is equivalent to calling:
  * ```
  * ActivityUtils.startActivities(activity, intents, options)
  * ```
@@ -139,7 +139,7 @@ inline fun Activity.startActivities(intents: Array<Intent>, options: Bundle? = n
   }
 
 /**
- * Launch activities with an explicit transition animation. This is equivalent to calling:
+ * Launches activities with an explicit transition animation. This is equivalent to calling:
  * ```
  * ActivityUtils.startActivities(activity, intents, enterAnim, exitAnim)
  * ```
@@ -148,7 +148,7 @@ inline fun Activity.startActivities(intents: Array<Intent>, @AnimRes enterAnim: 
   ActivityUtils.startActivities(this, intents, enterAnim, exitAnim)
 
 /**
- * Launch a new Activity of home. This is equivalent to calling:
+ * Launches a new Activity of home. This is equivalent to calling:
  * ```
  * ActivityUtils.startHomeActivity()
  * ```
@@ -156,7 +156,7 @@ inline fun Activity.startActivities(intents: Array<Intent>, @AnimRes enterAnim: 
 inline fun startHomeActivity() = ActivityUtils.startHomeActivity()
 
 /**
- * Return the list of activity. This is equivalent to calling:
+ * Returns the list of activity. This is equivalent to calling:
  * ```
  * ActivityUtils.getActivityList()
  * ```
@@ -164,7 +164,7 @@ inline fun startHomeActivity() = ActivityUtils.startHomeActivity()
 val activityList: List<Activity> get() = ActivityUtils.getActivityList()
 
 /**
- * Return whether the activity is alive. This is equivalent to calling:
+ * Returns whether the activity is alive. This is equivalent to calling:
  * ```
  * ActivityUtils.isActivityAlive(context)
  * ```
@@ -172,7 +172,7 @@ val activityList: List<Activity> get() = ActivityUtils.getActivityList()
 inline val Context.isActivityAlive: Boolean get() = ActivityUtils.isActivityAlive(this)
 
 /**
- * Return whether the activity is alive. This is equivalent to calling:
+ * Returns whether the activity is alive. This is equivalent to calling:
  * ```
  * ActivityUtils.isActivityAlive(activity)
  * ```
@@ -180,7 +180,7 @@ inline val Context.isActivityAlive: Boolean get() = ActivityUtils.isActivityAliv
 inline val Activity.isAlive: Boolean get() = ActivityUtils.isActivityAlive(this)
 
 /**
- * Return the top activity in activity's stack. This is equivalent to calling:
+ * Returns the top activity in activity's stack. This is equivalent to calling:
  * ```
  * ActivityUtils.getTopActivity()
  * ```
@@ -188,7 +188,7 @@ inline val Activity.isAlive: Boolean get() = ActivityUtils.isActivityAlive(this)
 val topActivity: Activity get() = ActivityUtils.getTopActivity()
 
 /**
- * Return the name of launcher activity. This is equivalent to calling:
+ * Returns the name of launcher activity. This is equivalent to calling:
  * ```
  * ActivityUtils.getLauncherActivity()
  * ```
@@ -196,7 +196,7 @@ val topActivity: Activity get() = ActivityUtils.getTopActivity()
 inline val launchActivityName: String get() = ActivityUtils.getLauncherActivity()
 
 /**
- * Return the name of launcher activity. This is equivalent to calling:
+ * Returns the name of launcher activity. This is equivalent to calling:
  * ```
  * ActivityUtils.getLauncherActivity(pkg)
  * ```
@@ -204,7 +204,7 @@ inline val launchActivityName: String get() = ActivityUtils.getLauncherActivity(
 inline fun launchActivityNameOf(pkg: String): String = ActivityUtils.getLauncherActivity(pkg)
 
 /**
- * Finish the activities whose type not equals the activity class. This is equivalent to calling:
+ * Finishes the activities whose type not equals the activity class. This is equivalent to calling:
  * ```
  * ActivityUtils.finishOtherActivities(clz, isLoadAnim)
  * ```
@@ -215,7 +215,7 @@ inline fun <reified T : Activity> finishOtherActivities(isLoadAnim: Boolean = fa
   ActivityUtils.finishOtherActivities(T::class.java, isLoadAnim)
 
 /**
- * Finish the activities whose type not equals the activity class with an explicit transition
+ * Finishes the activities whose type not equals the activity class with an explicit transition
  * animation. This is equivalent to calling:
  * ```
  * ActivityUtils.finishOtherActivities(clz, enterAnim, exitAnim)
@@ -225,7 +225,7 @@ inline fun <reified T : Activity> finishOtherActivities(@AnimRes enterAnim: Int,
   ActivityUtils.finishOtherActivities(T::class.java, enterAnim, exitAnim)
 
 /**
- * Finish all of activities. This is equivalent to calling:
+ * Finishes all of activities. This is equivalent to calling:
  * ```
  * ActivityUtils.finishAllActivities(isLoadAnim)
  * ```
@@ -236,7 +236,7 @@ inline fun finishAllActivities(isLoadAnim: Boolean = false) =
   ActivityUtils.finishAllActivities(isLoadAnim)
 
 /**
- * Finish all of activities with an explicit transition animation. This is equivalent to calling:
+ * Finishes all of activities with an explicit transition animation. This is equivalent to calling:
  * ```
  * ActivityUtils.finishAllActivities(enterAnim, exitAnim)
  * ```
@@ -245,7 +245,7 @@ inline fun finishAllActivities(@AnimRes enterAnim: Int, @AnimRes exitAnim: Int) 
   ActivityUtils.finishAllActivities(enterAnim, exitAnim)
 
 /**
- * Finish all of activities except the newest activity. This is equivalent to calling:
+ * Finishes all of activities except the newest activity. This is equivalent to calling:
  * ```
  * ActivityUtils.finishAllActivitiesExceptNewest(isLoadAnim)
  * ```
@@ -256,7 +256,7 @@ inline fun finishAllActivitiesExceptNewest(isLoadAnim: Boolean = false) =
   ActivityUtils.finishAllActivitiesExceptNewest(isLoadAnim)
 
 /**
- * Finish all of activities except the newest activity with an explicit transition animation.
+ * Finishes all of activities except the newest activity with an explicit transition animation.
  * This is equivalent to calling:
  * ```
  * ActivityUtils.finishAllActivitiesExceptNewest(isLoadAnim)

@@ -8,7 +8,7 @@ import com.blankj.utilcode.util.SizeUtils
 /**
  * @author Dylan Cai
  */
-
+// TODO: 2020/8/19
 inline val Float.dp: Int
   get() = SizeUtils.dp2px(this)
 
@@ -82,15 +82,32 @@ inline fun Long.px2sp(): Int =
 inline fun Double.px2sp(): Int =
   SizeUtils.px2sp(toFloat())
 
-inline fun View.forceGetViewSize(noinline listener: (View) -> Unit) =
-  SizeUtils.forceGetViewSize(this, listener)
-
+/**
+ * Measure the view. This is equivalent to calling:
+ * ```
+ * SizeUtils.measureView(view)
+ * ```
+ *
+ * @return arr[0]: view's width, arr[1]: view's height
+ */
 inline fun View.measure(): IntArray =
   SizeUtils.measureView(this)
 
+/**
+ * Return the width of view. This is equivalent to calling:
+ * ```
+ * SizeUtils.getMeasuredWidth(view)
+ * ```
+ */
 inline val View.measureWidth: Int
   get() = SizeUtils.getMeasuredWidth(this)
 
+/**
+ * Return the height of view. This is equivalent to calling:
+ * ```
+ * SizeUtils.getMeasuredHeight(view)
+ * ```
+ */
 inline val View.measureHeight: Int
   get() = SizeUtils.getMeasuredHeight(this)
 
