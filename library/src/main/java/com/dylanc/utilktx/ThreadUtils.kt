@@ -12,20 +12,41 @@ import java.util.concurrent.TimeUnit
 /**
  * @author Dylan Cai
  */
-// TODO: 2020/8/19
 
+/**
+ * Return whether the thread is the main thread. This is equivalent to calling:
+ * ```
+ * ThreadUtils.isMainThread()
+ * ```
+ */
 inline val isMainThread: Boolean get() = ThreadUtils.isMainThread()
 
+/**
+ * Return the handler of the main thread. This is equivalent to calling:
+ * ```
+ * ThreadUtils.getMainHandler()
+ * ```
+ */
 inline val mainHandler: Handler get() = ThreadUtils.getMainHandler()
 
-inline fun runOnUiThread(noinline runnable: () -> Unit) =
-  ThreadUtils.runOnUiThread(runnable)
+/**
+ * Run on the main thread. This is equivalent to calling:
+ * ```
+ * ThreadUtils.runOnUiThread(runnable)
+ * ```
+ */
+inline fun runOnUiThread(noinline runnable: () -> Unit) = ThreadUtils.runOnUiThread(runnable)
 
+/**
+ * Run on the main thread delayed. This is equivalent to calling:
+ * ```
+ * ThreadUtils.runOnUiThreadDelayed(runnable, delayMillis)
+ * ```
+ */
 inline fun runOnUiThreadDelayed(delayMillis: Long, noinline runnable: () -> Unit) =
   ThreadUtils.runOnUiThreadDelayed(runnable, delayMillis)
 
-inline fun fixedThreadPoolOf(@IntRange(from = 1) size: Int): ExecutorService =
-  ThreadUtils.getFixedPool(size)
+inline fun fixedThreadPoolOf(@IntRange(from = 1) size: Int): ExecutorService = ThreadUtils.getFixedPool(size)
 
 inline fun fixedThreadPoolOf(@IntRange(from = 1) size: Int, @IntRange(from = 1, to = 10) priority: Int): ExecutorService =
   ThreadUtils.getFixedPool(size, priority)
@@ -182,21 +203,50 @@ inline fun <T> executeByCustomThreadAtFixRate(
 ) =
   ThreadUtils.executeByCustomAtFixRate(pool, task, initialDelay, period, unit)
 
-// TODO: 2020/7/30 Optimize usage
-inline fun cancelThread(tasks: ThreadUtils.Task<*>) =
-  ThreadUtils.cancel(tasks)
+/**
+ * Cancels the thread by [ThreadUtils]. This is equivalent to calling:
+ * ```
+ * ThreadUtils.cancel(tasks)
+ * ```
+ */
+inline fun cancelThread(task: ThreadUtils.Task<*>) = ThreadUtils.cancel(task)
 
-inline fun cancelThread(vararg tasks: ThreadUtils.Task<*>) =
-  ThreadUtils.cancel(*tasks)
+/**
+ * Cancels the thread by [ThreadUtils]. This is equivalent to calling:
+ * ```
+ * ThreadUtils.cancel(tasks)
+ * ```
+ */
+inline fun cancelThread(vararg tasks: ThreadUtils.Task<*>) = ThreadUtils.cancel(*tasks)
 
-inline fun cancelThread(tasks: List<ThreadUtils.Task<*>>) =
-  ThreadUtils.cancel(tasks)
+/**
+ * Cancels the thread by [ThreadUtils]. This is equivalent to calling:
+ * ```
+ * ThreadUtils.cancel(tasks)
+ * ```
+ */
+inline fun cancelThread(tasks: List<ThreadUtils.Task<*>>) = ThreadUtils.cancel(tasks)
 
-inline fun cancelThread(executorService: ExecutorService) =
-  ThreadUtils.cancel(executorService)
+/**
+ * Cancels the thread by [ThreadUtils]. This is equivalent to calling:
+ * ```
+ * ThreadUtils.cancel(executorService)
+ * ```
+ */
+inline fun cancelThread(executorService: ExecutorService) = ThreadUtils.cancel(executorService)
 
-inline fun setDeliverThread(deliver: Executor) =
-  ThreadUtils.setDeliver(deliver)
+/**
+ * Sets the deliver of [ThreadUtils]. This is equivalent to calling:
+ * ```
+ * ThreadUtils.setDeliver(deliver)
+ * ```
+ */
+inline fun setThreadDeliver(deliver: Executor) = ThreadUtils.setDeliver(deliver)
 
-inline fun setDeliverThread(noinline deliver: (Runnable) -> Unit) =
-  ThreadUtils.setDeliver(deliver)
+/**
+ * Sets the deliver of [ThreadUtils]. This is equivalent to calling:
+ * ```
+ * ThreadUtils.setDeliver(deliver)
+ * ```
+ */
+inline fun setThreadDeliver(noinline deliver: (Runnable) -> Unit) = ThreadUtils.setDeliver(deliver)
