@@ -2,7 +2,10 @@
 
 package com.dylanc.utilktx
 
+import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import com.blankj.utilcode.util.ViewUtils
 
 /**
@@ -51,3 +54,6 @@ inline var View.isInvisible: Boolean
   set(value) {
     if (value) View.INVISIBLE else View.VISIBLE
   }
+
+inline fun ViewGroup.inflate(resourceId: Int, attachToRoot: Boolean = true): View =
+  LayoutInflater.from(context).inflate(resourceId, this, attachToRoot)
