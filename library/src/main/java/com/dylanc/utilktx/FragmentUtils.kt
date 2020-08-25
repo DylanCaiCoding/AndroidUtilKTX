@@ -302,6 +302,3 @@ inline var Fragment.backgroundDrawable: Drawable
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
   get() = throw NotImplementedError()
   set(value) = FragmentUtils.setBackground(this, value)
-
-
-

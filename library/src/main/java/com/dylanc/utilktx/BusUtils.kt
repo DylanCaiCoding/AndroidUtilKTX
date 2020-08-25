@@ -69,11 +69,11 @@ inline fun postStickyEvent(tag: String, arg: Any) = BusUtils.postSticky(tag, arg
 inline fun removeStickyEvent(tag: String) = BusUtils.removeSticky(tag)
 
 /**
- * Returns the string of [BusUtils]. This is equivalent to calling:
- * ```
- * BusUtils.toString_()
- * ```
- */
+* Returns the string of [BusUtils]. This is equivalent to calling:
+* ```
+* BusUtils.toString_()
+* ```
+*/
 inline val eventBusInfo: String get() = BusUtils.toString_()
 
 inline fun observeEventBus(owner: LifecycleOwner) =

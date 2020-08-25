@@ -185,7 +185,7 @@ inline fun Bitmap.toBytes(): ByteArray = ImageUtils.bitmap2Bytes(this)
  * ConvertUtils.byte2MemorySize(byteSize, unit)
  * ```
  */
-inline fun Long.byte2MemorySize(unit: Int): Double = ConvertUtils.byte2MemorySize(this, unit)
+inline fun Long.byteToMemorySize(unit: Int): Double = ConvertUtils.byte2MemorySize(this, unit)
 
 /**
  * Converts the size of memory to the size of byte in unit. This is equivalent to calling:
@@ -193,7 +193,7 @@ inline fun Long.byte2MemorySize(unit: Int): Double = ConvertUtils.byte2MemorySiz
  * ConvertUtils.memorySize2Byte(memorySize)
  * ```
  */
-inline fun Long.memorySize2Byte(unit: Int): Long = ConvertUtils.memorySize2Byte(this, unit)
+inline fun Long.memorySizeToByte(unit: Int): Long = ConvertUtils.memorySize2Byte(this, unit)
 
 /**
  * Converts the size of byte to the fix size of memory. This is equivalent to calling:
@@ -201,7 +201,7 @@ inline fun Long.memorySize2Byte(unit: Int): Long = ConvertUtils.memorySize2Byte(
  * ConvertUtils.byte2FitMemorySize(byteSize, precision)
  * ```
  */
-inline fun Long.byte2FitMemorySize(precision: Int = 3): String = ConvertUtils.byte2FitMemorySize(this, precision)
+inline fun Long.byteToFitMemorySize(precision: Int = 3): String = ConvertUtils.byte2FitMemorySize(this, precision)
 
 /**
  * Converts the time span in unit to milliseconds. This is equivalent to calling:
@@ -209,7 +209,7 @@ inline fun Long.byte2FitMemorySize(precision: Int = 3): String = ConvertUtils.by
  * ConvertUtils.timeSpan2Millis(timeSpan, unit)
  * ```
  */
-inline fun Long.timeSpan2Millis(unit: Int): Long = ConvertUtils.timeSpan2Millis(this, unit)
+inline fun Long.timeSpanToMillis(unit: Int): Long = ConvertUtils.timeSpan2Millis(this, unit)
 
 /**
  * Converts milliseconds to the time span in unit. This is equivalent to calling:
@@ -217,7 +217,7 @@ inline fun Long.timeSpan2Millis(unit: Int): Long = ConvertUtils.timeSpan2Millis(
  * ConvertUtils.millis2TimeSpan(millis, unit)
  * ```
  */
-inline fun Long.millis2TimeSpan(unit: Int): Long = ConvertUtils.millis2TimeSpan(this, unit)
+inline fun Long.millisToTimeSpan(unit: Int): Long = ConvertUtils.millis2TimeSpan(this, unit)
 
 /**
  * Converts milliseconds to the fit time span. This is equivalent to calling:
@@ -225,7 +225,7 @@ inline fun Long.millis2TimeSpan(unit: Int): Long = ConvertUtils.millis2TimeSpan(
  * ConvertUtils.millis2TimeSpan(millis, unit)
  * ```
  */
-inline fun Long.millis2FitTimeSpan(precision: Int): String = ConvertUtils.millis2FitTimeSpan(this, precision)
+inline fun Long.millisToFitTimeSpan(precision: Int): String = ConvertUtils.millis2FitTimeSpan(this, precision)
 
 /**
  * Converts the input stream to the output stream. This is equivalent to calling:

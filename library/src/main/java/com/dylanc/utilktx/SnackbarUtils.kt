@@ -9,6 +9,8 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import com.blankj.utilcode.util.SnackbarUtils
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -18,92 +20,76 @@ import com.google.android.material.snackbar.Snackbar
 private const val COLOR_DEFAULT: Int = -0x1000001
 
 /**
- * Returns the [SnackbarUtils]. This is equivalent to calling:
+ * Show the snackbar. This is equivalent to calling:
  * ```
- * SnackbarUtils.with(activity.findViewById(android.R.id.content))
- * ```
- */
-inline fun Activity.snackbarUtilsOf(): SnackbarUtils = snackbarUtilsOf(findViewById(android.R.id.content))
-
-/**
- * Returns the [SnackbarUtils]. This is equivalent to calling:
- * ```
- * SnackbarUtils.with(view)
+ * SnackbarBuilder(activity).apply(block).build().setMessage(message).show()
  * ```
  */
-inline fun snackbarUtilsOf(view: View): SnackbarUtils = SnackbarUtils.with(view)
+inline fun Activity.showSnackbar(message: String, block: SnackbarBuilder.() -> Unit = {}): Snackbar =
+  SnackbarBuilder(this).apply(block).build().setMessage(message).show()
 
 /**
  * Show the snackbar. This is equivalent to calling:
  * ```
- * SnackbarUtils.with(activity.findViewById(android.R.id.content)).show()
+ * SnackbarBuilder(view).apply(block).build().setMessage(message).show()
  * ```
  */
-inline fun Activity.showSnackbar(block: SnackbarBuilder.() -> Unit): Snackbar =
-  snackbarUtilsOf().apply { SnackbarBuilder(this).apply(block) }.show()
-
-/**
- * Show the snackbar. This is equivalent to calling:
- * ```
- * SnackbarUtils.with(view).show()
- * ```
- */
-inline fun showSnackbar(view: View, block: SnackbarBuilder.() -> Unit): Snackbar =
-  snackbarUtilsOf(view).apply { SnackbarBuilder(this).apply(block) }.show()
+inline fun showSnackbar(view: View, message: String, block: SnackbarBuilder.() -> Unit = {}): Snackbar =
+  SnackbarBuilder(view).apply(block).build().setMessage(message).show()
 
 /**
  * Show the snackbar with success style. This is equivalent to calling:
  * ```
- * SnackbarUtils.with(activity.findViewById(android.R.id.content)).showSuccess(isShowTop)
+ * SnackbarBuilder(activity).apply(block).build().setMessage(message).showSuccess(isShowTop)
  * ```
  */
-inline fun Activity.showSuccessSnackbar(isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit) =
-  snackbarUtilsOf().apply { SnackbarBuilder(this).apply(block) }.showSuccess(isShowTop)
+inline fun Activity.showSuccessSnackbar(message: String, isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit = {}) =
+  SnackbarBuilder(this).apply(block).build().setMessage(message).showSuccess(isShowTop)
 
 /**
  * Show the snackbar with success style. This is equivalent to calling:
  * ```
- * SnackbarUtils.with(view).showSuccess(isShowTop)
+ * SnackbarBuilder(view).apply(block).build().setMessage(message).showSuccess(isShowTop)
  * ```
  */
-inline fun showSuccessSnackbar(view: View, isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit) =
-  snackbarUtilsOf(view).apply { SnackbarBuilder(this).apply(block) }.showSuccess(isShowTop)
+inline fun showSuccessSnackbar(view: View, message: String, isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit = {}) =
+  SnackbarBuilder(view).apply(block).build().setMessage(message).showSuccess(isShowTop)
 
 /**
  * Show the snackbar with warning style. This is equivalent to calling:
  * ```
- * SnackbarUtils.with(activity.findViewById(android.R.id.content)).showWarning(isShowTop)
+ * SnackbarBuilder(activity).apply(block).build().setMessage(message).showWarning(isShowTop)
  * ```
  */
-inline fun Activity.showWarningSnackbar(isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit) =
-  snackbarUtilsOf().apply { SnackbarBuilder(this).apply(block) }.showWarning(isShowTop)
+inline fun Activity.showWarningSnackbar(message: String, isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit = {}) =
+  SnackbarBuilder(this).apply(block).build().setMessage(message).showWarning(isShowTop)
 
 /**
  * Show the snackbar with warning style. This is equivalent to calling:
  * ```
- * SnackbarUtils.with(view).showWarning(isShowTop)
+ * SnackbarBuilder(view).apply(block).build().setMessage(message).showWarning(isShowTop)
  * ```
  */
-inline fun showWarningSnackbar(view: View, isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit) =
-  snackbarUtilsOf(view).apply { SnackbarBuilder(this).apply(block) }.showWarning(isShowTop)
+inline fun showWarningSnackbar(view: View, message: String, isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit = {}) =
+  SnackbarBuilder(view).apply(block).build().setMessage(message).showWarning(isShowTop)
 
 /**
  * Show the snackbar with error style. This is equivalent to calling:
  * ```
- * SnackbarUtils.with(activity.findViewById(android.R.id.content)).showSuccess(isShowTop)
+ * SnackbarBuilder(activity).apply(block).build().setMessage(message).showError(isShowTop)
  * ```
  */
-inline fun Activity.showErrorSnackbar(isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit) =
-  snackbarUtilsOf().apply { SnackbarBuilder(this).apply(block) }.showError(isShowTop)
+inline fun Activity.showErrorSnackbar(message: String, isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit = {}) =
+  SnackbarBuilder(this).apply(block).build().setMessage(message).showError(isShowTop)
 
 /**
  * Show the snackbar with error style. This is equivalent to calling:
  * ```
- * SnackbarUtils.with(view).showSuccess(isShowTop)
+ * SnackbarBuilder(view).apply(block).build().setMessage(message).showError(isShowTop)
  * ```
  */
-inline fun showErrorSnackbar(view: View, isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit) =
-  snackbarUtilsOf(view).apply { SnackbarBuilder(this).apply(block) }.showError(isShowTop)
+inline fun showErrorSnackbar(view: View, message: String, isShowTop: Boolean = false, block: SnackbarBuilder.() -> Unit = {}) =
+  SnackbarBuilder(view).apply(block).build().setMessage(message).showError(isShowTop)
 
 /**
  * Dismiss the snackbar. This is equivalent to calling:
@@ -139,32 +125,50 @@ inline fun addSnackbarView(@LayoutRes layoutId: Int, params: ViewGroup.LayoutPar
 inline fun addSnackbarView(child: View, params: ViewGroup.LayoutParams) =
   SnackbarUtils.addView(child, params)
 
-class SnackbarBuilder(private val snackbarUtils: SnackbarUtils) {
-  fun message(msg: CharSequence) {
-    snackbarUtils.setMessage(msg)
-  }
+class SnackbarBuilder(view: View) {
 
-  fun messageColor(@ColorInt color: Int) {
-    snackbarUtils.setMessageColor(color)
-  }
+  constructor(activity: Activity) : this(activity.findViewById<View>(android.R.id.content))
 
-  fun bgColor(@ColorInt color: Int) {
-    snackbarUtils.setBgColor(color)
-  }
+  private val snackbarUtils: SnackbarUtils = SnackbarUtils.with(view)
 
-  fun bgResource(@DrawableRes bgResource: Int) {
-    snackbarUtils.setBgResource(bgResource)
-  }
+  var messageColor: Int
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = throw noGetter()
+    set(@ColorInt value) {
+      snackbarUtils.setMessageColor(value)
+    }
 
-  fun duration(duration: Int) {
-    snackbarUtils.setDuration(duration)
-  }
+  var bgColor: Int
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = throw noGetter()
+    set(@ColorInt value) {
+      snackbarUtils.setBgColor(value)
+    }
+
+  var bgResource: Int
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = throw noGetter()
+    set(@DrawableRes value) {
+      snackbarUtils.setBgResource(value)
+    }
+
+  var duration: Int
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = throw noGetter()
+    set(value) {
+      snackbarUtils.setDuration(value)
+    }
 
   fun action(text: CharSequence, @ColorInt color: Int = COLOR_DEFAULT, listener: (View) -> Unit) {
     snackbarUtils.setAction(text, color, listener)
   }
 
-  fun bottomMargin(bottomMargin: Int) {
-    snackbarUtils.setBottomMargin(bottomMargin)
-  }
+  var bottomMargin: Int
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = throw noGetter()
+    set(value) {
+      snackbarUtils.setBottomMargin(value)
+    }
+
+  fun build() = snackbarUtils
 }

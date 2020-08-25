@@ -18,7 +18,6 @@ import android.util.SizeF
 import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresPermission
 import com.blankj.utilcode.util.IntentUtils
-import com.blankj.utilcode.util.PermissionUtils.permission
 import java.io.File
 import java.io.Serializable
 import java.util.*

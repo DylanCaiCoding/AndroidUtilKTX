@@ -4,6 +4,8 @@ package com.dylanc.utilktx
 
 import android.view.View
 import com.blankj.utilcode.util.ShadowUtils
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 
 /**
  * @author Dylan Cai
@@ -12,23 +14,28 @@ import com.blankj.utilcode.util.ShadowUtils
 /**
  * Sets the shadow for the view. This is equivalent to calling:
  * ```
- * ShadowUtils.apply(view, ShadowUtils.Config())
+ * ShadowUtils.apply(this, ShadowBuilder().apply(block).build())
  * ```
  */
-inline fun View.setShadow(noinline block: (ShadowBuilder.() -> Unit)? = null) =
-  ShadowUtils.apply(this, ShadowUtils.Config().apply {
-    block?.let { ShadowBuilder(this).apply(block) }
-  })
+inline fun View.setShadow(noinline block: ShadowBuilder.() -> Unit) =
+  ShadowUtils.apply(this, ShadowBuilder().apply(block).build())
 
-class ShadowBuilder(private val config: ShadowUtils.Config) {
+class ShadowBuilder {
+  private val config: ShadowUtils.Config = ShadowUtils.Config()
 
-  fun radius(radius: Float) {
-    config.setShadowRadius(radius)
-  }
+  var radius: Float
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = throw noGetter()
+    set(value) {
+      config.setShadowRadius(value)
+    }
 
-  fun circle() {
-    config.setCircle()
-  }
+  var circle: Boolean
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = throw noGetter()
+    set(value) {
+      if (value) config.setCircle()
+    }
 
   fun size(sizeNormal: Int, sizePressed: Int = sizeNormal) {
     config.setShadowSize(sizeNormal, sizePressed)
@@ -42,4 +49,5 @@ class ShadowBuilder(private val config: ShadowUtils.Config) {
     config.setShadowColor(sizeNormal, colorPressed)
   }
 
+  fun build() = config
 }

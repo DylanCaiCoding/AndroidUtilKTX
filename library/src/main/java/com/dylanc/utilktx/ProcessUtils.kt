@@ -19,9 +19,10 @@ import com.blankj.utilcode.util.ProcessUtils
  * ProcessUtils.getForegroundProcessName()
  * ```
  */
-@get:RequiresApi(Build.VERSION_CODES.M)
-@get:RequiresPermission(PACKAGE_USAGE_STATS)
-inline val foregroundProcessName: String get() = ProcessUtils.getForegroundProcessName()
+inline val foregroundProcessName: String
+  @RequiresApi(Build.VERSION_CODES.M)
+  @RequiresPermission(PACKAGE_USAGE_STATS)
+  get() = ProcessUtils.getForegroundProcessName()
 
 /**
  * Kills all background processes. This is equivalent to calling:

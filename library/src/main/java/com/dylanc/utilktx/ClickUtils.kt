@@ -157,7 +157,7 @@ inline fun View.expandClickArea(expandSizeTop: Int, expandSizeLeft: Int, expandS
  * ClickUtils.back2HomeFriendly(tip)
  * ```
  */
-inline fun back2HomeActivityFriendly(tip: CharSequence) = ClickUtils.back2HomeFriendly(tip)
+inline fun backToHomeActivityFriendly(tip: CharSequence) = ClickUtils.back2HomeFriendly(tip)
 
 /**
  * Back to the home activity friendly. This is equivalent to calling:
@@ -165,5 +165,5 @@ inline fun back2HomeActivityFriendly(tip: CharSequence) = ClickUtils.back2HomeFr
  * ClickUtils.back2HomeFriendly(tip, duration, listener)
  * ```
  */
-inline fun back2HomeActivityFriendly(tip: CharSequence, duration: Long, listener: ClickUtils.Back2HomeFriendlyListener) =
+inline fun backToHomeActivityFriendly(tip: CharSequence, duration: Long, listener: ClickUtils.Back2HomeFriendlyListener) =
   ClickUtils.back2HomeFriendly(tip, duration, listener)

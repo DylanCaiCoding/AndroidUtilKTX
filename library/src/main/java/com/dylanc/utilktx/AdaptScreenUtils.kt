@@ -52,5 +52,5 @@ inline val Float.pt: Int get() = AdaptScreenUtils.pt2Px(this)
  * AdaptScreenUtils.pt2Px(float)
  * ```
  */
-inline fun Float.px2pt() = AdaptScreenUtils.px2Pt(this)
+inline fun Float.pxToPt() = AdaptScreenUtils.px2Pt(this)
 

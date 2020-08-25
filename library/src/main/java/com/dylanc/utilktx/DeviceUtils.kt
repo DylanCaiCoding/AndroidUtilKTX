@@ -26,8 +26,9 @@ inline val isDeviceRooted: Boolean get() = DeviceUtils.isDeviceRooted()
  * DeviceUtils.isAdbEnabled()
  * ```
  */
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-inline fun isAdbEnabled(): Boolean = DeviceUtils.isAdbEnabled()
+inline val isAdbEnabled: Boolean
+  @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+  get() = DeviceUtils.isAdbEnabled()
 
 /**
  * Returns the version name of device's system. This is equivalent to calling:

@@ -79,7 +79,7 @@ inline val Double.sp: Int get() = SizeUtils.sp2px(this.toFloat())
  * SizeUtils.px2dp(pxValue)
  * ```
  */
-inline fun Float.px2dp(): Int = SizeUtils.px2dp(this)
+inline fun Float.pxToDp(): Int = SizeUtils.px2dp(this)
 
 /**
  * Coverts the value of px to the value of dp. This is equivalent to calling:
@@ -87,7 +87,7 @@ inline fun Float.px2dp(): Int = SizeUtils.px2dp(this)
  * SizeUtils.px2dp(pxValue.toFloat())
  * ```
  */
-inline fun Int.px2dp(): Int = SizeUtils.px2dp(toFloat())
+inline fun Int.pxToDp(): Int = SizeUtils.px2dp(toFloat())
 
 /**
  * Coverts the value of px to the value of dp. This is equivalent to calling:
@@ -95,7 +95,7 @@ inline fun Int.px2dp(): Int = SizeUtils.px2dp(toFloat())
  * SizeUtils.px2dp(pxValue.toFloat())
  * ```
  */
-inline fun Long.px2dp(): Int = SizeUtils.px2dp(toFloat())
+inline fun Long.pxToDp(): Int = SizeUtils.px2dp(toFloat())
 
 /**
  * Coverts the value of px to the value of dp. This is equivalent to calling:
@@ -103,7 +103,7 @@ inline fun Long.px2dp(): Int = SizeUtils.px2dp(toFloat())
  * SizeUtils.px2dp(pxValue.toFloat())
  * ```
  */
-inline fun Double.px2dp(): Int = SizeUtils.px2dp(toFloat())
+inline fun Double.pxToDp(): Int = SizeUtils.px2dp(toFloat())
 
 /**
  * Coverts the value of px to the value of sp. This is equivalent to calling:
@@ -111,7 +111,7 @@ inline fun Double.px2dp(): Int = SizeUtils.px2dp(toFloat())
  * SizeUtils.px2sp(pxValue)
  * ```
  */
-inline fun Float.px2sp(): Int = SizeUtils.px2sp(this)
+inline fun Float.pxToSp(): Int = SizeUtils.px2sp(this)
 
 /**
  * Coverts the value of px to the value of sp. This is equivalent to calling:
@@ -119,7 +119,7 @@ inline fun Float.px2sp(): Int = SizeUtils.px2sp(this)
  * SizeUtils.px2sp(pxValue.toFloat())
  * ```
  */
-inline fun Int.px2sp(): Int = SizeUtils.px2sp(toFloat())
+inline fun Int.pxToSp(): Int = SizeUtils.px2sp(toFloat())
 
 /**
  * Coverts the value of px to the value of sp. This is equivalent to calling:
@@ -127,7 +127,7 @@ inline fun Int.px2sp(): Int = SizeUtils.px2sp(toFloat())
  * SizeUtils.px2sp(pxValue.toFloat())
  * ```
  */
-inline fun Long.px2sp(): Int = SizeUtils.px2sp(toFloat())
+inline fun Long.pxToSp(): Int = SizeUtils.px2sp(toFloat())
 
 /**
  * Coverts the value of px to the value of sp. This is equivalent to calling:
@@ -135,7 +135,7 @@ inline fun Long.px2sp(): Int = SizeUtils.px2sp(toFloat())
  * SizeUtils.px2sp(pxValue.toFloat())
  * ```
  */
-inline fun Double.px2sp(): Int = SizeUtils.px2sp(toFloat())
+inline fun Double.pxToSp(): Int = SizeUtils.px2sp(toFloat())
 
 /**
  * Measure the view. This is equivalent to calling:

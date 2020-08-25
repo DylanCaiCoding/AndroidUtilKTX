@@ -19,7 +19,7 @@ import java.io.File
  */
 
 /**
- * Return the Application object. Main process get app by UtilsFileProvider,
+ * Returns the Application object. Main process get app by UtilsFileProvider,
  * and other process get app by reflect.. This is equivalent to calling:
  * ```
  * Utils.getApp()
@@ -28,7 +28,7 @@ import java.io.File
 inline val application: Application get() = Utils.getApp()
 
 /**
- * Register the status of application changed listener. This is equivalent to calling:
+ * Registers the status of application changed listener. This is equivalent to calling:
  * ```
  * AppUtils.registerAppStatusChangedListener(listener)
  * ```
@@ -37,7 +37,7 @@ inline fun registerAppStatusChangedListener(listener: Utils.OnAppStatusChangedLi
   AppUtils.registerAppStatusChangedListener(listener)
 
 /**
- * Unregister the status of application changed listener. This is equivalent to calling:
+ * Unregisters the status of application changed listener. This is equivalent to calling:
  * ```
  * AppUtils.unregisterAppStatusChangedListener(listener)
  * ```
@@ -46,7 +46,7 @@ inline fun unregisterAppStatusChangedListener(listener: Utils.OnAppStatusChanged
   AppUtils.unregisterAppStatusChangedListener(listener)
 
 /**
- * Install the app. This is equivalent to calling:
+ * Installs the app. This is equivalent to calling:
  * ```
  * AppUtils.installApp(file)
  * ```
@@ -56,7 +56,7 @@ inline fun unregisterAppStatusChangedListener(listener: Utils.OnAppStatusChanged
 inline fun installApp(file: File) = AppUtils.installApp(file)
 
 /**
- * Install the app. This is equivalent to calling:
+ * Installs the app. This is equivalent to calling:
  * ```
  * AppUtils.installApp(filePath)
  * ```
@@ -66,7 +66,7 @@ inline fun installApp(file: File) = AppUtils.installApp(file)
 inline fun installApp(filePath: String) = AppUtils.installApp(filePath)
 
 /**
- * Uninstall the app. This is equivalent to calling:
+ * Uninstalls the app. This is equivalent to calling:
  * ```
  * AppUtils.uninstallApp(packageName)
  * ```
@@ -76,7 +76,7 @@ inline fun installApp(filePath: String) = AppUtils.installApp(filePath)
 inline fun uninstallApp(packageName: String) = AppUtils.uninstallApp(packageName)
 
 /**
- * Return whether the app is installed. This is equivalent to calling:
+ * Returns whether the app is installed. This is equivalent to calling:
  * ```
  * AppUtils.isAppInstalled(packageName)
  * ```
@@ -84,7 +84,7 @@ inline fun uninstallApp(packageName: String) = AppUtils.uninstallApp(packageName
 inline fun isAppInstalled(packageName: String): Boolean = AppUtils.isAppInstalled(packageName)
 
 /**
- * Return whether the application with root permission. This is equivalent to calling:
+ * Returns whether the application with root permission. This is equivalent to calling:
  * ```
  * AppUtils.isAppRoot()
  * ```
@@ -92,7 +92,7 @@ inline fun isAppInstalled(packageName: String): Boolean = AppUtils.isAppInstalle
 inline val isAppRoot: Boolean get() = AppUtils.isAppRoot()
 
 /**
- * Return whether it is a debug application. This is equivalent to calling:
+ * Returns whether it is a debug application. This is equivalent to calling:
  * ```
  * AppUtils.isAppDebug()
  * ```
@@ -100,7 +100,7 @@ inline val isAppRoot: Boolean get() = AppUtils.isAppRoot()
 inline val isAppDebug: Boolean get() = AppUtils.isAppDebug()
 
 /**
- * Return whether it is a debug application. This is equivalent to calling:
+ * Returns whether it is a debug application. This is equivalent to calling:
  * ```
  * AppUtils.isAppDebug(packageName)
  * ```
@@ -108,7 +108,7 @@ inline val isAppDebug: Boolean get() = AppUtils.isAppDebug()
 inline fun isAppDebug(packageName: String): Boolean = AppUtils.isAppDebug(packageName)
 
 /**
- * Return whether it is a system application. This is equivalent to calling:
+ * Returns whether it is a system application. This is equivalent to calling:
  * ```
  * AppUtils.isAppSystem()
  * ```
@@ -116,7 +116,7 @@ inline fun isAppDebug(packageName: String): Boolean = AppUtils.isAppDebug(packag
 inline val isAppSystem: Boolean get() = AppUtils.isAppSystem()
 
 /**
- * Return whether it is a system application. This is equivalent to calling:
+ * Returns whether it is a system application. This is equivalent to calling:
  * ```
  * AppUtils.isAppSystem(packageName)
  * ```
@@ -124,7 +124,7 @@ inline val isAppSystem: Boolean get() = AppUtils.isAppSystem()
 inline fun isAppSystem(packageName: String): Boolean = AppUtils.isAppSystem(packageName)
 
 /**
- * Return whether application is foreground. This is equivalent to calling:
+ * Returns whether application is foreground. This is equivalent to calling:
  * ```
  * AppUtils.isAppForeground()
  * ```
@@ -132,7 +132,7 @@ inline fun isAppSystem(packageName: String): Boolean = AppUtils.isAppSystem(pack
 inline val isAppForeground: Boolean get() = AppUtils.isAppForeground()
 
 /**
- * Return whether application is foreground. This is equivalent to calling:
+ * Returns whether application is foreground. This is equivalent to calling:
  * ```
  * AppUtils.isAppForeground(packageName)
  * ```
@@ -140,7 +140,7 @@ inline val isAppForeground: Boolean get() = AppUtils.isAppForeground()
 inline fun isAppForeground(packageName: String): Boolean = AppUtils.isAppForeground(packageName)
 
 /**
- * Return whether application is running. This is equivalent to calling:
+ * Returns whether application is running. This is equivalent to calling:
  * ```
  * AppUtils.isAppRunning(packageName)
  * ```
@@ -148,7 +148,7 @@ inline fun isAppForeground(packageName: String): Boolean = AppUtils.isAppForegro
 inline fun isAppRunning(packageName: String): Boolean = AppUtils.isAppRunning(packageName)
 
 /**
- * Launch the application. This is equivalent to calling:
+ * Launches the application. This is equivalent to calling:
  * ```
  * AppUtils.launchApp(packageName)
  * ```
@@ -156,7 +156,7 @@ inline fun isAppRunning(packageName: String): Boolean = AppUtils.isAppRunning(pa
 inline fun launchApp(packageName: String) = AppUtils.launchApp(packageName)
 
 /**
- * Relaunch the application. This is equivalent to calling:
+ * Relaunches the application. This is equivalent to calling:
  * ```
  * AppUtils.relaunchApp(isKillProcess)
  * ```
@@ -164,7 +164,7 @@ inline fun launchApp(packageName: String) = AppUtils.launchApp(packageName)
 inline fun relaunchApp(isKillProcess: Boolean = false) = AppUtils.relaunchApp(isKillProcess)
 
 /**
- * Launch the details settings of application. This is equivalent to calling:
+ * Launches the details settings of application. This is equivalent to calling:
  * ```
  * AppUtils.launchAppDetailsSettings(packageName)
  * ```
@@ -173,7 +173,7 @@ inline fun launchAppDetailsSettings(packageName: String) =
   AppUtils.launchAppDetailsSettings(packageName)
 
 /**
- * Exit the application. This is equivalent to calling:
+ * Exits the application. This is equivalent to calling:
  * ```
  * AppUtils.exitApp()
  * ```
@@ -181,7 +181,7 @@ inline fun launchAppDetailsSettings(packageName: String) =
 inline fun exitApp() = AppUtils.exitApp()
 
 /**
- * Return the icon of application. This is equivalent to calling:
+ * Returns the icon of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppIcon()
  * ```
@@ -189,7 +189,7 @@ inline fun exitApp() = AppUtils.exitApp()
 inline val appIcon: Drawable get() = AppUtils.getAppIcon()
 
 /**
- * Return the icon of application. This is equivalent to calling:
+ * Returns the icon of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppIcon(packageName)
  * ```
@@ -197,7 +197,7 @@ inline val appIcon: Drawable get() = AppUtils.getAppIcon()
 inline fun appIconOf(packageName: String): Drawable = AppUtils.getAppIcon(packageName)
 
 /**
- * Return the package name of application. This is equivalent to calling:
+ * Returns the package name of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppPackageName()
  * ```
@@ -205,7 +205,7 @@ inline fun appIconOf(packageName: String): Drawable = AppUtils.getAppIcon(packag
 inline val packageName: String get() = AppUtils.getAppPackageName()
 
 /**
- * Return the name of application. This is equivalent to calling:
+ * Returns the name of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppName()
  * ```
@@ -213,7 +213,7 @@ inline val packageName: String get() = AppUtils.getAppPackageName()
 inline val appName: String get() = AppUtils.getAppName()
 
 /**
- * Return the name of application. This is equivalent to calling:
+ * Returns the name of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppName(packageName)
  * ```
@@ -221,7 +221,7 @@ inline val appName: String get() = AppUtils.getAppName()
 inline fun appNameOf(packageName: String): String = AppUtils.getAppName(packageName)
 
 /**
- * Return the path of application. This is equivalent to calling:
+ * Returns the path of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppPath()
  * ```
@@ -229,7 +229,7 @@ inline fun appNameOf(packageName: String): String = AppUtils.getAppName(packageN
 inline val appPath: String get() = AppUtils.getAppPath()
 
 /**
- * Return the path of application. This is equivalent to calling:
+ * Returns the path of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppPath(packageName)
  * ```
@@ -237,7 +237,7 @@ inline val appPath: String get() = AppUtils.getAppPath()
 inline fun appPathOf(packageName: String): String = AppUtils.getAppPath(packageName)
 
 /**
- * Return the version name of application. This is equivalent to calling:
+ * Returns the version name of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppVersionName()
  * ```
@@ -245,7 +245,7 @@ inline fun appPathOf(packageName: String): String = AppUtils.getAppPath(packageN
 inline val appVersionName: String get() = AppUtils.getAppVersionName()
 
 /**
- * Return the version name of application. This is equivalent to calling:
+ * Returns the version name of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppVersionName(packageName)
  * ```
@@ -253,7 +253,7 @@ inline val appVersionName: String get() = AppUtils.getAppVersionName()
 inline fun appVersionNameOf(packageName: String): String = AppUtils.getAppVersionName(packageName)
 
 /**
- * Return the version code of application. This is equivalent to calling:
+ * Returns the version code of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppVersionCode()
  * ```
@@ -261,7 +261,7 @@ inline fun appVersionNameOf(packageName: String): String = AppUtils.getAppVersio
 inline val appVersionCode: Int get() = AppUtils.getAppVersionCode()
 
 /**
- * Return the version code of application. This is equivalent to calling:
+ * Returns the version code of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppVersionCode(packageName)
  * ```
@@ -269,7 +269,7 @@ inline val appVersionCode: Int get() = AppUtils.getAppVersionCode()
 inline fun appVersionCodeOf(packageName: String): Int = AppUtils.getAppVersionCode(packageName)
 
 /**
- * Return the signature of application. This is equivalent to calling:
+ * Returns the signature of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppSignature()
  * ```
@@ -277,7 +277,7 @@ inline fun appVersionCodeOf(packageName: String): Int = AppUtils.getAppVersionCo
 inline val appSignature: Array<Signature> get() = AppUtils.getAppSignature()
 
 /**
- * Return the signature of application. This is equivalent to calling:
+ * Returns the signature of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppSignature(packageName)
  * ```
@@ -285,7 +285,7 @@ inline val appSignature: Array<Signature> get() = AppUtils.getAppSignature()
 inline fun appSignatureOf(packageName: String): Array<Signature> = AppUtils.getAppSignature(packageName)
 
 /**
- * Return the signature of application for SHA1 value. This is equivalent to calling:
+ * Returns the signature of application for SHA1 value. This is equivalent to calling:
  * ```
  * AppUtils.getAppSignatureSHA1()
  * ```
@@ -293,7 +293,7 @@ inline fun appSignatureOf(packageName: String): Array<Signature> = AppUtils.getA
 inline val appSignatureSHA1: String get() = AppUtils.getAppSignatureSHA1()
 
 /**
- * Return the signature of application for SHA1 value. This is equivalent to calling:
+ * Returns the signature of application for SHA1 value. This is equivalent to calling:
  * ```
  * AppUtils.getAppSignatureSHA1(packageName)
  * ```
@@ -301,7 +301,7 @@ inline val appSignatureSHA1: String get() = AppUtils.getAppSignatureSHA1()
 inline fun appSignatureSHA1Of(packageName: String): String = AppUtils.getAppSignatureSHA1(packageName)
 
 /**
- * Return the signature of application for SHA256 value. This is equivalent to calling:
+ * Returns the signature of application for SHA256 value. This is equivalent to calling:
  * ```
  * AppUtils.getAppSignatureSHA256()
  * ```
@@ -309,7 +309,7 @@ inline fun appSignatureSHA1Of(packageName: String): String = AppUtils.getAppSign
 inline val appSignatureSHA256: String get() = AppUtils.getAppSignatureSHA256()
 
 /**
- * Return the signature of application for SHA256 value. This is equivalent to calling:
+ * Returns the signature of application for SHA256 value. This is equivalent to calling:
  * ```
  * AppUtils.getAppSignatureSHA256(packageName)
  * ```
@@ -317,7 +317,7 @@ inline val appSignatureSHA256: String get() = AppUtils.getAppSignatureSHA256()
 inline fun appSignatureSHA256Of(packageName: String): String = AppUtils.getAppSignatureSHA256(packageName)
 
 /**
- * Return the signature of application for MD5 value. This is equivalent to calling:
+ * Returns the signature of application for MD5 value. This is equivalent to calling:
  * ```
  *  AppUtils.getAppSignatureMD5()
  * ```
@@ -325,7 +325,7 @@ inline fun appSignatureSHA256Of(packageName: String): String = AppUtils.getAppSi
 inline val appSignatureMD5: String get() = AppUtils.getAppSignatureMD5()
 
 /**
- * Return the signature of application for MD5 value. This is equivalent to calling:
+ * Returns the signature of application for MD5 value. This is equivalent to calling:
  * ```
  *  AppUtils.getAppSignatureMD5(packageName)
  * ```
@@ -333,7 +333,7 @@ inline val appSignatureMD5: String get() = AppUtils.getAppSignatureMD5()
 inline fun appSignatureMD5Of(packageName: String): String = AppUtils.getAppSignatureMD5(packageName)
 
 /**
- * Return the information of application. This is equivalent to calling:
+ * Returns the information of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppInfo()
  * ```
@@ -341,7 +341,7 @@ inline fun appSignatureMD5Of(packageName: String): String = AppUtils.getAppSigna
 inline val appInfo: AppUtils.AppInfo get() = AppUtils.getAppInfo()
 
 /**
- * Return the information of application. This is equivalent to calling:
+ * Returns the information of application. This is equivalent to calling:
  * ```
  * AppUtils.getAppInfo(packageName)
  * ```
@@ -349,7 +349,7 @@ inline val appInfo: AppUtils.AppInfo get() = AppUtils.getAppInfo()
 inline fun appInfoOf(packageName: String): AppUtils.AppInfo = AppUtils.getAppInfo(packageName)
 
 /**
- * Return the information of applications. This is equivalent to calling:
+ * Returns the information of applications. This is equivalent to calling:
  * ```
  * AppUtils.getAppsInfo()
  * ```
@@ -357,7 +357,7 @@ inline fun appInfoOf(packageName: String): AppUtils.AppInfo = AppUtils.getAppInf
 inline val appsInfo: List<AppUtils.AppInfo> get() = AppUtils.getAppsInfo()
 
 /**
- * Return the package information of application. This is equivalent to calling:
+ * Returns the package information of application. This is equivalent to calling:
  * ```
  * AppUtils.getApkInfo(apkFile)
  * ```
@@ -365,7 +365,7 @@ inline val appsInfo: List<AppUtils.AppInfo> get() = AppUtils.getAppsInfo()
 inline fun apkInfo(apkFile: File): AppUtils.AppInfo = AppUtils.getApkInfo(apkFile)
 
 /**
- * Return the package information of application. This is equivalent to calling:
+ * Returns the package information of application. This is equivalent to calling:
  * ```
  * AppUtils.getApkInfo(apkFilePath)
  * ```

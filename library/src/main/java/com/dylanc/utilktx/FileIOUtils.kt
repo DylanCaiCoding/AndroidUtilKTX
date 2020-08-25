@@ -124,7 +124,7 @@ inline fun File.readLines(startIndex: Int = 0, endIndex: Int = 0x7FFFFFFF, chars
  * FileIOUtils.readFile2String(filePath, charsetName)
  * ```
  */
-inline fun readFile2String(filePath: String, charsetName: String? = null): String = FileIOUtils.readFile2String(filePath, charsetName)
+inline fun readFileToString(filePath: String, charsetName: String? = null): String = FileIOUtils.readFile2String(filePath, charsetName)
 
 /**
  * Reads the file into a string. This is equivalent to calling:
@@ -140,7 +140,7 @@ inline fun File.readString(charsetName: String? = null): String = FileIOUtils.re
  * FileIOUtils.readFile2BytesByStream(filePath, listener)
  * ```
  */
-inline fun readFile2BytesByStream(filePath: String, noinline listener: ((Double) -> Unit)? = null): ByteArray =
+inline fun readFileToBytesByStream(filePath: String, noinline listener: ((Double) -> Unit)? = null): ByteArray =
   FileIOUtils.readFile2BytesByStream(filePath, listener)
 
 /**
@@ -158,7 +158,7 @@ inline fun File.readBytesByStream(noinline listener: ((Double) -> Unit)? = null)
  * FileIOUtils.readFile2BytesByChannel(filePath)
  * ```
  */
-inline fun readFile2BytesByChannel(filePath: String): ByteArray = FileIOUtils.readFile2BytesByChannel(filePath)
+inline fun readFileToBytesByChannel(filePath: String): ByteArray = FileIOUtils.readFile2BytesByChannel(filePath)
 
 /**
  * Reads the file into the bytes by channel. This is equivalent to calling:
@@ -174,7 +174,7 @@ inline fun File.readBytesByChannel(): ByteArray = FileIOUtils.readFile2BytesByCh
  * FileIOUtils.readFile2BytesByMap(filePath)
  * ```
  */
-inline fun readFile2BytesByMap(filePath: String): ByteArray = FileIOUtils.readFile2BytesByMap(filePath)
+inline fun readFileToBytesByMap(filePath: String): ByteArray = FileIOUtils.readFile2BytesByMap(filePath)
 
 /**
  * Reads the file into the bytes by map. This is equivalent to calling:

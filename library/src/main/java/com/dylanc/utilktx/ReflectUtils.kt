@@ -8,15 +8,35 @@ import com.blankj.utilcode.util.ReflectUtils
  * @author Dylan Cai
  */
 
-// TODO: 2020/8/13
+/**
+ * Reflect the class. This is equivalent to calling:
+ * ```
+ * ReflectUtils.reflect(clazz).apply(block).get()
+ * ```
+ */
+inline fun <reified T> reflect(block: ReflectUtils.() -> Unit): T = ReflectUtils.reflect(T::class.java).apply(block).get()
 
-inline fun <reified T> reflect(): ReflectUtils = ReflectUtils.reflect(T::class.java)
+/**
+ * Reflect the class. This is equivalent to calling:
+ * ```
+ *  ReflectUtils.reflect(className).apply(block).get()
+ * ```
+ */
+inline fun <T> reflect(className: String, block: ReflectUtils.() -> Unit): T = ReflectUtils.reflect(className).apply(block).get()
 
-inline fun reflect(className: String, classLoader: ClassLoader? = null): ReflectUtils =
-  if (classLoader == null) {
-    ReflectUtils.reflect(className)
-  } else {
-    ReflectUtils.reflect(className, classLoader)
-  }
+/**
+ * Reflect the class. This is equivalent to calling:
+ * ```
+ * ReflectUtils.reflect(className, classLoader).apply(block).get()
+ * ```
+ */
+inline fun <T> reflect(className: String, classLoader: ClassLoader, block: ReflectUtils.() -> Unit): T =
+  ReflectUtils.reflect(className, classLoader).apply(block).get()
 
-inline fun reflect(any: Any): ReflectUtils = ReflectUtils.reflect(any)
+/**
+ * Reflect the class. This is equivalent to calling:
+ * ```
+ * ReflectUtils.reflect(any).apply(block).get()
+ * ```
+ */
+inline fun <T> reflect(any: Any, block: ReflectUtils.() -> Unit): T = ReflectUtils.reflect(any).apply(block).get()

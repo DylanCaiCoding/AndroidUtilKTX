@@ -149,7 +149,7 @@ inline fun <T> Array<T>.lastIndexOf(element: T): Int = ArrayUtils.lastIndexOf(th
 inline fun <T> Array<T>.contains(element: T): Boolean = ArrayUtils.contains(this, element)
 
 /**
- * Sort the array. This is equivalent to calling:
+ * Sorts the array. This is equivalent to calling:
  * ```
  * ArrayUtils.sort(array, comparator)
  * ```
