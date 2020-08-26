@@ -205,7 +205,7 @@ inline fun Bitmap.createRoundCornerBitmap(
  * ImageUtils.addCornerBorder(src, borderSize, borderColor, cornerRadius, recycle)
  * ```
  */
-inline fun Bitmap.addCornerBorder(
+inline fun Bitmap.createCornerBorderBitmap(
   @IntRange(from = 1) borderSize: Int, @ColorInt borderColor: Int, @FloatRange(from = 0.0) cornerRadius: Float, recycle: Boolean = false
 ): Bitmap =
   ImageUtils.addCornerBorder(this, borderSize, borderColor, cornerRadius, recycle)
@@ -216,7 +216,7 @@ inline fun Bitmap.addCornerBorder(
  * ImageUtils.addCircleBorder(src, borderSize, color, recycle)
  * ```
  */
-inline fun Bitmap.addCircleBorder(@IntRange(from = 1) borderSize: Int, @ColorInt color: Int, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createCircleBorderBitmap(@IntRange(from = 1) borderSize: Int, @ColorInt color: Int, recycle: Boolean = false): Bitmap =
   ImageUtils.addCircleBorder(this, borderSize, color, recycle)
 
 /**
@@ -225,7 +225,7 @@ inline fun Bitmap.addCircleBorder(@IntRange(from = 1) borderSize: Int, @ColorInt
  * ImageUtils.addReflection(src, reflectionHeight, recycle)
  * ```
  */
-inline fun Bitmap.addReflection(reflectionHeight: Int, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createReflectionBitmap(reflectionHeight: Int, recycle: Boolean = false): Bitmap =
   ImageUtils.addReflection(this, reflectionHeight, recycle)
 
 /**
@@ -234,7 +234,7 @@ inline fun Bitmap.addReflection(reflectionHeight: Int, recycle: Boolean = false)
  * ImageUtils.addTextWatermark(src, content, textSize, color, x, y)
  * ```
  */
-inline fun Bitmap.addTextWatermark(content: String, textSize: Int, @ColorInt color: Int, x: Float, y: Float): Bitmap =
+inline fun Bitmap.createTextWatermarkBitmap(content: String, textSize: Int, @ColorInt color: Int, x: Float, y: Float): Bitmap =
   ImageUtils.addTextWatermark(this, content, textSize, color, x, y)
 
 /**
@@ -243,7 +243,7 @@ inline fun Bitmap.addTextWatermark(content: String, textSize: Int, @ColorInt col
  * ImageUtils.addTextWatermark(src, content, textSize, color, x, y, recycle)
  * ```
  */
-inline fun Bitmap.addTextWatermark(
+inline fun Bitmap.createTextWatermarkBitmap(
   content: String, textSize: Float = 0f, @ColorInt color: Int = 0, x: Float, y: Float, recycle: Boolean = false
 ): Bitmap =
   ImageUtils.addTextWatermark(this, content, textSize, color, x, y, recycle)
@@ -254,7 +254,7 @@ inline fun Bitmap.addTextWatermark(
  * ImageUtils.addImageWatermark(src, watermark, x, y, alpha, recycle)
  * ```
  */
-inline fun Bitmap.addReflection(watermark: Bitmap, x: Int, y: Int, alpha: Int, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createImageWatermarkBitmap(watermark: Bitmap, x: Int, y: Int, alpha: Int, recycle: Boolean = false): Bitmap =
   ImageUtils.addImageWatermark(this, watermark, x, y, alpha, recycle)
 
 /**
@@ -283,7 +283,7 @@ inline fun Bitmap.createGrayBitmap(recycle: Boolean = false): Bitmap = ImageUtil
  * ImageUtils.fastBlur(src, scale, radius, recycle, isReturnScale)
  * ```
  */
-inline fun Bitmap.setFastBlur(
+inline fun Bitmap.createFastBlurBitmap(
   @FloatRange(from = 0.0, to = 1.0, fromInclusive = false) scale: Float,
   @FloatRange(from = 0.0, to = 25.0, fromInclusive = false) radius: Float,
   recycle: Boolean = false,
@@ -298,7 +298,7 @@ inline fun Bitmap.setFastBlur(
  * ```
  */
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-inline fun Bitmap.setRenderScriptBlur(
+inline fun Bitmap.createRenderScriptBlurBitmap(
   @FloatRange(from = 0.0, to = 25.0, fromInclusive = false) radius: Float, recycle: Boolean = false
 ): Bitmap =
   ImageUtils.renderScriptBlur(this, radius, recycle)
@@ -309,7 +309,7 @@ inline fun Bitmap.setRenderScriptBlur(
  * ImageUtils.stackBlur(src, radius, recycle)
  * ```
  */
-inline fun Bitmap.setStackBlur(radius: Int, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createStackBlurBitmap(radius: Int, recycle: Boolean = false): Bitmap =
   ImageUtils.stackBlur(this, radius, recycle)
 
 /**

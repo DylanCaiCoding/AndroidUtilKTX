@@ -61,20 +61,19 @@ inline val screenDensity: Float get() = ScreenUtils.getScreenDensity()
 inline val screenDensityDpi: Int get() = ScreenUtils.getScreenDensityDpi()
 
 /**
- * Sets full screen. This is equivalent to calling:
+ * Return whether screen is full or sets full screen or not. This is equivalent to calling:
+ * ```
+ * ScreenUtils.isFullScreen(activity)
+ * ```
+ * or
  * ```
  * ScreenUtils.setFullScreen(activity)
- * ```
- */
-inline fun Activity.setFullScreen() = ScreenUtils.setFullScreen(this)
-
-/**
- * Sets non full screen. This is equivalent to calling:
- * ```
  * ScreenUtils.setNonFullScreen(activity)
  * ```
  */
-inline fun Activity.setNonFullScreen() = ScreenUtils.setNonFullScreen(this)
+inline var Activity.isFullScreen: Boolean
+  get() = ScreenUtils.isFullScreen(this)
+  set(value) = if (value) ScreenUtils.setFullScreen(this) else ScreenUtils.setNonFullScreen(this)
 
 /**
  * Toggle full screen. This is equivalent to calling:
@@ -83,10 +82,6 @@ inline fun Activity.setNonFullScreen() = ScreenUtils.setNonFullScreen(this)
  * ```
  */
 inline fun Activity.toggleFullScreen() = ScreenUtils.toggleFullScreen(this)
-
-inline var Activity.isFullScreen: Boolean
-  get() = ScreenUtils.isFullScreen(this)
-  set(value) = if (value) ScreenUtils.setFullScreen(this) else ScreenUtils.setNonFullScreen(this)
 
 /**
  * Sets the screen to landscape. This is equivalent to calling:

@@ -91,14 +91,6 @@ inline fun <T> Reader.toInstance(type: Type, gson: Gson = gsonDelegate): T = Gso
 inline fun <reified T> String.toList(gson: Gson = gsonDelegate): List<T> = toInstance(listTypeOf<T>(), gson)
 
 /**
- * Converts the JSON string to the array. This is equivalent to calling:
- * ```
- * GsonUtils.fromJson(gson, json, GsonUtils.getArrayType(clazz))
- * ```
- */
-inline fun <reified T> String.toArray(gson: Gson = gsonDelegate): Array<T> = toInstance(arrayTypeOf<T>(), gson)
-
-/**
  * Converts the JSON string to the set. This is equivalent to calling:
  * ```
  * GsonUtils.fromJson(gson, json, GsonUtils.getSetType(clazz))
@@ -115,6 +107,14 @@ inline fun <reified T> String.toSet(gson: Gson = gsonDelegate): Set<T> = toInsta
 inline fun <reified K, reified V> String.toMap(): Map<K, V> = toInstance(mapTypeOf<K, V>())
 
 /**
+ * Converts the JSON string to the array. This is equivalent to calling:
+ * ```
+ * GsonUtils.fromJson(gson, json, GsonUtils.getArrayType(clazz))
+ * ```
+ */
+inline fun <reified T> String.toArray(gson: Gson = gsonDelegate): Array<T> = toInstance(arrayTypeOf<T>(), gson)
+
+/**
  * Returns the [Type] of the list. This is equivalent to calling:
  * ```
  * GsonUtils.getListType(type)
@@ -129,22 +129,6 @@ inline fun listTypeOf(type: Type): Type = GsonUtils.getListType(type)
  * ```
  */
 inline fun <reified T> listTypeOf(): Type = GsonUtils.getListType(T::class.java)
-
-/**
- * Returns the [Type] of the array. This is equivalent to calling:
- * ```
- * GsonUtils.getArrayType(type)
- * ```
- */
-inline fun arrayTypeOf(type: Type): Type = GsonUtils.getArrayType(type)
-
-/**
- * Returns the [Type] of the array. This is equivalent to calling:
- * ```
- * GsonUtils.getArrayType(type)
- * ```
- */
-inline fun <reified T> arrayTypeOf(): Type = GsonUtils.getArrayType(T::class.java)
 
 /**
  * Returns the [Type] of the set. This is equivalent to calling:
@@ -177,6 +161,22 @@ inline fun mapTypeOf(keyType: Type, valueType: Type): Type = GsonUtils.getMapTyp
  * ```
  */
 inline fun <reified K, reified V> mapTypeOf(): Type = GsonUtils.getMapType(K::class.java, V::class.java)
+
+/**
+ * Returns the [Type] of the array. This is equivalent to calling:
+ * ```
+ * GsonUtils.getArrayType(type)
+ * ```
+ */
+inline fun arrayTypeOf(type: Type): Type = GsonUtils.getArrayType(type)
+
+/**
+ * Returns the [Type] of the array. This is equivalent to calling:
+ * ```
+ * GsonUtils.getArrayType(type)
+ * ```
+ */
+inline fun <reified T> arrayTypeOf(): Type = GsonUtils.getArrayType(T::class.java)
 
 /**
  * Returns the [Type] of rawType with the typeArguments. This is equivalent to calling:

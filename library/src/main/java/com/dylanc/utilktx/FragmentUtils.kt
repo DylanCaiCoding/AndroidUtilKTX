@@ -81,7 +81,7 @@ inline fun Fragment.hide() = FragmentUtils.hide(this)
  * FragmentUtils.showHide(showIndex, hideFragments)
  * ```
  */
-inline fun List<Fragment>.showFragment(showIndex: Int) = FragmentUtils.showHide(showIndex, this)
+inline fun showFragment(showIndex: Int, hideFragments: List<Fragment>) = FragmentUtils.showHide(showIndex, hideFragments)
 
 /**
  * Shows the fragment then hide other fragment. This is equivalent to calling:
@@ -89,7 +89,7 @@ inline fun List<Fragment>.showFragment(showIndex: Int) = FragmentUtils.showHide(
  * FragmentUtils.showHide(showIndex, hideFragments)
  * ```
  */
-inline fun showFragment(showIndex: Int, vararg fragments: Fragment) = FragmentUtils.showHide(showIndex, *fragments)
+inline fun showFragment(showIndex: Int, vararg hideFragments: Fragment) = FragmentUtils.showHide(showIndex, *hideFragments)
 
 /**
  * Shows the fragment then hide other fragment. This is equivalent to calling:
@@ -214,12 +214,12 @@ inline val FragmentManager.topFragmentInStack: Fragment get() = FragmentUtils.ge
 inline val FragmentManager.topShowFragment: Fragment get() = FragmentUtils.getTopShow(this)
 
 /**
- * Returns the fragments in manager. This is equivalent to calling:
+ * Returns the top fragment which is shown. This is equivalent to calling:
  * ```
- * FragmentUtils.getFragments(fm)
+ * FragmentUtils.getTopShow(fm)
  * ```
  */
-inline val FragmentManager.nonNullFragments: List<Fragment> get() = FragmentUtils.getFragments(this)
+inline val FragmentManager.topShowFragmentInStack: Fragment get() = FragmentUtils.getTopShowInStack(this)
 
 /**
  * Returns the fragments in stack in manager. This is equivalent to calling:

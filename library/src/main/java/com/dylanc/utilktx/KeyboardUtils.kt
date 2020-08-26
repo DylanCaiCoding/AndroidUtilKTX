@@ -14,6 +14,14 @@ import android.view.inputmethod.InputMethodManager
  */
 
 /**
+ * Shows the soft input. This is equivalent to calling:
+ * ```
+ * KeyboardUtils.showSoftInput(activity)
+ * ```
+ */
+inline fun Activity.showKeyboard() = KeyboardUtils.showSoftInput(this)
+
+/**
  * Shows the soft input. This is equivalent to calling:[InputMethodManager]
  * ```
  * KeyboardUtils.showSoftInput(view, flag)
@@ -22,14 +30,6 @@ import android.view.inputmethod.InputMethodManager
  * @param flags Provides additional operating flags.  Currently may be 0 or have the [InputMethodManager.SHOW_IMPLICIT] bit set.
  */
 inline fun View.showKeyboard(flags: Int = 0) = KeyboardUtils.showSoftInput(this, flags)
-
-/**
- * Shows the soft input. This is equivalent to calling:
- * ```
- * KeyboardUtils.showSoftInput(activity)
- * ```
- */
-inline fun Activity.showKeyboard() = KeyboardUtils.showSoftInput(this)
 
 /**
  * Hides the soft input. This is equivalent to calling:
@@ -87,6 +87,14 @@ inline fun Window.registerKeyboardChangedListener(noinline listener: (height: In
  * KeyboardUtils.unregisterSoftInputChangedListener(window, listener)
  * ```
  */
+inline fun Activity.unregisterKeyboardChangedListener() = KeyboardUtils.unregisterSoftInputChangedListener(window)
+
+/**
+ * Registers the changed listener of keyboard. This is equivalent to calling:
+ * ```
+ * KeyboardUtils.unregisterSoftInputChangedListener(window, listener)
+ * ```
+ */
 inline fun Window.unregisterKeyboardChangedListener() = KeyboardUtils.unregisterSoftInputChangedListener(this)
 
 /**
@@ -104,3 +112,19 @@ inline fun Activity.fixAndroidBug5497() = KeyboardUtils.fixAndroidBug5497(this)
  * ```
  */
 inline fun Window.fixAndroidBug5497() = KeyboardUtils.fixAndroidBug5497(this)
+
+/**
+ * Fix the leaks of soft input. This is equivalent to calling:
+ * ```
+ * KeyboardUtils.fixSoftInputLeaks(this)
+ * ```
+ */
+inline fun Activity.fixKeyboardLeaks() = KeyboardUtils.fixSoftInputLeaks(this)
+
+/**
+ * Fix the leaks of soft input. This is equivalent to calling:
+ * ```
+ * KeyboardUtils.fixSoftInputLeaks(this)
+ * ```
+ */
+inline fun Window.fixKeyboardLeaks() = KeyboardUtils.fixSoftInputLeaks(this)

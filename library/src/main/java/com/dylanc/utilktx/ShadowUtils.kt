@@ -37,6 +37,27 @@ class ShadowBuilder {
       if (value) config.setCircle()
     }
 
+  var size: Int
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = throw noGetter()
+    set(value) {
+      config.setShadowSize(value)
+    }
+
+  var maxSize: Int
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = throw noGetter()
+    set(value) {
+      config.setShadowMaxSize(value)
+    }
+
+  var color: Int
+    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+    get() = throw noGetter()
+    set(value) {
+      config.setShadowMaxSize(value)
+    }
+
   fun size(sizeNormal: Int, sizePressed: Int = sizeNormal) {
     config.setShadowSize(sizeNormal, sizePressed)
   }
@@ -45,8 +66,8 @@ class ShadowBuilder {
     config.setShadowMaxSize(sizeNormal, sizePressed)
   }
 
-  fun color(sizeNormal: Int, colorPressed: Int = sizeNormal) {
-    config.setShadowColor(sizeNormal, colorPressed)
+  fun color(colorNormal: Int, colorPressed: Int = colorNormal) {
+    config.setShadowColor(colorNormal, colorPressed)
   }
 
   fun build() = config

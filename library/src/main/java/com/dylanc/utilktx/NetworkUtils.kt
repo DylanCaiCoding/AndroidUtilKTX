@@ -111,6 +111,26 @@ inline val isMobileDataNetwork: Boolean
   @RequiresPermission(ACCESS_NETWORK_STATE)
   get() = NetworkUtils.isMobileData()
 
+/**
+ * Returns whether using 4G. This is equivalent to calling:
+ * ```
+ * NetworkUtils.is4G()
+ * ```
+ */
+inline val is4G: Boolean
+  @RequiresPermission(ACCESS_NETWORK_STATE)
+  get() = NetworkUtils.is4G()
+
+/**
+ * Returns whether wifi is enabled or enables wifi. This is equivalent to calling:
+ * ```
+ * NetworkUtils.getWifiEnabled()
+ * ```
+ * or
+ * ```
+ * NetworkUtils.setWifiEnabled(enabled)
+ * ```
+ */
 inline var isWifiEnabled: Boolean
   @RequiresPermission(ACCESS_WIFI_STATE)
   get() = NetworkUtils.getWifiEnabled()
@@ -270,6 +290,15 @@ inline fun registerNetworkStatusChangedListener(listener: NetworkUtils.OnNetwork
 inline fun unregisterNetworkStatusChangedListener(listener: NetworkUtils.OnNetworkStatusChangedListener) =
   NetworkUtils.unregisterNetworkStatusChangedListener(listener)
 
+/**
+ * Returns whether the status of network changed listener has been registered. This is equivalent to calling:
+ * ```
+ * NetworkUtils.isRegisteredNetworkStatusChangedListener(listener)
+ * ```
+ */
+inline val NetworkUtils.OnNetworkStatusChangedListener.isRegistered: Boolean
+  get() = NetworkUtils.isRegisteredNetworkStatusChangedListener(this)
+
 inline fun observeNetworkStatusChanged(owner: LifecycleOwner, listener: NetworkUtils.OnNetworkStatusChangedListener) {
   owner.lifecycle.addObserver(object : LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
@@ -283,12 +312,3 @@ inline fun observeNetworkStatusChanged(owner: LifecycleOwner, listener: NetworkU
     }
   })
 }
-
-/**
- * Returns whether the status of network changed listener has been registered. This is equivalent to calling:
- * ```
- * NetworkUtils.isRegisteredNetworkStatusChangedListener(listener)
- * ```
- */
-inline val NetworkUtils.OnNetworkStatusChangedListener.isRegistered: Boolean
-  get() = NetworkUtils.isRegisteredNetworkStatusChangedListener(this)

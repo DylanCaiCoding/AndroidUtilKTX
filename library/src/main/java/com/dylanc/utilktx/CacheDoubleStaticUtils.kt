@@ -15,6 +15,17 @@ import java.io.Serializable
  */
 
 /**
+ * Sets the default instance of [CacheDoubleUtils]. This is equivalent to calling:
+ * ```
+ * CacheDoubleStaticUtils.setDefaultCacheDoubleUtils(cacheDoubleUtils)
+ * ```
+ */
+inline var defaultCacheDoubleUtils: CacheDoubleUtils
+  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
+  get() = throw NotImplementedError()
+  set(value) = CacheDoubleStaticUtils.setDefaultCacheDoubleUtils(value)
+
+/**
  * Returns the single [CacheDoubleUtils] instance. This is equivalent to calling:
  * ```
  * CacheDoubleUtils.getInstance(cacheMemoryUtils, cacheDiskUtils)
@@ -25,17 +36,6 @@ inline fun cacheDoubleUtilsOf(
   cacheDiskUtils: CacheDiskUtils = cacheDiskUtilsOf()
 ): CacheDoubleUtils =
   CacheDoubleUtils.getInstance(cacheMemoryUtils, cacheDiskUtils)
-
-/**
- * Sets the default instance of [CacheDoubleUtils]. This is equivalent to calling:
- * ```
- * CacheDoubleStaticUtils.setDefaultCacheDoubleUtils(cacheDoubleUtils)
- * ```
- */
-inline var defaultCacheDoubleUtils: CacheDoubleUtils
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
-  set(value) = CacheDoubleStaticUtils.setDefaultCacheDoubleUtils(value)
 
 /**
  * Puts the bytes in the double cache. This is equivalent to calling:
@@ -137,6 +137,14 @@ inline fun doubleCacheJSONObjectOf(key: String, defaultValue: JSONObject? = null
   CacheDoubleStaticUtils.getJSONObject(key, defaultValue)
 
 /**
+ * Returns the [JSONArray] in the disk cache. This is equivalent to calling:
+ * ```
+ * CacheDoubleStaticUtils.getJSONArray(key, defaultValue)
+ * ```
+ */
+inline fun doubleCacheJSONArrayOf(key: String, defaultValue: JSONArray? = null): JSONArray? =
+  CacheDoubleStaticUtils.getJSONArray(key, defaultValue)
+/**
  * Returns the bitmap in the double cache. This is equivalent to calling:
  * ```
  * CacheDoubleStaticUtils.getBitmap(key, defaultValue)
@@ -180,14 +188,6 @@ inline fun <T> doubleCacheSerializableOf(key: String, defaultValue: T? = null): 
  * ```
  */
 inline val doubleCacheSize: Long get() = CacheDoubleStaticUtils.getCacheDiskSize()
-
-/**
- * Returns the count of the double cache. This is equivalent to calling:
- * ```
- * CacheDoubleStaticUtils.getCacheCount()
- * ```
- */
-inline val doubleCacheCount: Int get() = CacheDoubleStaticUtils.getCacheDiskCount()
 
 /**
  * Removes the double cache by key. This is equivalent to calling:

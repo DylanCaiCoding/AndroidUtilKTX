@@ -59,6 +59,16 @@ inline val phoneIMEI: String get() = PhoneUtils.getIMEI()
 inline val phoneMEID: String get() = PhoneUtils.getMEID()
 
 /**
+ * Returns the IMSI. If the version of SDK is greater than 28, it will return an empty string.
+ * This is equivalent to calling:
+ * ```
+ * PhoneUtils.getIMSI()
+ * ```
+ */
+@get:RequiresPermission(permission.READ_PHONE_STATE)
+inline val phoneIMSI: String get() = PhoneUtils.getIMSI()
+
+/**
  * Returns the current phone type. This is equivalent to calling:
  * ```
  * PhoneUtils.getPhoneType()

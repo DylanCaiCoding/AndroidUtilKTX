@@ -184,6 +184,15 @@ inline val externalDownloadsPath: String get() = PathUtils.getExternalDownloadsP
  */
 inline val externalDcimPath: String get() = PathUtils.getExternalDcimPath()
 
+
+/**
+ * Returns the path of /storage/emulated/0/Documents. This is equivalent to calling:
+ * ```
+ * PathUtils.getExternalDcimPath()
+ * ```
+ */
+inline val externalDocumentsPath: String get() = PathUtils.getExternalDocumentsPath()
+
 /**
  * Returns the path of /storage/emulated/0/Android/data/package. This is equivalent to calling:
  * ```
@@ -279,6 +288,14 @@ inline val externalAppDownloadPath: String get() = PathUtils.getExternalAppDownl
  * ```
  */
 inline val externalAppDcimPath: String get() = PathUtils.getExternalAppDcimPath()
+
+/**
+ * Returns the path of /storage/emulated/0/Android/data/package/files/Documents. This is equivalent to calling:
+ * ```
+ * PathUtils.getExternalAppDcimPath()
+ * ```
+ */
+inline val externalAppDocumentsPath: String get() = PathUtils.getExternalAppDocumentsPath()
 
 /**
  * Returns the path of /storage/emulated/0/Android/obb/package. This is equivalent to calling:

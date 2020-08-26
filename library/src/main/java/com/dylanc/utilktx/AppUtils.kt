@@ -25,7 +25,7 @@ import java.io.File
  * Utils.getApp()
  * ```
  */
-inline val application: Application get() = Utils.getApp()
+inline val app: Application get() = Utils.getApp()
 
 /**
  * Registers the status of application changed listener. This is equivalent to calling:
@@ -202,7 +202,7 @@ inline fun appIconOf(packageName: String): Drawable = AppUtils.getAppIcon(packag
  * AppUtils.getAppPackageName()
  * ```
  */
-inline val packageName: String get() = AppUtils.getAppPackageName()
+inline val appPackageName: String get() = AppUtils.getAppPackageName()
 
 /**
  * Returns the name of application. This is equivalent to calling:
@@ -362,7 +362,7 @@ inline val appsInfo: List<AppUtils.AppInfo> get() = AppUtils.getAppsInfo()
  * AppUtils.getApkInfo(apkFile)
  * ```
  */
-inline fun apkInfo(apkFile: File): AppUtils.AppInfo = AppUtils.getApkInfo(apkFile)
+inline fun apkInfoOf(apkFile: File): AppUtils.AppInfo = AppUtils.getApkInfo(apkFile)
 
 /**
  * Returns the package information of application. This is equivalent to calling:
@@ -370,4 +370,4 @@ inline fun apkInfo(apkFile: File): AppUtils.AppInfo = AppUtils.getApkInfo(apkFil
  * AppUtils.getApkInfo(apkFilePath)
  * ```
  */
-inline fun apkInfo(apkFilePath: String): AppUtils.AppInfo = AppUtils.getApkInfo(apkFilePath)
+inline fun apkInfoOf(apkFilePath: String): AppUtils.AppInfo = AppUtils.getApkInfo(apkFilePath)

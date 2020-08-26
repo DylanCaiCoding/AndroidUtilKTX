@@ -22,6 +22,14 @@ inline fun appMetaDataOf(key: String): String = MetaDataUtils.getMetaDataInApp(k
 /**
  * Returns the value of meta-data in activity. This is equivalent to calling:
  * ```
+ * MetaDataUtils.getMetaDataInActivity(activity, key)
+ * ```
+ */
+inline fun Activity.metaDataOf(key: String): String = MetaDataUtils.getMetaDataInActivity(this, key)
+
+/**
+ * Returns the value of meta-data in activity. This is equivalent to calling:
+ * ```
  * MetaDataUtils.getMetaDataInActivity(activityClazz, key)
  * ```
  */
@@ -29,12 +37,12 @@ inline fun <reified T : Activity> activityMetaDataOf(key: String): String =
   MetaDataUtils.getMetaDataInActivity(T::class.java, key)
 
 /**
- * Returns the value of meta-data in activity. This is equivalent to calling:
+ * Returns the value of meta-data in service. This is equivalent to calling:
  * ```
- * MetaDataUtils.getMetaDataInActivity(activity, key)
+ * MetaDataUtils.getMetaDataInService(service, key)
  * ```
  */
-inline fun Activity.metaDataOf(key: String): String = MetaDataUtils.getMetaDataInActivity(this, key)
+inline fun Service.metaDataOf(key: String): String = MetaDataUtils.getMetaDataInService(this, key)
 
 /**
  * Returns the value of meta-data in service. This is equivalent to calling:
@@ -46,12 +54,13 @@ inline fun <reified T : Service> serviceMetaDataOf(key: String): String =
   MetaDataUtils.getMetaDataInService(T::class.java, key)
 
 /**
- * Returns the value of meta-data in service. This is equivalent to calling:
+ * Returns the value of meta-data in receiver. This is equivalent to calling:
  * ```
- * MetaDataUtils.getMetaDataInService(service, key)
+ * MetaDataUtils.getMetaDataInReceiver(broadcastReceiver, key)
  * ```
  */
-inline fun Service.metaDataOf(key: String): String = MetaDataUtils.getMetaDataInService(this, key)
+inline fun BroadcastReceiver.metaDataOf(key: String): String =
+  MetaDataUtils.getMetaDataInReceiver(this, key)
 
 /**
  * Returns the value of meta-data in receiver. This is equivalent to calling:
@@ -61,12 +70,3 @@ inline fun Service.metaDataOf(key: String): String = MetaDataUtils.getMetaDataIn
  */
 inline fun <reified T : BroadcastReceiver> receiverMetaDataOf(key: String): String =
   MetaDataUtils.getMetaDataInReceiver(T::class.java, key)
-
-/**
- * Returns the value of meta-data in receiver. This is equivalent to calling:
- * ```
- * MetaDataUtils.getMetaDataInReceiver(broadcastReceiver, key)
- * ```
- */
-inline fun BroadcastReceiver.metaDataOf(key: String): String =
-  MetaDataUtils.getMetaDataInReceiver(this, key)

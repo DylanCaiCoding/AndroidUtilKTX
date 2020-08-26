@@ -114,7 +114,7 @@ inline fun copyFileFromAssets(assetsFilePath: String, destFilePath: String): Boo
  * ResourceUtils.readAssets2String(assetsFilePath, charsetName)
  * ```
  */
-inline fun readAssets2String(assetsFilePath: String, charsetName: String? = null): String =
+inline fun readAssetsToString(assetsFilePath: String, charsetName: String? = null): String =
   ResourceUtils.readAssets2String(assetsFilePath, charsetName)
 
 /**
@@ -123,7 +123,7 @@ inline fun readAssets2String(assetsFilePath: String, charsetName: String? = null
  * ResourceUtils.readAssets2List(assetsFilePath, charsetName)
  * ```
  */
-inline fun readAssets2List(assetsFilePath: String, charsetName: String? = null): List<String> =
+inline fun readAssetsToLines(assetsFilePath: String, charsetName: String? = null): List<String> =
   ResourceUtils.readAssets2List(assetsFilePath, charsetName)
 
 /**
@@ -141,7 +141,7 @@ inline fun copyFileFromRaw(@RawRes rawId: Int, destFilePath: String): Boolean =
  * ResourceUtils.readRaw2String(rawId, charsetName)
  * ```
  */
-inline fun readRaw2String(@RawRes rawId: Int, charsetName: String? = null): String =
+inline fun readRawToString(@RawRes rawId: Int, charsetName: String? = null): String =
   ResourceUtils.readRaw2String(rawId, charsetName)
 
 /**
@@ -150,5 +150,5 @@ inline fun readRaw2String(@RawRes rawId: Int, charsetName: String? = null): Stri
  * ResourceUtils.readRaw2List(rawId, charsetName)
  * ```
  */
-inline fun readRaw2List(@RawRes rawId: Int, charsetName: String? = null): List<String> =
+inline fun readRawToLines(@RawRes rawId: Int, charsetName: String? = null): List<String> =
   ResourceUtils.readRaw2List(rawId, charsetName)

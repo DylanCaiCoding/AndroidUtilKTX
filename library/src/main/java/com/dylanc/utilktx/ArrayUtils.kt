@@ -45,100 +45,20 @@ inline fun <T> Array<T>.subtract(startIndexInclusive: Int, endIndexExclusive: In
   ArrayUtils.subArray(this, startIndexInclusive, endIndexExclusive)
 
 /**
- * Copies the given array and adds the given element at the end of the new array.
- *
- * The new array contains the same elements of the input
- * array plus the given element in the last position. The component type of
- * the new array is the same as that of the input array.
- *
- * If the input array is <code>null</code>, a new one element array is returned
- * whose component type is the same as the element.
- *
- * ```
- * ArrayUtils.realAdd(null, null)      = [null]
- * ArrayUtils.realAdd(null, "a")       = ["a"]
- * ArrayUtils.realAdd(["a"], null)     = ["a", null]
- * ArrayUtils.realAdd(["a"], "b")      = ["a", "b"]
- * ArrayUtils.realAdd(["a", "b"], "c") = ["a", "b", "c"]
- * ```
- *
- * This is equivalent to calling:
- * ```
- * ArrayUtils.add(array, element)
- * ```
- */
-inline fun <T> Array<T>.add(element: T): Array<T> = ArrayUtils.add(this, element)
-
-/**
- *
- * Removes the first occurrence of the specified element from the
- * specified array. All subsequent elements are shifted to the left
- * (substracts one from their indices). If the array doesn't contains
- * such an element, no elements are removed from the array.
- *
- * This method returns a new array with the same elements of the input
- * array except the first occurrence of the specified element. The component
- * type of the returned array is always the same as that of the input
- * array.
- *
- * ```
- * ArrayUtils.removeElement(null, "a")            = null
- * ArrayUtils.removeElement([], "a")              = []
- * ArrayUtils.removeElement(["a"], "b")           = ["a"]
- * ArrayUtils.removeElement(["a", "b"], "a")      = ["b"]
- * ArrayUtils.removeElement(["a", "b", "a"], "a") = ["b", "a"]
- * ```
- *
- * This is equivalent to calling:
- * ```
- * ArrayUtils.removeElement(array, element)
- * ```
- */
-inline fun Array<out Any>.remove(element: Any): Array<out Any> =
-  ArrayUtils.removeElement(this, element)
-
-/**
- * Removes the element at the specified position from the specified array.
- * All subsequent elements are shifted to the left (substracts one from
- * their indices).
- *
- * This method returns a new array with the same elements of the input
- * array except the element on the specified position. The component
- * type of the returned array is always the same as that of the input
- * array.
- *
- * If the input array is <code>null</code>, an IndexOutOfBoundsException
- * will be thrown, because in that case no valid index can be specified.
- *
- * ```
- * ArrayUtils.remove(["a"], 0)           = []
- * ArrayUtils.remove(["a", "b"], 0)      = ["b"]
- * ArrayUtils.remove(["a", "b"], 1)      = ["a"]
- * ArrayUtils.remove(["a", "b", "c"], 1) = ["a", "c"]
- * ```
- *
- * This is equivalent to calling:
- * ```
- * ArrayUtils.removeElement(array, index)
- * ```
- */
-inline fun Array<out Any>.remove(index: Int): Array<out Any> = ArrayUtils.remove(this, index)
-
-/**
  * Returns the first index of the element. This is equivalent to calling:
  * ```
  * ArrayUtils.indexOf(array, element)
  * ```
  */
-inline fun <T> Array<T>.indexOf(element: T): Int = ArrayUtils.indexOf(this, element)
+inline fun <T> Array<T>.indexOfFirst(element: T): Int = ArrayUtils.indexOf(this, element)
 
 /**
-* Returns the last index of the element. This is equivalent to calling:
-* ```
-* ArrayUtils.lastIndexOf(array, element)
-* ```
-*/
-inline fun <T> Array<T>.lastIndexOf(element: T): Int = ArrayUtils.lastIndexOf(this, element)
+ * Returns the last index of the element. This is equivalent to calling:
+ * ```
+ * ArrayUtils.lastIndexOf(array, element)
+ * ```
+ */
+inline fun <T> Array<T>.indexOfLast(element: T): Int = ArrayUtils.lastIndexOf(this, element)
 
 /**
  * Returns whether the array contains elements. This is equivalent to calling:

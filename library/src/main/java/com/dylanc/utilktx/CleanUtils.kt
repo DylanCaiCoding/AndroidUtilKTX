@@ -80,7 +80,6 @@ inline fun cleanInternalSp(): Boolean = CleanUtils.cleanInternalSp()
  */
 inline fun cleanExternalCache(): Boolean = CleanUtils.cleanExternalCache()
 
-
 /**
  * Cleans the directory. This is equivalent to calling:
  * ```

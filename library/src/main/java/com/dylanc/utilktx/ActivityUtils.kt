@@ -26,12 +26,12 @@ import com.blankj.utilcode.util.ActivityUtils
 inline val Context.activity: Activity? get() = ActivityUtils.getActivityByContext(this)
 
 /**
- * Returns whether the activity exists in activity's stack. This is equivalent to calling:
+ * Returns whether the activity exists. This is equivalent to calling:
  * ```
- * ActivityUtils.isActivityExistsInStack(activity)
+ * ActivityUtils.isActivityExists(pkg, cls)
  * ```
  */
-inline val Activity.isExistsInStack: Boolean get() = ActivityUtils.isActivityExistsInStack(this)
+inline fun isActivityExists(pkg: String, cls: String): Boolean = ActivityUtils.isActivityExists(pkg, cls)
 
 /**
  * Launches a new Activity with extras or options. This is equivalent to calling:
@@ -161,7 +161,47 @@ inline fun startHomeActivity() = ActivityUtils.startHomeActivity()
  * ActivityUtils.getActivityList()
  * ```
  */
-val activityList: List<Activity> get() = ActivityUtils.getActivityList()
+inline val activityList: List<Activity> get() = ActivityUtils.getActivityList()
+
+/**
+ * Returns the name of launcher activity. This is equivalent to calling:
+ * ```
+ * ActivityUtils.getLauncherActivity()
+ * ```
+ */
+inline val launchActivityName: String get() = ActivityUtils.getLauncherActivity()
+
+/**
+ * Returns the name of launcher activity. This is equivalent to calling:
+ * ```
+ * ActivityUtils.getLauncherActivity(pkg)
+ * ```
+ */
+inline fun launchActivityNameOf(pkg: String): String = ActivityUtils.getLauncherActivity(pkg)
+
+/**
+ * Return the list of main activities. This is equivalent to calling:
+ * ```
+ * ActivityUtils.getLauncherActivity()
+ * ```
+ */
+inline val mainActivitiesNames: List<String> get() = ActivityUtils.getMainActivities()
+
+/**
+ * Returns the name of launcher activity. This is equivalent to calling:
+ * ```
+ * ActivityUtils.getLauncherActivity(pkg)
+ * ```
+ */
+inline fun mainActivitiesNamesOf(pkg: String): List<String> = ActivityUtils.getMainActivities(pkg)
+
+/**
+ * Returns the top activity in activity's stack. This is equivalent to calling:
+ * ```
+ * ActivityUtils.getTopActivity()
+ * ```
+ */
+val topActivity: Activity get() = ActivityUtils.getTopActivity()
 
 /**
  * Returns whether the activity is alive. This is equivalent to calling:
@@ -180,28 +220,64 @@ inline val Context.isActivityAlive: Boolean get() = ActivityUtils.isActivityAliv
 inline val Activity.isAlive: Boolean get() = ActivityUtils.isActivityAlive(this)
 
 /**
- * Returns the top activity in activity's stack. This is equivalent to calling:
+ * Returns whether the activity exists in activity's stack. This is equivalent to calling:
  * ```
- * ActivityUtils.getTopActivity()
+ * ActivityUtils.isActivityExistsInStack(activity)
  * ```
  */
-val topActivity: Activity get() = ActivityUtils.getTopActivity()
+inline val Activity.isExistsInStack: Boolean get() = ActivityUtils.isActivityExistsInStack(this)
 
 /**
- * Returns the name of launcher activity. This is equivalent to calling:
+ * Finishes the activity. This is equivalent to calling:
  * ```
- * ActivityUtils.getLauncherActivity()
+ * ActivityUtils.finishActivity(this, isLoadAnim)
  * ```
  */
-inline val launchActivityName: String get() = ActivityUtils.getLauncherActivity()
+inline fun <reified T : Activity> finishActivity(isLoadAnim: Boolean = false) = ActivityUtils.finishActivity(T::class.java, isLoadAnim)
 
 /**
- * Returns the name of launcher activity. This is equivalent to calling:
+ * Finishes the activity. This is equivalent to calling:
  * ```
- * ActivityUtils.getLauncherActivity(pkg)
+ * ActivityUtils.finishActivity(this, enterAnim, exitAnim)
  * ```
  */
-inline fun launchActivityNameOf(pkg: String): String = ActivityUtils.getLauncherActivity(pkg)
+inline fun <reified T : Activity> finishActivity(@AnimRes enterAnim: Int, @AnimRes exitAnim: Int) =
+  ActivityUtils.finishActivity(T::class.java, enterAnim, exitAnim)
+
+/**
+ * Finishes the activity. This is equivalent to calling:
+ * ```
+ * ActivityUtils.finishActivity(this, isLoadAnim)
+ * ```
+ */
+inline fun Activity.finish(isLoadAnim: Boolean = false) = ActivityUtils.finishActivity(this, isLoadAnim)
+
+/**
+ * Finishes the activity. This is equivalent to calling:
+ * ```
+ * ActivityUtils.finishActivity(this, enterAnim, exitAnim)
+ * ```
+ */
+inline fun Activity.finish(@AnimRes enterAnim: Int, @AnimRes exitAnim: Int) = ActivityUtils.finishActivity(this, enterAnim, exitAnim)
+
+
+/**
+ * Finishes to the activity. This is equivalent to calling:
+ * ```
+ * ActivityUtils.finishToActivity(this, isIncludeSelf, isLoadAnim)
+ * ```
+ */
+inline fun <reified T : Activity> finishToActivity(isIncludeSelf: Boolean, isLoadAnim: Boolean = false) =
+  ActivityUtils.finishToActivity(T::class.java, isIncludeSelf, isLoadAnim)
+
+/**
+ * Finishes to the activity. This is equivalent to calling:
+ * ```
+ * ActivityUtils.finishToActivity(this, isIncludeSelf, enterAnim, exitAnim)
+ * ```
+ */
+inline fun <reified T : Activity> finishToActivity(isIncludeSelf: Boolean, @AnimRes enterAnim: Int, @AnimRes exitAnim: Int) =
+  ActivityUtils.finishToActivity(T::class.java, isIncludeSelf, enterAnim, exitAnim)
 
 /**
  * Finishes the activities whose type not equals the activity class. This is equivalent to calling:
@@ -287,7 +363,11 @@ inline fun <reified T : Activity> FragmentActivity.startActivityForResult(
  * DispatchResultFragment.newInstance(fragmentActivity).startForResult(intent, requestCode, callback)
  * ```
  */
-inline fun FragmentActivity.startActivityForResult(intent: Intent, requestCode: Int, noinline callback: (resultCode: Int, data: Intent?) -> Unit) =
+inline fun FragmentActivity.startActivityForResult(
+  intent: Intent,
+  requestCode: Int,
+  noinline callback: (resultCode: Int, data: Intent?) -> Unit
+) =
   DispatchResultFragment.newInstance(this).startForResult(intent, requestCode, callback)
 
 

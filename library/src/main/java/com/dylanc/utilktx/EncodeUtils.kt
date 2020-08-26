@@ -59,20 +59,12 @@ inline fun String.base64Decode(): ByteArray = EncodeUtils.base64Decode(this)
 inline fun ByteArray.base64Decode(): ByteArray = EncodeUtils.base64Decode(this)
 
 /**
- * Returns Base64-encode string. This is equivalent to calling:
- * ```
- * EncodeUtils.base64Encode2String(input)
- * ```
- */
-inline fun ByteArray.base64Encode2String(): String = EncodeUtils.base64Encode2String(this)
-
-/**
  * Returns html-encode string. This is equivalent to calling:
  * ```
  * EncodeUtils.htmlEncode(input)
  * ```
  */
-inline fun CharSequence.htmlEncode(): String = EncodeUtils.htmlEncode(this)
+inline fun String.htmlEncode(): String = EncodeUtils.htmlEncode(this)
 
 /**
  * Returns the string of decode html-encode string. This is equivalent to calling:

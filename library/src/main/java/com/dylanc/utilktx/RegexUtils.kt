@@ -14,7 +14,7 @@ import com.blankj.utilcode.util.RegexUtils
  * RegexUtils.isMobileSimple(input)
  * ```
  */
-inline fun CharSequence.isMobileSimple(): Boolean = RegexUtils.isMobileSimple(this)
+inline fun String.isMobileSimple(): Boolean = RegexUtils.isMobileSimple(this)
 
 /**
  * Returns whether input matches regex of exact mobile. This is equivalent to calling:
@@ -22,7 +22,7 @@ inline fun CharSequence.isMobileSimple(): Boolean = RegexUtils.isMobileSimple(th
  * RegexUtils.isMobileExact(input)
  * ```
  */
-inline fun CharSequence.isMobileExact(): Boolean = RegexUtils.isMobileExact(this)
+inline fun String.isMobileExact(): Boolean = RegexUtils.isMobileExact(this)
 
 /**
  * Returns whether input matches regex of telephone number. This is equivalent to calling:
@@ -30,7 +30,7 @@ inline fun CharSequence.isMobileExact(): Boolean = RegexUtils.isMobileExact(this
  * RegexUtils.isTel(input)
  * ```
  */
-inline fun CharSequence.isTelephone(): Boolean = RegexUtils.isTel(this)
+inline fun String.isTelephone(): Boolean = RegexUtils.isTel(this)
 
 /**
  * Returns whether input matches regex of id card number which length is 15. This is equivalent to calling:
@@ -38,7 +38,7 @@ inline fun CharSequence.isTelephone(): Boolean = RegexUtils.isTel(this)
  * RegexUtils.isIDCard15(input)
  * ```
  */
-inline fun CharSequence.isIDCard15(): Boolean = RegexUtils.isIDCard15(this)
+inline fun String.isIDCard15(): Boolean = RegexUtils.isIDCard15(this)
 
 /**
  * Returns whether input matches regex of id card number which length is 18. This is equivalent to calling:
@@ -46,7 +46,7 @@ inline fun CharSequence.isIDCard15(): Boolean = RegexUtils.isIDCard15(this)
  * RegexUtils.isIDCard15(input)
  * ```
  */
-inline fun CharSequence.isIDCard18(): Boolean = RegexUtils.isIDCard18(this)
+inline fun String.isIDCard18(): Boolean = RegexUtils.isIDCard18(this)
 
 /**
  * Returns whether input matches regex of exact id card number which length is 18. This is equivalent to calling:
@@ -54,7 +54,7 @@ inline fun CharSequence.isIDCard18(): Boolean = RegexUtils.isIDCard18(this)
  * RegexUtils.isIDCard18Exact(input)
  * ```
  */
-inline fun CharSequence.isIDCard18Exact(): Boolean = RegexUtils.isIDCard18Exact(this)
+inline fun String.isIDCard18Exact(): Boolean = RegexUtils.isIDCard18Exact(this)
 
 /**
  * Returns whether input matches regex of email. This is equivalent to calling:
@@ -62,7 +62,7 @@ inline fun CharSequence.isIDCard18Exact(): Boolean = RegexUtils.isIDCard18Exact(
  * RegexUtils.isEmail(input)
  * ```
  */
-inline fun CharSequence.isEmail(): Boolean = RegexUtils.isEmail(this)
+inline fun String.isEmail(): Boolean = RegexUtils.isEmail(this)
 
 /**
  * Returns whether input matches regex of url. This is equivalent to calling:
@@ -70,7 +70,7 @@ inline fun CharSequence.isEmail(): Boolean = RegexUtils.isEmail(this)
  * RegexUtils.isURL(input)
  * ```
  */
-inline fun CharSequence.isURL(): Boolean = RegexUtils.isURL(this)
+inline fun String.isURL(): Boolean = RegexUtils.isURL(this)
 
 /**
  * Returns whether input matches regex of Chinese character. This is equivalent to calling:
@@ -78,7 +78,7 @@ inline fun CharSequence.isURL(): Boolean = RegexUtils.isURL(this)
  * RegexUtils.isZh(input)
  * ```
  */
-inline fun CharSequence.isZh(): Boolean = RegexUtils.isZh(this)
+inline fun String.isZh(): Boolean = RegexUtils.isZh(this)
 
 /**
  * Returns whether input matches regex of username.
@@ -94,7 +94,7 @@ inline fun CharSequence.isZh(): Boolean = RegexUtils.isZh(this)
  * RegexUtils.isUsername(input)
  * ```
  */
-inline fun CharSequence.isUsername(): Boolean = RegexUtils.isUsername(this)
+inline fun String.isUsername(): Boolean = RegexUtils.isUsername(this)
 
 /**
  * Returns whether input matches regex of date which pattern is "yyyy-MM-dd". This is equivalent to calling:
@@ -102,7 +102,7 @@ inline fun CharSequence.isUsername(): Boolean = RegexUtils.isUsername(this)
  * RegexUtils.isDate(input)
  * ```
  */
-inline fun CharSequence.isDate(): Boolean = RegexUtils.isDate(this)
+inline fun String.isDate(): Boolean = RegexUtils.isDate(this)
 
 /**
  * Returns whether input matches regex of ip address. This is equivalent to calling:
@@ -110,7 +110,7 @@ inline fun CharSequence.isDate(): Boolean = RegexUtils.isDate(this)
  * RegexUtils.isIP(input)
  * ```
  */
-inline fun CharSequence.isIP(): Boolean = RegexUtils.isIP(this)
+inline fun String.isIP(): Boolean = RegexUtils.isIP(this)
 
 /**
  * Returns whether input matches the regex. This is equivalent to calling:
@@ -118,7 +118,7 @@ inline fun CharSequence.isIP(): Boolean = RegexUtils.isIP(this)
  * RegexUtils.isMatch(regex, input)
  * ```
  */
-inline fun CharSequence.isMatches(regex: String): Boolean = RegexUtils.isMatch(regex, this)
+inline fun String.isMatches(regex: String): Boolean = RegexUtils.isMatch(regex, this)
 
 /**
  * Returns the list of input matches the regex. This is equivalent to calling:
@@ -126,7 +126,7 @@ inline fun CharSequence.isMatches(regex: String): Boolean = RegexUtils.isMatch(r
  * RegexUtils.getMatches(regex, input)
  * ```
  */
-inline fun CharSequence.matches(regex: String): List<String> = RegexUtils.getMatches(regex, this)
+inline fun String.matches(regex: String): List<String> = RegexUtils.getMatches(regex, this)
 
 /**
  * Splits input around matches of the regex. This is equivalent to calling:

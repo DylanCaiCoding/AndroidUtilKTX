@@ -17,15 +17,6 @@ import java.io.Serializable
  */
 
 /**
- * Returns the single [CacheMemoryUtils] instance. This is equivalent to calling:
- * ```
- * CacheMemoryUtils.getInstance(cacheKey, maxCount)
- * ```
- */
-inline fun cacheMemoryUtilsOf(maxCount: Int = 256, cacheKey: String = maxCount.toString()): CacheMemoryUtils =
-  CacheMemoryUtils.getInstance(cacheKey, maxCount)
-
-/**
  * Sets the default instance of [CacheMemoryUtils]. This is equivalent to calling:
  * ```
  * CacheMemoryStaticUtils.setDefaultCacheMemoryUtils(cacheMemoryUtils)
@@ -35,6 +26,15 @@ inline var defaultCacheMemoryUtils: CacheMemoryUtils
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
   get() = throw NotImplementedError()
   set(value) = CacheMemoryStaticUtils.setDefaultCacheMemoryUtils(value)
+
+/**
+ * Returns the single [CacheMemoryUtils] instance. This is equivalent to calling:
+ * ```
+ * CacheMemoryUtils.getInstance(cacheKey, maxCount)
+ * ```
+ */
+inline fun cacheMemoryUtilsOf(maxCount: Int = 256, cacheKey: String = maxCount.toString()): CacheMemoryUtils =
+  CacheMemoryUtils.getInstance(cacheKey, maxCount)
 
 /**
  * Puts the bytes in the memory cache. This is equivalent to calling:

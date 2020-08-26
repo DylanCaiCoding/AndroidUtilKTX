@@ -16,15 +16,6 @@ import java.io.Serializable
  */
 
 /**
- * Returns the single [CacheDiskUtils] instance. This is equivalent to calling:
- * ```
- * CacheDiskUtils.getInstance(cacheName, maxSize, maxCount)
- * ```
- */
-inline fun cacheDiskUtilsOf(cacheName: String = "", maxSize: Long = Long.MAX_VALUE, maxCount: Int = Int.MAX_VALUE): CacheDiskUtils =
-  CacheDiskUtils.getInstance(cacheName, maxSize, maxCount)
-
-/**
  * Sets the default instance of [CacheDiskUtils]. This is equivalent to calling:
  * ```
  * CacheDiskStaticUtils.setDefaultCacheDiskUtils(cacheDiskUtils)
@@ -34,6 +25,15 @@ inline var defaultCacheDiskUtils: CacheDiskUtils
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
   get() = throw NotImplementedError()
   set(value) = CacheDiskStaticUtils.setDefaultCacheDiskUtils(value)
+
+/**
+ * Returns the single [CacheDiskUtils] instance. This is equivalent to calling:
+ * ```
+ * CacheDiskUtils.getInstance(cacheName, maxSize, maxCount)
+ * ```
+ */
+inline fun cacheDiskUtilsOf(cacheName: String = "", maxSize: Long = Long.MAX_VALUE, maxCount: Int = Int.MAX_VALUE): CacheDiskUtils =
+  CacheDiskUtils.getInstance(cacheName, maxSize, maxCount)
 
 /**
  * Puts the bytes in the disk cache. This is equivalent to calling:
@@ -133,6 +133,15 @@ inline fun diskCacheStringOf(key: String, defaultValue: String? = null): String?
  */
 inline fun diskCacheJSONObjectOf(key: String, defaultValue: JSONObject? = null): JSONObject? =
   CacheDiskStaticUtils.getJSONObject(key, defaultValue)
+
+/**
+ * Returns the [JSONArray] in the disk cache. This is equivalent to calling:
+ * ```
+ * CacheDiskStaticUtils.getJSONArray(key, defaultValue)
+ * ```
+ */
+inline fun diskCacheJSONArrayOf(key: String, defaultValue: JSONArray? = null): JSONArray? =
+  CacheDiskStaticUtils.getJSONArray(key, defaultValue)
 
 /**
  * Returns the bitmap in the disk cache. This is equivalent to calling:

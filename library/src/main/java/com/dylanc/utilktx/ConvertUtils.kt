@@ -48,7 +48,7 @@ inline fun ByteArray.toBitsString(): String = ConvertUtils.bytes2Bits(this)
  * ConvertUtils.bits2Bytes(bits)
  * ```
  */
-inline fun String.toBit(): ByteArray = ConvertUtils.bits2Bytes(this)
+inline fun String.toBytes(): ByteArray = ConvertUtils.bits2Bytes(this)
 
 /**
  * Converts the bytes to the chars. This is equivalent to calling:
@@ -180,20 +180,20 @@ inline fun ByteArray.toBitmap(): Bitmap = ImageUtils.bytes2Bitmap(this)
 inline fun Bitmap.toBytes(): ByteArray = ImageUtils.bitmap2Bytes(this)
 
 /**
- * Converts the size of byte to the size of memory in unit. This is equivalent to calling:
- * ```
- * ConvertUtils.byte2MemorySize(byteSize, unit)
- * ```
- */
-inline fun Long.byteToMemorySize(unit: Int): Double = ConvertUtils.byte2MemorySize(this, unit)
-
-/**
  * Converts the size of memory to the size of byte in unit. This is equivalent to calling:
  * ```
  * ConvertUtils.memorySize2Byte(memorySize)
  * ```
  */
 inline fun Long.memorySizeToByte(unit: Int): Long = ConvertUtils.memorySize2Byte(this, unit)
+
+/**
+ * Converts the size of byte to the size of memory in unit. This is equivalent to calling:
+ * ```
+ * ConvertUtils.byte2MemorySize(byteSize, unit)
+ * ```
+ */
+inline fun Long.byteToMemorySize(unit: Int): Double = ConvertUtils.byte2MemorySize(this, unit)
 
 /**
  * Converts the size of byte to the fix size of memory. This is equivalent to calling:

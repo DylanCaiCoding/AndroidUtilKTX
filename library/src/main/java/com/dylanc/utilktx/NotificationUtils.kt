@@ -2,14 +2,29 @@
 
 package com.dylanc.utilktx
 
+import android.Manifest.permission
+import androidx.annotation.RequiresPermission
 import androidx.core.app.NotificationCompat
 import com.blankj.utilcode.util.NotificationUtils
 import com.blankj.utilcode.util.NotificationUtils.ChannelConfig
 import com.blankj.utilcode.util.NotificationUtils.ChannelConfig.DEFAULT_CHANNEL_CONFIG
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 
 /**
  * @author Dylan Cai
  */
+
+/**
+ * Returns the [ChannelConfig]. This is equivalent to calling:
+ * ```
+ * ChannelConfig(id, name, importance)
+ * ```
+ */
+inline fun channelConfigOf(
+  id: String, name: CharSequence, importance: Int, noinline block: (ChannelConfig.() -> Unit)? = null
+): ChannelConfig =
+  ChannelConfig(id, name, importance).apply { block?.invoke(this) }
 
 /**
  * Returns whether the notifications enabled. This is equivalent to calling:
@@ -45,14 +60,3 @@ inline fun cancelNotification(id: Int, tag: String? = null) = NotificationUtils.
  * ```
  */
 inline fun cancelAllNotification() = NotificationUtils.cancelAll()
-
-/**
- * Returns the [ChannelConfig]. This is equivalent to calling:
- * ```
- * ChannelConfig(id, name, importance)
- * ```
- */
-inline fun channelConfigOf(
-  id: String, name: CharSequence, importance: Int, noinline block: (ChannelConfig.() -> Unit)? = null
-): ChannelConfig =
-  ChannelConfig(id, name, importance).apply { block?.invoke(this) }

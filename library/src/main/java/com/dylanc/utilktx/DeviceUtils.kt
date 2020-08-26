@@ -44,7 +44,15 @@ inline val sdkVersionName: String get() = DeviceUtils.getSDKVersionName()
  * DeviceUtils.getSDKVersionCode()
  * ```
  */
-inline val sdkVersionCode get() = DeviceUtils.getSDKVersionCode()
+inline val sdkVersionCode: Int get() = DeviceUtils.getSDKVersionCode()
+
+/**
+ * Returns the android id of device. This is equivalent to calling:
+ * ```
+ * DeviceUtils.getAndroidID()
+ * ```
+ */
+inline val deviceAndroidId: String get() = DeviceUtils.getAndroidID()
 
 /**
  * Returns the MAC address. This is equivalent to calling:
@@ -52,8 +60,9 @@ inline val sdkVersionCode get() = DeviceUtils.getSDKVersionCode()
  * DeviceUtils.getMacAddress()
  * ```
  */
-@get:RequiresPermission(allOf = [permission.ACCESS_WIFI_STATE, permission.INTERNET, permission.CHANGE_WIFI_STATE])
-inline val macAddress: String get() = DeviceUtils.getMacAddress()
+inline val macAddress: String
+  @RequiresPermission(allOf = [permission.ACCESS_WIFI_STATE, permission.INTERNET, permission.CHANGE_WIFI_STATE])
+  get() = DeviceUtils.getMacAddress()
 
 /**
  * Returns the manufacturer of the product/hardware. This is equivalent to calling:

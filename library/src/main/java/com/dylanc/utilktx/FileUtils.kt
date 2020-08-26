@@ -20,26 +20,18 @@ inline fun fileOf(filePath: String): File? = FileUtils.getFileByPath(filePath)
 /**
  * Returns whether the file exists. This is equivalent to calling:
  * ```
- * FileUtils.isFileExists(filePath)
- * ```
- */
-inline fun isFileExists(filePath: String): Boolean = FileUtils.isFileExists(filePath)
-
-/**
- * Returns whether the file exists. This is equivalent to calling:
- * ```
  * FileUtils.isFileExists(file)
  * ```
  */
 inline val File.isExists: Boolean get() = FileUtils.isFileExists(this)
 
 /**
- * Rename the file. This is equivalent to calling:
+ * Returns whether the file exists. This is equivalent to calling:
  * ```
- * FileUtils.rename(filePath, newName)
+ * FileUtils.isFileExists(filePath)
  * ```
  */
-inline fun renameFile(filePath: String, newName: String): Boolean = FileUtils.rename(filePath, newName)
+inline fun isFileExists(filePath: String): Boolean = FileUtils.isFileExists(filePath)
 
 /**
  * Rename the file. This is equivalent to calling:
@@ -50,12 +42,12 @@ inline fun renameFile(filePath: String, newName: String): Boolean = FileUtils.re
 inline fun File.rename(newName: String): Boolean = FileUtils.rename(this, newName)
 
 /**
- * Returns whether it is a directory. This is equivalent to calling:
+ * Rename the file. This is equivalent to calling:
  * ```
- * FileUtils.isDir(filePath)
+ * FileUtils.rename(filePath, newName)
  * ```
  */
-inline fun isDir(filePath: String): Boolean = FileUtils.isDir(filePath)
+inline fun renameFile(filePath: String, newName: String): Boolean = FileUtils.rename(filePath, newName)
 
 /**
  * Returns whether it is a directory. This is equivalent to calling:
@@ -66,12 +58,12 @@ inline fun isDir(filePath: String): Boolean = FileUtils.isDir(filePath)
 inline val File.isDir: Boolean get() = FileUtils.isDir(this)
 
 /**
- * Returns whether it is a file. This is equivalent to calling:
+ * Returns whether it is a directory. This is equivalent to calling:
  * ```
- * FileUtils.isFile(filePath)
+ * FileUtils.isDir(filePath)
  * ```
  */
-inline fun isFile(filePath: String): Boolean = FileUtils.isFile(filePath)
+inline fun isDir(filePath: String): Boolean = FileUtils.isDir(filePath)
 
 /**
  * Returns whether it is a file. This is equivalent to calling:
@@ -83,12 +75,12 @@ inline fun File.isFile(requireExists: Boolean): Boolean =
   if (requireExists) FileUtils.isFile(this) else isFile
 
 /**
- * Creates a directory if it doesn't exist, otherwise do nothing. This is equivalent to calling:
+ * Returns whether it is a file. This is equivalent to calling:
  * ```
- * FileUtils.createOrExistsDir(filePath)
+ * FileUtils.isFile(filePath)
  * ```
  */
-inline fun createOrExistsDir(filePath: String): Boolean = FileUtils.createOrExistsDir(filePath)
+inline fun isFile(filePath: String): Boolean = FileUtils.isFile(filePath)
 
 /**
  * Creates a directory if it doesn't exist, otherwise do nothing. This is equivalent to calling:
@@ -99,12 +91,12 @@ inline fun createOrExistsDir(filePath: String): Boolean = FileUtils.createOrExis
 inline fun File.createOrExistsDir(): Boolean = FileUtils.createOrExistsDir(this)
 
 /**
- * Creates a file if it doesn't exist, otherwise do nothing. This is equivalent to calling:
+ * Creates a directory if it doesn't exist, otherwise do nothing. This is equivalent to calling:
  * ```
- * FileUtils.createOrExistsFile(filePath)
+ * FileUtils.createOrExistsDir(filePath)
  * ```
  */
-inline fun createOrExistsFile(filePath: String): Boolean = FileUtils.createOrExistsFile(filePath)
+inline fun createOrExistsDir(filePath: String): Boolean = FileUtils.createOrExistsDir(filePath)
 
 /**
  * Creates a file if it doesn't exist, otherwise do nothing. This is equivalent to calling:
@@ -115,12 +107,12 @@ inline fun createOrExistsFile(filePath: String): Boolean = FileUtils.createOrExi
 inline fun File.createOrExistsFile(): Boolean = FileUtils.createOrExistsFile(this)
 
 /**
- * Creates a file if it doesn't exist, otherwise delete old file before creating. This is equivalent to calling:
+ * Creates a file if it doesn't exist, otherwise do nothing. This is equivalent to calling:
  * ```
- * FileUtils.createFileByDeleteOldFile(filePath)
+ * FileUtils.createOrExistsFile(filePath)
  * ```
  */
-inline fun createFileByDeleteOldFile(filePath: String): Boolean = FileUtils.createFileByDeleteOldFile(filePath)
+inline fun createOrExistsFile(filePath: String): Boolean = FileUtils.createOrExistsFile(filePath)
 
 /**
  * Creates a file if it doesn't exist, otherwise delete old file before creating. This is equivalent to calling:
@@ -131,13 +123,12 @@ inline fun createFileByDeleteOldFile(filePath: String): Boolean = FileUtils.crea
 inline fun File.createFileByDeleteOldFile(): Boolean = FileUtils.createFileByDeleteOldFile(this)
 
 /**
- * Copies the directory or file. This is equivalent to calling:
+ * Creates a file if it doesn't exist, otherwise delete old file before creating. This is equivalent to calling:
  * ```
- * FileUtils.copy(srcPath, destPath, listener)
+ * FileUtils.createFileByDeleteOldFile(filePath)
  * ```
  */
-inline fun copyFile(srcPath: String, destPath: String, noinline listener: ((File, File) -> Boolean)? = null): Boolean =
-  FileUtils.copy(srcPath, destPath, listener)
+inline fun createFileByDeleteOldFile(filePath: String): Boolean = FileUtils.createFileByDeleteOldFile(filePath)
 
 /**
  * Copies the directory or file. This is equivalent to calling:
@@ -149,13 +140,13 @@ inline fun File.copy(dest: File, noinline listener: ((File, File) -> Boolean)? =
   FileUtils.copy(this, dest, listener)
 
 /**
- * Moves the directory or file. This is equivalent to calling:
+ * Copies the directory or file. This is equivalent to calling:
  * ```
- * FileUtils.move(srcPath, destPath, listener)
+ * FileUtils.copy(srcPath, destPath, listener)
  * ```
  */
-inline fun moveFile(srcPath: String, destPath: String, noinline listener: ((File, File) -> Boolean)? = null): Boolean =
-  FileUtils.move(srcPath, destPath, listener)
+inline fun copyFile(srcPath: String, destPath: String, noinline listener: ((File, File) -> Boolean)? = null): Boolean =
+  FileUtils.copy(srcPath, destPath, listener)
 
 /**
  * Moves the directory or file. This is equivalent to calling:
@@ -167,12 +158,13 @@ inline fun File.move(dest: File, noinline listener: ((File, File) -> Boolean)? =
   FileUtils.move(this, dest, listener)
 
 /**
- * Deletes the directory or file. This is equivalent to calling:
+ * Moves the directory or file. This is equivalent to calling:
  * ```
- * FileUtils.delete(srcPath)
+ * FileUtils.move(srcPath, destPath, listener)
  * ```
  */
-inline fun deleteFile(filePath: String): Boolean = FileUtils.delete(filePath)
+inline fun moveFile(srcPath: String, destPath: String, noinline listener: ((File, File) -> Boolean)? = null): Boolean =
+  FileUtils.move(srcPath, destPath, listener)
 
 /**
  * Deletes the directory or file. This is equivalent to calling:
@@ -180,16 +172,15 @@ inline fun deleteFile(filePath: String): Boolean = FileUtils.delete(filePath)
  * FileUtils.delete(file)
  * ```
  */
-inline fun File.delete(deleteDir: Boolean = true): Boolean =
-  if (deleteDir) FileUtils.delete(this) else delete()
+inline fun File.delete(deleteDir: Boolean = true): Boolean = if (deleteDir) FileUtils.delete(this) else delete()
 
 /**
- * Deletes the all in directory. This is equivalent to calling:
+ * Deletes the directory or file. This is equivalent to calling:
  * ```
- * FileUtils.deleteAllInDir(dirPath)
+ * FileUtils.delete(srcPath)
  * ```
  */
-inline fun deleteAllInDir(dirPath: String): Boolean = FileUtils.deleteAllInDir(dirPath)
+inline fun deleteFile(filePath: String): Boolean = FileUtils.delete(filePath)
 
 /**
  * Deletes the all in directory. This is equivalent to calling:
@@ -200,12 +191,12 @@ inline fun deleteAllInDir(dirPath: String): Boolean = FileUtils.deleteAllInDir(d
 inline fun File.deleteAllInDir(): Boolean = FileUtils.deleteAllInDir(this)
 
 /**
- * Deletes all files in directory. This is equivalent to calling:
+ * Deletes the all in directory. This is equivalent to calling:
  * ```
- * FileUtils.deleteFilesInDir(dirPath)
+ * FileUtils.deleteAllInDir(dirPath)
  * ```
  */
-inline fun deleteFilesInDir(dirPath: String): Boolean = FileUtils.deleteFilesInDir(dirPath)
+inline fun deleteAllInDir(dirPath: String): Boolean = FileUtils.deleteAllInDir(dirPath)
 
 /**
  * Deletes all files in directory. This is equivalent to calling:
@@ -216,13 +207,12 @@ inline fun deleteFilesInDir(dirPath: String): Boolean = FileUtils.deleteFilesInD
 inline fun File.deleteFilesInDir(): Boolean = FileUtils.deleteFilesInDir(this)
 
 /**
- * Deletes all files that satisfy the filter in directory. This is equivalent to calling:
+ * Deletes all files in directory. This is equivalent to calling:
  * ```
- * FileUtils.deleteFilesInDirWithFilter(dirPath, filter)
+ * FileUtils.deleteFilesInDir(dirPath)
  * ```
  */
-inline fun deleteFilesInDirWithFilter(dirPath: String, noinline filter: (File) -> Boolean): Boolean =
-  FileUtils.deleteFilesInDirWithFilter(dirPath, filter)
+inline fun deleteFilesInDir(dirPath: String): Boolean = FileUtils.deleteFilesInDir(dirPath)
 
 /**
  * Deletes all files that satisfy the filter in directory. This is equivalent to calling:
@@ -234,15 +224,13 @@ inline fun File.deleteFilesInDirWithFilter(noinline filter: (File) -> Boolean): 
   FileUtils.deleteFilesInDirWithFilter(this, filter)
 
 /**
- * Returns the files in directory. This is equivalent to calling:
+ * Deletes all files that satisfy the filter in directory. This is equivalent to calling:
  * ```
- * FileUtils.listFilesInDir(dirPath, filter, isRecursive, comparator)
+ * FileUtils.deleteFilesInDirWithFilter(dirPath, filter)
  * ```
  */
-inline fun filesInDirOf(
-  dirPath: String, isRecursive: Boolean, noinline filter: (File) -> Boolean = { true }, noinline comparator: (File, File) -> Int
-): List<File> =
-  FileUtils.listFilesInDirWithFilter(dirPath, filter, isRecursive, comparator)
+inline fun deleteFilesInDirWithFilter(dirPath: String, noinline filter: (File) -> Boolean): Boolean =
+  FileUtils.deleteFilesInDirWithFilter(dirPath, filter)
 
 /**
  * Returns the files in directory. This is equivalent to calling:
@@ -256,12 +244,15 @@ inline fun File.filesOf(
   FileUtils.listFilesInDirWithFilter(this, filter, isRecursive, comparator)
 
 /**
- * Returns the time that the file was last modified. This is equivalent to calling:
+ * Returns the files in directory. This is equivalent to calling:
  * ```
- * FileUtils.getFileLastModified(filePath)
+ * FileUtils.listFilesInDir(dirPath, filter, isRecursive, comparator)
  * ```
  */
-inline fun fileLastModifiedTimestampOf(filePath: String): Long = FileUtils.getFileLastModified(filePath)
+inline fun filesInDirOf(
+  dirPath: String, isRecursive: Boolean, noinline filter: (File) -> Boolean = { true }, noinline comparator: (File, File) -> Int
+): List<File> =
+  FileUtils.listFilesInDirWithFilter(dirPath, filter, isRecursive, comparator)
 
 /**
  * Returns the time that the file was last modified. This is equivalent to calling:
@@ -272,12 +263,12 @@ inline fun fileLastModifiedTimestampOf(filePath: String): Long = FileUtils.getFi
 inline val File.lastModifiedTimestamp: Long get() = FileUtils.getFileLastModified(this)
 
 /**
- * Returns the charset of file simply. This is equivalent to calling:
+ * Returns the time that the file was last modified. This is equivalent to calling:
  * ```
- * FileUtils.getFileCharsetSimple(filePath)
+ * FileUtils.getFileLastModified(filePath)
  * ```
  */
-inline fun fileCharsetSimpleOf(filePath: String): String = FileUtils.getFileCharsetSimple(filePath)
+inline fun fileLastModifiedTimestampOf(filePath: String): Long = FileUtils.getFileLastModified(filePath)
 
 /**
  * Returns the charset of file simply. This is equivalent to calling:
@@ -288,12 +279,12 @@ inline fun fileCharsetSimpleOf(filePath: String): String = FileUtils.getFileChar
 inline val File.charsetSimple: String get() = FileUtils.getFileCharsetSimple(this)
 
 /**
- * Returns the size of file. This is equivalent to calling:
+ * Returns the charset of file simply. This is equivalent to calling:
  * ```
- * FileUtils.getSize(filePath)
+ * FileUtils.getFileCharsetSimple(filePath)
  * ```
  */
-inline fun fileSizeOf(filePath: String): String = FileUtils.getSize(filePath)
+inline fun fileCharsetSimpleOf(filePath: String): String = FileUtils.getFileCharsetSimple(filePath)
 
 /**
  * Returns the size of file. This is equivalent to calling:
@@ -304,12 +295,12 @@ inline fun fileSizeOf(filePath: String): String = FileUtils.getSize(filePath)
 inline val File.size: String get() = FileUtils.getSize(this)
 
 /**
- * Returns the length of file. This is equivalent to calling:
+ * Returns the size of file. This is equivalent to calling:
  * ```
- * FileUtils.getLength(filePath)
+ * FileUtils.getSize(filePath)
  * ```
  */
-inline fun fileLengthOf(filePath: String): Long = FileUtils.getLength(filePath)
+inline fun fileSizeOf(filePath: String): String = FileUtils.getSize(filePath)
 
 /**
  * Returns the length of file. This is equivalent to calling:
@@ -320,12 +311,12 @@ inline fun fileLengthOf(filePath: String): Long = FileUtils.getLength(filePath)
 inline val File.length: Long get() = FileUtils.getLength(this)
 
 /**
- * Returns the MD5 of file. This is equivalent to calling:
+ * Returns the length of file. This is equivalent to calling:
  * ```
- * FileUtils.getFileMD5(filePath)
+ * FileUtils.getLength(filePath)
  * ```
  */
-inline fun fileMD5Of(filePath: String): ByteArray = FileUtils.getFileMD5(filePath)
+inline fun fileLengthOf(filePath: String): Long = FileUtils.getLength(filePath)
 
 /**
  * Returns the MD5 of file. This is equivalent to calling:
@@ -336,12 +327,12 @@ inline fun fileMD5Of(filePath: String): ByteArray = FileUtils.getFileMD5(filePat
 inline val File.MD5: ByteArray get() = FileUtils.getFileMD5(this)
 
 /**
- * Returns the file's path of directory. This is equivalent to calling:
+ * Returns the MD5 of file. This is equivalent to calling:
  * ```
- * FileUtils.getDirName(filePath)
+ * FileUtils.getFileMD5(filePath)
  * ```
  */
-inline fun dirNameOf(filePath: String): String = FileUtils.getDirName(filePath)
+inline fun fileMD5Of(filePath: String): ByteArray = FileUtils.getFileMD5(filePath)
 
 /**
  * Returns the file's path of directory. This is equivalent to calling:
@@ -352,12 +343,12 @@ inline fun dirNameOf(filePath: String): String = FileUtils.getDirName(filePath)
 inline val File.dirName: String get() = FileUtils.getDirName(this)
 
 /**
- * Returns the name of file. This is equivalent to calling:
+ * Returns the file's path of directory. This is equivalent to calling:
  * ```
- * FileUtils.getFileName(filePath)
+ * FileUtils.getDirName(filePath)
  * ```
  */
-inline fun fileNameOf(filePath: String): String = FileUtils.getFileName(filePath)
+inline fun dirNameOf(filePath: String): String = FileUtils.getDirName(filePath)
 
 /**
  * Returns the name of file. This is equivalent to calling:
@@ -368,12 +359,12 @@ inline fun fileNameOf(filePath: String): String = FileUtils.getFileName(filePath
 inline val File.fileName: String get() = FileUtils.getFileName(this)
 
 /**
- * Returns the name of file without extension. This is equivalent to calling:
+ * Returns the name of file. This is equivalent to calling:
  * ```
- * FileUtils.getFileNameNoExtension(filePath)
+ * FileUtils.getFileName(filePath)
  * ```
  */
-inline fun fileNameNoExtensionOf(filePath: String): String = FileUtils.getFileNameNoExtension(filePath)
+inline fun fileNameOf(filePath: String): String = FileUtils.getFileName(filePath)
 
 /**
  * Returns the name of file without extension. This is equivalent to calling:
@@ -384,12 +375,12 @@ inline fun fileNameNoExtensionOf(filePath: String): String = FileUtils.getFileNa
 inline val File.fileNameNoExtension: String get() = FileUtils.getFileNameNoExtension(this)
 
 /**
- * Returns the extension of file. This is equivalent to calling:
+ * Returns the name of file without extension. This is equivalent to calling:
  * ```
- * FileUtils.getFileExtension(filePath)
+ * FileUtils.getFileNameNoExtension(filePath)
  * ```
  */
-inline fun fileExtensionOf(filePath: String): String = FileUtils.getFileExtension(filePath)
+inline fun fileNameNoExtensionOf(filePath: String): String = FileUtils.getFileNameNoExtension(filePath)
 
 /**
  * Returns the extension of file. This is equivalent to calling:
@@ -400,12 +391,12 @@ inline fun fileExtensionOf(filePath: String): String = FileUtils.getFileExtensio
 inline val File.fileExtension: String get() = FileUtils.getFileExtension(this)
 
 /**
- * Notifies system to scan the file. This is equivalent to calling:
+ * Returns the extension of file. This is equivalent to calling:
  * ```
- * FileUtils.notifySystemToScan(filePath)
+ * FileUtils.getFileExtension(filePath)
  * ```
  */
-inline fun notifySystemToScanFile(filePath: String) = FileUtils.notifySystemToScan(filePath)
+inline fun fileExtensionOf(filePath: String): String = FileUtils.getFileExtension(filePath)
 
 /**
  * Notifies system to scan the file. This is equivalent to calling:
@@ -414,6 +405,14 @@ inline fun notifySystemToScanFile(filePath: String) = FileUtils.notifySystemToSc
  * ```
  */
 inline fun File.notifySystemToScan() = FileUtils.notifySystemToScan(this)
+
+/**
+ * Notifies system to scan the file. This is equivalent to calling:
+ * ```
+ * FileUtils.notifySystemToScan(filePath)
+ * ```
+ */
+inline fun notifySystemToScanFile(filePath: String) = FileUtils.notifySystemToScan(filePath)
 
 /**
  * Returns the total size of file system. This is equivalent to calling:
