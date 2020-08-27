@@ -12,6 +12,15 @@ import java.io.File
 /**
  * Zips the files. This is equivalent to calling:
  * ```
+ * ZipUtils.zipFiles(srcFiles, zipFile, comment)
+ * ```
+ */
+inline fun Collection<File>.zip(zipFile: File, comment: String? = null) =
+  ZipUtils.zipFiles(this, zipFile, comment)
+
+/**
+ * Zips the files. This is equivalent to calling:
+ * ```
  * ZipUtils.zipFiles(srcFilesPath, zipFilePath, comment)
  * ```
  */
@@ -24,8 +33,26 @@ inline fun zipFiles(srcFilesPath: Collection<String>, zipFilePath: String, comme
  * ZipUtils.zipFiles(srcFiles, zipFile, comment)
  * ```
  */
-inline fun Collection<File>.zip(zipFile: File, comment: String? = null) =
-  ZipUtils.zipFiles(this, zipFile, comment)
+inline fun File.zip(zipFile: File, comment: String? = null) =
+  ZipUtils.zipFile(this, zipFile, comment)
+
+/**
+ * Zips the files. This is equivalent to calling:
+ * ```
+ * ZipUtils.zipFiles(srcFilesPath, zipFilePath, comment)
+ * ```
+ */
+inline fun zipFile(srcFilePath: String, zipFilePath: String, comment: String? = null) =
+  ZipUtils.zipFile(srcFilePath, zipFilePath, comment)
+
+/**
+ * Unzips the file by keyword. This is equivalent to calling:
+ * ```
+ * ZipUtils.unzipFileByKeyword(srcFiles, zipFile, keyword)
+ * ```
+ */
+inline fun File.unzip(zipFile: File, keyword: String? = null): List<File> =
+  ZipUtils.unzipFileByKeyword(this, zipFile, keyword)
 
 /**
  * Unzips the file by keyword. This is equivalent to calling:
@@ -35,15 +62,6 @@ inline fun Collection<File>.zip(zipFile: File, comment: String? = null) =
  */
 inline fun unzipFile(srcFilesPath: String, zipFilePath: String, keyword: String? = null): List<File> =
   ZipUtils.unzipFileByKeyword(srcFilesPath, zipFilePath, keyword)
-
-/**
- * Unzips the file by keyword. This is equivalent to calling:
- * ```
- * ZipUtils.unzipFileByKeyword(srcFiles, zipFile, keyword)
- * ```
- */
-inline fun File.unzip( zipFile: File, keyword: String? = null): List<File> =
-  ZipUtils.unzipFileByKeyword(this, zipFile, keyword)
 
 /**
  * Returns the files' path in the ZIP file. This is equivalent to calling:

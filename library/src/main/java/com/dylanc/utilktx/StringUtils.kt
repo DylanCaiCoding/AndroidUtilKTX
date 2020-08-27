@@ -11,15 +11,6 @@ import com.blankj.utilcode.util.StringUtils
 */
 
 /**
- * Return whether string1 is equals to string2, ignoring case considerations. This is equivalent to calling:
- * ```
- * StringUtils.equalsIgnoreCase(s1, s2)
- * ```
- */
-inline fun String.contentEqualsIgnoreCase(string: String): Boolean =
-  StringUtils.equalsIgnoreCase(this, string)
-
-/**
  * Return "" if string equals null. This is equivalent to calling:
  * ```
  * StringUtils.null2Length0(string)
@@ -33,7 +24,7 @@ inline fun String?.toNotNull(): String = StringUtils.null2Length0(this)
  * StringUtils.upperFirstLetter(string)
  * ```
  */
-inline fun String.upperFirstLetter(): String = StringUtils.upperFirstLetter(this)
+inline fun String.toUpperCaseFirst(): String = StringUtils.upperFirstLetter(this)
 
 /**
  * Set the first letter of string lower. This is equivalent to calling:
@@ -41,7 +32,7 @@ inline fun String.upperFirstLetter(): String = StringUtils.upperFirstLetter(this
  * StringUtils.lowerFirstLetter(string)
  * ```
  */
-inline fun String.lowerFirstLetter(): String = StringUtils.lowerFirstLetter(this)
+inline fun String.toLowerCaseFirst(): String = StringUtils.lowerFirstLetter(this)
 
 /**
  * Reverse the string. This is equivalent to calling:

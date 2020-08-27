@@ -25,22 +25,6 @@ inline val defaultFormat: SimpleDateFormat get() = PATTERN_DATE_HOUR_MINUTE_SECO
 inline fun String.toSafeDateFormat(): SimpleDateFormat = TimeUtils.getSafeDateFormat(this)
 
 /**
- * Formatted time string to the milliseconds. This is equivalent to calling:
- * ```
- * TimeUtils.string2Millis(this, pattern)
- * ```
- */
-inline fun String.toMillis(pattern: String): Long = TimeUtils.string2Millis(this, pattern)
-
-/**
- * Formatted time string to the milliseconds. This is equivalent to calling:
- * ```
- * TimeUtils.string2Millis(this, format)
- * ```
- */
-inline fun String.toMillis(format: DateFormat = defaultFormat): Long = TimeUtils.string2Millis(this, format)
-
-/**
  * Milliseconds to the formatted time string. This is equivalent to calling:
  * ```
  * TimeUtils.millis2String(this, pattern)
@@ -55,6 +39,22 @@ inline fun Long.toTimeString(pattern: String): String = TimeUtils.millis2String(
  * ```
  */
 inline fun Long.toTimeString(format: DateFormat = defaultFormat): String = TimeUtils.millis2String(this, format)
+
+/**
+ * Formatted time string to the milliseconds. This is equivalent to calling:
+ * ```
+ * TimeUtils.string2Millis(this, pattern)
+ * ```
+ */
+inline fun String.toMillis(pattern: String): Long = TimeUtils.string2Millis(this, pattern)
+
+/**
+ * Formatted time string to the milliseconds. This is equivalent to calling:
+ * ```
+ * TimeUtils.string2Millis(this, format)
+ * ```
+ */
+inline fun String.toMillis(format: DateFormat = defaultFormat): Long = TimeUtils.string2Millis(this, format)
 
 /**
  * Formatted time string to the date. This is equivalent to calling:
@@ -514,6 +514,22 @@ inline fun dateByNowOf(timeSpan: Long, @TimeConstants.Unit unit: Int): Date =
 /**
  * Returns whether it is today. This is equivalent to calling:
  * ```
+ * TimeUtils.isToday(date)
+ * ```
+ */
+inline val Date.isToday: Boolean get() = TimeUtils.isToday(this)
+
+/**
+ * Returns whether it is today. This is equivalent to calling:
+ * ```
+ * TimeUtils.isToday(millis)
+ * ```
+ */
+inline val Long.isToday: Boolean get() = TimeUtils.isToday(this)
+
+/**
+ * Returns whether it is today. This is equivalent to calling:
+ * ```
  * TimeUtils.isToday(time, pattern.toSafeDateFormat())
  * ```
  */
@@ -528,20 +544,28 @@ inline fun isToday(time: String, pattern: String): Boolean = TimeUtils.isToday(t
 inline fun isToday(time: String, format: DateFormat = defaultFormat): Boolean = TimeUtils.isToday(time, format)
 
 /**
- * Returns whether it is today. This is equivalent to calling:
+ * Returns whether it is leap year. This is equivalent to calling:
  * ```
- * TimeUtils.isToday(date)
+ * TimeUtils.isLeapYear(date)
  * ```
  */
-inline fun isToday(date: Date): Boolean = TimeUtils.isToday(date)
+inline val Date.isLeapYear: Boolean get() = TimeUtils.isLeapYear(this)
 
 /**
- * Returns whether it is today. This is equivalent to calling:
+ * Returns whether it is leap year. This is equivalent to calling:
  * ```
- * TimeUtils.isToday(millis)
+ * TimeUtils.isLeapYear(millis)
  * ```
  */
-inline fun isToday(millis: Long): Boolean = TimeUtils.isToday(millis)
+inline val Long.isLeapYear: Boolean get() = TimeUtils.isLeapYear(this)
+
+/**
+ * Returns whether it is leap year. This is equivalent to calling:
+ * ```
+ * TimeUtils.isLeapYear(year)
+ * ```
+ */
+inline val Int.isLeapYear: Boolean get() = TimeUtils.isLeapYear(this)
 
 /**
  * Returns whether it is leap year. This is equivalent to calling:
@@ -560,28 +584,20 @@ inline fun isLeapYear(time: String, pattern: String): Boolean = TimeUtils.isLeap
 inline fun isLeapYear(time: String, format: DateFormat = defaultFormat): Boolean = TimeUtils.isLeapYear(time, format)
 
 /**
- * Returns whether it is leap year. This is equivalent to calling:
+ * Returns the day of week in Chinese. This is equivalent to calling:
  * ```
- * TimeUtils.isLeapYear(date)
+ * TimeUtils.getChineseWeek(date)
  * ```
  */
-inline fun isLeapYear(date: Date): Boolean = TimeUtils.isLeapYear(date)
+inline val Date.chineseWeekOf: String get() = TimeUtils.getChineseWeek(this)
 
 /**
- * Returns whether it is leap year. This is equivalent to calling:
+ * Returns the day of week in Chinese. This is equivalent to calling:
  * ```
- * TimeUtils.isLeapYear(millis)
- * ```
- */
-inline fun isLeapYear(millis: Long): Boolean = TimeUtils.isLeapYear(millis)
-
-/**
- * Returns whether it is leap year. This is equivalent to calling:
- * ```
- * TimeUtils.isLeapYear(year)
+ * TimeUtils.getChineseWeek(millis)
  * ```
  */
-inline fun isLeapYear(year: Int): Boolean = TimeUtils.isLeapYear(year)
+inline val Long.chineseWeek: String get() = TimeUtils.getChineseWeek(this)
 
 /**
  * Returns the day of week in Chinese. This is equivalent to calling:
@@ -598,22 +614,6 @@ inline fun chineseWeekOf(time: String, pattern: String): String = TimeUtils.getC
  * ```
  */
 inline fun chineseWeekOf(time: String, format: DateFormat = defaultFormat): String = TimeUtils.getChineseWeek(time, format)
-
-/**
- * Returns the day of week in Chinese. This is equivalent to calling:
- * ```
- * TimeUtils.getChineseWeek(date)
- * ```
- */
-inline fun chineseWeekOf(date: Date): String = TimeUtils.getChineseWeek(date)
-
-/**
- * Returns the day of week in Chinese. This is equivalent to calling:
- * ```
- * TimeUtils.getChineseWeek(millis)
- * ```
- */
-inline fun chineseWeekOf(millis: Long): String = TimeUtils.getChineseWeek(millis)
 
 /**
  * Returns the day of week in US. This is equivalent to calling:
@@ -637,7 +637,7 @@ inline fun usWeekOf(time: String, format: DateFormat = defaultFormat): String = 
  * TimeUtils.getUSWeek(date)
  * ```
  */
-inline fun usWeekOf(date: Date): String = TimeUtils.getUSWeek(date)
+inline val Date.usWeek: String get() = TimeUtils.getUSWeek(this)
 
 /**
  * Returns the day of week in US. This is equivalent to calling:
@@ -645,7 +645,7 @@ inline fun usWeekOf(date: Date): String = TimeUtils.getUSWeek(date)
  * TimeUtils.getUSWeek(millis)
  * ```
  */
-inline fun usWeekOf(millis: Long): String = TimeUtils.getUSWeek(millis)
+inline val Long.usWeek: String get() = TimeUtils.getUSWeek(this)
 
 /**
  * Returns whether it is am. This is equivalent to calling:
@@ -653,7 +653,23 @@ inline fun usWeekOf(millis: Long): String = TimeUtils.getUSWeek(millis)
  * TimeUtils.isAm()
  * ```
  */
-inline fun isAm(): Boolean = TimeUtils.isAm()
+inline val isAm: Boolean get() = TimeUtils.isAm()
+
+/**
+ * Returns whether it is am. This is equivalent to calling:
+ * ```
+ * TimeUtils.isAm(date)
+ * ```
+ */
+inline val Date.isAm: Boolean get() = TimeUtils.isAm(this)
+
+/**
+ * Returns whether it is am. This is equivalent to calling:
+ * ```
+ * TimeUtils.isAm(millis)
+ * ```
+ */
+inline val Long.isAm: Boolean get() = TimeUtils.isAm(this)
 
 /**
  * Returns whether it is am. This is equivalent to calling:
@@ -672,28 +688,28 @@ inline fun isAm(time: String, pattern: String): Boolean = TimeUtils.isAm(time, p
 inline fun isAm(time: String, format: DateFormat = defaultFormat): Boolean = TimeUtils.isAm(time, format)
 
 /**
- * Returns whether it is am. This is equivalent to calling:
- * ```
- * TimeUtils.isAm(date)
- * ```
- */
-inline fun isAm(date: Date): Boolean = TimeUtils.isAm(date)
-
-/**
- * Returns whether it is am. This is equivalent to calling:
- * ```
- * TimeUtils.isAm(millis)
- * ```
- */
-inline fun isAm(millis: Long): Boolean = TimeUtils.isAm(millis)
-
-/**
  * Returns whether it is pm. This is equivalent to calling:
  * ```
  * TimeUtils.isPm()
  * ```
  */
-inline fun isPm(): Boolean = TimeUtils.isPm()
+inline val isPm: Boolean get() = TimeUtils.isPm()
+
+/**
+ * Returns whether it is pm. This is equivalent to calling:
+ * ```
+ * TimeUtils.isPm(date)
+ * ```
+ */
+inline val Date.isPm: Boolean get() = TimeUtils.isPm(this)
+
+/**
+ * Returns whether it is pm. This is equivalent to calling:
+ * ```
+ * TimeUtils.isPm(millis)
+ * ```
+ */
+inline val Long.isPm: Boolean get() = TimeUtils.isPm(this)
 
 /**
  * Returns whether it is pm. This is equivalent to calling:
@@ -712,28 +728,12 @@ inline fun isPm(time: String, pattern: String): Boolean = TimeUtils.isPm(time, p
 inline fun isPm(time: String, format: DateFormat = defaultFormat): Boolean = TimeUtils.isPm(time, format)
 
 /**
- * Returns whether it is pm. This is equivalent to calling:
- * ```
- * TimeUtils.isPm(date)
- * ```
- */
-inline fun isPm(date: Date): Boolean = TimeUtils.isPm(date)
-
-/**
- * Returns whether it is pm. This is equivalent to calling:
- * ```
- * TimeUtils.isPm(millis)
- * ```
- */
-inline fun isPm(millis: Long): Boolean = TimeUtils.isPm(millis)
-
-/**
  * Returns the value of the given calendar field. This is equivalent to calling:
  * ```
  * TimeUtils.getValueByCalendarField(field)
  * ```
  */
-inline fun calendarFieldOf(field: Int): Int = TimeUtils.getValueByCalendarField(field)
+inline fun calendarValueOf(field: Int): Int = TimeUtils.getValueByCalendarField(field)
 
 /**
  * Returns the value of the given calendar field. This is equivalent to calling:
@@ -741,7 +741,7 @@ inline fun calendarFieldOf(field: Int): Int = TimeUtils.getValueByCalendarField(
  * TimeUtils.getValueByCalendarField(time, pattern.toSafeDateFormat(), field)
  * ```
  */
-inline fun calendarFieldOf(time: String, field: Int, pattern: String): Int =
+inline fun calendarValueOf(time: String, field: Int, pattern: String): Int =
   TimeUtils.getValueByCalendarField(time, pattern.toSafeDateFormat(), field)
 
 /**
@@ -750,7 +750,7 @@ inline fun calendarFieldOf(time: String, field: Int, pattern: String): Int =
  * TimeUtils.getValueByCalendarField(time, format, field)
  * ```
  */
-inline fun calendarFieldOf(time: String, field: Int, format: DateFormat = defaultFormat): Int =
+inline fun calendarValueOf(time: String, field: Int, format: DateFormat = defaultFormat): Int =
   TimeUtils.getValueByCalendarField(time, format, field)
 
 /**
@@ -759,7 +759,7 @@ inline fun calendarFieldOf(time: String, field: Int, format: DateFormat = defaul
  * TimeUtils.getValueByCalendarField(date, field)
  * ```
  */
-inline fun calendarFieldOf(date: Date, field: Int): Int = TimeUtils.getValueByCalendarField(date, field)
+inline fun calendarValueOf(date: Date, field: Int): Int = TimeUtils.getValueByCalendarField(date, field)
 
 /**
  * Returns the value of the given calendar field. This is equivalent to calling:
@@ -767,7 +767,23 @@ inline fun calendarFieldOf(date: Date, field: Int): Int = TimeUtils.getValueByCa
  * TimeUtils.getValueByCalendarField(millis, field)
  * ```
  */
-inline fun calendarFieldOf(millis: Long, field: Int): Int = TimeUtils.getValueByCalendarField(millis, field)
+inline fun calendarValueOf(millis: Long, field: Int): Int = TimeUtils.getValueByCalendarField(millis, field)
+
+/**
+ * Returns the Chinese zodiac. This is equivalent to calling:
+ * ```
+ * TimeUtils.getChineseZodiac(date)
+ * ```
+ */
+inline val Date.chineseZodiac: String get() = TimeUtils.getChineseZodiac(this)
+
+/**
+ * Returns the Chinese zodiac. This is equivalent to calling:
+ * ```
+ * TimeUtils.getChineseZodiac(millis)
+ * ```
+ */
+inline val Long.chineseZodiac: String get() = TimeUtils.getChineseZodiac(this)
 
 /**
  * Returns the Chinese zodiac. This is equivalent to calling:
@@ -788,26 +804,26 @@ inline fun chineseZodiacOf(time: String, format: DateFormat = defaultFormat): St
 /**
  * Returns the Chinese zodiac. This is equivalent to calling:
  * ```
- * TimeUtils.getChineseZodiac(date)
- * ```
- */
-inline fun chineseZodiacOf(date: Date): String = TimeUtils.getChineseZodiac(date)
-
-/**
- * Returns the Chinese zodiac. This is equivalent to calling:
- * ```
- * TimeUtils.getChineseZodiac(millis)
- * ```
- */
-inline fun chineseZodiacOf(millis: Long): String = TimeUtils.getChineseZodiac(millis)
-
-/**
- * Returns the Chinese zodiac. This is equivalent to calling:
- * ```
  * TimeUtils.getChineseZodiac(year)
  * ```
  */
 inline fun chineseZodiacOf(year: Int): String = TimeUtils.getChineseZodiac(year)
+
+/**
+ * Returns the zodiac. This is equivalent to calling:
+ * ```
+ * TimeUtils.getZodiac(date)
+ * ```
+ */
+inline val Date.zodiac: String get() = TimeUtils.getZodiac(this)
+
+/**
+ * Returns the zodiac. This is equivalent to calling:
+ * ```
+ * TimeUtils.getZodiac(millis)
+ * ```
+ */
+inline val Long.zodiac: String get() = TimeUtils.getZodiac(this)
 
 /**
  * Returns the zodiac. This is equivalent to calling:
@@ -824,22 +840,6 @@ inline fun zodiacOf(time: String, pattern: String): String = TimeUtils.getZodiac
  * ```
  */
 inline fun zodiacOf(time: String, format: DateFormat = defaultFormat): String = TimeUtils.getZodiac(time, format)
-
-/**
- * Returns the zodiac. This is equivalent to calling:
- * ```
- * TimeUtils.getZodiac(date)
- * ```
- */
-inline fun zodiacOf(date: Date): String = TimeUtils.getZodiac(date)
-
-/**
- * Returns the zodiac. This is equivalent to calling:
- * ```
- * TimeUtils.getZodiac(millis)
- * ```
- */
-inline fun zodiacOf(millis: Long): String = TimeUtils.getZodiac(millis)
 
 /**
  * Returns the zodiac. This is equivalent to calling:

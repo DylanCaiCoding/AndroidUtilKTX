@@ -38,7 +38,7 @@ inline var toastBgColor: Int
  * ToastUtils.setBgResource(bgResource)
  * ```
  */
-inline var toastMsgResource: Int
+inline var toastBgResource: Int
   @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
   get() = throw NotImplementedError()
   set(@DrawableRes value) = ToastUtils.setBgResource(value)

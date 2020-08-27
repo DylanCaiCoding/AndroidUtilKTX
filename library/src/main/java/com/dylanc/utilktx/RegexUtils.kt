@@ -2,11 +2,27 @@
 
 package com.dylanc.utilktx
 
+import com.blankj.utilcode.constant.RegexConstants
 import com.blankj.utilcode.util.RegexUtils
 
 /**
  * @author Dylan Cai
  */
+
+const val REGEX_DOUBLE_BYTE_CHAR = RegexConstants.REGEX_DOUBLE_BYTE_CHAR
+const val REGEX_BLANK_LINE = RegexConstants.REGEX_BLANK_LINE
+const val REGEX_QQ_NUM = RegexConstants.REGEX_QQ_NUM
+const val REGEX_CHINA_POSTAL_CODE = RegexConstants.REGEX_CHINA_POSTAL_CODE
+const val REGEX_INTEGER = RegexConstants.REGEX_INTEGER
+const val REGEX_POSITIVE_INTEGER = RegexConstants.REGEX_POSITIVE_INTEGER
+const val REGEX_NEGATIVE_INTEGER = RegexConstants.REGEX_NEGATIVE_INTEGER
+const val REGEX_NOT_NEGATIVE_INTEGER = RegexConstants.REGEX_NOT_NEGATIVE_INTEGER
+const val REGEX_NOT_POSITIVE_INTEGER = RegexConstants.REGEX_NOT_POSITIVE_INTEGER
+const val REGEX_FLOAT = RegexConstants.REGEX_FLOAT
+const val REGEX_POSITIVE_FLOAT = RegexConstants.REGEX_POSITIVE_FLOAT
+const val REGEX_NEGATIVE_FLOAT = RegexConstants.REGEX_NEGATIVE_FLOAT
+const val REGEX_NOT_NEGATIVE_FLOAT = RegexConstants.REGEX_NOT_NEGATIVE_FLOAT
+const val REGEX_NOT_POSITIVE_FLOAT = RegexConstants.REGEX_NOT_POSITIVE_FLOAT
 
 /**
  * Returns whether input matches regex of simple mobile. This is equivalent to calling:

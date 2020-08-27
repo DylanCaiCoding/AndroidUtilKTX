@@ -482,43 +482,45 @@ isAppliedLanguage                          : 判断是否使用某语言
 currentLocale                              : 获取当前语言
 ```
 
-* ### 日志相关 -> [LogUtils.kt][log.kt] -> [Demo][log.demo]
+* ### 日志相关 -> [LogUtils.kt][log.kt]
 ```
-logConfig                : 获取 log 配置
-Config.setLogSwitch      : 设置 log 总开关
-Config.setConsoleSwitch  : 设置 log 控制台开关
-Config.setGlobalTag      : 设置 log 全局 tag
-Config.setLogHeadSwitch  : 设置 log 头部信息开关
-Config.setLog2FileSwitch : 设置 log 文件开关
-Config.setDir            : 设置 log 文件存储目录
-Config.setFilePrefix     : 设置 log 文件前缀
-Config.setBorderSwitch   : 设置 log 边框开关
-Config.setSingleTagSwitch: 设置 log 单一 tag 开关（为美化 AS 3.1 的 Logcat）
-Config.setConsoleFilter  : 设置 log 控制台过滤器
-Config.setFileFilter     : 设置 log 文件过滤器
-Config.setStackDeep      : 设置 log 栈深度
-Config.setStackOffset    : 设置 log 栈偏移
-Config.setSaveDays       : 设置 log 可保留天数
-Config.addFormatter      : 新增 log 格式化器
-log                      : 自定义 tag 的 type 日志
-v                        : tag 为类名的 Verbose 日志
-vTag                     : 自定义 tag 的 Verbose 日志
-d                        : tag 为类名的 Debug 日志
-dTag                     : 自定义 tag 的 Debug 日志
-i                        : tag 为类名的 Info 日志
-iTag                     : 自定义 tag 的 Info 日志
-w                        : tag 为类名的 Warn 日志
-wTag                     : 自定义 tag 的 Warn 日志
-e                        : tag 为类名的 Error 日志
-eTag                     : 自定义 tag 的 Error 日志
-a                        : tag 为类名的 Assert 日志
-aTag                     : 自定义 tag 的 Assert 日志
-file                     : log 到文件
-json                     : log 字符串之 json
-xml                      : log 字符串之 xml
+logConfig                 : 获取 log 配置
+Config.setLogSwitch       : 设置 log 总开关
+Config.setConsoleSwitch   : 设置 log 控制台开关
+Config.setGlobalTag       : 设置 log 全局 tag
+Config.setLogHeadSwitch   : 设置 log 头部信息开关
+Config.setLog2FileSwitch  : 设置 log 文件开关
+Config.setDir             : 设置 log 文件存储目录
+Config.setFilePrefix      : 设置 log 文件前缀
+Config.setBorderSwitch    : 设置 log 边框开关
+Config.setSingleTagSwitch : 设置 log 单一 tag 开关（为美化 AS 3.1 的 Logcat）
+Config.setConsoleFilter   : 设置 log 控制台过滤器
+Config.setFileFilter      : 设置 log 文件过滤器
+Config.setStackDeep       : 设置 log 栈深度
+Config.setStackOffset     : 设置 log 栈偏移
+Config.setSaveDays        : 设置 log 可保留天数
+Config.addFormatter       : 新增 log 格式化器
+logVerbose                : tag 为类名的 Verbose 日志
+Logger.logVerbose         : 自定义 tag 的 Verbose 日志
+logDebug                  : tag 为类名的 Debug 日志
+Logger.logDebug           : 自定义 tag 的 Debug 日志
+logInfo                   : tag 为类名的 Info 日志
+Logger.logInfo            : 自定义 tag 的 Info 日志
+logWarn                   : tag 为类名的 Warn 日志
+Logger.logWarn            : 自定义 tag 的 Warn 日志
+logError                  : tag 为类名的 Error 日志
+Logger.logError           : 自定义 tag 的 Error 日志
+logAssert                 : tag 为类名的 Assert 日志
+Logger.logAssert          : 自定义 tag 的 Assert 日志
+logFile                   : log 到文件
+Logger.logFile            : log 自定义 tag 的内容到文件
+logJson                   : json 字符串日志
+Logger.logJson            : 自定义 tag 的 json 字符串日志
+logXml                    : xml 字符串日志
+Logger.logXml             : 自定义 tag 的 xml 字符串日志
 ```
 
-* ### Map 相关 -> [MapUtils.kt][map.kt] -> [Test][map.test]
+* ### Map 相关 -> [MapUtils.kt][map.kt] 
 ```
 Map.transform : 对 Map 做转变
 ```
@@ -665,37 +667,37 @@ reflect    : 设置要反射的类
 
 * ### 正则相关 -> [RegexUtils.kt][regex.kt] 
 ```
-String.isMobileSimple                     : 简单验证手机号
-String.isMobileExact                      : 精确验证手机号
-String.isTelephone                        : 验证电话号码
-String.isIDCard15                         : 验证身份证号码 15 位
-String.isIDCard18                         : 简单验证身份证号码 18 位
-String.isIDCard18Exact                    : 精确验证身份证号码 18 位
-String.isEmail                            : 验证邮箱
-String.isURL                              : 验证 URL
-String.isZh                               : 验证汉字
-String.isUsername                         : 验证用户名
-String.isDate                             : 验证 yyyy-MM-dd 格式的日期校验，已考虑平闰年
-String.isIP                               : 验证 IP 地址
-String.isMatch                            : 判断是否匹配正则
-String.matches                            : 获取正则匹配的部分
-String.split                              : 获取正则匹配分组
-String.replaceFirst                       : 替换正则匹配的第一部分
-String.replaceAll                         : 替换所有正则匹配的部分
-RegexConstants.REGEX_DOUBLE_BYTE_CHAR     : 双字节
-RegexConstants.REGEX_BLANK_LINE           : 空行
-RegexConstants.REGEX_QQ_NUM               : QQ 号
-RegexConstants.REGEX_CHINA_POSTAL_CODE    : 邮编
-RegexConstants.REGEX_INTEGER              : 整数
-RegexConstants.REGEX_POSITIVE_INTEGER     : 正整数
-RegexConstants.REGEX_NEGATIVE_INTEGER     : 负整数
-RegexConstants.REGEX_NOT_NEGATIVE_INTEGER : 非负整数
-RegexConstants.REGEX_NOT_POSITIVE_INTEGER : 非正整数
-RegexConstants.REGEX_FLOAT                : 浮点数
-RegexConstants.REGEX_POSITIVE_FLOAT       : 正浮点数
-RegexConstants.REGEX_NEGATIVE_FLOAT       : 负浮点数
-RegexConstants.REGEX_NOT_NEGATIVE_FLOAT   : 非负浮点数
-RegexConstants.REGEX_NOT_POSITIVE_FLOAT   : 非正浮点数
+String.isMobileSimple      : 简单验证手机号
+String.isMobileExact       : 精确验证手机号
+String.isTelephone         : 验证电话号码
+String.isIDCard15          : 验证身份证号码 15 位
+String.isIDCard18          : 简单验证身份证号码 18 位
+String.isIDCard18Exact     : 精确验证身份证号码 18 位
+String.isEmail             : 验证邮箱
+String.isURL               : 验证 URL
+String.isZh                : 验证汉字
+String.isUsername          : 验证用户名
+String.isDate              : 验证 yyyy-MM-dd 格式的日期校验，已考虑平闰年
+String.isIP                : 验证 IP 地址
+String.isMatch             : 判断是否匹配正则
+String.matches             : 获取正则匹配的部分
+String.split               : 获取正则匹配分组
+String.replaceFirst        : 替换正则匹配的第一部分
+String.replaceAll          : 替换所有正则匹配的部分
+REGEX_DOUBLE_BYTE_CHAR     : 双字节
+REGEX_BLANK_LINE           : 空行
+REGEX_QQ_NUM               : QQ 号
+REGEX_CHINA_POSTAL_CODE    : 邮编
+REGEX_INTEGER              : 整数
+REGEX_POSITIVE_INTEGER     : 正整数
+REGEX_NEGATIVE_INTEGER     : 负整数
+REGEX_NOT_NEGATIVE_INTEGER : 非负整数
+REGEX_NOT_POSITIVE_INTEGER : 非正整数
+REGEX_FLOAT                : 浮点数
+REGEX_POSITIVE_FLOAT       : 正浮点数
+REGEX_NEGATIVE_FLOAT       : 负浮点数
+REGEX_NOT_NEGATIVE_FLOAT   : 非负浮点数
+REGEX_NOT_POSITIVE_FLOAT   : 非正浮点数
 ```
 
 * ### 资源相关 -> [ResourceUtils.kt][resource.kt] 
@@ -805,454 +807,318 @@ View.measureWidth              : 获取测量视图宽度
 View.measureHeight             : 获取测量视图高度
 ```
 
-* ### Snackbar 相关 -> [SnackbarUtils.kt][snackbar.kt] -> [Demo][snackbar.demo]
+* ### Snackbar 相关 -> [SnackbarUtils.kt][snackbar.kt]
 ```
-with           : 设置 snackbar 依赖 view
-setMessage     : 设置消息
-setMessageColor: 设置消息颜色
-setBgColor     : 设置背景色
-setBgResource  : 设置背景资源
-setDuration    : 设置显示时长
-setAction      : 设置行为
-setBottomMargin: 设置底边距
-show           : 显示 snackbar
-showSuccess    : 显示预设成功的 snackbar
-showWarning    : 显示预设警告的 snackbar
-showError      : 显示预设错误的 snackbar
-dismiss        : 消失 snackbar
-getView        : 获取 snackbar 视图
-addView        : 添加 snackbar 视图
+[Activity.]showSnackbar         : 显示 snackbar
+[Activity.]showSuccessSnackbar  : 显示预设成功的 snackbar
+[Activity.]showWarningSnackbar  : 显示预设警告的 snackbar
+[Activity.]showErrorSnackbar    : 显示预设错误的 snackbar
+dismissSnackbar                 : 消失 snackbar
+snackbarView                    : 获取 snackbar 视图
+addSnackbarView                 : 添加 snackbar 视图
 ```
 
-* ### SpannableString 相关 -> [SpanUtils.kt][span.kt] -> [Demo][span.demo]
+* ### SpannableString 相关 -> [SpanUtils.kt][span.kt] 
 ```
-with              : 设置控件
-setFlag           : 设置标识
-setForegroundColor: 设置前景色
-setBackgroundColor: 设置背景色
-setLineHeight     : 设置行高
-setQuoteColor     : 设置引用线的颜色
-setLeadingMargin  : 设置缩进
-setBullet         : 设置列表标记
-setFontSize       : 设置字体尺寸
-setFontProportion : 设置字体比例
-setFontXProportion: 设置字体横向比例
-setStrikethrough  : 设置删除线
-setUnderline      : 设置下划线
-setSuperscript    : 设置上标
-setSubscript      : 设置下标
-setBold           : 设置粗体
-setItalic         : 设置斜体
-setBoldItalic     : 设置粗斜体
-setFontFamily     : 设置字体系列
-setTypeface       : 设置字体
-setAlign          : 设置对齐
-setClickSpan      : 设置点击事件
-setUrl            : 设置超链接
-setBlur           : 设置模糊
-setShader         : 设置着色器
-setShadow         : 设置阴影
-setSpans          : 设置样式
-append            : 追加样式字符串
-appendLine        : 追加一行样式字符串
-appendImage       : 追加图片
-appendSpace       : 追加空白
-create            : 创建样式字符串
+TextView.setText : 设置 Spannable 字符串
 ```
 
-* ### SP 相关 -> [SPStaticUtils.kt][spStatic.kt] -> [Demo][spStatic.demo]
+* ### SP 相关 -> [SPStaticUtils.kt][spStatic.kt]
 ```
-setDefaultSPUtils: 设置默认 SP 实例
-put              : SP 中写入数据
-getString        : SP 中读取 String
-getInt           : SP 中读取 int
-getLong          : SP 中读取 long
-getFloat         : SP 中读取 float
-getBoolean       : SP 中读取 boolean
-getAll           : SP 中获取所有键值对
-contains         : SP 中是否存在该 key
-remove           : SP 中移除该 key
-clear            : SP 中清除所有数据
+defaultSpUtils  : 设置默认 SP 实例
+putSpValue      : SP 中写入数据
+spValueOf       : SP 中读取数据
+allSpValue      : SP 中获取所有键值对
+containSpValue  : SP 中是否存在该 key
+removeSpValue   : SP 中移除该 key
+clearSp         : SP 中清除所有数据
 ```
 
-* ### SP 相关 -> [SPUtils.kt][sp.kt]
+* ### 字符串相关 -> [StringUtils.kt][string.kt] 
 ```
-getInstance        : 获取 SP 实例
-Instance.put       : SP 中写入数据
-Instance.getString : SP 中读取 String
-Instance.getInt    : SP 中读取 int
-Instance.getLong   : SP 中读取 long
-Instance.getFloat  : SP 中读取 float
-Instance.getBoolean: SP 中读取 boolean
-Instance.getAll    : SP 中获取所有键值对
-Instance.contains  : SP 中是否存在该 key
-Instance.remove    : SP 中移除该 key
-Instance.clear     : SP 中清除所有数据
+String?.toNotNull       : null 转为长度为 0 的字符串
+String.toUpperCaseFirst : 首字母大写
+String.toLowerCaseFirst : 首字母小写
+String.reverse          : 反转字符串
+String.toDBC            : 转化为半角字符
+String.toSBC            : 转化为全角字符
+stringOf                : 获取字符资源
+stringArrayOf           : 获取字符数组资源
 ```
 
-* ### 字符串相关 -> [StringUtils.kt][string.kt] -> [Test][string.test]
+* ### 线程相关 -> [ThreadUtils.kt][thread.kt]
 ```
-isEmpty         : 判断字符串是否为 null 或长度为 0
-isTrimEmpty     : 判断字符串是否为 null 或全为空格
-isSpace         : 判断字符串是否为 null 或全为空白字符
-equals          : 判断两字符串是否相等
-equalsIgnoreCase: 判断两字符串忽略大小写是否相等
-null2Length0    : null 转为长度为 0 的字符串
-length          : 返回字符串长度
-upperFirstLetter: 首字母大写
-lowerFirstLetter: 首字母小写
-reverse         : 反转字符串
-toDBC           : 转化为半角字符
-toSBC           : 转化为全角字符
-getString       : 获取字符资源
-getStringArray  : 获取字符数组资源
-```
-
-* ### 线程相关 -> [ThreadUtils.kt][thread.kt] -> [Test][thread.test]
-```
-isMainThread            : 判断当前是否主线程
-getMainHandler          : 获取主线程 Handler
-runOnUiThread           : 运行在主线程
-runOnUiThreadDelayed    : 延时运行在主线程
-getFixedPool            : 获取固定线程池
-getSinglePool           : 获取单线程池
-getCachedPool           : 获取缓冲线程池
-getIoPool               : 获取 IO 线程池
-getCpuPool              : 获取 CPU 线程池
-executeByFixed          : 在固定线程池执行任务
-executeByFixedWithDelay : 在固定线程池延时执行任务
-executeByFixedAtFixRate : 在固定线程池按固定频率执行任务
-executeBySingle         : 在单线程池执行任务
-executeBySingleWithDelay: 在单线程池延时执行任务
-executeBySingleAtFixRate: 在单线程池按固定频率执行任务
-executeByCached         : 在缓冲线程池执行任务
-executeByCachedWithDelay: 在缓冲线程池延时执行任务
-executeByCachedAtFixRate: 在缓冲线程池按固定频率执行任务
-executeByIo             : 在 IO 线程池执行任务
-executeByIoWithDelay    : 在 IO 线程池延时执行任务
-executeByIoAtFixRate    : 在 IO 线程池按固定频率执行任务
-executeByCpu            : 在 CPU 线程池执行任务
-executeByCpuWithDelay   : 在 CPU 线程池延时执行任务
-executeByCpuAtFixRate   : 在 CPU 线程池按固定频率执行任务
-executeByCustom         : 在自定义线程池执行任务
-executeByCustomWithDelay: 在自定义线程池延时执行任务
-executeByCustomAtFixRate: 在自定义线程池按固定频率执行任务
-cancel                  : 取消任务的执行
-setDeliver              : 设置任务结束后交付的线程
+isMainThread                   : 判断当前是否主线程
+mainHandler                    : 获取主线程 Handler
+runOnUiThread                  : 运行在主线程
+runOnUiThreadDelayed           : 延时运行在主线程
+fixedThreadPoolOf              : 获取固定线程池
+singleThreadPoolOf             : 获取单线程池
+cacheThreadPoolOf              : 获取缓冲线程池
+ioThreadPoolOf                 : 获取 IO 线程池
+cpuThreadPoolOf                : 获取 CPU 线程池
+executeByFixedThread           : 在固定线程池执行任务
+executeByFixedThreadWithDelay  : 在固定线程池延时执行任务
+executeByFixedThreadAtFixRate  : 在固定线程池按固定频率执行任务
+executeBySingleThread          : 在单线程池执行任务
+executeBySingleThreadWithDelay : 在单线程池延时执行任务
+executeBySingleThreadAtFixRate : 在单线程池按固定频率执行任务
+executeByCachedThread          : 在缓冲线程池执行任务
+executeByCachedThreadWithDelay : 在缓冲线程池延时执行任务
+executeByCachedThreadAtFixRate : 在缓冲线程池按固定频率执行任务
+executeByIoThread              : 在 IO 线程池执行任务
+executeByIoThreadWithDelay     : 在 IO 线程池延时执行任务
+executeByIoThreadAtFixRate     : 在 IO 线程池按固定频率执行任务
+executeByCpuThread             : 在 CPU 线程池执行任务
+executeByCpuThreadWithDelay    : 在 CPU 线程池延时执行任务
+executeByCpuThreadAtFixRate    : 在 CPU 线程池按固定频率执行任务
+executeByCustomThread          : 在自定义线程池执行任务
+executeByCustomThreadWithDelay : 在自定义线程池延时执行任务
+executeByCustomThreadAtFixRate : 在自定义线程池按固定频率执行任务
+ExecutorService.cancel         : 取消任务的执行
+deliveredThread                : 设置任务结束后交付的线程
 ```
 
-* ### 时间相关 -> [TimeUtils.kt][time.kt] -> [Test][time.test]
+* ### 时间相关 -> [TimeUtils.kt][time.kt] 
 ```
-getSafeDateFormat       : 获取安全的日期格式
-millis2String           : 将时间戳转为时间字符串
-string2Millis           : 将时间字符串转为时间戳
-string2Date             : 将时间字符串转为 Date 类型
-date2String             : 将 Date 类型转为时间字符串
-date2Millis             : 将 Date 类型转为时间戳
-millis2Date             : 将时间戳转为 Date 类型
-getTimeSpan             : 获取两个时间差（单位：unit）
-getFitTimeSpan          : 获取合适型两个时间差
-getNowMills             : 获取当前毫秒时间戳
-getNowString            : 获取当前时间字符串
-getNowDate              : 获取当前 Date
-getTimeSpanByNow        : 获取与当前时间的差（单位：unit）
-getFitTimeSpanByNow     : 获取合适型与当前时间的差
-getFriendlyTimeSpanByNow: 获取友好型与当前时间的差
-getMillis               : 获取与给定时间等于时间差的时间戳
-getString               : 获取与给定时间等于时间差的时间字符串
-getDate                 : 获取与给定时间等于时间差的 Date
-getMillisByNow          : 获取与当前时间等于时间差的时间戳
-getStringByNow          : 获取与当前时间等于时间差的时间字符串
-getDateByNow            : 获取与当前时间等于时间差的 Date
-isToday                 : 判断是否今天
-isLeapYear              : 判断是否闰年
-getChineseWeek          : 获取中式星期
-getUSWeek               : 获取美式式星期
-isAm                    : 判断是否上午
-isPm                    : 判断是否下午
-getValueByCalendarField : 根据日历字段获取值
-getChineseZodiac        : 获取生肖
-getZodiac               : 获取星座
+String.toSafeDateFormat                   : 获取安全的日期格式
+Long.toTimeString                         : 将时间戳转为时间字符串
+String.toMillis                           : 将时间字符串转为时间戳
+String.toDate                             : 将时间字符串转为 Date 类型
+Date.toTimeString                         : 将 Date 类型转为时间字符串
+Date.toMillis                             : 将 Date 类型转为时间戳
+Long.toDate                               : 将时间戳转为 Date 类型
+timeSpanOf                                : 获取两个时间差（单位：unit）
+fitTimeSpanOf                             : 获取合适型两个时间差
+nowMillis                                 : 获取当前毫秒时间戳
+nowTimeString, nowTimeStringOf            : 获取当前时间字符串
+nowDate                                   : 获取当前 Date
+timeSpanByNowOf                           : 获取与当前时间的差（单位：unit）
+fitTimeSpanByNowOf                        : 获取合适型与当前时间的差
+friendlyTimeSpanByNowOf                   : 获取友好型与当前时间的差
+millisOf                                  : 获取与给定时间等于时间差的时间戳
+timeStringOf                              : 获取与给定时间等于时间差的时间字符串
+dateOf                                    : 获取与给定时间等于时间差的 Date
+millisByNowOf                             : 获取与当前时间等于时间差的时间戳
+timeStringByNowOf                         : 获取与当前时间等于时间差的时间字符串
+dateByNowOf                               : 获取与当前时间等于时间差的 Date
+Date/Long.isToday, isToday                : 判断是否今天
+Date/Long/Int.isLeapYear, isLeapYear      : 判断是否闰年
+Date/Long.chineseWeek, chineseWeekOf      : 获取中式星期
+Date/Long.usWeek, usWeekOf                : 获取美式式星期
+Date/Long.isAm, isAm                      : 判断是否上午
+Date/Long.isPm, isPm                      : 判断是否下午
+calendarValueOf                           : 根据日历字段获取值
+Date/Long.chineseZodiac, chineseZodiacOf  : 获取生肖
+Date/Long.zodiac, zodiacOf                : 获取星座
+PATTERN_DATE_HOUR_MINUTE_SECOND           : yyyy-MM-dd HH:mm:ss
+PATTERN_DATE_HOUR_MINUTE                  : yyyy-MM-dd HH:mm
+PATTERN_MONTH_DAY_HOUR_MINUTE             : MM-dd HH:mm
+PATTERN_DATE                              : yyyy-MM-dd
+PATTERN_MONTH_DAY                         : MM-dd
+PATTERN_HOUR_MINUTE_SECOND                : HH:mm:ss
+PATTERN_HOUR_MINUTE                       : HH:mm
 ```
 
-* ### 吐司相关 -> [ToastUtils.kt][toast.kt] -> [Demo][toast.demo]
+* ### 吐司相关 -> [ToastUtils.kt][toast.kt] 
 ```
-setGravity     : 设置吐司位置
-setBgColor     : 设置背景颜色
-setBgResource  : 设置背景资源
-setMsgColor    : 设置消息颜色
-setMsgTextSize : 设置消息字体大小
-showShort      : 显示短时吐司
-showLong       : 显示长时吐司
-showCustomShort: 显示短时自定义吐司
-showCustomLong : 显示长时自定义吐司
-cancel         : 取消吐司显示
+setToastGravity   : 设置吐司位置
+toastBgColor      : 设置背景颜色
+toastBgResource   : 设置背景资源
+toastMsgColor     : 设置消息颜色
+toastMsgTextSize  : 设置消息字体大小
+toast             : 显示短时吐司
+longToast         : 显示长时吐司
+cancelToast       : 取消吐司显示
 ```
 
 * ### 触摸相关 -> [TouchUtils.kt][touch.kt]
 ```
-setOnTouchListener: 设置触摸事件
+View.doOnTouch : 设置触摸事件
 ```
 
-* ### UI 消息相关 -> [UiMessageUtils.kt][uiMessage.kt] -> [Demo][uiMessage.demo]
+* ### UI 消息相关 -> [UiMessageUtils.kt][uiMessage.kt] 
 ```
-send          : 发送消息
-addListener   : 新增消息监听器
-removeListener: 移除消息监听器
+sendUIMessage           : 发送消息
+addUIMessageListener    : 新增消息监听器
+removeUIMessageListener : 移除消息监听器
+observeUIMessage        : 观察消息监听器，绑定生命周期
 ```
 
 * ### URI 相关 -> [UriUtils.kt][uri.kt]
 ```
-res2Uri  : res 转 uri
-file2Uri : file 转 uri
-uri2File : uri 转 file
-uri2Bytes: uri 转 bytes
+uriOf       : 根据 res 路径获取 uri
+File.toUri  : file 转 uri
+Uri.toFile  : uri 转 file
+Uri.toBytes : uri 转 bytes
 ```
 
 * ### UtilsTransActivity -> [UtilsTransActivity.kt][trans.kt]
 ```
-start: 启动随当前线程的透明 Activity
+startTransActivity               : 启动随当前线程的透明 Activity
+startTransActivityForMainProcess : 启动主线程的透明 Activity
 ```
 
-* ### UtilsTransActivity4MainProcess -> [UtilsTransActivity4MainProcess.kt][trans4Main.kt]
+* ### 震动相关 -> [VibrateUtils.kt][vibrate.kt] 
 ```
-start: 启动主线程的透明 Activity
-```
-
-* ### 震动相关 -> [VibrateUtils.kt][vibrate.kt] -> [Demo][vibrate.demo]
-```
-vibrate: 震动
-cancel : 取消
+vibrate       : 震动
+cancelVibrate : 取消震动
 ```
 
 * ### 视图相关 -> [ViewUtils.kt][view.kt]
 ```
-setViewEnabled      : 设置视图是否可用
-runOnUiThread       : 在 UI 线程运行
-runOnUiThreadDelayed: 在 UI 线程延迟运行
-isLayoutRtl         : 布局是否从右到左
-fixScrollViewTopping: 修复 ScrollView 置顶问题
+View.setEnabled            : 设置视图是否可用
+isLayoutRtl                : 布局是否从右到左
+View.fixScrollViewTopping  : 修复 ScrollView 置顶问题
 ```
 
-* ### 压缩相关 -> [ZipUtils.kt][zip.kt] -> [Test][zip.test]
+* ### 压缩相关 -> [ZipUtils.kt][zip.kt] 
 ```
-zipFiles          : 批量压缩文件
-zipFile           : 压缩文件
-unzipFile         : 解压文件
-unzipFileByKeyword: 解压带有关键字的文件
-getFilesPath      : 获取压缩文件中的文件路径链表
-getComments       : 获取压缩文件中的注释链表
+Collection<File>.zip, zipFiles          : 批量压缩文件
+File.zip, zipFile                       : 压缩文件
+File.unzip, unzipFile                   : 解压文件
+File.zipFilesPath, zipFilesPathOf       : 获取压缩文件中的文件路径链表
+File.zipFileComments, zipFileCommentsOf : 获取压缩文件中的注释链表
 ```
 
 
-## 打个小广告
 
-欢迎加入我的知识星球「**[基你太美](https://t.zsxq.com/FmeqfYF)**」，我会在星球中分享 [AucFrame](https://blankj.com/2019/07/22/auc-frame/) 框架、大厂面经、[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode) 更详尽的说明...一切我所了解的知识，你可以通过支付进入我的星球「**[基你太美](https://t.zsxq.com/FmeqfYF)**」进行体验，加入后优先观看星球中精华的部分，如果觉得星球的内容对自身没有收益，你可以自行申请退款退出星球，也没必要加我好友；**如果你已确定要留在我的星球，可以通过扫描如下二维码（备注：基你太美）加我个人微信，发送给我你的星球 ID，方便我后续拉你进群(PS：进得越早价格越便宜)。**
+[activity.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ActivityUtils.kt
 
-![我的二维码](https://raw.githubusercontent.com/Blankj/AndroidUtilCode/master/art/wechat.png)
+[adaptScreen.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/AdaptScreenUtils.kt
 
+[api.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ApiUtils.kt
 
+[app.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/AppUtils.kt
 
-[activity.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ActivityUtils.java
-[activity.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/activity/ActivityActivity.kt
+[array.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ArrayUtils.kt
 
-[adaptScreen.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/AdaptScreenUtils.java
-[adaptScreen.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/adaptScreen/AdaptScreenActivity.kt
+[bar.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/BarUtils.kt
 
-[api.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ApiUtils.java
-[api.readme]: https://github.com/Blankj/AndroidUtilCode/blob/master/plugin/api-gradle-plugin
+[brightness.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/BrightnessUtils.kt
 
-[app.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/AppUtils.java
-[app.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/app/AppActivity.kt
+[bus.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/BusUtils.kt
 
-[array.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ArrayUtils.java
-[array.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/ArrayUtilsTest.java
+[cacheDiskStatic.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/CacheDiskStaticUtils.kt
 
-[bar.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/BarUtils.java
-[bar.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/bar/BarActivity.kt
+[cacheDisk.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/CacheDiskUtils.kt
 
-[brightness.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/BrightnessUtils.java
-[brightness.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/brightness/BrightnessActivity.kt
+[cacheDoubleStatic.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/CacheDoubleStaticUtils.kt
 
-[bus.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/BusUtils.java
-[bus.readme]: https://github.com/Blankj/AndroidUtilCode/blob/master/plugin/bus-gradle-plugin
+[cacheDouble.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/CacheDoubleUtils.kt
 
-[cacheDiskStatic.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/CacheDiskStaticUtils.java
-[cacheDiskStatic.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/CacheDiskStaticUtilsTest.java
+[cacheMemoryStatic.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/CacheMemoryStaticUtils.kt
 
-[cacheDisk.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/CacheDiskUtils.java
-[cacheDisk.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/CacheDiskUtilsTest.java
+[cacheMemory.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/CacheMemoryUtils.kt
 
-[cacheDoubleStatic.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/CacheDoubleStaticUtils.java
-[cacheDoubleStatic.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/CacheDoubleStaticUtilsTest.java
+[clean.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/CleanUtils.kt
 
-[cacheDouble.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/CacheDoubleUtils.java
-[cacheDouble.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/CacheDoubleUtilsTest.java
+[click.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ClickUtils.kt
 
-[cacheMemoryStatic.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/CacheMemoryStaticUtils.java
-[cacheMemoryStatic.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/CacheMemoryStaticUtilsTest.java
+[clone.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/CloneUtils.kt
 
-[cacheMemory.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/CacheMemoryUtils.java
-[cacheMemory.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/CacheMemoryUtilsTest.java
+[close.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/CloseUtils.kt
 
-[clean.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/CleanUtils.java
-[clean.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/clean/CleanActivity.kt
+[collection.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/CollectionUtils.kt
 
-[click.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ClickUtils.java
-[click.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/click/ClickActivity.kt
+[color.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ColorUtils.kt
 
-[clone.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/CloneUtils.java
-[clone.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/CloneUtilsTest.java
+[convert.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ConvertUtils.kt
 
-[close.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/CloseUtils.java
+[crash.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/CrashUtils.kt
 
-[collection.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/CollectionUtils.java
-[collection.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/CollectionUtilsTest.java
+[device.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/DeviceUtils.kt
 
-[color.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ColorUtils.java
-[color.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/ColorUtilsTest.java
+[empty.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/EmptyUtils.kt
 
-[convert.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ConvertUtils.java
-[convert.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/ConvertUtilsTest.java
+[encode.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/EncodeUtils.kt
 
-[crash.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/CrashUtils.java
+[encrypt.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/EncryptUtils.kt
 
-[device.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/DeviceUtils.java
-[device.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/device/DeviceActivity.kt
+[fileIo.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/FileIOUtils.kt
 
-[empty.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/EmptyUtils.java
-[empty.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/EmptyUtilsTest.java
+[file.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/FileUtils.kt
 
-[encode.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/EncodeUtils.java
-[encode.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/EncodeUtilsTest.java
+[flashlight.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/FlashlightUtils.kt
 
-[encrypt.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/EncryptUtils.java
-[encrypt.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/EncryptUtilsTest.java
+[fragment.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/FragmentUtils.kt
 
-[fileIo.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/FileIOUtils.java
-[fileIo.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/FileIOUtilsTest.java
+[gson.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/GsonUtils.kt
 
-[file.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/FileUtils.java
-[file.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/FileUtilsTest.java
+[image.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ImageUtils.kt
 
-[flashlight.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/FlashlightUtils.java
-[flashlight.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/flashlight/FlashlightActivity.kt
+[intent.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/IntentUtils.kt
 
-[fragment.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/FragmentUtils.java
-[fragment.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/fragment/FragmentActivity.kt
+[keyboard.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/KeyboardUtils.kt
 
-[gson.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/GsonUtils.java
-[gson.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/GsonUtilsTest.java
+[language.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/LanguageUtils.kt
 
-[image.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ImageUtils.java
-[image.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/image/ImageActivity.kt
+[log.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/LogUtils.kt
 
-[intent.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/IntentUtils.java
+[map.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/MapUtils.kt
 
-[keyboard.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/KeyboardUtils.java
-[keyboard.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/keyboard/KeyboardActivity.kt
+[metaData.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/MetaDataUtils.kt
 
-[language.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/LanguageUtils.java
-[language.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/language/LanguageActivity.kt
+[network.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/NetworkUtils.kt
 
-[log.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/LogUtils.java
-[log.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/log/LogActivity.kt
+[notification.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/NotificationUtils.kt
 
-[map.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/MapUtils.java
-[map.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/MapUtilsTest.java
+[number.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/NumberUtils.kt
 
-[metaData.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/MetaDataUtils.java
-[metaData.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/metaData/MetaDataActivity.kt
+[object.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ObjectUtils.kt
 
-[network.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/NetworkUtils.java
-[network.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/network/NetworkActivity.kt
+[path.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/PathUtils.kt
 
-[notification.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/NotificationUtils.java
-[notification.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/notification/NotificationActivity.kt
+[permission.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/PermissionUtils.kt
 
-[number.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/NumberUtils.java
-[number.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/NumberUtilsTest.java
+[phone.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/PhoneUtils.kt
 
-[object.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ObjectUtils.java
-[object.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/ObjectUtilsTest.java
+[process.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ProcessUtils.kt
 
-[path.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/PathUtils.java
-[path.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/path/PathActivity.kt
+[reflect.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ReflectUtils.kt
 
-[permission.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/PermissionUtils.java
-[permission.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/permission/PermissionActivity.kt
+[regex.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/RegexUtils.kt
 
-[phone.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/PhoneUtils.java
-[phone.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/phone/PhoneActivity.kt
+[resource.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ResourceUtils.kt
 
-[process.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ProcessUtils.java
-[process.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/process/ProcessActivity.kt
+[rom.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/RomUtils.kt
 
-[reflect.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ReflectUtils.java
-[reflect.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/reflect/ReflectUtilsTest.java
+[screen.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ScreenUtils.kt
 
-[regex.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/RegexUtils.java
-[regex.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/RegexUtilsTest.java
+[sdcard.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/SDCardUtils.kt
 
-[resource.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ResourceUtils.java
-[resource.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/resource/ResourceActivity.kt
+[service.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ServiceUtils.kt
 
-[rom.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/RomUtils.java
-[rom.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/rom/RomActivity.kt
+[shadow.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ShadowUtils.kt
 
-[screen.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ScreenUtils.java
-[screen.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/screen/ScreenActivity.kt
+[shell.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ShellUtils.kt
 
-[sdcard.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/SDCardUtils.java
-[sdcard.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/sdcard/SDCardActivity.kt
+[size.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/SizeUtils.kt
 
-[service.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ServiceUtils.java
+[snackbar.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/SnackbarUtils.kt
 
-[shadow.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ShadowUtils.java
-[shadow.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/shadow/ShadowActivity.kt
+[span.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/SpanUtils.kt
 
-[shell.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ShellUtils.java
+[spStatic.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/SPStaticUtils.kt
 
-[size.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/SizeUtils.java
+[string.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/StringUtils.kt
 
-[snackbar.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/SnackbarUtils.java
-[snackbar.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/snackbar/SnackbarActivity.kt
+[thread.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ThreadUtils.kt
 
-[span.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/SpanUtils.java
-[span.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/span/SpanActivity.kt
+[time.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/TimeUtils.kt
 
-[spStatic.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/SPStaticUtils.java
-[spStatic.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/spStatic/SPStaticActivity.kt
+[toast.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ToastUtils.kt
 
-[sp.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/SPUtils.java
+[touch.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/TouchUtils.kt
 
-[string.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/StringUtils.java
-[string.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/StringUtilsTest.java
+[uiMessage.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/UiMessageUtils.kt
 
-[thread.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ThreadUtils.java
-[thread.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/ThreadUtilsTest.java
+[uri.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/UriUtils.kt
 
-[time.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/TimeUtils.java
-[time.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/TimeUtilsTest.java
+[trans.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/UtilsTransActivity.kt
 
-[toast.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ToastUtils.java
-[toast.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/toast/ToastActivity.kt
+[vibrate.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/VibrateUtils.kt
 
-[touch.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/TouchUtils.java
+[view.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ViewUtils.kt
 
-[uiMessage.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/UiMessageUtils.java
-[uiMessage.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/uiMessage/UiMessageActivity.kt
-
-[uri.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/UriUtils.java
-
-[trans.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/UtilsTransActivity.java
-
-[trans4Main.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/UtilsTransActivity4MainProcess.java
-
-[vibrate.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/VibrateUtils.java
-[vibrate.demo]: https://github.com/Blankj/AndroidUtilCode/blob/master/feature/utilcode/pkg/src/main/java/com/blankj/utilcode/pkg/feature/vibrate/VibrateActivity.kt
-
-[view.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ViewUtils.java
-
-[zip.kt]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/main/java/com/blankj/utilcode/util/ZipUtils.java
-[zip.test]: https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/src/test/java/com/blankj/utilcode/util/ZipUtilsTest.java
+[zip.kt]: https://github.com/DylanCaiCoding/AndroidUtilKTX/blob/master/library/src/main/java/com/dylanc/utilktx/ZipUtils.kt

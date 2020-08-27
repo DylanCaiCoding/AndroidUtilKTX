@@ -15,7 +15,7 @@ import java.io.File
  * FileUtils.getFileByPath(filePath)
  * ```
  */
-inline fun fileOf(filePath: String): File? = FileUtils.getFileByPath(filePath)
+inline fun fileOf(filePath: String): File = FileUtils.getFileByPath(filePath)
 
 /**
  * Returns whether the file exists. This is equivalent to calling:

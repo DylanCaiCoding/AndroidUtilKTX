@@ -31,14 +31,6 @@ inline var defaultSpUtils: SPUtils
   set(value)  = SPStaticUtils.setDefaultSPUtils(value)
 
 /**
- * Returns all values in sp. This is equivalent to calling:
- * ```
- * SPStaticUtils.getAll()
- * ```
- */
-inline val allSpValue: Map<String, *> get() = SPStaticUtils.getAll()
-
-/**
  * Puts the string value in sp. This is equivalent to calling:
  * ```
  * SPStaticUtils.put(key, value, isCommit)
@@ -127,6 +119,14 @@ inline fun spValueOf(key: String, defaultValue: Long = -1L): Long =
  */
 inline fun spValueOf(key: String, defaultValue: Float = -1f): Float =
   SPStaticUtils.getFloat(key, defaultValue)
+
+/**
+ * Returns all values in sp. This is equivalent to calling:
+ * ```
+ * SPStaticUtils.getAll()
+ * ```
+ */
+inline val allSpValue: Map<String, *> get() = SPStaticUtils.getAll()
 
 /**
  * Returns whether the sp contains the preference. This is equivalent to calling:

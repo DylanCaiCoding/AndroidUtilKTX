@@ -178,6 +178,42 @@ inline fun <T> executeByFixedThreadWithDelay(
   ThreadUtils.executeByFixedWithDelay(size, task, delay, unit, priority)
 
 /**
+ * Executes the given task in a single thread pool at fix rate. This is equivalent to calling:
+ * ```
+ * ThreadUtils.executeBySingleAtFixRate(task, period, unit)
+ * ```
+ */
+inline fun <T> executeByFixedThreadAtFixRate(@IntRange(from = 1) size: Int, task: ThreadUtils.Task<T>, period: Long, unit: TimeUnit) =
+  ThreadUtils.executeByFixedAtFixRate(size, task, period, unit)
+
+/**
+ * Executes the given task in a single thread pool at fix rate. This is equivalent to calling:
+ * ```
+ * ThreadUtils.executeBySingleAtFixRate(task, period, unit, priority)
+ * ```
+ */
+inline fun <T> executeByFixedThreadAtFixRate(
+  @IntRange(from = 1) size: Int, @IntRange(from = 1, to = 10) priority: Int, period: Long, unit: TimeUnit, task: ThreadUtils.Task<T>
+) =
+  ThreadUtils.executeByFixedAtFixRate(size, task, period, unit, priority)
+
+/**
+ * Executes the given task in a single thread pool at fix rate. This is equivalent to calling:
+ * ```
+ * ThreadUtils.executeBySingleAtFixRate(task, initialDelay, period, unit, priority)
+ * ```
+ */
+inline fun <T> executeByFixedThreadAtFixRate(
+  @IntRange(from = 1) size: Int,
+  @IntRange(from = 1, to = 10) priority: Int,
+  initialDelay: Long,
+  period: Long,
+  unit: TimeUnit,
+  task: ThreadUtils.Task<T>
+) =
+  ThreadUtils.executeByFixedAtFixRate(size, task, initialDelay, period, unit, priority)
+
+/**
  * Executes the given task in a single thread pool. This is equivalent to calling:
  * ```
  * ThreadUtils.executeBySingle(task)

@@ -40,7 +40,7 @@ inline val logConfig: LogUtils.Config get() = LogUtils.getConfig()
  * LogUtils.vTag(loggerTag, contents)
  * ```
  */
-inline fun Logger.verbose(vararg contents: Any) = LogUtils.vTag(loggerTag, *contents)
+inline fun Logger.logVerbose(vararg contents: Any) = LogUtils.vTag(loggerTag, *contents)
 
 /**
  * Sends a [DEBUG] log message. This is equivalent to calling:
@@ -48,7 +48,7 @@ inline fun Logger.verbose(vararg contents: Any) = LogUtils.vTag(loggerTag, *cont
  * LogUtils.dTag(loggerTag, contents)
  * ```
  */
-inline fun Logger.debug(vararg contents: Any) = LogUtils.dTag(loggerTag, contents)
+inline fun Logger.logDebug(vararg contents: Any) = LogUtils.dTag(loggerTag, contents)
 
 /**
  * Sends a [INFO] log message. This is equivalent to calling:
@@ -56,7 +56,7 @@ inline fun Logger.debug(vararg contents: Any) = LogUtils.dTag(loggerTag, content
  * LogUtils.iTag(loggerTag, contents)
  * ```
  */
-inline fun Logger.info(vararg contents: Any) = LogUtils.iTag(loggerTag, *contents)
+inline fun Logger.logInfo(vararg contents: Any) = LogUtils.iTag(loggerTag, *contents)
 
 /**
  * Sends a [WARN] log message. This is equivalent to calling:
@@ -64,7 +64,7 @@ inline fun Logger.info(vararg contents: Any) = LogUtils.iTag(loggerTag, *content
  * LogUtils.wTag(loggerTag, contents)
  * ```
  */
-inline fun Logger.warn(vararg contents: Any) = LogUtils.wTag(loggerTag, *contents)
+inline fun Logger.logWarn(vararg contents: Any) = LogUtils.wTag(loggerTag, *contents)
 
 /**
  * Sends a [ERROR] log message. This is equivalent to calling:
@@ -72,7 +72,7 @@ inline fun Logger.warn(vararg contents: Any) = LogUtils.wTag(loggerTag, *content
  * LogUtils.eTag(loggerTag, contents)
  * ```
  */
-inline fun Logger.error(vararg contents: Any) = LogUtils.eTag(loggerTag, *contents)
+inline fun Logger.logError(vararg contents: Any) = LogUtils.eTag(loggerTag, *contents)
 
 /**
  * Sends a [ASSERT] log message. This is equivalent to calling:
@@ -80,7 +80,7 @@ inline fun Logger.error(vararg contents: Any) = LogUtils.eTag(loggerTag, *conten
  * LogUtils.aTag(loggerTag, contents)
  * ```
  */
-inline fun Logger.assert(vararg contents: Any) = LogUtils.aTag(loggerTag, *contents)
+inline fun Logger.logAssert(vararg contents: Any) = LogUtils.aTag(loggerTag, *contents)
 
 /**
  * Sends a json log message. This is equivalent to calling:
@@ -88,7 +88,7 @@ inline fun Logger.assert(vararg contents: Any) = LogUtils.aTag(loggerTag, *conte
  * LogUtils.json(loggerTag, content)
  * ```
  */
-inline fun Logger.json(content: Any) = LogUtils.json(loggerTag, content)
+inline fun Logger.logJson(content: Any) = LogUtils.json(loggerTag, content)
 
 /**
  * Sends a log message to file. This is equivalent to calling:
@@ -96,7 +96,7 @@ inline fun Logger.json(content: Any) = LogUtils.json(loggerTag, content)
  * LogUtils.file(loggerTag, content)
  * ```
  */
-inline fun Logger.file(content: Any) = LogUtils.file(loggerTag, content)
+inline fun Logger.logFile(content: Any) = LogUtils.file(loggerTag, content)
 
 /**
  * Sends a xml message. This is equivalent to calling:
@@ -104,7 +104,7 @@ inline fun Logger.file(content: Any) = LogUtils.file(loggerTag, content)
  * LogUtils.file(loggerTag, content)
  * ```
  */
-inline fun Logger.xml(content: String) = LogUtils.xml(loggerTag, content)
+inline fun Logger.logXml(content: String) = LogUtils.xml(loggerTag, content)
 
 /**
  * Sends a [VERBOSE] log message. This is equivalent to calling:
