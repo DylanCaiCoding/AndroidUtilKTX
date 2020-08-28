@@ -38,7 +38,7 @@ class SpannableStringBuilder(private val spanUtils: SpanUtils) {
     block?.let { SpanBuilder(spanUtils).apply(it) }
   }
 
-  fun lineText(text: CharSequence, block: (SpanBuilder.() -> Unit)? = null) {
+  fun textLine(text: CharSequence, block: (SpanBuilder.() -> Unit)? = null) {
     spanUtils.appendLine(text)
     block?.let { SpanBuilder(spanUtils).apply(it) }
   }

@@ -1,4 +1,4 @@
-@file:Suppress("unused", "NOTHING_TO_INLINE")
+@file:Suppress("unused", "NOTHING_TO_INLINE", "MemberVisibilityCanBePrivate")
 
 package com.dylanc.utilktx
 
@@ -20,9 +20,10 @@ import com.dylanc.utilktx.Internals.noGetter
 inline fun View.setShadow(noinline block: ShadowBuilder.() -> Unit) =
   ShadowUtils.apply(this, ShadowBuilder().apply(block).build())
 
+private const val SHADOW_COLOR_DEFAULT = 0x44000000
+
 class ShadowBuilder {
   private val config: ShadowUtils.Config = ShadowUtils.Config()
-
   var radius: Float
     @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
     get() = throw noGetter()
@@ -37,38 +38,65 @@ class ShadowBuilder {
       if (value) config.setCircle()
     }
 
-  var size: Int
-    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
-    get() = throw noGetter()
+  var size: Int = -1
     set(value) {
-      config.setShadowSize(value)
+      field = value
+      if (pressedSize < 0) {
+        config.setShadowSize(value)
+      } else {
+        config.setShadowSize(value, pressedSize)
+      }
     }
 
-  var maxSize: Int
-    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
-    get() = throw noGetter()
+  var pressedSize: Int = -1
     set(value) {
-      config.setShadowMaxSize(value)
+      field = value
+      if (size < 0) {
+        config.setShadowSize(value, value)
+      } else {
+        config.setShadowSize(size, value)
+      }
     }
 
-  var color: Int
-    @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
-    get() = throw noGetter()
+  var maxSize: Int = -1
     set(value) {
-      config.setShadowMaxSize(value)
+      field = value
+      if (pressedMaxSize < 0) {
+        config.setShadowMaxSize(value)
+      } else {
+        config.setShadowMaxSize(value, pressedMaxSize)
+      }
     }
 
-  fun size(sizeNormal: Int, sizePressed: Int = sizeNormal) {
-    config.setShadowSize(sizeNormal, sizePressed)
-  }
+  var pressedMaxSize: Int = -1
+    set(value) {
+      field = value
+      if (maxSize < 0) {
+        config.setShadowMaxSize(value, value)
+      } else {
+        config.setShadowMaxSize(maxSize, value)
+      }
+    }
 
-  fun maxSize(sizeNormal: Int, sizePressed: Int = sizeNormal) {
-    config.setShadowMaxSize(sizeNormal, sizePressed)
-  }
+  var color: Int = SHADOW_COLOR_DEFAULT
+    set(value) {
+      field = value
+      if (pressedColor < 0) {
+        config.setShadowColor(value)
+      } else {
+        config.setShadowColor(value, pressedColor)
+      }
+    }
 
-  fun color(colorNormal: Int, colorPressed: Int = colorNormal) {
-    config.setShadowColor(colorNormal, colorPressed)
-  }
+  var pressedColor: Int = SHADOW_COLOR_DEFAULT
+    set(value) {
+      field = value
+      if (color < 0) {
+        config.setShadowColor(value)
+      } else {
+        config.setShadowColor(color, value)
+      }
+    }
 
   fun build() = config
 }

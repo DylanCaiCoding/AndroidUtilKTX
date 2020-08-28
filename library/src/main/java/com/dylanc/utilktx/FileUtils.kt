@@ -88,7 +88,7 @@ inline fun isFile(filePath: String): Boolean = FileUtils.isFile(filePath)
  * FileUtils.createOrExistsDir(filePath)
  * ```
  */
-inline fun File.createOrExistsDir(): Boolean = FileUtils.createOrExistsDir(this)
+inline fun File.createDir(): Boolean = FileUtils.createOrExistsDir(this)
 
 /**
  * Creates a directory if it doesn't exist, otherwise do nothing. This is equivalent to calling:
@@ -96,7 +96,7 @@ inline fun File.createOrExistsDir(): Boolean = FileUtils.createOrExistsDir(this)
  * FileUtils.createOrExistsDir(filePath)
  * ```
  */
-inline fun createOrExistsDir(filePath: String): Boolean = FileUtils.createOrExistsDir(filePath)
+inline fun createDir(filePath: String): Boolean = FileUtils.createOrExistsDir(filePath)
 
 /**
  * Creates a file if it doesn't exist, otherwise do nothing. This is equivalent to calling:
@@ -104,7 +104,8 @@ inline fun createOrExistsDir(filePath: String): Boolean = FileUtils.createOrExis
  * FileUtils.createOrExistsFile(file)
  * ```
  */
-inline fun File.createOrExistsFile(): Boolean = FileUtils.createOrExistsFile(this)
+inline fun File.createFile(deleteOld: Boolean = false): Boolean =
+  if (deleteOld) FileUtils.createFileByDeleteOldFile(this) else FileUtils.createOrExistsFile(this)
 
 /**
  * Creates a file if it doesn't exist, otherwise do nothing. This is equivalent to calling:
@@ -112,23 +113,8 @@ inline fun File.createOrExistsFile(): Boolean = FileUtils.createOrExistsFile(thi
  * FileUtils.createOrExistsFile(filePath)
  * ```
  */
-inline fun createOrExistsFile(filePath: String): Boolean = FileUtils.createOrExistsFile(filePath)
-
-/**
- * Creates a file if it doesn't exist, otherwise delete old file before creating. This is equivalent to calling:
- * ```
- * FileUtils.createFileByDeleteOldFile(file)
- * ```
- */
-inline fun File.createFileByDeleteOldFile(): Boolean = FileUtils.createFileByDeleteOldFile(this)
-
-/**
- * Creates a file if it doesn't exist, otherwise delete old file before creating. This is equivalent to calling:
- * ```
- * FileUtils.createFileByDeleteOldFile(filePath)
- * ```
- */
-inline fun createFileByDeleteOldFile(filePath: String): Boolean = FileUtils.createFileByDeleteOldFile(filePath)
+inline fun createFile(filePath: String, deleteOld: Boolean = false): Boolean =
+  if (deleteOld) FileUtils.createFileByDeleteOldFile(filePath) else FileUtils.createOrExistsFile(filePath)
 
 /**
  * Copies the directory or file. This is equivalent to calling:
@@ -204,7 +190,8 @@ inline fun deleteAllInDir(dirPath: String): Boolean = FileUtils.deleteAllInDir(d
  * FileUtils.deleteFilesInDir(dir)
  * ```
  */
-inline fun File.deleteFilesInDir(): Boolean = FileUtils.deleteFilesInDir(this)
+inline fun File.deleteFilesInDir(noinline filter: (File) -> Boolean = { it.isFile }): Boolean =
+  FileUtils.deleteFilesInDirWithFilter(this, filter)
 
 /**
  * Deletes all files in directory. This is equivalent to calling:
@@ -212,24 +199,7 @@ inline fun File.deleteFilesInDir(): Boolean = FileUtils.deleteFilesInDir(this)
  * FileUtils.deleteFilesInDir(dirPath)
  * ```
  */
-inline fun deleteFilesInDir(dirPath: String): Boolean = FileUtils.deleteFilesInDir(dirPath)
-
-/**
- * Deletes all files that satisfy the filter in directory. This is equivalent to calling:
- * ```
- * FileUtils.deleteFilesInDirWithFilter(dir, filter)
- * ```
- */
-inline fun File.deleteFilesInDirWithFilter(noinline filter: (File) -> Boolean): Boolean =
-  FileUtils.deleteFilesInDirWithFilter(this, filter)
-
-/**
- * Deletes all files that satisfy the filter in directory. This is equivalent to calling:
- * ```
- * FileUtils.deleteFilesInDirWithFilter(dirPath, filter)
- * ```
- */
-inline fun deleteFilesInDirWithFilter(dirPath: String, noinline filter: (File) -> Boolean): Boolean =
+inline fun deleteFilesInDir(dirPath: String, noinline filter: (File) -> Boolean = { it.isFile }): Boolean =
   FileUtils.deleteFilesInDirWithFilter(dirPath, filter)
 
 /**
@@ -238,7 +208,7 @@ inline fun deleteFilesInDirWithFilter(dirPath: String, noinline filter: (File) -
  * FileUtils.listFilesInDir(dir, filter, isRecursive, comparator)
  * ```
  */
-inline fun File.filesOf(
+inline fun File.filesInDirOf(
   isRecursive: Boolean, noinline filter: (File) -> Boolean = { true }, noinline comparator: (File, File) -> Int
 ): List<File> =
   FileUtils.listFilesInDirWithFilter(this, filter, isRecursive, comparator)
@@ -260,7 +230,7 @@ inline fun filesInDirOf(
  * FileUtils.getFileLastModified(file)
  * ```
  */
-inline val File.lastModifiedTimestamp: Long get() = FileUtils.getFileLastModified(this)
+inline val File.lastModifiedTime: Long get() = FileUtils.getFileLastModified(this)
 
 /**
  * Returns the time that the file was last modified. This is equivalent to calling:
@@ -268,7 +238,7 @@ inline val File.lastModifiedTimestamp: Long get() = FileUtils.getFileLastModifie
  * FileUtils.getFileLastModified(filePath)
  * ```
  */
-inline fun fileLastModifiedTimestampOf(filePath: String): Long = FileUtils.getFileLastModified(filePath)
+inline fun fileLastModifiedTimeOf(filePath: String): Long = FileUtils.getFileLastModified(filePath)
 
 /**
  * Returns the charset of file simply. This is equivalent to calling:
@@ -285,6 +255,22 @@ inline val File.charsetSimple: String get() = FileUtils.getFileCharsetSimple(thi
  * ```
  */
 inline fun fileCharsetSimpleOf(filePath: String): String = FileUtils.getFileCharsetSimple(filePath)
+
+/**
+ * Returns the lines of file. This is equivalent to calling:
+ * ```
+ * FileUtils.getFileLines(file)
+ * ```
+ */
+inline val File.lines: Int get() = FileUtils.getFileLines(this)
+
+/**
+ * Returns the lines of file. This is equivalent to calling:
+ * ```
+ * FileUtils.getFileLines(filePath)
+ * ```
+ */
+inline fun fileLineOf(filePath: String): Int = FileUtils.getFileLines(filePath)
 
 /**
  * Returns the size of file. This is equivalent to calling:

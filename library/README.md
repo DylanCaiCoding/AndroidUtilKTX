@@ -43,34 +43,34 @@ Float.pxToPt                : px 转 pt
 
 * ### App 相关 -> [AppUtils.kt][app.kt]
 ```
-app                                : 获取 Application 对象
-registerAppStatusChangedListener   : 注册 App 前后台切换监听器
-unregisterAppStatusChangedListener : 注销 App 前后台切换监听器
-installApp                         : 安装 App（支持 8.0）
-uninstallApp                       : 卸载 App
-isAppInstalled                     : 判断 App 是否安装
-isAppRoot                          : 判断 App 是否有 root 权限
-isAppDebug                         : 判断 App 是否是 Debug 版本
-isAppSystem                        : 判断 App 是否是系统应用
-isAppForeground                    : 判断 App 是否处于前台
-isAppRunning                       : 判断 App 是否运行
-launchApp                          : 打开 App
-relaunchApp                        : 重启 App
-launchAppDetailsSettings           : 打开 App 具体设置
-exitApp                            : 关闭应用
-appIcon                            : 获取 App 图标
-appPackageName                     : 获取 App 包名
-appName                            : 获取 App 名称
-appPath                            : 获取 App 路径
-appVersionName                     : 获取 App 版本号
-appVersionCode                     : 获取 App 版本码
-appSignature                       : 获取 App 签名
-appSignatureSHA1                   : 获取应用签名的的 SHA1 值
-appSignatureSHA256                 : 获取应用签名的的 SHA256 值
-appSignatureMD5                    : 获取应用签名的的 MD5 值
-appInfo                            : 获取 App 信息
-appsInfo                           : 获取所有已安装 App 信息
-apkInfo                            : 获取 Apk 信息
+app                                      : 获取 Application 对象
+registerAppStatusChangedListener         : 注册 App 前后台切换监听器
+unregisterAppStatusChangedListener       : 注销 App 前后台切换监听器
+installApp                               : 安装 App（支持 8.0）
+uninstallApp                             : 卸载 App
+isAppInstalled                           : 判断 App 是否安装
+isAppRoot                                : 判断 App 是否有 root 权限
+isAppDebug                               : 判断 App 是否是 Debug 版本
+isAppSystem                              : 判断 App 是否是系统应用
+isAppForeground                          : 判断 App 是否处于前台
+isAppRunning                             : 判断 App 是否运行
+launchApp                                : 打开 App
+relaunchApp                              : 重启 App
+launchAppDetailsSettings                 : 打开 App 具体设置
+exitApp                                  : 关闭应用
+appIcon, appIconOf                       : 获取 App 图标
+appPackageName, appPackageNameOf         : 获取 App 包名
+appName, appNameOf                       : 获取 App 名称
+appPath, appPathOf                       : 获取 App 路径
+appVersionName, appVersionNameOf         : 获取 App 版本号
+appVersionCode, appVersionCodeOf         : 获取 App 版本码
+appSignature, appSignatureOf             : 获取 App 签名
+appSignatureSHA1, appSignatureSHA1Of     : 获取应用签名的的 SHA1 值
+appSignatureSHA256, appSignatureSHA256Of : 获取应用签名的的 SHA256 值
+appSignatureMD5, appSignatureMD5Of       : 获取应用签名的的 MD5 值
+appInfo, appInfoOf                       : 获取 App 信息
+appsInfo                                 : 获取所有已安装 App 信息
+apkInfoOf                                : 获取 Apk 信息
 ```
 
 * ### 数组相关 -> [ArrayUtils.kt][array.kt]
@@ -331,36 +331,32 @@ fileIOBufferSize                                    : 设置缓冲区尺寸
 
 * ### 文件相关 -> [FileUtils.kt][file.kt] -> [Test][file.test]
 ```
-getFileByPath             : 根据文件路径获取文件
-isFileExists              : 判断文件是否存在
-rename                    : 重命名文件
-isDir                     : 判断是否是目录
-isFile                    : 判断是否是文件
-createOrExistsDir         : 判断目录是否存在，不存在则判断是否创建成功
-createOrExistsFile        : 判断文件是否存在，不存在则判断是否创建成功
-createFileByDeleteOldFile : 判断文件是否存在，存在则在创建之前删除
-copy                      : 复制文件或目录
-move                      : 移动文件或目录
-delete                    : 删除文件或目录
-deleteAllInDir            : 删除目录下所有内容
-deleteFilesInDir          : 删除目录下所有文件
-deleteFilesInDirWithFilter: 删除目录下所有过滤的文件
-listFilesInDir            : 获取目录下所有文件
-listFilesInDirWithFilter  : 获取目录下所有过滤的文件
-getFileLastModified       : 获取文件最后修改的毫秒时间戳
-getFileCharsetSimple      : 简单获取文件编码格式
-getFileLines              : 获取文件行数
-getSize                   : 获取文件或目录大小
-getLength                 : 获取文件或目录长度
-getFileMD5                : 获取文件的 MD5 校验码
-getFileMD5ToString        : 获取文件的 MD5 校验码
-getDirName                : 根据全路径获取最长目录
-getFileName               : 根据全路径获取文件名
-getFileNameNoExtension    : 根据全路径获取文件名不带拓展名
-getFileExtension          : 根据全路径获取文件拓展名
-notifySystemToScan        : 通知系统扫描文件
-getFsTotalSize            : 获取文件系统总大小
-getFsAvailableSize        : 获取文件系统可用大小
+fileOf                                          : 根据文件路径获取文件
+File.isExists, isFileExists                     : 判断文件是否存在
+File.rename, renameFile                         : 重命名文件
+File.isDir, isDir                               : 判断是否是目录
+File.isFile, isFile                             : 判断是否是文件
+File.createDir, createDir                       : 判断目录是否存在，不存在则判断是否创建成功
+File.createFile, createFile                     : 判断文件是否存在，不存在则判断是否创建成功
+File.copy, copyFile                             : 复制文件或目录
+File.move, moveFile                             : 移动文件或目录
+File.delete, deleteFile                         : 删除文件或目录
+File.deleteAllInDir, deleteAllInDir             : 删除目录下所有内容
+File.deleteFilesInDir, deleteFilesInDir         : 删除目录下所有文件
+File.filesInDirOf, filesInDirOf                 : 获取目录下所有文件
+File.lastModifiedTime, fileLastModifiedTimeOf   : 获取文件最后修改的毫秒时间戳
+File.charsetSimple, fileCharsetSimpleOf         : 简单获取文件编码格式
+File.lines, fileLineOf                          : 获取文件行数
+File.size, fileSizeOf                           : 获取文件或目录大小
+File.length, fileLengthOf                       : 获取文件或目录长度
+File.MD5, fileMD5Of                             : 获取文件的 MD5 校验码
+File.dirName, dirNameOf                         : 根据全路径获取最长目录
+File.fileName, fileNameOf                       : 根据全路径获取文件名
+File.fileNameNoExtension, fileNameNoExtensionOf : 根据全路径获取文件名不带拓展名
+File.fileExtension, fileExtensionOf             : 根据全路径获取文件拓展名
+File.notifySystemToScan, notifySystemToScanFile : 通知系统扫描文件
+fileSystemTotalSizeOf                           : 获取文件系统总大小
+fileSystemAvailableSizeOf                       : 获取文件系统可用大小
 ```
 
 * ### 闪光灯相关 -> [FlashlightUtils.kt][flashlight.kt] 
@@ -820,7 +816,12 @@ addSnackbarView                 : 添加 snackbar 视图
 
 * ### SpannableString 相关 -> [SpanUtils.kt][span.kt] 
 ```
-TextView.setText : 设置 Spannable 字符串
+TextView.setText                : 设置 Spannable 字符串
+SpannableStringBuilder.text     : 插入文字
+SpannableStringBuilder.textLine : 插入一行文字
+SpannableStringBuilder.lineFeed : 换行
+SpannableStringBuilder.image    : 插入图片
+SpannableStringBuilder.space    : 插入空格
 ```
 
 * ### SP 相关 -> [SPStaticUtils.kt][spStatic.kt]
