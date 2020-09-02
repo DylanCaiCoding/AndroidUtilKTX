@@ -5,7 +5,6 @@
 Activity.startActivityForResult : 启动 Activity 并处理返回结果
 ```
 
-
 * ### 意图相关 -> [IntentUtils.kt][intent.kt]
 ```
 Context.intentOf

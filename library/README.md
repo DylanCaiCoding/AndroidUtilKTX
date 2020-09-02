@@ -829,7 +829,7 @@ SpannableStringBuilder.space    : 插入空格
 defaultSpUtils  : 设置默认 SP 实例
 putSpValue      : SP 中写入数据
 spValueOf       : SP 中读取数据
-allSpValue      : SP 中获取所有键值对
+allSpValues     : SP 中获取所有键值对
 containSpValue  : SP 中是否存在该 key
 removeSpValue   : SP 中移除该 key
 clearSp         : SP 中清除所有数据

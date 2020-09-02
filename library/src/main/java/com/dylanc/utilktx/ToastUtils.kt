@@ -7,6 +7,8 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import com.blankj.utilcode.util.ToastUtils
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 
 /**
  * @author Dylan Cai
@@ -28,8 +30,8 @@ inline fun setToastGravity(gravity: Int, xOffset: Int, yOffset: Int) =
  * ```
  */
 inline var toastBgColor: Int
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(@ColorInt value) = ToastUtils.setBgColor(value)
 
 /**
@@ -39,8 +41,8 @@ inline var toastBgColor: Int
  * ```
  */
 inline var toastBgResource: Int
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(@DrawableRes value) = ToastUtils.setBgResource(value)
 
 /**
@@ -50,8 +52,8 @@ inline var toastBgResource: Int
  * ```
  */
 inline var toastMsgColor: Int
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(@ColorInt value) = ToastUtils.setMsgColor(value)
 
 /**
@@ -61,8 +63,8 @@ inline var toastMsgColor: Int
  * ```
  */
 inline var toastMsgTextSize: Int
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = ToastUtils.setMsgTextSize(value)
 
 /**

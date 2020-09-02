@@ -324,17 +324,3 @@ inline fun Activity.intentShortArrayExtra(name: String) = lazy { intent.getShort
 inline fun Activity.intentParcelableArrayExtra(name: String) = lazy { intent.getParcelableArrayExtra(name) }
 inline fun Activity.intentStringArrayExtra(name: String) = lazy { intent.getStringArrayExtra(name) }
 inline fun Activity.intentCharSequenceArrayExtra(name: String) = lazy { intent.getCharSequenceArrayExtra(name) }
-
-
-//inline fun <reified T> Activity.intentValue(name: String, defaultValue: T) =
-//  lazy { intentValueOf(name, T::class.java, defaultValue) }
-//
-//fun <T> Activity.intentValueOf(name: String, componentType: Class<T>, defaultValue: T? = null): T {
-//  @Suppress("UNCHECKED_CAST") // Checked by reflection.
-//  return when {
-//    Boolean::class.java.isAssignableFrom(componentType) -> {
-//      intent.getBooleanExtra(name, defaultValue as? Boolean ?: false)
-//    }
-//    else -> throw IllegalArgumentException()
-//  } as T
-//}

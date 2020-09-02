@@ -3,6 +3,8 @@
 package com.dylanc.utilktx
 
 import com.blankj.utilcode.util.FileIOUtils
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 import java.io.File
 import java.io.InputStream
 
@@ -34,7 +36,11 @@ inline fun InputStream.writeToFile(file: File, append: Boolean = false, noinline
  * FileIOUtils.writeFileFromIS(filePath, bytes, append, listener)
  * ```
  */
-inline fun ByteArray.writeToFileByStream(filePath: String, append: Boolean = false, noinline listener: ((Double) -> Unit)? = null): Boolean =
+inline fun ByteArray.writeToFileByStream(
+  filePath: String,
+  append: Boolean = false,
+  noinline listener: ((Double) -> Unit)? = null
+): Boolean =
   FileIOUtils.writeFileFromBytesByStream(filePath, this, append, listener)
 
 /**
@@ -191,6 +197,6 @@ inline fun readFileToBytesByMap(filePath: String): ByteArray = FileIOUtils.readF
  * ```
  */
 inline var fileIOBufferSize: Int
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = FileIOUtils.setBufferSize(value)

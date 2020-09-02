@@ -5,6 +5,8 @@ package com.dylanc.utilktx
 import android.os.Handler
 import androidx.annotation.IntRange
 import com.blankj.utilcode.util.ThreadUtils
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 import java.util.concurrent.Executor
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.TimeUnit
@@ -538,6 +540,6 @@ inline fun ExecutorService.cancel() = ThreadUtils.cancel(this)
  * ```
  */
 var deliveredThread: Executor
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = ThreadUtils.setDeliver(value)

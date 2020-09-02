@@ -5,6 +5,8 @@ package com.dylanc.utilktx
 import android.view.View
 import androidx.annotation.IntRange
 import com.blankj.utilcode.util.ClickUtils
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 
 /**
  * @author Dylan Cai
@@ -19,8 +21,8 @@ const val DEBOUNCING_DEFAULT_VALUE: Long = 200
  * ```
  */
 inline var View.pressedScale: Float
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = ClickUtils.applyPressedViewScale(this, value)
 
 /**
@@ -30,8 +32,8 @@ inline var View.pressedScale: Float
  * ```
  */
 inline var Array<out View>.pressedScale: FloatArray
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = ClickUtils.applyPressedViewScale(this, value)
 
 /**
@@ -41,8 +43,8 @@ inline var Array<out View>.pressedScale: FloatArray
  * ```
  */
 inline var View.pressedAlpha: Float
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = ClickUtils.applyPressedViewAlpha(this, value)
 
 /**
@@ -52,8 +54,8 @@ inline var View.pressedAlpha: Float
  * ```
  */
 inline var Array<out View>.pressedAlpha: FloatArray
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = ClickUtils.applyPressedViewAlpha(this, value)
 
 /**
@@ -63,8 +65,8 @@ inline var Array<out View>.pressedAlpha: FloatArray
  * ```
  */
 inline var View.pressedBgAlpha: Float
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = ClickUtils.applyPressedBgAlpha(this, value)
 
 /**
@@ -82,8 +84,8 @@ inline fun View.applyPressedBgAlpha() = ClickUtils.applyPressedBgAlpha(this)
  * ```
  */
 inline var View.pressedBgDarkAlpha: Float
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = ClickUtils.applyPressedBgDark(this, value)
 
 /**

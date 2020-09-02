@@ -8,6 +8,8 @@ import android.os.Parcelable
 import com.blankj.utilcode.util.CacheDiskUtils
 import com.blankj.utilcode.util.CacheMemoryStaticUtils
 import com.blankj.utilcode.util.CacheMemoryUtils
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.Serializable
@@ -23,8 +25,8 @@ import java.io.Serializable
  * ```
  */
 inline var defaultCacheMemoryUtils: CacheMemoryUtils
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = CacheMemoryStaticUtils.setDefaultCacheMemoryUtils(value)
 
 /**

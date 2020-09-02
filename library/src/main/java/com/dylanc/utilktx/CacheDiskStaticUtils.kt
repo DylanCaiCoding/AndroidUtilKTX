@@ -7,6 +7,8 @@ import android.graphics.drawable.Drawable
 import android.os.Parcelable
 import com.blankj.utilcode.util.CacheDiskStaticUtils
 import com.blankj.utilcode.util.CacheDiskUtils
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.Serializable
@@ -22,8 +24,8 @@ import java.io.Serializable
  * ```
  */
 inline var defaultCacheDiskUtils: CacheDiskUtils
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = CacheDiskStaticUtils.setDefaultCacheDiskUtils(value)
 
 /**
@@ -167,8 +169,8 @@ inline fun diskCacheDrawableOf(key: String, defaultValue: Drawable? = null): Dra
  * CacheDiskStaticUtils.getParcelable(key, defaultValue)
  * ```
  */
-inline fun <T> diskCacheParcelableOf(key: String, creator: Parcelable.Creator<T>, defaultValue: T? = null): T
-    = CacheDiskStaticUtils.getParcelable(key, creator, defaultValue)
+inline fun <T> diskCacheParcelableOf(key: String, creator: Parcelable.Creator<T>, defaultValue: T? = null): T =
+  CacheDiskStaticUtils.getParcelable(key, creator, defaultValue)
 
 /**
  * Returns the serializable in the disk cache. This is equivalent to calling:

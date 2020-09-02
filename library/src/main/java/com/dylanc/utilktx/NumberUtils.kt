@@ -33,7 +33,7 @@ inline fun Double.format(fractionDigits: Int, isGrouping: Boolean = false, minIn
   NumberUtils.format(this, isGrouping, minIntegerDigits, fractionDigits, isHalfUp)
 
 inline fun Float.toPrice(isInteger: Boolean = false, isGrouping: Boolean = false) =
-  format(if (isInteger) 0 else 2, isGrouping = isGrouping)
+  format(if (isInteger) 0 else 2, isGrouping)
 
 inline fun Double.toPrice(isInteger: Boolean = false, isGrouping: Boolean = false) =
-  format(if (isInteger) 0 else 2, isGrouping = isGrouping)
+  format(if (isInteger) 0 else 2, isGrouping)

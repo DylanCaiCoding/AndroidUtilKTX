@@ -9,6 +9,8 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.blankj.utilcode.util.FragmentUtils
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 
 /**
  * @author Dylan Cai
@@ -277,8 +279,8 @@ inline fun FragmentManager.dispatchBackPress(): Boolean = FragmentUtils.dispatch
  * ```
  */
 inline var Fragment.backgroundColor: Int
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = FragmentUtils.setBackgroundColor(this, value)
 
 /**
@@ -288,8 +290,8 @@ inline var Fragment.backgroundColor: Int
  * ```
  */
 inline var Fragment.backgroundResource: Int
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = FragmentUtils.setBackgroundResource(this, value)
 
 /**
@@ -299,6 +301,6 @@ inline var Fragment.backgroundResource: Int
  * ```
  */
 inline var Fragment.backgroundDrawable: Drawable
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = FragmentUtils.setBackground(this, value)

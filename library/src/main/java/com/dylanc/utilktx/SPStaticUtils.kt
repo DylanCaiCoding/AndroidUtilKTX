@@ -5,6 +5,8 @@ package com.dylanc.utilktx
 import android.content.Context
 import com.blankj.utilcode.util.SPStaticUtils
 import com.blankj.utilcode.util.SPUtils
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 
 /**
  * @author Dylan Cai
@@ -26,9 +28,9 @@ inline fun spUtilsOf(spName: String = "", mode: Int = Context.MODE_PRIVATE): SPU
  * ```
  */
 inline var defaultSpUtils: SPUtils
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
-  set(value)  = SPStaticUtils.setDefaultSPUtils(value)
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
+  set(value) = SPStaticUtils.setDefaultSPUtils(value)
 
 /**
  * Puts the string value in sp. This is equivalent to calling:
@@ -126,7 +128,7 @@ inline fun spValueOf(key: String, defaultValue: Float = -1f): Float =
  * SPStaticUtils.getAll()
  * ```
  */
-inline val allSpValue: Map<String, *> get() = SPStaticUtils.getAll()
+inline val allSpValues: Map<String, *> get() = SPStaticUtils.getAll()
 
 /**
  * Returns whether the sp contains the preference. This is equivalent to calling:

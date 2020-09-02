@@ -6,6 +6,8 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Parcelable
 import com.blankj.utilcode.util.*
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.Serializable
@@ -21,8 +23,8 @@ import java.io.Serializable
  * ```
  */
 inline var defaultCacheDoubleUtils: CacheDoubleUtils
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = CacheDoubleStaticUtils.setDefaultCacheDoubleUtils(value)
 
 /**
@@ -144,6 +146,7 @@ inline fun doubleCacheJSONObjectOf(key: String, defaultValue: JSONObject? = null
  */
 inline fun doubleCacheJSONArrayOf(key: String, defaultValue: JSONArray? = null): JSONArray? =
   CacheDoubleStaticUtils.getJSONArray(key, defaultValue)
+
 /**
  * Returns the bitmap in the double cache. This is equivalent to calling:
  * ```

@@ -11,6 +11,8 @@ import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresPermission
 import androidx.drawerlayout.widget.DrawerLayout
 import com.blankj.utilcode.util.BarUtils
+import com.dylanc.utilktx.Internals.NO_GETTER
+import com.dylanc.utilktx.Internals.noGetter
 
 /**
  * @author Dylan Cai
@@ -46,8 +48,8 @@ inline var Activity.isStatusBarVisible: Boolean
  * ```
  */
 inline var Window.isStatusBarVisible: Boolean
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = BarUtils.setStatusBarVisibility(this, value)
 
 /**
@@ -103,8 +105,8 @@ inline fun View.subtractMarginTopEqualStatusBarHeight() = BarUtils.subtractMargi
  * ```
  */
 var Activity.statusBarColor: Int
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) {
     BarUtils.setStatusBarColor(this, value)
   }
@@ -160,8 +162,8 @@ inline val actionBarHeight: Int get() = BarUtils.getActionBarHeight()
  * ```
  */
 inline var isNotificationBarVisible: Boolean
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   @RequiresPermission(permission.EXPAND_STATUS_BAR)
   set(value) = BarUtils.setNotificationBarVisibility(value)
 
@@ -195,8 +197,8 @@ inline var Activity.isNavBarVisible: Boolean
  * ```
  */
 inline var Window.isNavBarVisible: Boolean
-  @Deprecated("Property does not have a getter", level = DeprecationLevel.ERROR)
-  get() = throw NotImplementedError()
+  @Deprecated(NO_GETTER, level = DeprecationLevel.ERROR)
+  get() = throw noGetter()
   set(value) = BarUtils.setNavBarVisibility(this, value)
 
 /**
