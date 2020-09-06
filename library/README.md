@@ -2,10 +2,7 @@
 
 Gradle:
 ```groovy
-implementation 'com.dylanc:utilktx:1.0.0'
-
-// if u use AndroidX, use the following
-implementation 'com.dylanc:utilktx-x:1.0.0'
+implementation 'com.dylanc:utilktx:1.0.0-alpha'
 ```
 
 
