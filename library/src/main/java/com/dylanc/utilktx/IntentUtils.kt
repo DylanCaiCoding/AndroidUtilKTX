@@ -91,53 +91,53 @@ inline fun shareTextIntentOf(content: String): Intent = IntentUtils.getShareText
 /**
  * Returns the intent of share image. This is equivalent to calling:
  * ```
- * IntentUtils.getShareImageIntent(content, image)
+ * IntentUtils.getShareImageIntent(image)
  * ```
  */
-inline fun shareImageIntentOf(content: String, image: File): Intent = IntentUtils.getShareImageIntent(content, image)
+inline fun shareImageIntentOf(image: File): Intent = IntentUtils.getShareImageIntent(image)
 
 /**
  * Returns the intent of share image. This is equivalent to calling:
  * ```
- * IntentUtils.getShareImageIntent(content, imagePath)
+ * IntentUtils.getShareImageIntent(imagePath)
  * ```
  */
-inline fun shareImageIntentOf(content: String, imagePath: String): Intent = IntentUtils.getShareImageIntent(content, imagePath)
+inline fun shareImageIntentOf(imagePath: String): Intent = IntentUtils.getShareImageIntent(imagePath)
 
 /**
  * Returns the intent of share image. This is equivalent to calling:
  * ```
- * IntentUtils.getShareImageIntent(content, uri)
+ * IntentUtils.getShareImageIntent(uri)
  * ```
  */
-inline fun shareImageIntentOf(content: String, uri: Uri): Intent = IntentUtils.getShareImageIntent(content, uri)
+inline fun shareImageIntentOf(uri: Uri): Intent = IntentUtils.getShareImageIntent(uri)
 
 /**
  * Returns the intent of share image. This is equivalent to calling:
  * ```
- * IntentUtils.getShareImageIntent(content, imagePaths)
+ * IntentUtils.getShareImageIntent(imagePaths)
  * ```
  */
-inline fun shareImageIntentOf(content: String, imagePaths: LinkedList<String>): Intent =
-  IntentUtils.getShareImageIntent(content, imagePaths)
+inline fun shareImageIntentOf(imagePaths: LinkedList<String>): Intent =
+  IntentUtils.getShareImageIntent(imagePaths)
 
 /**
  * Returns the intent of share image. This is equivalent to calling:
  * ```
- * IntentUtils.getShareImageIntent(content, images)
+ * IntentUtils.getShareImageIntent(images)
  * ```
  */
-inline fun shareImageIntentOf(content: String, images: List<File>): Intent =
-  IntentUtils.getShareImageIntent(content, images)
+inline fun shareImageIntentOf(images: List<File>): Intent =
+  IntentUtils.getShareImageIntent(images)
 
 /**
  * Returns the intent of share image. This is equivalent to calling:
  * ```
- * IntentUtils.getShareImageIntent(content, uris)
+ * IntentUtils.getShareImageIntent(uris)
  * ```
  */
-inline fun shareImageIntentOf(content: String, uris: ArrayList<Uri>): Intent =
-  IntentUtils.getShareImageIntent(content, uris)
+inline fun shareImageIntentOf(uris: ArrayList<Uri>): Intent =
+  IntentUtils.getShareImageIntent(uris)
 
 /**
  * Returns the intent of component. This is equivalent to calling:

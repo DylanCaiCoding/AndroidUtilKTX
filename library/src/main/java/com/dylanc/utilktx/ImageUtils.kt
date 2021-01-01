@@ -5,8 +5,8 @@ package com.dylanc.utilktx
 import android.graphics.Bitmap
 import android.os.Build
 import androidx.annotation.*
-import androidx.annotation.IntRange
 import com.blankj.utilcode.util.ImageUtils
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileDescriptor
 import java.io.InputStream
@@ -132,7 +132,11 @@ inline fun Bitmap.createScaledBitmap(newWidth: Int, newHeight: Int, recycle: Boo
  * ImageUtils.scale(src, scaleWidth, scaleHeight, recycle)
  * ```
  */
-inline fun Bitmap.createScaledBitmap(scaleWidth: Float, scaleHeight: Float, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createScaledBitmap(
+  scaleWidth: Float,
+  scaleHeight: Float,
+  recycle: Boolean = false
+): Bitmap =
   ImageUtils.scale(this, scaleWidth, scaleHeight, recycle)
 
 /**
@@ -141,7 +145,13 @@ inline fun Bitmap.createScaledBitmap(scaleWidth: Float, scaleHeight: Float, recy
  * ImageUtils.clip(src, x, y, width, height, recycle)
  * ```
  */
-inline fun Bitmap.createClippedBitmap(x: Int, y: Int, width: Int, height: Int, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createClippedBitmap(
+  x: Int,
+  y: Int,
+  width: Int,
+  height: Int,
+  recycle: Boolean = false
+): Bitmap =
   ImageUtils.clip(this, x, y, width, height, recycle)
 
 /**
@@ -159,7 +169,13 @@ inline fun Bitmap.createSkewedBitmap(kx: Float, ky: Float, recycle: Boolean = fa
  * ImageUtils.skew(src, kx, ky, px, py, recycle)
  * ```
  */
-inline fun Bitmap.createSkewedBitmap(kx: Float, ky: Float, px: Float, py: Float, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createSkewedBitmap(
+  kx: Float,
+  ky: Float,
+  px: Float,
+  py: Float,
+  recycle: Boolean = false
+): Bitmap =
   ImageUtils.skew(this, kx, ky, px, py, recycle)
 
 /**
@@ -185,7 +201,11 @@ inline val File.imageRotateDegree: Int get() = ImageUtils.getRotateDegree(path)
  * ImageUtils.toRound(src, borderSize, borderColor, recycle)
  * ```
  */
-inline fun Bitmap.createRoundBitmap(@IntRange(from = 0) borderSize: Int = 0, @ColorInt borderColor: Int = 0, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createRoundBitmap(
+  @androidx.annotation.IntRange(from = 0) borderSize: Int = 0,
+  @ColorInt borderColor: Int = 0,
+  recycle: Boolean = false
+): Bitmap =
   ImageUtils.toRound(this, borderSize, borderColor, recycle)
 
 /**
@@ -195,9 +215,24 @@ inline fun Bitmap.createRoundBitmap(@IntRange(from = 0) borderSize: Int = 0, @Co
  * ```
  */
 inline fun Bitmap.createRoundCornerBitmap(
-  radius: Float, @IntRange(from = 0) borderSize: Int = 0, @ColorInt borderColor: Int = 0, recycle: Boolean = false
+  radius: Float,
+  @FloatRange(from = 0.0) borderSize: Float,
+  @ColorInt borderColor: Int = 0,
+  recycle: Boolean = false
 ): Bitmap =
   ImageUtils.toRoundCorner(this, radius, borderSize, borderColor, recycle)
+
+fun toRoundCorner(
+  src: Bitmap?,
+  radius: Float,
+  @FloatRange(from = 0.0) borderSize: Float,
+  @ColorInt borderColor: Int,
+  recycle: Boolean
+): Bitmap? {
+  val radii = floatArrayOf(radius, radius, radius, radius, radius, radius, radius, radius)
+  return ImageUtils.toRoundCorner(src, radii, borderSize, borderColor, recycle)
+}
+
 
 /**
  * Returns the round corner bitmap with border. This is equivalent to calling:
@@ -206,7 +241,10 @@ inline fun Bitmap.createRoundCornerBitmap(
  * ```
  */
 inline fun Bitmap.createCornerBorderBitmap(
-  @IntRange(from = 1) borderSize: Int, @ColorInt borderColor: Int, @FloatRange(from = 0.0) cornerRadius: Float, recycle: Boolean = false
+  @FloatRange(from = 1.0) borderSize: Float,
+  @ColorInt borderColor: Int,
+  @FloatRange(from = 0.0) cornerRadius: Float,
+  recycle: Boolean = false
 ): Bitmap =
   ImageUtils.addCornerBorder(this, borderSize, borderColor, cornerRadius, recycle)
 
@@ -216,7 +254,11 @@ inline fun Bitmap.createCornerBorderBitmap(
  * ImageUtils.addCircleBorder(src, borderSize, color, recycle)
  * ```
  */
-inline fun Bitmap.createCircleBorderBitmap(@IntRange(from = 1) borderSize: Int, @ColorInt color: Int, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createCircleBorderBitmap(
+  @FloatRange(from = 1.0) borderSize: Float,
+  @ColorInt color: Int,
+  recycle: Boolean = false
+): Bitmap =
   ImageUtils.addCircleBorder(this, borderSize, color, recycle)
 
 /**
@@ -234,7 +276,13 @@ inline fun Bitmap.createReflectionBitmap(reflectionHeight: Int, recycle: Boolean
  * ImageUtils.addTextWatermark(src, content, textSize, color, x, y)
  * ```
  */
-inline fun Bitmap.createTextWatermarkBitmap(content: String, textSize: Int, @ColorInt color: Int, x: Float, y: Float): Bitmap =
+inline fun Bitmap.createTextWatermarkBitmap(
+  content: String,
+  textSize: Int,
+  @ColorInt color: Int,
+  x: Float,
+  y: Float
+): Bitmap =
   ImageUtils.addTextWatermark(this, content, textSize, color, x, y)
 
 /**
@@ -244,7 +292,12 @@ inline fun Bitmap.createTextWatermarkBitmap(content: String, textSize: Int, @Col
  * ```
  */
 inline fun Bitmap.createTextWatermarkBitmap(
-  content: String, textSize: Float = 0f, @ColorInt color: Int = 0, x: Float, y: Float, recycle: Boolean = false
+  content: String,
+  textSize: Float = 0f,
+  @ColorInt color: Int = 0,
+  x: Float,
+  y: Float,
+  recycle: Boolean = false
 ): Bitmap =
   ImageUtils.addTextWatermark(this, content, textSize, color, x, y, recycle)
 
@@ -254,7 +307,13 @@ inline fun Bitmap.createTextWatermarkBitmap(
  * ImageUtils.addImageWatermark(src, watermark, x, y, alpha, recycle)
  * ```
  */
-inline fun Bitmap.createImageWatermarkBitmap(watermark: Bitmap, x: Int, y: Int, alpha: Int, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createImageWatermarkBitmap(
+  watermark: Bitmap,
+  x: Int,
+  y: Int,
+  alpha: Int,
+  recycle: Boolean = false
+): Bitmap =
   ImageUtils.addImageWatermark(this, watermark, x, y, alpha, recycle)
 
 /**
@@ -263,7 +322,10 @@ inline fun Bitmap.createImageWatermarkBitmap(watermark: Bitmap, x: Int, y: Int, 
  * ImageUtils.toAlpha(src, recycle)
  * ```
  */
-inline fun Bitmap.createAlphaBitmap(recycle: Boolean = false): Bitmap = ImageUtils.toAlpha(this, recycle)
+inline fun Bitmap.createAlphaBitmap(recycle: Boolean = false): Bitmap = ImageUtils.toAlpha(
+  this,
+  recycle
+)
 
 /**
  * Returns the gray bitmap. This is equivalent to calling:
@@ -271,7 +333,10 @@ inline fun Bitmap.createAlphaBitmap(recycle: Boolean = false): Bitmap = ImageUti
  * ImageUtils.toGray(src, recycle)
  * ```
  */
-inline fun Bitmap.createGrayBitmap(recycle: Boolean = false): Bitmap = ImageUtils.toGray(this, recycle)
+inline fun Bitmap.createGrayBitmap(recycle: Boolean = false): Bitmap = ImageUtils.toGray(
+  this,
+  recycle
+)
 
 /**
  * Returns the blur bitmap fast.
@@ -368,7 +433,11 @@ inline fun imageTypeOf(filePath: String): ImageUtils.ImageType = ImageUtils.getI
  * ImageUtils.compressByScale(src, scaleWidth, scaleHeight, recycle)
  * ```
  */
-inline fun Bitmap.createCompressBitmapByScale(scaleWidth: Float, scaleHeight: Float, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createCompressBitmapByScale(
+  scaleWidth: Float,
+  scaleHeight: Float,
+  recycle: Boolean = false
+): Bitmap =
   ImageUtils.compressByScale(this, scaleWidth, scaleHeight, recycle)
 
 /**
@@ -377,7 +446,11 @@ inline fun Bitmap.createCompressBitmapByScale(scaleWidth: Float, scaleHeight: Fl
  * ImageUtils.compressByScale(src, newWidth, newHeight, recycle)
  * ```
  */
-inline fun Bitmap.createCompressBitmapByScale(newWidth: Int, newHeight: Int, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createCompressBitmapByScale(
+  newWidth: Int,
+  newHeight: Int,
+  recycle: Boolean = false
+): Bitmap =
   ImageUtils.compressByScale(this, newWidth, newHeight, recycle)
 
 /**
@@ -395,7 +468,10 @@ inline fun Bitmap.createCompressBitmapByQuality(maxByteSize: Long, recycle: Bool
  * ImageUtils.compressByQuality(src, quality, recycle)
  * ```
  */
-inline fun Bitmap.createCompressBitmapByQuality(@IntRange(from = 0, to = 100) quality: Int, recycle: Boolean = false): ByteArray =
+inline fun Bitmap.createCompressBitmapByQuality(
+  @androidx.annotation.IntRange(from = 0, to = 100) quality: Int,
+  recycle: Boolean = false
+): ByteArray =
   ImageUtils.compressByQuality(this, quality, recycle)
 
 /**
@@ -413,7 +489,11 @@ inline fun Bitmap.createCompressBitmapBySampleSize(simpleSize: Int, recycle: Boo
  * ImageUtils.compressBySampleSize(src, maxWidth, maxHeight, recycle)
  * ```
  */
-inline fun Bitmap.createCompressBitmapBySampleSize(maxWidth: Int, maxHeight: Int, recycle: Boolean = false): Bitmap =
+inline fun Bitmap.createCompressBitmapBySampleSize(
+  maxWidth: Int,
+  maxHeight: Int,
+  recycle: Boolean = false
+): Bitmap =
   ImageUtils.compressBySampleSize(this, maxWidth, maxHeight, recycle)
 
 /**

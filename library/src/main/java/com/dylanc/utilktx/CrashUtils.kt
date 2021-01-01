@@ -15,7 +15,7 @@ import java.io.File
  * CrashUtils.init(crashDirPath, listener)
  * ```
  */
-inline fun initCrashDir(crashDirPath: String = "", noinline listener: ((String, Throwable) -> Unit)? = null) =
+inline fun initCrashDir(crashDirPath: String = "", noinline listener: ((CrashUtils.CrashInfo) -> Unit)? = null) =
   CrashUtils.init(crashDirPath, listener)
 
 /**
@@ -24,5 +24,5 @@ inline fun initCrashDir(crashDirPath: String = "", noinline listener: ((String, 
  * CrashUtils.init(crashDir, listener)
  * ```
  */
-inline fun initCrashDir(crashDir: File, noinline listener: ((String, Throwable) -> Unit)? = null) =
+inline fun initCrashDir(crashDir: File, noinline listener: ((CrashUtils.CrashInfo) -> Unit)? = null) =
   CrashUtils.init(crashDir, listener)

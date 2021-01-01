@@ -94,7 +94,7 @@ inline fun launchAppDetailsSettings() = PermissionUtils.launchAppDetailsSettings
  * ```
  */
 inline fun requestPermission(
-  @PermissionConstants.Permission vararg permissions: String,
+  vararg permissions: String,
   noinline rationale: ((UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit)? = null,
   noinline theme: ((Activity) -> Unit)? = null,
   callback: PermissionUtils.SingleCallback
@@ -117,7 +117,7 @@ inline fun requestPermission(
  * ```
  */
 fun requestPermission(
-  @PermissionConstants.Permission vararg permissions: String,
+  vararg permissions: String,
   rationale: ((UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit)? = null,
   theme: ((Activity) -> Unit)? = null,
   callback: PermissionUtils.SimpleCallback
@@ -140,7 +140,7 @@ fun requestPermission(
  * ```
  */
 fun requestPermission(
-  @PermissionConstants.Permission vararg permissions: String,
+  vararg permissions: String,
   rationale: ((UtilsTransActivity, PermissionUtils.OnRationaleListener.ShouldRequest) -> Unit)? = null,
   theme: ((Activity) -> Unit)? = null,
   callback: PermissionUtils.FullCallback
