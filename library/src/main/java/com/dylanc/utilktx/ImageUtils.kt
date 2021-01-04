@@ -6,7 +6,7 @@ import android.graphics.Bitmap
 import android.os.Build
 import androidx.annotation.*
 import com.blankj.utilcode.util.ImageUtils
-import java.io.ByteArrayOutputStream
+import androidx.annotation.IntRange
 import java.io.File
 import java.io.FileDescriptor
 import java.io.InputStream
@@ -202,7 +202,7 @@ inline val File.imageRotateDegree: Int get() = ImageUtils.getRotateDegree(path)
  * ```
  */
 inline fun Bitmap.createRoundBitmap(
-  @androidx.annotation.IntRange(from = 0) borderSize: Int = 0,
+  @IntRange(from = 0) borderSize: Int = 0,
   @ColorInt borderColor: Int = 0,
   recycle: Boolean = false
 ): Bitmap =
@@ -469,7 +469,7 @@ inline fun Bitmap.createCompressBitmapByQuality(maxByteSize: Long, recycle: Bool
  * ```
  */
 inline fun Bitmap.createCompressBitmapByQuality(
-  @androidx.annotation.IntRange(from = 0, to = 100) quality: Int,
+  @IntRange(from = 0, to = 100) quality: Int,
   recycle: Boolean = false
 ): ByteArray =
   ImageUtils.compressByQuality(this, quality, recycle)
